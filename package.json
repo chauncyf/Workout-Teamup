@@ -1,7 +1,5 @@
 {
   "name": "workout",
   "private": true,
-  "dependencies": {
-    "actioncable": "^5.2.1"
-  }
+  "dependencies": {}
 }
