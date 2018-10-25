@@ -10,14 +10,94 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_24_035712) do
+ActiveRecord::Schema.define(version: 2018_10_25_191405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "activities", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "status"
+    t.integer "starter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "activity_participants", force: :cascade do |t|
+    t.integer "participant_id"
+    t.integer "activity_id"
+    t.integer "identity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "activity_tags", force: :cascade do |t|
+    t.integer "activity_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "activity_id"
+    t.integer "user_id"
+    t.text "content"
+    t.integer "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "followee_id"
+    t.integer "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "gyms", force: :cascade do |t|
+    t.string "name"
+    t.float "latitude"
+    t.float "longitude"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.integer "activity_id"
+    t.integer "user_id"
+    t.string "photo_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "activity_id"
+    t.integer "user_id"
+    t.string "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "type"
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_locations", force: :cascade do |t|
+    t.integer "user_id"
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "user_name"
-    t.string "passwrod_digest"
     t.string "email"
     t.string "potrait_url"
     t.float "height"
