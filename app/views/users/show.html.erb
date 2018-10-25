@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User name:</strong>
+  <%= @user.user_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Potrait url:</strong>
+  <%= @user.potrait_url %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @user.height %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @user.weight %>
+</p>
+
+<p>
+  <strong>Physical condition:</strong>
+  <%= @user.physical_condition %>
+</p>
+
+<p>
+  <strong>Motto:</strong>
+  <%= @user.motto %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

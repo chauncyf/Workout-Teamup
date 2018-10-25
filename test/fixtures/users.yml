@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_name: MyString
+  email: MyString
+  potrait_url: MyString
+  height: 1.5
+  weight: 1.5
+  physical_condition: MyText
+  motto: MyText
+
+two:
+  user_name: MyString
+  email: MyString
+  potrait_url: MyString
+  height: 1.5
+  weight: 1.5
+  physical_condition: MyText
+  motto: MyText
