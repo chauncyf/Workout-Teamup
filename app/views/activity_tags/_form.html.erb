@@ -1,0 +1,27 @@
+<%= form_with(model: activity_tag, local: true) do |form| %>
+  <% if activity_tag.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(activity_tag.errors.count, "error") %> prohibited this activity_tag from being saved:</h2>
+
+      <ul>
+      <% activity_tag.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :activity_id %>
+    <%= form.number_field :activity_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tag_id %>
+    <%= form.number_field :tag_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
