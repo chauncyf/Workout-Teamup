@@ -12,4 +12,5 @@ This is a course project repository for COSI 166B
 * Ruby version - 2.5.1 
 * Rails version - 5.2.1
 * [Link to Heroku](https://teamup12341.herokuapp.com/)
-* Contributor: Xiangran Zhao, Limian Guo, Chenfeng Fan
+* [Link to Trello](https://trello.com/b/pVBKKavl/teamup)
+* Contributor: Xiangran, Limian, Chenfeng
