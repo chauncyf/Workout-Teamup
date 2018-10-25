@@ -2,6 +2,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
       t.string :user_name
+      t.string :passwrod_digest
       t.string :email
       t.string :potrait_url
       t.float :height
