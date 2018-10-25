@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(params[:id])
   end
 
   # GET /users/new
@@ -25,7 +26,14 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
+    # if @user.save
+    #   # Handle a successful save.
+    #   log_in @user
+    #   flash[:success] = 'Welcome to Workout Teamup'
+    #   redirect_to @user
+    # else
+    #   render 'new'
+    # end
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -36,6 +44,7 @@ class UsersController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
@@ -67,8 +76,9 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+      # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:user_name, :email, :potrait_url, :height, :weight, :physical_condition, :motto)
+      params.require(:user).permit(:user_name, :email, :password, :password_confirmation,
+                                   :potrait_url, :height, :weight, :physical_condition, :motto)
     end
 end
