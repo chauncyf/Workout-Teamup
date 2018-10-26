@@ -22,6 +22,14 @@
   </div>
 
   <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: 'form-control' %>
+  </div>
+
+  <%= form.label :password_confirmation, "Confirmation" %>
+  <%= form.password_field :password_confirmation, class: 'form-control' %>
+
+  <div class="field">
     <%= form.label :potrait_url %>
     <%= form.text_field :potrait_url %>
   </div>
