@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 2018_10_25_191405) do
 
   create_table "users", force: :cascade do |t|
     t.string "user_name"
-    t.string "passwrod_digest"
+    t.string "password_digest"
     t.string "email"
     t.string "potrait_url"
     t.float "height"
