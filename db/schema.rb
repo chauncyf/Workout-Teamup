@@ -81,7 +81,9 @@ ActiveRecord::Schema.define(version: 2018_10_25_191405) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "type"
+    t.string "type_name"
+    t.string "type_name"
+    t.string "type_name"
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
