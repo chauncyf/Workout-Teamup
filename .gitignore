@@ -6,6 +6,9 @@
 
 # Ignore bundler config.
 /.bundle
+/vendor/bundle
+/.idea/vcs.xml
+/.idea/workspace.xml
 .idea/vcs.xml
 .idea/workspace.xml
 
