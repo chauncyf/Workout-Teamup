@@ -22,28 +22,28 @@
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
-
-
-/* universal */
-
-body {
-  padding-top: 70px;
-}
-
-section {
-  overflow: auto;
-}
-
-textarea {
-  resize: vertical;
-}
-
-.center {
-  text-align: center;
-  h1 {
-    margin-bottom: 10px;
-  }
-}
+//
+//
+///* universal */
+//
+//body {
+//  padding-top: 70px;
+//}
+//
+//section {
+//  overflow: auto;
+//}
+//
+//textarea {
+//  resize: vertical;
+//}
+//
+//.center {
+//  text-align: center;
+//  h1 {
+//    margin-bottom: 10px;
+//  }
+//}
 
 
 ///* typography */
@@ -73,36 +73,36 @@ textarea {
 //  line-height: 1.7em;
 //}
 
-/* header */
-
-#logo {
-  float: right;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 0px;
-  font-weight: bold;
-  transform: translateX(-165px);
-  &:hover {
-    color: #fff;
-    text-decoration: none;
-  }
-}
-
-
-.nav {
-  display: inline;
-  //position: fixed;
-  //float: top;
-  //size: portrait;
-  //transform: translateX(-100px);
-  //transform: translateY(-25px);
-  transform: translate(170px);
-  height: 50px;
-  overflow: visible;
-}
+///* header */
+//
+//#logo {
+//  float: right;
+//  margin-right: 10px;
+//  font-size: 1.7em;
+//  color: #fff;
+//  text-transform: uppercase;
+//  letter-spacing: -1px;
+//  padding-top: 0px;
+//  font-weight: bold;
+//  transform: translateX(-165px);
+//  &:hover {
+//    color: #fff;
+//    text-decoration: none;
+//  }
+//}
+//
+//
+//.nav {
+//  display: inline;
+//  //position: fixed;
+//  //float: top;
+//  //size: portrait;
+//  //transform: translateX(-100px);
+//  //transform: translateY(-25px);
+//  transform: translate(170px);
+//  height: 50px;
+//  overflow: visible;
+//}
 
 
 //ul li .dropdown {
@@ -187,18 +187,18 @@ footer {
 //  margin-top: 15px;
 //}
 
-/* forms */
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 30%;
-  margin-bottom: 15px;
-  @include box_sizing;
-}
-
-input {
-  height: auto !important;
-}
+///* forms */
+//
+//input, textarea, select, .uneditable-input {
+//  border: 1px solid #bbb;
+//  width: 30%;
+//  margin-bottom: 15px;
+//  @include box_sizing;
+//}
+//
+//input {
+//  height: auto !important;
+//}
 
 #error_explanation {
   color: red;
