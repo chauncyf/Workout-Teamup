@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'map/show'
-  root 'index#home'
+  get 'map/show' ,as: :map_path
+  root 'index#home', as: :index_path
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

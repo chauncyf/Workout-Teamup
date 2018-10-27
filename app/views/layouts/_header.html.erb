@@ -1,6 +1,6 @@
 <!--<header class="navbar navbar-fixed-top navbar-inverse">-->
 <!--  <div class="container">-->
-    <%#= link_to "Workout Teamup", root_path, id: "logo" %>
+<%#= link_to "Workout Teamup", root_path, id: "logo" %>
 <!--    <nav>-->
 <!--      <ul class="nav navbar-nav navbar-right">-->
 <!--        <li><%#= link_to "Discover", '#' %></li>-->
@@ -9,7 +9,7 @@
 <!--        <li><%#= link_to "Chat", '#' %></li>-->
 <!--        <li><%#= link_to "Me", # %></li>-->
 
-        <%# if logged_in? %>
+<%# if logged_in? %>
 
 <!--          <li class="dropdown">-->
 <!--            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Me</a>-->
@@ -18,13 +18,13 @@
 <!--              <li><%#= link_to "Enrolled", '#' %></li>-->
 <!--              <li class="divider"></li>-->
 <!--              <li>-->
-                <%#= link_to "Log out", logout_path, method: :delete %>
+<%#= link_to "Log out", logout_path, method: :delete %>
 <!--              </li>-->
 <!--            </ul>-->
 <!--          </li>-->
-        <%# else %>
+<%# else %>
 <!--          <li><%#= link_to "Log in", login_path %></li>-->
-        <%# end %>
+<%# end %>
 
 <!--      </ul>-->
 <!--    </nav>-->
@@ -39,16 +39,16 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-<!--    float-right-->
+    <!--    float-right-->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">Discover<span class="sr-only">(current)</span></a>
+        <%= link_to "Discover", :index_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <a class="nav-link" href=<%= activities_path %>>Achievement</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Map</a>
+        <%= link_to "Map", :map_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Chat</a>
@@ -56,27 +56,27 @@
 
       <% if logged_in? %>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Me</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href=<%= user_path(current_user) %>>Profile</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <%= link_to 'Logout', logout_path, method: :delete, class: 'dropdown-item' %>
-            </div>
-          </li>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Me</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href=<%= user_path(current_user) %>>Profile</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <%= link_to 'Logout', logout_path, method: :delete, class: 'dropdown-item' %>
+          </div>
+        </li>
       <% else %>
         <li class="nav-item">
           <a class="nav-link" href=<%= login_path %>>Login</a>
         </li>
-<!--          <li><%#= link_to "Log in", login_path %></li>-->
+        <!--          <li><%#= link_to "Log in", login_path %></li>-->
       <% end %>
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link disabled" href="#">Disabled</a>-->
-<!--      </li>-->
+      <!--      <li class="nav-item">-->
+      <!--        <a class="nav-link disabled" href="#">Disabled</a>-->
+      <!--      </li>-->
     </ul>
-<!--    <form class="form-inline my-2 my-lg-0">-->
-<!--      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-<!--    </form>-->
+    <!--    <form class="form-inline my-2 my-lg-0">-->
+    <!--      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+    <!--      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+    <!--    </form>-->
   </div>
 </nav>
