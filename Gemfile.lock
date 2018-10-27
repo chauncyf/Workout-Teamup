@@ -85,6 +85,7 @@ GEM
     faker (1.8.7)
       i18n (>= 0.7)
     ffi (1.9.25)
+    geocoder (1.5.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
       hirb (= 0.7.3)
@@ -212,6 +213,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   faker
+  geocoder
   hirb
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
