@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'map/show' ,as: :map_path
-  root 'index#home', as: :index_path
+  root 'index#home' # can be called as root_path
+
+  get 'map/show', as: :map_path
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
