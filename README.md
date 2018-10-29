@@ -31,3 +31,8 @@ $ rails db:schema:load
 ```
 <%= debug(params) if Rails.env.development? %>
 ```
+
+* Set 'git lg' as alia of graphic log command
+```
+$ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+```
