@@ -22,97 +22,13 @@
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
-//
-//
-///* universal */
-//
-//body {
-//  padding-top: 70px;
-//}
-//
-//section {
-//  overflow: auto;
-//}
-//
-//textarea {
-//  resize: vertical;
-//}
-//
-//.center {
-//  text-align: center;
-//  h1 {
-//    margin-bottom: 10px;
-//  }
-//}
 
 
-///* typography */
-//
-//h1, h2, h3, h4, h5, h6 {
-//  line-height: 1;
-//}
-//
-//h1 {
-//  font-size: 3em;
-//  letter-spacing: -2px;
-//  margin-bottom: 30px;
-//  text-align: center;
-//}
-//
-//h2 {
-//  font-size: 1.2em;
-//  letter-spacing: -1px;
-//  margin-bottom: 30px;
-//  text-align: center;
-//  font-weight: normal;
-//  color: #777;
-//}
-//
-//p {
-//  font-size: 1.1em;
-//  line-height: 1.7em;
-//}
+/* header */
 
-///* header */
-//
-//#logo {
-//  float: right;
-//  margin-right: 10px;
-//  font-size: 1.7em;
-//  color: #fff;
-//  text-transform: uppercase;
-//  letter-spacing: -1px;
-//  padding-top: 0px;
-//  font-weight: bold;
-//  transform: translateX(-165px);
-//  &:hover {
-//    color: #fff;
-//    text-decoration: none;
-//  }
-//}
-//
-//
-//.nav {
-//  display: inline;
-//  //position: fixed;
-//  //float: top;
-//  //size: portrait;
-//  //transform: translateX(-100px);
-//  //transform: translateY(-25px);
-//  transform: translate(170px);
-//  height: 50px;
-//  overflow: visible;
-//}
-
-
-//ul li .dropdown {
-//  display: none;
-//  position: fixed;
-//  width: 80px;
-//  top: 50px; //amend as needed
-//  right: 0; // amend as needed
-//}
-
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
 
 /* footer */
 
@@ -140,6 +56,7 @@ footer {
   }
 }
 
+
 /* miscellaneous */
 
 .debug_dump {
@@ -150,55 +67,6 @@ footer {
   @include box_sizing;
 }
 
-///* sidebar */
-//
-//aside {
-//  section.user_info {
-//    margin-top: 20px;
-//  }
-//  section {
-//    padding: 10px 0;
-//    margin-top: 20px;
-//    &:first-child {
-//      border: 0;
-//      padding-top: 0;
-//    }
-//    span {
-//      display: block;
-//      margin-bottom: 3px;
-//      line-height: 1;
-//    }
-//    h1 {
-//      font-size: 3em;
-//      text-align: left;
-//      letter-spacing: -1px;
-//      margin-bottom: 3px;
-//      margin-top: 0px;
-//    }
-//  }
-//}
-//
-//.gravatar {
-//  float: left;
-//  margin-right: 10px;
-//}
-//
-//.gravatar_edit {
-//  margin-top: 15px;
-//}
-
-///* forms */
-//
-//input, textarea, select, .uneditable-input {
-//  border: 1px solid #bbb;
-//  width: 30%;
-//  margin-bottom: 15px;
-//  @include box_sizing;
-//}
-//
-//input {
-//  height: auto !important;
-//}
 
 #error_explanation {
   color: red;
