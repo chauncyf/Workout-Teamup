@@ -111,16 +111,31 @@
 
 </div>
 <script>
-    var controlFlag=true// used to switch off the endless refreshing
-    $('#scroll_container').on("scroll", () => {
-        var height=$('#scroll_container').height()
-        var scrollTop=$('#scroll_container').scrollTop()
-        var totalHeight=document.getElementById("scroll_container").scrollHeight
-        if(totalHeight-scrollTop-height<20){
-            if(controlFlag){
-                $.ajax()// do the ajax to add more content and set the controlFlag to true in the callback function
+    var controlFlag = true// used to switch off the endless refreshing
+    $('#scroll_container').on("scroll", function () {
+        var height = $(this).height()
+        var scrollTop = $(this).scrollTop()
+        var totalHeight = this.scrollHeight
+        if (totalHeight - scrollTop - height < 20) {
+            if (controlFlag) {
+                console.log("ajax!")
+                //$.ajax()// do the ajax to add more content and set the controlFlag to true in the callback function
             }
-            controlFlag=false// switch off
+            controlFlag = false// switch off
         }
     })
+
+</script>
+<script>
+    var interval = setInterval(() => {
+        navigator.geolocation.getCurrentPosition(({coords}) => {
+            console.log(`latitude:${coords.longitude},height:${coords.longitude}`)
+            //$.ajax() //  use ajax to upload user location
+        })
+    }, 10000)
+    clearTurboLink = () => {
+        clearInterval(interval)
+        $(document).off('turbolinks:load', clearTurboLink)
+    }
+    $(document).on('turbolinks:load', clearTurboLink)
 </script>
