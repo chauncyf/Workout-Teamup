@@ -129,13 +129,16 @@
 <script>
     var interval = setInterval(() => {
         navigator.geolocation.getCurrentPosition(({coords}) => {
-            console.log(`latitude:${coords.longitude},height:${coords.longitude}`)
+            console.log(`latitude:${coords.latitude},longitude:${coords.longitude}`)
             //$.ajax() //  use ajax to upload user location
         })
     }, 10000)
-    clearTurboLink = () => {
-        clearInterval(interval)
-        $(document).off('turbolinks:load', clearTurboLink)
-    }
-    $(document).on('turbolinks:load', clearTurboLink)
+    $(document).on('turbolinks:load', () => {
+        clearTurboLink = () => {
+            clearInterval(interval)
+            $(document).off('turbolinks:load', clearTurboLink)
+        }
+        $(document).on('turbolinks:load', clearTurboLink)
+    })
+
 </script>
