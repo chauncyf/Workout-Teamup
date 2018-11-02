@@ -13,9 +13,6 @@
  *= require_self
  */
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -76,12 +73,6 @@ footer {
   }
 }
 
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-    color: $state-danger-text;
-  }
-}
 
 .modal {
   opacity: 100;
