@@ -13,16 +13,30 @@ User.create(user_name: 'admin', email: 'admin@brandeis.edu', password: '12345678
 User.create(user_name: 'admin2', email: 'admin2@brandeis.edu', password: '123456789')
 
 Tag.create(type_name: 'pullup', color: 'green')
-Tag.create(type_name: 'push', color: 'green')
-Tag.create(type_name: 'pullup', color: 'green')
-Tag.create(type_name: 'pullup', color: 'green')
-Tag.create(type_name: 'pullup', color: 'green')
-Tag.create(type_name: 'pullup', color: 'green')
-Tag.create(type_name: 'pullup', color: 'green')
-Tag.create(type_name: 'pullup', color: 'green')
-Tag.create(type_name: 'pullup', color: 'green')
-Tag.create(type_name: 'pullup', color: 'green')
-Tag.create(type_name: 'pullup', color: 'green')
+Tag.create(type_name: 'push', color: 'orange')
+Tag.create(type_name: 'squat', color: 'grey')
+Tag.create(type_name: 'bicerp', color: 'red')
+Tag.create(type_name: 'tricerp', color: 'green')
+Tag.create(type_name: 'sprint', color: 'orange')
+Tag.create(type_name: 'pushup', color: 'grey')
+Tag.create(type_name: 'belly', color: 'purple')
+Tag.create(type_name: 'pullup', color: 'yellow')
+Tag.create(type_name: 'bumperss', color: 'pink')
+Tag.create(type_name: 'chest press', color: 'green')
+
+
+Follow.create(followee_id:1,follower_id:2)
+Follow.create(followee_id:1,follower_id:3)
+Follow.create(followee_id:1,follower_id:4)
+Follow.create(followee_id:1,follower_id:5)
+Follow.create(followee_id:2,follower_id:1)
+Follow.create(followee_id:3,follower_id:1)
+Follow.create(followee_id:4,follower_id:1)
+Follow.create(followee_id:5,follower_id:1)
+Follow.create(followee_id:2,follower_id:4)
+
+Gym.create(name:"gosman",description:"this is gosman gym for brandeis univeristy open time : xxxxx")
+
 
 
 
