@@ -1,10 +1,10 @@
 <br>
-<h1 class="text-center">Find Your Activity</h1>
+<h1 class="text-center">Find Interested Activity</h1>
 
 <!-- Button trigger modal -->
 <% if !logged_in? %>
 <!--  render login modal partial -->
-  <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#login" data-whatever="Poster Date" >Create Your Poster !</button>
+  <button type="button" class="btn btn-primary float-right" id="poster_button" data-toggle="modal" data-target="#login" data-whatever="Poster Date" >Create Your Poster !</button>
 <% else %>
 <!--  render create poster form partial-->
   <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#newPosterModal" data-whatever="xxx" >Create Your Poster !</button>
@@ -95,7 +95,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="login">Login</h3>
+        <h3 class="modal-title" id="login">Log In</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -119,8 +119,66 @@
             <%= form.submit "Log in", class: "btn btn-primary" %>
           </div>
         <% end %>
+<!--        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#newPosterModal" data-whatever="xxx" >Create Your Poster !</button>-->
 
-        <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+        <p>New user? <%= link_to "Sign up now!", signup_path, {"data-toggle": "modal", "data-dismiss": "modal", "data-target": "#signup"} %></p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- sign up modal -->
+<div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="signup">Sign Up</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!--          todo: here js render login partial-->
+
+        <%= form_with(model: User.new, local: true) do |form| %>
+          <%# if user.errors.any? %>
+<!--            <div id="error_explanation">-->
+<!--              <h2><%#= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>-->
+
+<!--              <ul>-->
+                <%# user.errors.full_messages.each do |message| %>
+<!--                  <li><%#= message %></li>-->
+                <%# end %>
+<!--              </ul>-->
+<!--            </div>-->
+          <%# end %>
+
+          <div class="form-group">
+            <%= form.label :user_name %>
+            <%= form.text_field :user_name, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :email %>
+            <%= form.text_field :email, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :password %>
+            <%= form.password_field :password,class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :password_confirmation, "Confirmation" %>
+            <%= form.password_field :password_confirmation,class: "form-control" %>
+          </div>
+
+          <div class="actions float-right">
+            <%= form.submit "Confirm", class: "btn btn-primary"%>
+          </div>
+        <% end %>
 
       </div>
     </div>
@@ -132,6 +190,7 @@
 <hr>
 
 <!--<div id="scroll_container" style="height: 200px;overflow: scroll">-->
+<div class="card_container">
   <div class="card-deck">
     <div class="card text-center">
       <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">
@@ -180,19 +239,8 @@
         <a href="#" class="btn btn-primary">Join!</a>
       </div>
     </div>
-    <div class="card text-center">
-      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h4 class="card-title">Card title</h4>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
-          This card has even longer content than the first to show that equal height action.</p>
-        <p class="card-text">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </p>
-        <a href="#" class="btn btn-primary">Join!</a>
-      </div>
-    </div>
   </div>
+</div>
 <!--</div>-->
 
 <script>

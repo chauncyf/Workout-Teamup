@@ -11,50 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :user_name %>
-    <%= form.text_field :user_name %>
+    <%= form.text_field :user_name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :password %>
-    <%= form.password_field :password, class: 'form-control' %>
+    <%= form.password_field :password,class: "form-control" %>
   </div>
 
+  <div class="form-group">
   <%= form.label :password_confirmation, "Confirmation" %>
-  <%= form.password_field :password_confirmation, class: 'form-control' %>
-
-  <div class="field">
-    <%= form.label :potrait_url %>
-    <%= form.text_field :potrait_url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :height %>
-    <%= form.text_field :height %>
-  </div>
-
-  <div class="field">
-    <%= form.label :weight %>
-    <%= form.text_field :weight %>
-  </div>
-
-  <div class="field">
-    <%= form.label :physical_condition %>
-    <%= form.text_area :physical_condition %>
-  </div>
-
-  <div class="field">
-    <%= form.label :motto %>
-    <%= form.text_area :motto %>
+  <%= form.password_field :password_confirmation,class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Confirm", class: "btn btn-primary"%>
   </div>
 <% end %>
