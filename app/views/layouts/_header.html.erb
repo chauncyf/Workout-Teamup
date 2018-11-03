@@ -24,9 +24,9 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Me</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href=<%= user_path(current_user) %>>Profile</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">My Poster</a>
             <div class="dropdown-divider"></div>
-            <%= link_to 'Logout', logout_path, method: :delete, class: 'dropdown-item' %>
+            <%= link_to "Logout", logout_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
         <li class="nav-item">

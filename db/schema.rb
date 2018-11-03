@@ -16,10 +16,11 @@ ActiveRecord::Schema.define(version: 2018_10_25_191405) do
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
-    t.string "title"
+    t.datetime "activity_date"
+    t.string "place"
     t.text "content"
-    t.integer "status"
     t.integer "starter_id"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
