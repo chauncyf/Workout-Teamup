@@ -16,10 +16,10 @@ This is a course project repository for COSI 166B
 * [Link to Trello](https://trello.com/b/pVBKKavl/teamup)
 * Contributor: Xiangran, Limian, Chenfeng
 
-## Tips
+## Cheat Sheet
 * Recreate db
 ``` 
-$ rails db:drop db:create db:migrate
+$ rails db:drop db:create db:migrate db:seed
 ```
 ###### OR  
 * Delete the entire contents on your db and recreate the schema from your schema.rb file, without having to apply all migrations one by one.

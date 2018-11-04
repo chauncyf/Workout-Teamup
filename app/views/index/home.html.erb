@@ -23,9 +23,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="new_poster_form">
-
-      </div>
+      <div class="modal-body" id="new_poster_form"></div>
     </div>
   </div>
 </div>
@@ -152,21 +150,47 @@
     <% if row_count % 4 == 0 %>
       <div class="card-deck">
     <% end %>
-    <div class="card text-center">
+    <div class="card m-3 text-center">
       <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h4 class="card-title">
-          <% if !activity.activity_date.nil? %>
-            <%= activity.activity_date.strftime("%b %d #%H:%M, %a") %>
-          <% else %>
+      <div class="card-body pb-2">
+        <% if !activity.activity_date.nil? %>
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title mb-1 text-left">
+                <%= activity.activity_date.strftime("%b %d") %>
+              </h5>
+              <h6 class="card-subtitle mb-3 text-left text-muted">
+                <%= activity.activity_date.strftime("%a %H:%M") %>
+              </h6>
+            </div>
+            <div class="col">
+              <h2>
+                <%= activity.place %>
+              </h2>
+            </div>
+          </div>
+        <% else %>
+          <h4 class="card-title ">
             Sometime
-          <% end %>
-        </h4>
+          </h4>
+        <% end %>
         <p class="card-text"><%= activity.content %></p>
-        <p class="card-text">
-          <small class="text-muted">Update: <%= activity.updated_at.strftime("%m/%d/%y %H:%M") %></small>
+
+        <%= link_to "Join!", "/join_activity/#{activity.id}", class: "btn btn-sm btn-outline-primary", method: :post %>
+        <p class="card-text text-right">
+          <span class="text-muted" style="font-size: x-small; ">Update: <%= activity.updated_at.strftime("%m/%d/%y %H:%M") %></span>
+<!--          <small class="text-muted">Update: <%#= activity.updated_at.strftime("%m/%d/%y %H:%M") %></small>-->
         </p>
-        <%= link_to "Join!", "/join_activity/#{activity.id}", class: "btn btn-outline-primary", method: :post %>
+
+<!--        <div class="row">-->
+<!--          <div class="col-8">-->
+
+<!--          </div>-->
+<!--          <div class="col-4">-->
+<!--          </div>-->
+<!--        </div>-->
+
+
       </div>
     </div>
 
@@ -231,27 +255,28 @@
 </div>
 
 <script>
-    var controlFlag = true// used to switch off the endless refreshing
+    var controlFlag = true; // used to switch off the endless refreshing
     $('#scroll_container').on("scroll", function () {
-        var height = $(this).height()
-        var scrollTop = $(this).scrollTop()
-        var totalHeight = this.scrollHeight
+        var height = $(this).height();
+        var scrollTop = $(this).scrollTop();
+        var totalHeight = this.scrollHeight;
         if (totalHeight - scrollTop - height < 20) {
             if (controlFlag) {
                 console.log("ajax!")
-                //$.ajax()// do the ajax to add more content and set the controlFlag to true in the callback function
+                //$.ajax() // do the ajax to add more content and set the controlFlag to true in the callback function
             }
-            controlFlag = false// switch off
+            controlFlag = false // switch off
         }
-    })
-    var posterModal = $('#newPosterModal')
-    var modalBody = posterModal.find('.modal-body')
+    });
+
+    var posterModal = $('#newPosterModal');
+    var modalBody = posterModal.find('.modal-body');
     $('#new_poster_button').on('click', function () {
         $.ajax({
-            url: '<%=new_activity_path %>',
+            url: '<%= new_activity_path %>',
             method: 'get',
             success: function (data) {
-                modalBody.html(data)
+                modalBody.html(data);
                 posterModal.modal('show')
             }
         })
@@ -262,14 +287,14 @@
     var interval = setInterval(() => {
         navigator.geolocation.getCurrentPosition(({coords}) => {
             console.log(`latitude:${coords.latitude},longitude:${coords.longitude}`)
-            //$.ajax() //  use ajax to upload user location
+            //$.ajax() // use ajax to upload user location
         })
-    }, 10000)
+    }, 10000);
     $(document).on('turbolinks:load', () => {
         clearTurboLink = () => {
-            clearInterval(interval)
+            clearInterval(interval);
             $(document).off('turbolinks:load', clearTurboLink)
-        }
+        };
         $(document).on('turbolinks:load', clearTurboLink)
     })
 </script>

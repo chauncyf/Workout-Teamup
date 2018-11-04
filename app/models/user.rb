@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # has_many :users, through: :follows, source: :follower  # what's this
 
   has_many :activity_participants
-  has_many :activities, through: :activity_participants #, foreign_key: :participant_id
+  has_many :activities, through: :activity_participants
 
   has_many :comments
   has_many :ratings
