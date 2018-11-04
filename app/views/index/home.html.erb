@@ -284,8 +284,7 @@
     posterModal.on('ajax:success', function (event) {
         [data, status, xhr] = event.detail
         posterModal.modal("hide")
-        //refresh the posters
-        let dataObj=JSON.parse(data)
+        console.log(data)
     }).on('ajax:error',function(event){
 
     })
