@@ -1,3 +1,7 @@
 App.cable.subscriptions.create({
-    channel:'MessageChannel'
+    channel: 'MessageChannel',
+}, {
+    received(data) {
+        console.log(data)
+    }
 })
