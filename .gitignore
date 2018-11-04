@@ -28,4 +28,4 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-/app/helpers/secret_helper.rb
+#/app/helpers/secret_helper.rb
