@@ -4,11 +4,7 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    if current_user.identity == 1
-      @activities = Activity.all
-    else
-      @activities = Activity.find_by()
-    end
+    @activities = Activity.all
   end
 
   # GET /activities/1
