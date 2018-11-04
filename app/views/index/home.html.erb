@@ -3,12 +3,14 @@
 
 <!-- Button trigger modal -->
 <% if !logged_in? %>
-<!--  render login modal partial -->
-  <button type="button" class="btn btn-primary float-right" id="new_poster_button" data-toggle="modal" data-target="#login" data-whatever="Poster Date" >Create Your Poster !</button>
+  <!--  render login modal partial -->
+  <button type="button" class="btn btn-primary float-right" id="login_button" data-toggle="modal" data-target="#login" data-whatever="Poster Date">Create
+    Your Poster !
+  </button>
   <%#= button_to "Create Your Poster !",  %>
 <% else %>
-<!--  render create poster form partial-->
-  <button type="button" class="btn btn-primary float-right" id="new_poster_button" data-toggle="modal" data-target="#newPosterModal" data-whatever="xxx" >Create Your Poster !</button>
+  <!--  render create poster form partial-->
+  <button type="button" class="btn btn-primary float-right" id="new_poster_button">Create Your Poster !</button>
 <% end %>
 
 <!-- New poster Modal -->
@@ -22,57 +24,57 @@
         </button>
       </div>
       <div class="modal-body" id="new_poster_form">
-          <%= form_with(model: Activity.new, local: true) do |form| %>
-            <%# if activity.errors.any? %>
-<!--              <div id="error_explanation">-->
-<!--                <h2><%#= pluralize(activity.errors.count, "error") %> prohibited this activity from being saved:</h2>-->
+        <%= form_with(model: Activity.new, local: true) do |form| %>
+          <%# if activity.errors.any? %>
+          <!--              <div id="error_explanation">-->
+          <!--                <h2><%#= pluralize(activity.errors.count, "error") %> prohibited this activity from being saved:</h2>-->
 
-<!--                <ul>-->
-                  <%# activity.errors.full_messages.each do |message| %>
-<!--                    <li><%#= message %></li>-->
-                  <%# end %>
-<!--                </ul>-->
-<!--              </div>-->
-            <%# end %>
+          <!--                <ul>-->
+          <%# activity.errors.full_messages.each do |message| %>
+          <!--                    <li><%#= message %></li>-->
+          <%# end %>
+          <!--                </ul>-->
+          <!--              </div>-->
+          <%# end %>
 
-            <div class="form-group">
-              <%= form.label "When?" %>
+          <div class="form-group">
+            <%= form.label "When?" %>
 
-              <div class="input-group date" id="datetimepicker" data-target-input="nearest">
-<!--                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker9"/>-->
-                <%= form.text_field :activity_date, class: "form-control datetimepicker-input", "data-target": "#datetimepicker", placeholder: "when will the activity start.." %>
+            <div class="input-group date" id="datetimepicker" data-target-input="nearest">
+              <!--                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker9"/>-->
+              <%= form.text_field :activity_date, class: "form-control datetimepicker-input", "data-target": "#datetimepicker", placeholder: "when will the activity start.." %>
 
-                <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
-                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                </div>
+              <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
               </div>
-
-              <script type="text/javascript">
-                  $(function () {
-                      $('#datetimepicker').datetimepicker({
-                          icons: {
-                              time: "far fa-clock",
-                              date: "far fa-calendar",
-                          }
-                      });
-                  });
-              </script>
             </div>
 
-            <div class="form-group">
-              <%= form.label "Where?" %>
-              <%= form.text_field :place, class: "form-control", placeholder: "where to meet.." %>
-            </div>
+            <script type="text/javascript">
+                $(function () {
+                    $('#datetimepicker').datetimepicker({
+                        icons: {
+                            time: "far fa-clock",
+                            date: "far fa-calendar",
+                        }
+                    });
+                });
+            </script>
+          </div>
 
-            <div class="form-group">
-              <%= form.label "What?" %>
-              <%= form.text_area :content, class: "form-control", placeholder: "what is the Activity about.." %>
-            </div>
+          <div class="form-group">
+            <%= form.label "Where?" %>
+            <%= form.text_field :place, class: "form-control", placeholder: "where to meet.." %>
+          </div>
 
-            <div class="actions float-right">  <!-- modal-footer -->
-              <%= form.submit "✓", class: "btn btn-primary" %>
-            </div>
-          <% end %>
+          <div class="form-group">
+            <%= form.label "What?" %>
+            <%= form.text_area :content, class: "form-control", placeholder: "what is the Activity about.." %>
+          </div>
+
+          <div class="actions float-right">  <!-- modal-footer -->
+            <%= form.submit "✓", class: "btn btn-primary" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -102,7 +104,7 @@
         </button>
       </div>
       <div class="modal-body">
-<!--          todo: here js render login partial-->
+        <!--          todo: here js render login partial-->
 
         <%= form_for(:session, url: login_path) do |form| %>
 
@@ -120,9 +122,10 @@
             <%= form.submit "Log in", class: "btn btn-primary" %>
           </div>
         <% end %>
-<!--        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#newPosterModal" data-whatever="xxx" >Create Your Poster !</button>-->
+        <!--        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#newPosterModal" data-whatever="xxx" >Create Your Poster !</button>-->
 
-        <p>New user? <%= link_to "Sign up now!", signup_path, {"data-toggle": "modal", "data-dismiss": "modal", "data-target": "#signup"} %></p>
+        <p>New
+          user? <%= link_to "Sign up now!", signup_path, {"data-toggle": "modal", "data-dismiss": "modal", "data-target": "#signup"} %></p>
 
       </div>
     </div>
@@ -145,15 +148,15 @@
 
         <%= form_with(model: User.new, local: true) do |form| %>
           <%# if user.errors.any? %>
-<!--            <div id="error_explanation">-->
-<!--              <h2><%#= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>-->
+          <!--            <div id="error_explanation">-->
+          <!--              <h2><%#= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>-->
 
-<!--              <ul>-->
-                <%# user.errors.full_messages.each do |message| %>
-<!--                  <li><%#= message %></li>-->
-                <%# end %>
-<!--              </ul>-->
-<!--            </div>-->
+          <!--              <ul>-->
+          <%# user.errors.full_messages.each do |message| %>
+          <!--                  <li><%#= message %></li>-->
+          <%# end %>
+          <!--              </ul>-->
+          <!--            </div>-->
           <%# end %>
 
           <div class="form-group">
@@ -168,16 +171,16 @@
 
           <div class="form-group">
             <%= form.label :password %>
-            <%= form.password_field :password,class: "form-control" %>
+            <%= form.password_field :password, class: "form-control" %>
           </div>
 
           <div class="form-group">
             <%= form.label :password_confirmation, "Confirmation" %>
-            <%= form.password_field :password_confirmation,class: "form-control" %>
+            <%= form.password_field :password_confirmation, class: "form-control" %>
           </div>
 
           <div class="actions float-right">
-            <%= form.submit "Confirm", class: "btn btn-primary"%>
+            <%= form.submit "Confirm", class: "btn btn-primary" %>
           </div>
         <% end %>
 
@@ -218,112 +221,112 @@
       </div>
     </div>
     <%# if row_count % 4 == 0 %>
-<!--        </div>-->
-<!--        <br>-->
+    <!--        </div>-->
+    <!--        <br>-->
     <%# end %>
     <% row_count += 1 %>
   <% end %>
 
-<!--  <div class="card-deck">-->
-<!--    <div class="card text-center">-->
-<!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
-<!--      <div class="card-body">-->
-<!--        <h4 class="card-title">Card title</h4>-->
-<!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.-->
-<!--          This content is a little bit longer.</p>-->
-<!--        <p class="card-text">-->
-<!--          <small class="text-muted">Last updated 3 mins ago</small>-->
-<!--        </p>-->
-<!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="card text-center">-->
-<!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
-<!--      <div class="card-body">-->
-<!--        <h4 class="card-title">Card title</h4>-->
-<!--        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>-->
-<!--        <p class="card-text">-->
-<!--          <small class="text-muted">Last updated 3 mins ago</small>-->
-<!--        </p>-->
-<!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="card text-center">-->
-<!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
-<!--      <div class="card-body">-->
-<!--        <h4 class="card-title">Card title</h4>-->
-<!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.-->
-<!--          This card has even longer content than the first to show that equal height action.</p>-->
-<!--        <p class="card-text">-->
-<!--          <small class="text-muted">Last updated 3 mins ago</small>-->
-<!--        </p>-->
-<!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="card text-center">-->
-<!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
-<!--      <div class="card-body">-->
-<!--        <h4 class="card-title">Card title</h4>-->
-<!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.-->
-<!--          This card has even longer content than the first to show that equal height action.</p>-->
-<!--        <p class="card-text">-->
-<!--          <small class="text-muted">Last updated 3 mins ago</small>-->
-<!--        </p>-->
-<!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+  <!--  <div class="card-deck">-->
+  <!--    <div class="card text-center">-->
+  <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
+  <!--      <div class="card-body">-->
+  <!--        <h4 class="card-title">Card title</h4>-->
+  <!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.-->
+  <!--          This content is a little bit longer.</p>-->
+  <!--        <p class="card-text">-->
+  <!--          <small class="text-muted">Last updated 3 mins ago</small>-->
+  <!--        </p>-->
+  <!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--    <div class="card text-center">-->
+  <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
+  <!--      <div class="card-body">-->
+  <!--        <h4 class="card-title">Card title</h4>-->
+  <!--        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>-->
+  <!--        <p class="card-text">-->
+  <!--          <small class="text-muted">Last updated 3 mins ago</small>-->
+  <!--        </p>-->
+  <!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--    <div class="card text-center">-->
+  <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
+  <!--      <div class="card-body">-->
+  <!--        <h4 class="card-title">Card title</h4>-->
+  <!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.-->
+  <!--          This card has even longer content than the first to show that equal height action.</p>-->
+  <!--        <p class="card-text">-->
+  <!--          <small class="text-muted">Last updated 3 mins ago</small>-->
+  <!--        </p>-->
+  <!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--    <div class="card text-center">-->
+  <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
+  <!--      <div class="card-body">-->
+  <!--        <h4 class="card-title">Card title</h4>-->
+  <!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.-->
+  <!--          This card has even longer content than the first to show that equal height action.</p>-->
+  <!--        <p class="card-text">-->
+  <!--          <small class="text-muted">Last updated 3 mins ago</small>-->
+  <!--        </p>-->
+  <!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</div>-->
 
-<!--<div class="card-deck">-->
-<!--    <div class="card text-center">-->
-<!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
-<!--      <div class="card-body">-->
-<!--        <h4 class="card-title">Card title</h4>-->
-<!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.-->
-<!--          This content is a little bit longer.</p>-->
-<!--        <p class="card-text">-->
-<!--          <small class="text-muted">Last updated 3 mins ago</small>-->
-<!--        </p>-->
-<!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="card text-center">-->
-<!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
-<!--      <div class="card-body">-->
-<!--        <h4 class="card-title">Card title</h4>-->
-<!--        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>-->
-<!--        <p class="card-text">-->
-<!--          <small class="text-muted">Last updated 3 mins ago</small>-->
-<!--        </p>-->
-<!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="card text-center">-->
-<!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
-<!--      <div class="card-body">-->
-<!--        <h4 class="card-title">Card title</h4>-->
-<!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.-->
-<!--          This card has even longer content than the first to show that equal height action.</p>-->
-<!--        <p class="card-text">-->
-<!--          <small class="text-muted">Last updated 3 mins ago</small>-->
-<!--        </p>-->
-<!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="card text-center">-->
-<!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
-<!--      <div class="card-body">-->
-<!--        <h4 class="card-title">Card title</h4>-->
-<!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.-->
-<!--          This card has even longer content than the first to show that equal height action.</p>-->
-<!--        <p class="card-text">-->
-<!--          <small class="text-muted">Last updated 3 mins ago</small>-->
-<!--        </p>-->
-<!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
+  <!--<div class="card-deck">-->
+  <!--    <div class="card text-center">-->
+  <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
+  <!--      <div class="card-body">-->
+  <!--        <h4 class="card-title">Card title</h4>-->
+  <!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.-->
+  <!--          This content is a little bit longer.</p>-->
+  <!--        <p class="card-text">-->
+  <!--          <small class="text-muted">Last updated 3 mins ago</small>-->
+  <!--        </p>-->
+  <!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--    <div class="card text-center">-->
+  <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
+  <!--      <div class="card-body">-->
+  <!--        <h4 class="card-title">Card title</h4>-->
+  <!--        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>-->
+  <!--        <p class="card-text">-->
+  <!--          <small class="text-muted">Last updated 3 mins ago</small>-->
+  <!--        </p>-->
+  <!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--    <div class="card text-center">-->
+  <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
+  <!--      <div class="card-body">-->
+  <!--        <h4 class="card-title">Card title</h4>-->
+  <!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.-->
+  <!--          This card has even longer content than the first to show that equal height action.</p>-->
+  <!--        <p class="card-text">-->
+  <!--          <small class="text-muted">Last updated 3 mins ago</small>-->
+  <!--        </p>-->
+  <!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--    <div class="card text-center">-->
+  <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
+  <!--      <div class="card-body">-->
+  <!--        <h4 class="card-title">Card title</h4>-->
+  <!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.-->
+  <!--          This card has even longer content than the first to show that equal height action.</p>-->
+  <!--        <p class="card-text">-->
+  <!--          <small class="text-muted">Last updated 3 mins ago</small>-->
+  <!--        </p>-->
+  <!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  </div>
 </div>
 
 <script>
@@ -339,6 +342,18 @@
             }
             controlFlag = false// switch off
         }
+    })
+    var posterModal = $('#newPosterModal')
+    var modalBody = posterModal.find('.modal-body')
+    $('#new_poster_button').on('click', function () {
+        $.ajax({
+            url: '<%=new_activity_path %>',
+            method: 'get',
+            success: function (data) {
+                modalBody.html(data)
+                posterModal.modal('show')
+            }
+        })
     })
 </script>
 
