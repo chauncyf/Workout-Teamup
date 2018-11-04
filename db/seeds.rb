@@ -35,6 +35,8 @@ Follow.create(followee_id:4,follower_id:1)
 Follow.create(followee_id:5,follower_id:1)
 Follow.create(followee_id:2,follower_id:4)
 
+
+
 Gym.create(name:"gosman",description:"this is gosman gym for brandeis univeristy open time : xxxxx")
 
 
