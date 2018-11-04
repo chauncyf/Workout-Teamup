@@ -6,7 +6,9 @@ class CreateActivities < ActiveRecord::Migration[5.2]
       t.text :content
       t.integer :starter_id
       t.integer :status
-
+      # 1.not started  2.started 3. finished
+      #
+      t.integer :estimatedDuration
       t.timestamps
     end
   end
