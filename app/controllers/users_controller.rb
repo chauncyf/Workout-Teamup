@@ -8,7 +8,10 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-
+  def joined_activities
+    @activities = current_user.activities.all
+    @activities = Activity.joins(:activity_participants).where("activity_participants.participant_id = #{current_user.id}")
+  end
 
   # GET /users
   # GET /users.json
@@ -34,7 +37,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new([user_params, identity: 2])
+    @user = User.new({user_name: user_params[:user_name], email: user_params[:email], password: user_params[:password], identity: 2})
     # if @user.save
     #   # Handle a successful save.
     #   log_in @user
@@ -45,8 +48,12 @@ class UsersController < ApplicationController
     # end
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        log_in @user
+        flash[:success] = 'Welcome to Workout TeamUp' # Todo not working
+        format.html { redirect_to root_path}
         format.json { render :show, status: :created, location: @user }
+
+
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -87,7 +94,6 @@ class UsersController < ApplicationController
 
       # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:user_name, :email, :password, :password_confirmation,
-                                   :potrait_url, :height, :weight, :physical_condition, :motto)
+      params.require(:user).permit(:user_name, :email, :password, :password_confirmation)
     end
 end

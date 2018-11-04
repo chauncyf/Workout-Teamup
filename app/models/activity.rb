@@ -1,4 +1,5 @@
 class Activity < ApplicationRecord
+  has_many :activity_participants
   has_many :users, through: :activity_participants
 
   has_many :comments

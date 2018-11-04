@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post '/signup',  to: 'users#create'
 
   post '/join_activity/:activity_id', to: 'users#join_activity'
+  get '/joined_activities', to: 'users#joined_activities'
 
   resources :photos
   resources :user_locations
