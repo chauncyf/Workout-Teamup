@@ -198,17 +198,23 @@
   <% @activities.each do |activity| %>
     <% if row_count % 4 == 0 %>
       <div class="card-deck">
-<!--        <br>-->
     <% end %>
     <div class="card text-center">
       <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">
       <div class="card-body">
-        <h4 class="card-title"><%= activity.activity_date %></h4>
+        <h4 class="card-title">
+          <% if !activity.activity_date.nil? %>
+            <%= activity.activity_date.strftime("%b %d #%H:%M, %a") %>
+          <% else %>
+            Sometime
+          <% end %>
+        </h4>
         <p class="card-text"><%= activity.content %></p>
         <p class="card-text">
-          <small class="text-muted"><%= activity.updated_at %></small>
+          <small class="text-muted">Update: <%= activity.updated_at.strftime("%m/%d/%y %H:%M") %></small>
         </p>
         <a href="#" class="btn btn-outline-primary">Join!</a>
+        <%= link_to "Join!", "/join_activity/#{activity.id}", class: "btn btn-outline-primary", method: :post %>
       </div>
     </div>
     <%# if row_count % 4 == 0 %>
@@ -267,9 +273,9 @@
 <!--      </div>-->
 <!--    </div>-->
 <!--  </div>-->
+<!--</div>-->
 
-<!--  <br>-->
-<!--  <div class="card-deck">-->
+<!--<div class="card-deck">-->
 <!--    <div class="card text-center">-->
 <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
 <!--      <div class="card-body">-->
@@ -319,7 +325,6 @@
 <!--    </div>-->
 <!--  </div>-->
 </div>
-<!--</div>-->
 
 <script>
     var controlFlag = true// used to switch off the endless refreshing

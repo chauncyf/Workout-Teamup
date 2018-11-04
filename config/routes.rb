@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
 
+  post '/join_activity/:activity_id', to: 'users#join_activity'
+
   resources :photos
   resources :user_locations
   resources :gyms

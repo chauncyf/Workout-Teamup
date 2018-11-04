@@ -12,5 +12,4 @@ class Activity < ApplicationRecord
     comments.order(created_at: :desc)
   end
 
-
 end

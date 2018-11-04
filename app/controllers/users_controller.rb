@@ -1,6 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  def join_activity
+    ActivityParticipant.create(participant_id: current_user.id, activity_id: params[:activity_id], identity: 2)
+    flash[:success] = 'Activity joined!'
+
+    redirect_to root_path
+  end
+
+
+
   # GET /users
   # GET /users.json
   def index
@@ -25,7 +34,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    @user = User.new([user_params, identity: 2])
     # if @user.save
     #   # Handle a successful save.
     #   log_in @user

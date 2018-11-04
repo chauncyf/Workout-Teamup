@@ -2,9 +2,11 @@
 
 <h1>Users</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
+      <th>User Id</th>
+      <th>Identity</th>
       <th>User name</th>
       <th>Email</th>
       <th>Potrait url</th>
@@ -19,6 +21,8 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td><%= user.id %></td>
+        <td><%= user.identity %></td>
         <td><%= user.user_name %></td>
         <td><%= user.email %></td>
         <td><%= user.potrait_url %></td>
@@ -36,4 +40,4 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New User', new_user_path, class: "btn btn-primary" %>

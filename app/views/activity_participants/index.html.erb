@@ -2,9 +2,10 @@
 
 <h1>Activity Participants</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
+      <th>Activity Id</th>
       <th>Participant</th>
       <th>Activity</th>
       <th>Identity</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @activity_participants.each do |activity_participant| %>
       <tr>
+        <td><%= activity_participant.id %></td>
         <td><%= activity_participant.participant_id %></td>
         <td><%= activity_participant.activity_id %></td>
         <td><%= activity_participant.identity %></td>
@@ -28,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Activity Participant', new_activity_participant_path %>
+<%= link_to 'New Activity Participant', new_activity_participant_path, class: "btn btn-primary" %>

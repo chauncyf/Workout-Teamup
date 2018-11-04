@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.float :weight
       t.text :physical_condition
       t.text :motto
+      t.integer :identity
 
       t.timestamps
     end

@@ -59,7 +59,7 @@ footer {
 .debug_dump {
   clear: both;
   float: left;
-  width: 100%;
+  width: 95%;
   margin-top: 45px;
   @include box_sizing;
 }
@@ -81,8 +81,13 @@ footer {
 .card_container {
   margin: auto;
   width: 95%;
+  display: flex;
+  .card-deck{
+    margin:auto;
+    width: 100%;
+  }
 }
 
 #new_poster_button {
-  margin-right: 2.5%;
+  margin-right: 4%;
 }

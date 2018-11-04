@@ -5,7 +5,8 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">Activity_date</th>
+      <th scope="col">Activity Id</th>
+      <th scope="col">Activity Date</th>
       <th scope="col">Place</th>
       <th scope="col">Content</th>
       <th scope="col">Status</th>
@@ -17,6 +18,7 @@
   <tbody>
     <% @activities.each do |activity| %>
       <tr>
+        <td><%= activity.id %></td>
         <td><%= activity.activity_date %></td>
         <td><%= activity.place %></td>
         <td><%= activity.content %></td>
@@ -30,4 +32,4 @@
   </tbody>
 </table>
 
-<%= link_to 'New Activity', new_activity_path , class: "btn btn-primary"%>
+<%= link_to 'New Activity', new_activity_path, class: "btn btn-primary" %>
