@@ -37,12 +37,11 @@ ActiveRecord::Schema.define(version: 2018_11_04_021822) do
   end
 
   create_table "activities", force: :cascade do |t|
-    t.datetime "activity_date"
-    t.string "place"
+    t.string "title"
     t.text "content"
-    t.integer "starter_id"
     t.integer "status"
     t.integer "estimatedDuration"
+    t.integer "starter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
