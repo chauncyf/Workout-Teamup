@@ -1,37 +1,51 @@
 <%= form_with(model: activity, local: true) do |form| %>
-  <%# if activity.errors.any? %>
-<!--    <div id="error_explanation">-->
-<!--      <h2><%#= pluralize(activity.errors.count, "error") %> prohibited this activity from being saved:</h2>-->
+  <% if activity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
 
-<!--      <ul>-->
-      <%# activity.errors.full_messages.each do |message| %>
-<!--        <li><%#= message %></li>-->
-      <%# end %>
-<!--      </ul>-->
-<!--    </div>-->
-  <%# end %>
+      <ul>
+      <% activity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="form-group">
+    <%= form.label "When?" %>
+
+    <div class="input-group date" id="datetimepicker" data-target-input="nearest">
+      <!--                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker9"/>-->
+      <%= form.text_field :activity_date, class: "form-control datetimepicker-input", "data-target": "#datetimepicker", placeholder: "when will the activity start.." %>
+
+      <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
+        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker').datetimepicker({
+                icons: {
+                    time: "far fa-clock",
+                    date: "far fa-calendar",
+                }
+            });
+        });
+    </script>
   </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+  <div class="form-group">
+    <%= form.label "Where?" %>
+    <%= form.text_field :place, class: "form-control", placeholder: "where to meet.." %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.number_field :status %>
+  <div class="form-group">
+    <%= form.label "What?" %>
+    <%= form.text_area :content, class: "form-control", placeholder: "what is the Activity about.." %>
   </div>
 
-  <div class="field">
-    <%= form.label :starter_id %>
-    <%= form.number_field :starter_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions float-right">  <!-- modal-footer -->
+    <%= form.submit "✓", class: "btn btn-primary" %>
   </div>
 <% end %>

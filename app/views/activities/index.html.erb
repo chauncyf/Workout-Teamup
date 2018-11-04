@@ -2,15 +2,15 @@
 
 <h1>Activities</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Activity_date</th>
-      <th>Place</th>
-      <th>Content</th>
-      <th>Status</th>
-      <th>Starter</th>
-      <th colspan="5"></th>
+      <th scope="col">Activity_date</th>
+      <th scope="col">Place</th>
+      <th scope="col">Content</th>
+      <th scope="col">Status</th>
+      <th scope="col">Starter</th>
+      <th colspan=3></th>
     </tr>
   </thead>
 
@@ -30,6 +30,4 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Activity', new_activity_path %>
+<%= link_to 'New Activity', new_activity_path , class: "btn btn-primary"%>
