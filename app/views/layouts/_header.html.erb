@@ -30,9 +30,6 @@
             <%= link_to "Logout", logout_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
-        <li class="nav-item">
-          <%= request.location.city %>
-        </li>
 
         <% if current_user.identity == 1 %>
           <li class="nav-item dropdown">
@@ -50,6 +47,10 @@
         </li>
         <!--          <li><%#= link_to "Log in", login_path %></li>-->
       <% end %>
+
+<!--      <li class="nav-item">-->
+        <%#= request.location.city %>
+<!--      </li>-->
 
       <!--      <li class="nav-item">-->
       <!--        <a class="nav-link disabled" href="#">Disabled</a>-->
