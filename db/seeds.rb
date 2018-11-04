@@ -12,6 +12,13 @@ User.create(user_name: 'glm', email: 'glm@brandeis.edu', password: '123456789')
 User.create(user_name: 'admin', email: 'admin@brandeis.edu', password: '123456789')
 User.create(user_name: 'admin2', email: 'admin2@brandeis.edu', password: '123456789')
 
+Activity.create(activity_date: '2018-03-11 10:10:00 UTC', place: 'Gosman', content: 'Come and join us!', starter_id: 1, status: 1)
+Activity.create(activity_date: '2018-03-12 11:20:00 UTC', place: 'Gosman', content: 'Yeah~~~', starter_id: 1, status: 1)
+Activity.create(activity_date: '2018-03-13 12:30:00 UTC', place: 'Gosman', content: 'This is awesome!', starter_id: 1, status: 1)
+Activity.create(activity_date: '2018-03-14 13:40:00 UTC', place: 'Gosman', content: 'Cool!', starter_id: 1, status: 1)
+Activity.create(activity_date: '2018-03-15 14:50:00 UTC', place: 'Gosman', content: 'Awesome! Amazing!', starter_id: 1, status: 1)
+Activity.create(activity_date: '2018-03-16 16:00:00 UTC', place: 'Gosman', content: 'Come and join us! Amazing!', starter_id: 1, status: 1)
+
 Tag.create(type_name: 'pullup', color: 'green')
 Tag.create(type_name: 'push', color: 'orange')
 Tag.create(type_name: 'squat', color: 'grey')

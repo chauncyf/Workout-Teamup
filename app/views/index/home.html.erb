@@ -4,10 +4,11 @@
 <!-- Button trigger modal -->
 <% if !logged_in? %>
 <!--  render login modal partial -->
-  <button type="button" class="btn btn-primary float-right" id="poster_button" data-toggle="modal" data-target="#login" data-whatever="Poster Date" >Create Your Poster !</button>
+  <button type="button" class="btn btn-primary float-right" id="new_poster_button" data-toggle="modal" data-target="#login" data-whatever="Poster Date" >Create Your Poster !</button>
+  <%#= button_to "Create Your Poster !",  %>
 <% else %>
 <!--  render create poster form partial-->
-  <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#newPosterModal" data-whatever="xxx" >Create Your Poster !</button>
+  <button type="button" class="btn btn-primary float-right" id="new_poster_button" data-toggle="modal" data-target="#newPosterModal" data-whatever="xxx" >Create Your Poster !</button>
 <% end %>
 
 <!-- New poster Modal -->
@@ -20,7 +21,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="new_poster_form">
           <%= form_with(model: Activity.new, local: true) do |form| %>
             <%# if activity.errors.any? %>
 <!--              <div id="error_explanation">-->
@@ -189,57 +190,134 @@
 <br>
 <hr>
 
+<!-- card container -->
 <!--<div id="scroll_container" style="height: 200px;overflow: scroll">-->
 <div class="card_container">
-  <div class="card-deck">
+
+  <% row_count = 0 %>
+  <% @activities.each do |activity| %>
+    <% if row_count % 4 == 0 %>
+      <div class="card-deck">
+<!--        <br>-->
+    <% end %>
     <div class="card text-center">
       <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">
       <div class="card-body">
-        <h4 class="card-title">Card title</h4>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
-          This content is a little bit longer.</p>
+        <h4 class="card-title"><%= activity.activity_date %></h4>
+        <p class="card-text"><%= activity.content %></p>
         <p class="card-text">
-          <small class="text-muted">Last updated 3 mins ago</small>
+          <small class="text-muted"><%= activity.updated_at %></small>
         </p>
-        <a href="#" class="btn btn-primary">Join!</a>
+        <a href="#" class="btn btn-outline-primary">Join!</a>
       </div>
     </div>
-    <div class="card text-center">
-      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h4 class="card-title">Card title</h4>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        <p class="card-text">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </p>
-        <a href="#" class="btn btn-primary">Join!</a>
-      </div>
-    </div>
-    <div class="card text-center">
-      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h4 class="card-title">Card title</h4>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
-          This card has even longer content than the first to show that equal height action.</p>
-        <p class="card-text">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </p>
-        <a href="#" class="btn btn-primary">Join!</a>
-      </div>
-    </div>
-    <div class="card text-center">
-      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h4 class="card-title">Card title</h4>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
-          This card has even longer content than the first to show that equal height action.</p>
-        <p class="card-text">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </p>
-        <a href="#" class="btn btn-primary">Join!</a>
-      </div>
-    </div>
-  </div>
+    <%# if row_count % 4 == 0 %>
+<!--        </div>-->
+<!--        <br>-->
+    <%# end %>
+    <% row_count += 1 %>
+  <% end %>
+
+<!--  <div class="card-deck">-->
+<!--    <div class="card text-center">-->
+<!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
+<!--      <div class="card-body">-->
+<!--        <h4 class="card-title">Card title</h4>-->
+<!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.-->
+<!--          This content is a little bit longer.</p>-->
+<!--        <p class="card-text">-->
+<!--          <small class="text-muted">Last updated 3 mins ago</small>-->
+<!--        </p>-->
+<!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="card text-center">-->
+<!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
+<!--      <div class="card-body">-->
+<!--        <h4 class="card-title">Card title</h4>-->
+<!--        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>-->
+<!--        <p class="card-text">-->
+<!--          <small class="text-muted">Last updated 3 mins ago</small>-->
+<!--        </p>-->
+<!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="card text-center">-->
+<!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
+<!--      <div class="card-body">-->
+<!--        <h4 class="card-title">Card title</h4>-->
+<!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.-->
+<!--          This card has even longer content than the first to show that equal height action.</p>-->
+<!--        <p class="card-text">-->
+<!--          <small class="text-muted">Last updated 3 mins ago</small>-->
+<!--        </p>-->
+<!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="card text-center">-->
+<!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
+<!--      <div class="card-body">-->
+<!--        <h4 class="card-title">Card title</h4>-->
+<!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.-->
+<!--          This card has even longer content than the first to show that equal height action.</p>-->
+<!--        <p class="card-text">-->
+<!--          <small class="text-muted">Last updated 3 mins ago</small>-->
+<!--        </p>-->
+<!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <br>-->
+<!--  <div class="card-deck">-->
+<!--    <div class="card text-center">-->
+<!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
+<!--      <div class="card-body">-->
+<!--        <h4 class="card-title">Card title</h4>-->
+<!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.-->
+<!--          This content is a little bit longer.</p>-->
+<!--        <p class="card-text">-->
+<!--          <small class="text-muted">Last updated 3 mins ago</small>-->
+<!--        </p>-->
+<!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="card text-center">-->
+<!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
+<!--      <div class="card-body">-->
+<!--        <h4 class="card-title">Card title</h4>-->
+<!--        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>-->
+<!--        <p class="card-text">-->
+<!--          <small class="text-muted">Last updated 3 mins ago</small>-->
+<!--        </p>-->
+<!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="card text-center">-->
+<!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
+<!--      <div class="card-body">-->
+<!--        <h4 class="card-title">Card title</h4>-->
+<!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.-->
+<!--          This card has even longer content than the first to show that equal height action.</p>-->
+<!--        <p class="card-text">-->
+<!--          <small class="text-muted">Last updated 3 mins ago</small>-->
+<!--        </p>-->
+<!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="card text-center">-->
+<!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
+<!--      <div class="card-body">-->
+<!--        <h4 class="card-title">Card title</h4>-->
+<!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.-->
+<!--          This card has even longer content than the first to show that equal height action.</p>-->
+<!--        <p class="card-text">-->
+<!--          <small class="text-muted">Last updated 3 mins ago</small>-->
+<!--        </p>-->
+<!--        <a href="#" class="btn btn-outline-primary">Join!</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 </div>
 <!--</div>-->
 
