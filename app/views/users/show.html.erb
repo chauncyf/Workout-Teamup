@@ -52,7 +52,9 @@
 
 <!-- Change pwd Button Trigger -->
 
-<button type="button" class="btn btn-primary float-right" id="change_pwd__button" data-toggle="modal" data-target="#changePwdModal">Change Password</button>
+<button type="button" class="btn btn-primary float-right" id="change_pwd__button" data-toggle="modal" data-target="#changePwdModal">Change
+  Password
+</button>
 
 <!-- Edit user Modal -->
 
@@ -72,28 +74,6 @@
   </div>
 </div>
 
-<script>
-    var pwdModal = $('#changePwdModal');
-    var modalBody = pwdModal.find('.modal-body');
-    $('#change_pwd__button').on('click', function () {
-        $.ajax({
-            url: '<%= @user.id %>/editPwd',
-            method: 'get',
-            success: function (data) {
-                modalBody.html(data);
-                pwdModal.modal('show')
-            }
-        })
-    })
-    pwdModal.on('ajax:success', function (event) {
-        [data, status, xhr] = event.detail
-        pwdModal.modal("hide")
-        //refresh the posters
-        let dataObj=JSON.parse(data)
-    }).on('ajax:error',function(event){
-
-    })
-</script>
 
 <!--url: '<%#= @user.id %>/editPwd', -->
 
@@ -134,9 +114,33 @@
         [data, status, xhr] = event.detail
         profileModal.modal("hide")
         //refresh the posters
-        let dataObj=JSON.parse(data)
-    }).on('ajax:error',function(event){
-
+        //TODO succeess show a notification ask chenfeng for the resolution
+    }).on('ajax:error', function (event) {
+        // failed logic
+        //TODO
     })
 </script>
 
+<script>
+    var pwdModal = $('#changePwdModal');
+    var modalBody = pwdModal.find('.modal-body');
+    $('#change_pwd__button').on('click', function () {
+        $.ajax({
+            url: '<%= @user.id %>/editPwd',
+            method: 'get',
+            success: function (data) {
+                modalBody.html(data);
+                pwdModal.modal('show')
+            }
+        })
+    })
+    pwdModal.on('ajax:success', function (event) {
+        [data, status, xhr] = event.detail
+        pwdModal.modal("hide")
+        //refresh the posters
+        //TODO succeess show a notification ask chenfeng for the resolution
+    }).on('ajax:error', function (event) {
+        // failed logic
+        //TODO
+    })
+</script>
