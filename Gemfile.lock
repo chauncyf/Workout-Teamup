@@ -84,6 +84,7 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
       hirb (= 0.7.3)
+    gravtastic (3.2.6)
     hirb (0.7.3)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
@@ -214,6 +215,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   faker
   geocoder
+  gravtastic
   hirb
   image_processing (~> 1.2)
   jbuilder (~> 2.5)

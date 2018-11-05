@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include Gravtastic
+  gravtastic :email
   has_one_attached :avatar
   has_many :follows, foreign_key: :followee
   # has_many :users, through: :follows, source: :follower  # what's this
@@ -25,25 +27,25 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: {minimum: 6}, allow_blank: true
 
-  def self.getOne id
+  def self.get_one id
     User.find_by_id id
   end
 
   # current position of this user
-  def currentPosition
+  def current_position
     user_locations.order(created_at: :desc).first
   end
 
-  def onGoingActivity
+  def on_going_activity
     acitivities.where(status: 2)
   end
 
-  def isWorking
-    onGoingActivity.count > 1;
+  def is_working
+    on_going_activity.count > 1;
   end
 
-  def averageRatings
-    ratings
-  end
 
+  def round_avatar
+    avatar.variant()
+  end
 end
