@@ -8,6 +8,7 @@ gem 'rails', '~> 5.2.1'
 gem 'geocoder'
 gem 'faker'
 gem 'bcrypt'
+gem 'image_processing', '~> 1.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server

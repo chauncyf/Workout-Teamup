@@ -14,3 +14,10 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+
+$(function () {
+    $(document).on("change", "[data-file-refresh]", function (e) {
+        $(this).next().html(e.currentTarget.files[0].name)
+    })
+})

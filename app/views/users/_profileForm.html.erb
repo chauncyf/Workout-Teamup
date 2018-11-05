@@ -1,4 +1,4 @@
-<%= form_with(model: user,format: :json) do |form| %>
+<%= form_with(model: user, format: :json) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -10,7 +10,15 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="form-group">
+    <%= form.label :avatar %>
+    <div class="input-group mb-3">
+      <div class="custom-file">
+        <%= form.file_field :avatar, class: "custom-file-input", data: {file_refresh: true} %>
+        <label class="custom-file-label">Choose file</label>
+      </div>
+    </div>
+  </div>
   <div class="form-group">
     <%= form.label :user_name %>
     <%= form.text_field :user_name, class: "form-control" %>
@@ -28,21 +36,21 @@
 
   <div class="form-group">
     <%= form.label :weight %>
-    <%= form.text_field :weight,class: "form-control" %>
+    <%= form.text_field :weight, class: "form-control" %>
   </div>
 
   <div class="form-group">
     <%= form.label :physical_condition %>
-    <%= form.text_field :physical_condition,class: "form-control" %>
+    <%= form.text_field :physical_condition, class: "form-control" %>
   </div>
 
   <div class="form-group">
     <%= form.label :motto %>
-    <%= form.text_field :motto,class: "form-control" %>
+    <%= form.text_field :motto, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit "Confirm", class: "btn btn-primary"%>
+    <%= form.submit "Confirm", class: "btn btn-primary" %>
   </div>
 
 <% end %>
