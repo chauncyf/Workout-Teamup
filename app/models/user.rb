@@ -29,10 +29,6 @@ class User < ApplicationRecord
     User.find_by_id id
   end
 
-  def self.hasOne id
-    !getOne id.nil?
-  end
-
   # current position of this user
   def currentPosition
     user_locations.order(created_at: :desc).first

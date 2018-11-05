@@ -153,44 +153,38 @@
     <div class="card m-3 text-center">
       <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">
       <div class="card-body pb-2">
-        <% if !activity.activity_date.nil? %>
-          <div class="row">
-            <div class="col">
+        <div class="row mb-0">
+          <div class="col">
+            <% if !activity.activity_date.nil? %>
               <h5 class="card-title mb-1 text-left">
                 <%= activity.activity_date.strftime("%b %d") %>
               </h5>
-              <h6 class="card-subtitle mb-3 text-left text-muted">
+              <h6 class="card-subtitle text-left text-muted">
                 <%= activity.activity_date.strftime("%a %H:%M") %>
               </h6>
-            </div>
-            <div class="col">
-              <h2>
-                <%= activity.place %>
+            <% else %>
+              <h2 class="card-title mb-1 text-left">
+                Sometime
               </h2>
-            </div>
+            <% end %>
           </div>
-        <% else %>
-          <h4 class="card-title ">
-            Sometime
-          </h4>
-        <% end %>
+
+          <div class="col">
+            <h2 class="card-title text-right">
+              <%= activity.place %>
+            </h2>
+          </div>
+        </div>
+
+        <hr class="mt-0 mb-3">
+
         <p class="card-text"><%= activity.content %></p>
 
-        <%= link_to "Join!", "/join_activity/#{activity.id}", class: "btn btn-sm btn-outline-primary", method: :post %>
+        <%= link_to "Join!", "/join_activity/#{activity.id}", class: "btn btn-sm btn-outline-primary align-bottom", method: :post %>
         <p class="card-text text-right">
-          <span class="text-muted" style="font-size: x-small; ">Update: <%= activity.updated_at.strftime("%m/%d/%y %H:%M") %></span>
-<!--          <small class="text-muted">Update: <%#= activity.updated_at.strftime("%m/%d/%y %H:%M") %></small>-->
+          <span class="text-muted" style="font-size: small;">Update: <%= activity.updated_at.strftime("%m/%d/%y %H:%M") %></span>
+          <!--          <small class="text-muted">Update: <%#= activity.updated_at.strftime("%m/%d/%y %H:%M") %></small>-->
         </p>
-
-<!--        <div class="row">-->
-<!--          <div class="col-8">-->
-
-<!--          </div>-->
-<!--          <div class="col-4">-->
-<!--          </div>-->
-<!--        </div>-->
-
-
       </div>
     </div>
 
@@ -284,10 +278,10 @@
     posterModal.on('ajax:success', function (event) {
         [data, status, xhr] = event.detail
         posterModal.modal("hide")
-        //refresh the posters
-        let dataObj=JSON.parse(data)
+        console.log(data)
+        //TODO
     }).on('ajax:error',function(event){
-
+      //TODO
     })
 </script>
 
