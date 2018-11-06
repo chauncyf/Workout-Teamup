@@ -83,11 +83,15 @@ footer {
   width: 95%;
   display: flex;
   .card-deck{
-    margin:auto;
+    margin: auto;
     width: 100%;
   }
 }
 
 #new_poster_button {
   margin-right: 4%;
+}
+
+.bg-blue {
+  background-color: #03A9F4;
 }
