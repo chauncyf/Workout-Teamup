@@ -8,7 +8,6 @@ module ApplicationCable
       if self.current_user.nil?
         reject_unauthorized_connection
       end
-      self.current_user
     end
   end
 end

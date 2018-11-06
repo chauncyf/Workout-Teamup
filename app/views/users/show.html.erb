@@ -1,5 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= avatar_for @user %>
+        <%= @user.user_name %>
+      </h1>
+    </section>
+  </aside>
+</div>
+
 <p>
   <strong>User name:</strong>
   <%= @user.user_name %>
@@ -37,3 +48,99 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+
+<!-- Change pwd Button Trigger -->
+
+<button type="button" class="btn btn-primary float-right" id="change_pwd__button" data-toggle="modal" data-target="#changePwdModal">Change
+  Password
+</button>
+
+<!-- Edit user Modal -->
+
+<div class="modal fade" id="changePwdModal" tabindex="-1" role="dialog" aria-labelledby="pwdModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="pwdModalLabel">Change Password</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="pwd">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--url: '<%#= @user.id %>/editPwd', -->
+
+<!-- Edit user Button Trigger -->
+<button type="button" class="btn btn-primary float-right" id="userInfo_edit_button" data-toggle="modal" data-target="#editUserModal">Edit</button>
+
+<!-- Edit user Modal -->
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="editUserModalLabel">Edit your profile</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="userInfo">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    var profileModal = $('#editUserModal');
+    var modalBodyy = profileModal.find('.modal-body');
+    $('#userInfo_edit_button').on('click', function () {
+        $.ajax({
+            url: '<%= edit_user_path(@user.id) %>',
+            method: 'get',
+            success: function (data) {
+                modalBodyy.html(data);
+                profileModal.modal('show')
+            }
+        })
+    })
+    profileModal.on('ajax:success', function (event) {
+        [data, status, xhr] = event.detail
+        profileModal.modal("hide")
+        //refresh the posters
+        //TODO succeess show a notification ask chenfeng for the resolution
+    }).on('ajax:error', function (event) {
+        // failed logic
+        //TODO
+    })
+</script>
+
+<script>
+    var pwdModal = $('#changePwdModal');
+    var modalBody = pwdModal.find('.modal-body');
+    $('#change_pwd__button').on('click', function () {
+        $.ajax({
+            url: '<%= @user.id %>/editPwd',
+            method: 'get',
+            success: function (data) {
+                modalBody.html(data);
+                pwdModal.modal('show')
+            }
+        })
+    })
+    pwdModal.on('ajax:success', function (event) {
+        [data, status, xhr] = event.detail
+        pwdModal.modal("hide")
+        //refresh the posters
+        //TODO succeess show a notification ask chenfeng for the resolution
+    }).on('ajax:error', function (event) {
+        // failed logic
+        //TODO
+    })
+</script>

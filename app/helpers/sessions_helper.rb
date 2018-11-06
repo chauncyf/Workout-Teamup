@@ -9,12 +9,12 @@ module SessionsHelper
   end
 
   def current_user_action_cable
-    User.getOne cookies.encrypted[:user_id]
+    User.get_one cookies.encrypted[:user_id]
   end
 
   # Returns the current logged-in user (if any).
   def current_user id = session[:user_id]
-    User.getOne id
+    User.get_one id
   end
 
   # Returns true if the user is logged in, false otherwise.
