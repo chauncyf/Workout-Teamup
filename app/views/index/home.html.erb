@@ -4,13 +4,13 @@
 <!-- Button trigger modal -->
 <% if !logged_in? %>
   <!--  render login modal partial -->
-  <button type="button" class="btn text-white float-right" id="login_button" data-toggle="modal" data-target="#login" data-whatever="Poster Date" style="background-color: #64B5F6;">Create
+  <button type="button" class="btn text-white float-right" id="login_button" data-toggle="modal" data-target="#login" data-whatever="Poster Date" style="background-color: #90CAF9;">Create
     Your Poster !
   </button>
   <%#= button_to "Create Your Poster !",  %>
 <% else %>
   <!--  render create poster form partial-->
-  <button type="button" class="btn text-white float-right" id="new_poster_button" style="background-color: #64B5F6;">Create Your Poster !</button>
+  <button type="button" class="btn text-white float-right" id="new_poster_button" style="background-color: #90CAF9;">Create Your Poster !</button>
 <% end %>
 
 <!-- New poster Modal -->
@@ -152,16 +152,16 @@
     <% end %>
     <div class="card m-3"  style="min-width: 320px; max-width: 330px; min-height: 330px; max-height: 330px;">
 <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
-      <div class="card-header pb-2 text-white" style="background-color: #64B5F6">
+      <div class="card-header px-3 pt-0 pb-1 text-white" style="background-color: #90CAF9">
         <div class="row p-0">
-          <div class="col">
+          <div class="col px-2">
             <% if !activity.activity_date.nil? %>
-              <h3 class="card-title mt-1 mb-1 text-left">
+              <h1 class="card-title mt-1 mb-1 text-left">
                 <%= activity.activity_date.strftime("%b %d") %>
-              </h3>
-              <h5 class="card-subtitle mb-1 text-left text-muted">
+              </h1>
+              <h3 class="card-title mb-1 text-left">
                 <%= activity.activity_date.strftime("%a %H:%M") %>
-              </h5>
+              </h3>
             <% else %>
               <h2 class="card-title mt-1 mb-2 text-left">
                 Sometime
@@ -169,12 +169,12 @@
             <% end %>
           </div>
 
-          <div class="col">
-            <h3 class="card-title mt-0 mb-0 text-right"><%= link_to "+", "/join_activity/#{activity.id}", class: "text-white" ,method: :post %></h3>
+          <div class="col px-2">
+            <h1 class="card-title mt-0 mb-0 text-right"><%= link_to "+", "/join_activity/#{activity.id}", class: "text-white" ,method: :post %></h1>
 
-            <h4 class="card-title mt-0 mb-1 text-right">
+            <h2 class="card-title mt-0 mb-1 text-right">
               <%= activity.place %>
-            </h4>
+            </h2>
           </div>
         </div>
 
@@ -182,7 +182,7 @@
       </div>
       <div class="card-body  pb-2">
 
-        <p class="card-text" style="color: #64B5F6; min-height: 10rem;"><%= activity.content %></p>
+        <p class="card-text" style="color: #90CAF9; min-height: 10rem;"><%= activity.content %></p>
 
         <%#= link_to "Join!", "/join_activity/#{activity.id}", class: "btn btn-sm btn-outline-primary align-bottom", method: :post %>
         <p class="card-text text-right">

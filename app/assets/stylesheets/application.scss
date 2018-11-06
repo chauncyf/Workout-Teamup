@@ -82,9 +82,23 @@ footer {
   margin: auto;
   width: 95%;
   display: flex;
+
   .card-deck{
     margin: auto;
     width: 100%;
+  }
+
+  .card-header {
+    border-bottom: 0px;
+  }
+
+  .card-title {
+    font-family: 'Roboto Slab', serif;
+  }
+
+  .card-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15pt;
   }
 }
 
@@ -92,6 +106,4 @@ footer {
   margin-right: 4%;
 }
 
-.bg-blue {
-  background-color: #03A9F4;
-}
+
