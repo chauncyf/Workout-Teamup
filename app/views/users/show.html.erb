@@ -1,17 +1,16 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%#= notice %></p> -->
 
-<div class="row">
+<div class="row float-right">
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
         <%= avatar_for @user %>
-        <%= @user.user_name %>
       </h1>
     </section>
   </aside>
 </div>
 
-<p>
+<p id = "name">
   <strong>User name:</strong>
   <%= @user.user_name %>
 </p>
