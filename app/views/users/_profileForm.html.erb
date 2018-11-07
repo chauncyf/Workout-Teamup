@@ -11,10 +11,11 @@
     </div>
   <% end %>
   <div class="form-group">
+    <img id="cropper"/>
     <%= form.label :avatar %>
     <div class="input-group mb-3">
       <div class="custom-file">
-        <%= form.file_field :avatar, class: "custom-file-input", data: {file_refresh: true} %>
+        <%= form.file_field :avatar, class: "custom-file-input", data: {file_refresh: true, image_push_to: "cropper"} %>
         <label class="custom-file-label">Choose file</label>
       </div>
     </div>
@@ -54,3 +55,6 @@
   </div>
 
 <% end %>
+<script>
+
+</script>
