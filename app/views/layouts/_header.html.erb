@@ -6,7 +6,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
     <!--    float-right-->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -21,7 +21,9 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Chat</a>
       </li>
+
       <% if logged_in? %>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Me</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -43,12 +45,25 @@
             </div>
           </li>
         <% end %>
+        <ul class="navbar-brand float-right">
+          <div class="nav-item">
+            <%= avatar_for current_user %>
+            Hello, <%= current_user.email%>
+          </div>
+        </ul>
       <% else %>
         <li class="nav-item">
           <a class="nav-link" href=<%= login_path %>>Login</a>
         </li>
         <!--          <li><%#= link_to "Log in", login_path %></li>-->
       <% end %>
+
+     <ul class="navbar-brand float-right">
+     <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+     </ul>
 
 <!--      <li class="nav-item">-->
         <%#= request.location.city %>

@@ -32,10 +32,13 @@
                 };
                 map.setCenter(pos);
                 map.setZoom(17);
+                let iconUrl = '<%= map_avatar_url current_user %>'
                 var marker = new google.maps.Marker({
                     position: pos,
                     title: "Here you are!",
                     animation: google.maps.Animation.DROP,
+                    icon: iconUrl,
+                    optimized: false
                 });
                 marker.setMap(map);
             }, function () {
@@ -47,6 +50,11 @@
         }
     }
 
+    // make sure to call initMap
+    $(() => {
+        initMap()
+    })
+
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
@@ -55,5 +63,4 @@
         infoWindow.open(map);
     }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= getMapKey %>&callback=initMap"
-        async defer></script>
+
