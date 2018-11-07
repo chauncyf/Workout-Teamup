@@ -105,32 +105,39 @@ footer {
 
 .card-columns {
   margin: auto;
+  flex: auto;
   width: 95%;
 }
 
-
-@media (min-width: 550px) {
+@media (min-width: 0px) and (max-width: 659px) {
   .card-columns {
-    //display: inline-block;
-    //width: 100%;
+    column-count: 1 !important;
+
+  }
+}
+
+@media (min-width: 660px) and (max-width: 989px) {
+  .card-columns {
     column-count: 2 !important;
 
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 990px) and (max-width: 1319px) {
   .card-columns {
-    //display: inline-block;
-    //width: 100%;
     column-count: 3 !important;
 
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1320px) and (max-width: 1649px) {
   .card-columns {
-    //display: inline-block;
-    //width: 100%;
     column-count: 4 !important;
+
+  }
+}
+@media (min-width: 1650px) {
+  .card-columns {
+    column-count: 5 !important;
 
   }
 }
