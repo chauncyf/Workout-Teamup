@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :editPwd, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :edit_password, :update, :destroy,:edit_avatar]
 
   def join_activity
     ActivityParticipant.create(participant_id: current_user.id, activity_id: params[:activity_id], identity: 2)
@@ -36,8 +36,12 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/editPwd
-  def editPwd
+  def edit_password
 
+    render layout: false
+  end
+
+  def edit_avatar
     render layout: false
   end
 

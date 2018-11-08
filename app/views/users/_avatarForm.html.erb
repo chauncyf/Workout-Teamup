@@ -1,0 +1,30 @@
+<%= form_with(model: user, format: :json) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <img id="cropper"/>
+    <%= form.label :avatar %>
+    <div class="input-group mb-3">
+      <div class="custom-file">
+        <%= form.file_field :avatar, class: "custom-file-input", data: {file_refresh: true, image_push_to: "cropper"} %>
+        <label class="custom-file-label">Choose file</label>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <%= form.submit "Confirm", class: "btn btn-primary" %>
+  </div>
+
+<% end %>
+<script>
+
+</script>
