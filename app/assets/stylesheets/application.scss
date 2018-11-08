@@ -13,6 +13,7 @@
  *= require_self
  */
 @import "cropper";
+@import "users";
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;

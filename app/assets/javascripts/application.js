@@ -34,11 +34,11 @@ $(function () {
                 var cropper = new Cropper(document.getElementById(id), {
                     aspectRatio: 1,
                     cropend() {
-                        console.log(11111)
                         var canvas = cropper.getCroppedCanvas('image/jpeg')
                         var dataUrl = canvas.toDataURL()
                         var file = dataURItoBlob(dataUrl)
                         e.currentTarget.files[0] = file
+                        console.log(dataUrl)
                     }
                 })
             }
