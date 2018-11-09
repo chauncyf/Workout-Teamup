@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   post '/signup',  to: 'users#create'
   get  '/users/:id/edit_password', to: 'users#edit_password', as: :edit_password
   get '/users/:id/edit_avatar', to:'users#edit_avatar',as: :edit_avatar
-  post '/upload_avatar', to:'users#upload_avatar',as: :upload_avatar
+  post '/upload_avatar/:id', to:'users#upload_avatar',as: :upload_avatar
+  get '/users/:id/user_avatar_url', to:'users#user_avatar_url', as: :user_avatar_url
 
   post '/join_activity/:activity_id', to: 'users#join_activity'
   get '/joined_activities', to: 'users#joined_activities'

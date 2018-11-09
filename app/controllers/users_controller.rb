@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :edit_password, :update, :destroy, :edit_avatar]
+  include UsersHelper
+  before_action :set_user, only: [:show, :edit, :edit_password, :update, :destroy, :edit_avatar, :upload_avatar, :user_avatar_url]
 
   def join_activity
     ActivityParticipant.create(participant_id: current_user.id, activity_id: params[:activity_id], identity: 2)
@@ -31,9 +32,13 @@ class UsersController < ApplicationController
 
   def upload_avatar
     if @user.avatar.attached?
-      @user.avatar.purges
+      @user.avatar.purge
     end
     @user.avatar.attach params[:avatar]
+  end
+
+  def user_avatar_url
+    render html: avatar_url(@user)
   end
 
   # GET /users/1/edit

@@ -33,16 +33,9 @@ $(function () {
                 dom.src = reader.result
                 var cropper = new Cropper(document.getElementById(id), {
                     aspectRatio: 1,
-                    cropend() {
-                        var canvas = cropper.getCroppedCanvas('image/jpeg')
-                        var dataUrl = canvas.toDataURL()
-                        var file = dataURItoBlob(dataUrl)
-                        e.currentTarget.files[0] = file
-                        console.log(dataUrl)
-                    }
                 })
+                dom.cropper=cropper
             }
-            //document.getElementById(id).style.display='none'
         })
         reader.readAsDataURL(file)
     })
