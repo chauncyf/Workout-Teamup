@@ -21,10 +21,22 @@
     </div>
   </div>
   <div class="actions">
-    <%= form.submit "Confirm", class: "btn btn-primary" %>
+    <%= form.submit "Confirm",id: "submit_avatar" ,class: "btn btn-primary" %>
   </div>
 
 <% end %>
 <script>
+  $('#submit_avatar').on('click',function(e){
+      e.preventDefault();
+      document.getElementById('cropper').cropper.getCroppedCanvas().toBlob((blob)=>{
+          let formData=new FormData()
+          formData.append('avatar')
+          $.ajax({
+              url:'<%= upload_avatar_path(user.id) %>',
+              type:'post',
+              pre
+          })
+      })
 
+  })
 </script>

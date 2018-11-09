@@ -8,7 +8,7 @@
         <div class="col-md-3 col-sm-3 col-xs-12 user-profile-part pull-left">
           <div class="row ">
             <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
-              <%= avatar_for @user,id: "upload_avartar_button", data: {toggle: "modal", target: "#upload_avatar_modal"} %>
+              <%= avatar_for @user,id: "upload_avatar_button", data: {toggle: "modal", target: "#upload_avatar_modal"} %>
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
               <!-- Edit user Button Trigger -->
@@ -161,7 +161,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="pwdModalLabel">upload your avartar!</h3>
+        <h3 class="modal-title" id="pwdModalLabel">upload your avatar!</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -256,21 +256,21 @@
     })
 
     ;(function () {
-        var avartarModal = $('#upload_avatar_modal');
-        var modalBody = avartarModal.find('.modal-body');
-        $('#upload_avartar_button').on('click', function () {
+        var avatarModal = $('#upload_avatar_modal');
+        var modalBody = avatarModal.find('.modal-body');
+        $('#upload_avatar_button').on('click', function () {
             $.ajax({
                 url: '<%= edit_avatar_path(@user.id) %>',
                 method: 'get',
                 success: function (data) {
                     modalBody.html(data);
-                    avartarModal.modal('show')
+                    avatarModal.modal('show')
                 }
             })
         })
-        avartarModal.on('ajax:success', function (event) {
+        avatarModal.on('ajax:success', function (event) {
             [data, status, xhr] = event.detail
-            avartarModal.modal("hide")
+            avatarModal.modal("hide")
             //refresh the posters
             //TODO succeess show a notification ask chenfeng for the resolution
         }).on('ajax:error', function (event) {

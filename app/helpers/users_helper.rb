@@ -1,6 +1,6 @@
 module UsersHelper
   def avatar_for(user,param={})
-    param[:class]="rounded-circle avartar"
+    param[:class]="rounded-circle avatar"
     image_tag(avatar_url(user), param)
   end
 
