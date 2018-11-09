@@ -210,10 +210,21 @@ footer {
 //  }
 //}
 
-
-#new_poster_button {
-  margin-right: 4%;
+.header-row {
+  #header-col-button {
+    margin-right: 2.5%;
+  }
+  #header-col-button {
+    margin-right: 2.5%;
+  }
+  #header-col-search {
+    margin-left: 2.5%;
+  }
+  .btn {
+    background-color: #90CAF9;
+  }
 }
+
 
 /* avatar image */
 .rounded-circle {

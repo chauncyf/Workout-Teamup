@@ -1,25 +1,30 @@
 <br>
 
-<h1 class="text-center">Find Interested Activity</h1>
+<h1 class="text-center mb-4">Find Interested Activity</h1>
 
-<ul class="navbar-brand float-left">
-  <form class="form-inline my-2 my-lg-0">
+<div class="row header-row ">
+  <div class="col  align-self-start" id="header-col-search">
+    <form class="form-inline my-2 my-lg-0 ">
     <input class="form-control mr-sm-2" type="text" placeholder="Search">
-    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-  </form>
-</ul>
+    <button class="btn text-white" type="submit">Search</button>
+    </form>
+  </div>
 
-<!-- Button trigger modal -->
-<% if !logged_in? %>
-  <!--  render login modal partial -->
-  <button type="button" class="btn text-white float-right" id="login_button" data-toggle="modal" data-target="#login" data-whatever="Poster Date" style="background-color: #90CAF9;">Create
-    Your Poster !
-  </button>
-  <%#= button_to "Create Your Poster !",  %>
-<% else %>
-  <!--  render create poster form partial-->
-  <button type="button" class="btn text-white float-right" id="new_poster_button" style="background-color: #90CAF9;">Create Your Poster !</button>
-<% end %>
+  <div class="col align-self-end" id="header-col-button">
+    <!-- Button trigger modal -->
+    <% if !logged_in? %>
+      <!--  render login modal partial -->
+      <button type="button" class="btn text-white float-right" id="login_button" data-toggle="modal" data-target="#login" data-whatever="Poster Date">Create
+        Your Poster !
+      </button>
+      <%#= button_to "Create Your Poster !",  %>
+    <% else %>
+      <!--  render create poster form partial-->
+      <button type="button" class="btn text-white float-right" id="new_poster_button">Create Your Poster !</button>
+    <% end %>
+  </div>
+</div>
+
 
 <!-- New poster Modal -->
 <div class="modal fade" id="newPosterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -145,9 +150,7 @@
   </div>
 </div>
 
-<br>
-<br>
-<hr>
+<hr class="my-4">
 
 <!--<div class="card-container">-->
 <div class="card-columns">
