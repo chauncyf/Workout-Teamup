@@ -281,7 +281,13 @@
                     processData:false,
                     success:()=>{
                         avatarModal.modal('hide')
-
+                        $.ajax({
+                            url:'<%= user_avatar_url_path(@user.id) %>',
+                            type:'get',
+                            success:(data)=>{
+                                $('.avatar').attr('src',data)
+                            }
+                        })
                         //TODO
                     }
                 })
