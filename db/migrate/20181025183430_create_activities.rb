@@ -9,6 +9,7 @@ class CreateActivities < ActiveRecord::Migration[5.2]
       # 1.not started  2.started 3. finished
       #
       t.integer :estimatedDuration
+      t.string :theme_color
       t.timestamps
     end
   end

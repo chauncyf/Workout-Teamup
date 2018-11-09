@@ -15,6 +15,97 @@
 @import "cropper";
 @import "users";
 
+// color theme
+$material-blue: #90CAF9;
+$material-pink: #F48FB1;
+$material-cyan: #80DEEA;
+$material-green: #A5D6A7;
+$material-orange: #FFCC80;
+$material-brown: #BCAAA4;
+$material-grey: #BDBDBD;
+
+
+.material-head-pink {
+  background-color: #F48FB1 !important;
+}
+.material-body-pink {
+  color: #F48FB1;
+}
+.material-footer-pink {
+  color: #F8BBD0;
+}
+
+.material-head-purple {
+  background-color: #CE93D8 !important;
+}
+.material-body-purple {
+  color: #CE93D8;
+}
+.material-footer-purple {
+  color: #E1BEE7;
+}
+
+.material-head-blue {
+  background-color: #90CAF9 !important;
+}
+.material-body-blue {
+  color: #90CAF9;
+}
+.material-footer-blue {
+  color: #BBDEFB;
+}
+
+.material-head-cyan {
+  background-color: #80DEEA !important;
+}
+.material-body-cyan {
+  color: #80DEEA;
+}
+.material-footer-cyan {
+  color: #B2EBF2;
+}
+
+.material-head-green {
+  background-color: #A5D6A7 !important;
+}
+.material-body-green {
+  color: #A5D6A7;
+}
+.material-footer-green {
+  color: #C8E6C9;
+}
+
+
+.material-head-orange {
+  background-color: #FFCC80 !important;
+}
+.material-body-orange {
+  color: #FFCC80;
+}
+.material-footer-orange {
+  color: #FFE082;
+}
+
+.material-head-brown {
+  background-color: #BCAAA4 !important;
+}
+.material-body-brown {
+  color: #BCAAA4;
+}
+.material-footer-brown {
+  color: #D7CCC8;
+}
+
+.material-head-grey {
+  background-color: #BDBDBD !important;
+}
+.material-body-grey {
+  color: #BDBDBD;
+}
+.material-footer-grey {
+  color: #E0E0E0;
+}
+
 
 
 @mixin box_sizing {

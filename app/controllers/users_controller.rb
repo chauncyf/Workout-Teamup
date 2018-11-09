@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   end
 
   def joined_activities
-    @activities = current_user.activities.all
     @activities = Activity.joins(:activity_participants).where("activity_participants.participant_id = #{current_user.id}")
   end
 
