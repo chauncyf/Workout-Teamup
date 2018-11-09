@@ -268,14 +268,25 @@
                 }
             })
         })
-        avatarModal.on('ajax:success', function (event) {
-            [data, status, xhr] = event.detail
-            avatarModal.modal("hide")
-            //refresh the posters
-            //TODO succeess show a notification ask chenfeng for the resolution
-        }).on('ajax:error', function (event) {
-            // failed logic
-            //TODO
+        avatarModal.on('click','#submit_avatar',function(e){
+            e.preventDefault();
+            document.getElementById('cropper').cropper.getCroppedCanvas().toBlob((blob)=>{
+                let formData=new FormData()
+                formData.append('avatar',blob)
+                $.ajax({
+                    url:'<%= upload_avatar_path(@user.id) %>',
+                    type:'post',
+                    data:formData,
+                    contentType:false,
+                    processData:false,
+                    success:()=>{
+                        avatarModal.modal('hide')
+
+                        //TODO
+                    }
+                })
+            })
+
         })
     }());
 </script>
