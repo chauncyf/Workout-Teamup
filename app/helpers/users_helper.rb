@@ -1,9 +1,9 @@
 module UsersHelper
   def avatar_for(user)
-    image_tag(avatar_url(user), class: "rounded-circle")
+    image_tag(avatar_url(user), class: "rounded-circle avatar")
   end
 
-  def avatar_url user,size="100X100"
+  def avatar_url user,size="50X50"
     if user.avatar.attached?
       avatar = user.avatar.variant(resize: size)
     end

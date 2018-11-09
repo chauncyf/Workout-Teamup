@@ -15,6 +15,8 @@
 @import "cropper";
 @import "users";
 
+
+
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
@@ -22,11 +24,22 @@
 }
 
 
-/* header */
+/* navbar */
 
-.dropdown:hover .dropdown-menu {
-  display: block;
+.navbar {
+  .divider-vertical {
+    //height: 60px;
+    margin: 0 9px;
+    border-left: 0.5px solid #FFF;
+    border-right: 0.5px solid #FFF;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
 }
+
 
 /* footer */
 
@@ -75,7 +88,7 @@ footer {
 }
 
 
-.mul {
+.card-container {
   margin: auto;
 
   display: flex;
@@ -118,8 +131,14 @@ footer {
   margin: auto;
   width: 95%;
 
+  .card {
+    border-radius: 0.5rem!important;
+  }
+
   .card-header {
-    border-bottom: 0px;
+    border-bottom: 0;
+    border-top-right-radius: 0.4rem!important;
+    border-top-left-radius: 0.4rem!important;
   }
 
   .card-title {
@@ -130,47 +149,66 @@ footer {
     font-family: 'Roboto', sans-serif;
     font-size: 15pt;
   }
-  //
-  //@include media-breakpoint-only(lg) {
-  //  column-count: 4;
-  //}
-  //@include media-breakpoint-only(xl) {
-  //  column-count: 5;
-  //}
-}
 
-@media (min-width: 0px) and (max-width: 659px) {
-  .card-columns {
-    column-count: 1 !important;
+  // Extra small devices (portrait phones, less than 576px)
+  // No media query for `xs` since this is the default in Bootstrap
 
-  }
-}
-
-@media (min-width: 660px) and (max-width: 989px) {
-  .card-columns {
+  // Small devices (landscape phones, 576px and up)
+  @media (min-width: 576px) {
     column-count: 2 !important;
 
   }
-}
 
-@media (min-width: 990px) and (max-width: 1319px) {
-  .card-columns {
+  // Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {
     column-count: 3 !important;
 
   }
-}
-@media (min-width: 1320px) and (max-width: 1649px) {
-  .card-columns {
+
+  // Large devices (desktops, 992px and up)
+  @media (min-width: 992px) {
     column-count: 4 !important;
-
   }
-}
-@media (min-width: 1650px) {
-  .card-columns {
-    column-count: 5 !important;
 
-  }
+  // Extra large devices (large desktops, 1200px and up)
+  //@media (min-width: 1200px) {
+  //  column-count: 5 !important;
+  //}
 }
+
+
+//@media (min-width: 0px) and (max-width: 659px) {
+//  .card-columns {
+//    column-count: 1 !important;
+//
+//  }
+//}
+//
+//@media (min-width: 660px) and (max-width: 989px) {
+//  .card-columns {
+//    column-count: 2 !important;
+//
+//  }
+//}
+//
+//@media (min-width: 990px) and (max-width: 1319px) {
+//  .card-columns {
+//    column-count: 3 !important;
+//
+//  }
+//}
+//@media (min-width: 1320px) and (max-width: 1649px) {
+//  .card-columns {
+//    column-count: 4 !important;
+//
+//  }
+//}
+//@media (min-width: 1650px) {
+//  .card-columns {
+//    column-count: 5 !important;
+//
+//  }
+//}
 
 
 #new_poster_button {
@@ -299,4 +337,16 @@ footer {
 
 .nav-link{
   font-size: 1.2em;
+}
+
+.nav-item {
+  .avatar {
+    align-self: center;
+    margin-left: 8px;
+    // TODO scale
+    width: 44px;
+    height: 44px;
+    //width: 2rem;
+    //height: 2rem;
+  }
 }
