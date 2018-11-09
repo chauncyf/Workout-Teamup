@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :edit_password, :update, :destroy,:edit_avatar]
+  before_action :set_user, only: [:show, :edit, :edit_password, :update, :destroy, :edit_avatar]
 
   def join_activity
     ActivityParticipant.create(participant_id: current_user.id, activity_id: params[:activity_id], identity: 2)
@@ -28,6 +28,13 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+  end
+
+  def upload_avatar
+    if @user.avatar.attached?
+      @user.avatar.purges
+    end
+    @user.avatar.attach params[:avatar]
   end
 
   # GET /users/1/edit
@@ -77,10 +84,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     unless user_params[:avatar].nil?
-      if @user.avatar.attached?
-        @user.avatar.purge
-      end
-      @user.avatar.attach(params[:avatar])
+      upload_avatar
     end
     respond_to do |format|
       if @user.update(user_params)
