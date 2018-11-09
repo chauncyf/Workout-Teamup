@@ -125,7 +125,7 @@
     var modalBody = pwdModal.find('.modal-body');
     $('#change_pwd_button').on('click', function () {
         $.ajax({
-            url: '<%= @user.id %>/editPwd',
+            url: '<%= edit_password_path(@user.id) %>',
             method: 'get',
             success: function (data) {
                 modalBody.html(data);

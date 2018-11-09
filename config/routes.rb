@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
-  get  '/users/:id/editPwd', to: 'users#editPwd'
+  get  '/users/:id/edit_password', to: 'users#edit_password', as: :edit_password
 
   post '/join_activity/:activity_id', to: 'users#join_activity'
   get '/joined_activities', to: 'users#joined_activities'
