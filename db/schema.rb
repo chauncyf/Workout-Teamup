@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2018_11_04_021822) do
     t.integer "starter_id"
     t.integer "status"
     t.integer "estimatedDuration"
+    t.string "theme_color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

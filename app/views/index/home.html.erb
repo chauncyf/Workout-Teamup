@@ -159,7 +159,7 @@
     <div class="card">
 <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
 
-      <div class="card-header px-3 pt-0 pb-1 text-white material-head-pink">
+      <div class="card-header px-3 pt-0 pb-1 text-white material-head-<%= activity.theme_color %>">
         <div class="row p-0">
           <div class="col px-2">
             <% if !activity.activity_date.nil? %>
@@ -188,10 +188,10 @@
       </div>
       <div class="card-body px-3 pt-3 pb-2">
 
-        <p class="card-text material-body-pink" style="min-height: 120px;"><%= activity.content %></p>
+        <p class="card-text material-body-<%= activity.theme_color %>" style="min-height: 120px;"><%= activity.content %></p>
 
         <%#= link_to "Join!", "/join_activity/#{activity.id}", class: "btn btn-sm btn-outline-primary align-bottom", method: :post %>
-        <p class="card-text text-right material-footer-pink">
+        <p class="card-text text-right material-footer-<%= activity.theme_color %>">
           <span style="font-size: small;">Update: <%= activity.updated_at.strftime("%m/%d/%y %H:%M") %></span>
         </p>
       </div>

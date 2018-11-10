@@ -37,22 +37,58 @@
 
   <div class="row mt-4">
     <div class="col form-group">
-      <div class="btn-group" role="group" aria-label="First group">
-        <%#= form.text_field :theme_color, class: "btn material-head-purple" %>
-        <%#= form.checkbox :content, class: "btn material-head-purple" %>
-        <button type="button" class="btn material-head-purple"></button>
-        <button type="button" class="btn material-head-pink"></button>
-        <button type="button" class="btn material-head-blue"></button>
-        <button type="button" class="btn material-head-cyan"></button>
-        <button type="button" class="btn material-head-green"></button>
-        <button type="button" class="btn material-head-orange"></button>
-        <button type="button" class="btn material-head-brown"></button>
-        <button type="button" class="btn material-head-grey"></button>
+      <div class="btn-group color-checker" role="group" aria-label="First group">
+          <%#= form.label :theme_color, 'purple', class: "btn radio-btn-purple" do %>
+            <%#= form.radio_button :theme_color, 'purple', class: "radio-dot-purple" %>
+<!--            <i class="fas fa-check text-white"></i>-->
+          <%# end %>
+          <%= form.label :theme_color, class: "btn radio-btn-purple" do %>
+            <%= form.radio_button :theme_color, 'purple' %>
+            <i class="fas fa-check text-white"></i>
+          <% end %>
+          <%= form.label :theme_color, class: "btn radio-btn-pink" do %>
+            <%= form.radio_button :theme_color, 'pink' %>
+            <i class="fas fa-check text-white"></i>
+          <% end %>
+          <%= form.label :theme_color, class: "btn radio-btn-blue" do %>
+            <%= form.radio_button :theme_color, 'blue', checked: true %>
+            <i class="fas fa-check text-white"></i>
+          <% end %>
+          <%= form.label :theme_color, class: "btn radio-btn-teal" do %>
+            <%= form.radio_button :theme_color, 'teal' %>
+            <i class="fas fa-check text-white"></i>
+          <% end %>
+          <%= form.label :theme_color, class: "btn radio-btn-green" do %>
+            <%= form.radio_button :theme_color, 'green' %>
+            <i class="fas fa-check text-white"></i>
+          <% end %>
+          <%= form.label :theme_color, class: "btn radio-btn-orange" do %>
+            <%= form.radio_button :theme_color, 'orange' %>
+            <i class="fas fa-check text-white"></i>
+          <% end %>
+          <%= form.label :theme_color, class: "btn radio-btn-brown" do %>
+            <%= form.radio_button :theme_color, 'brown' %>
+            <i class="fas fa-check text-white"></i>
+          <% end %>
+          <%= form.label :theme_color, class: "btn radio-btn-grey" do %>
+            <%= form.radio_button :theme_color, 'grey' %>
+            <i class="fas fa-check text-white"></i>
+          <% end %>
+
+<!--        <input type="radio" id="post_category_rails" name="post[category]" value="rails" checked="checked" />-->
+<!--        <button type="button" class="btn material-head-purple"></button>-->
+<!--        <button type="button" class="btn material-head-pink"></button>-->
+<!--        <button type="button" class="btn material-head-blue"></button>-->
+<!--        <button type="button" class="btn material-head-teal"></button>-->
+<!--        <button type="button" class="btn material-head-green"></button>-->
+<!--        <button type="button" class="btn material-head-orange"></button>-->
+<!--        <button type="button" class="btn material-head-brown"></button>-->
+<!--        <button type="button" class="btn material-head-grey"></button>-->
       </div>
     </div>
 
     <div class="col actions">  <!-- modal-footer -->
-      <%= form.submit "✓", data: {"disable-with": "Saving..."}, class: "btn text-white material-head-blue float-right" %>
+      <%= form.submit "ok", data: {"disable-with": "Saving..."}, class: "btn text-white material-head-blue float-right" %>
     </div>
   </div>
 
