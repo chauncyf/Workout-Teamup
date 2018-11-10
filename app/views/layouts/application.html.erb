@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-
     <title>Workout Teamup</title>
     <%= favicon_link_tag asset_path('favicon.ico') %>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <!-- Bootstrap CSS -->
@@ -22,11 +24,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
     <!-- google font -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Rancho&effect=canvas-print|3d-float">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300|Roboto+Slab:100">
+    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
 
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho&text=FindInterestedActivityNewPoster&effect=canvas-print">
+    <!-- google map -->
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= getMapKey %>" async defer></script>
   </head>
   <body>
@@ -37,7 +39,5 @@
     <%= render 'layouts/footer' %>
 
     <%= debug(params) if Rails.env.development? %>
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   </body>
 </html>

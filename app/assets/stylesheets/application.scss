@@ -82,7 +82,7 @@ $material-grey: #BDBDBD;
   color: $material-orange;
 }
 .material-footer-orange {
-  color: #FFE082;
+  color: #FFCCBC;
 }
 
 .material-head-brown {
@@ -172,53 +172,16 @@ footer {
 }
 
 .modal-header {
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Rancho', serif;
 
 }
 
 .title-big {
-  font-family: 'Roboto Slab', serif;
+  //font-family: 'Roboto Slab', serif;
+  font-family: 'Rancho', serif;
+  font-size: 56px;
 
-  text-shadow: 3px 3px 3px #aaa;
-
-}
-
-.card-container {
-  margin: auto;
-
-  display: flex;
-  flex-flow: column wrap;
-  //max-width: 1920px;
-  max-height: 800px;
-  //margin-left: -8px;
-  width: 95%;
-
-  //flex-direction: row;
-  //flex-wrap: wrap;
-  //justify-content: center;
-  //
-  //align-items: flex-start;
-  align-content: flex-start;
-  //
-  .card {
-    //flex-basis: 330px;
-    //align-self: auto;
-    margin: 0 8px 8px 0;
-
-  }
-
-  .card-header {
-    border-bottom: 0px;
-  }
-
-  .card-title {
-    font-family: 'Roboto Slab', serif;
-  }
-
-  .card-text {
-    font-family: 'Roboto', sans-serif;
-    font-size: 15pt;
-  }
+  //text-shadow: 3px 3px 3px #aaa;
 }
 
 .card-columns {
@@ -240,8 +203,10 @@ footer {
   }
 
   .card-text {
-    font-family: 'Roboto', sans-serif;
-    font-size: 15pt;
+    //font-family: 'Roboto', sans-serif;
+    font-family: 'Patrick Hand', cursive;
+
+    font-size: 18pt;
   }
 
   // Extra small devices (portrait phones, less than 576px)
@@ -300,6 +265,32 @@ footer {
 //  .card-columns {
 //    column-count: 5 !important;
 //
+//  }
+//}
+
+//.card-container {
+//  margin: auto;
+//
+//  display: flex;
+//  flex-flow: column wrap;
+//  max-height: 800px;
+//  width: 95%;
+//
+//  align-content: flex-start;
+//  .card {
+//    margin: 0 8px 8px 0;
+//  }
+//
+//  .card-header {
+//    border-bottom: 0px;
+//  }
+//
+//  .card-title {
+//    font-family: 'Roboto Slab', serif;
+//  }
+//  .card-text {
+//    font-family: 'Roboto', sans-serif;
+//    font-size: 15pt;
 //  }
 //}
 
