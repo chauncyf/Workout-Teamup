@@ -31,6 +31,50 @@
         <td><%= user.physical_condition %></td>
         <td><%= user.motto %></td>
         <td><%= link_to 'Show', user %></td>
+        <td>
+        <button type="button" class="btn btn-primary btn-block follow" id="view_user_button" data-toggle="modal" data-target="#viewUserModal">View</button>
+
+        <div class="modal fade" id="viewUserModal" tabindex="-1" role="dialog" aria-labelledby="viewUserModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="viewUserModalLabel">User profile</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" id="profile">
+
+              </div>
+            </div>
+          </div>
+        </div>
+        </td>
+
+        <script>
+            var viewUserModal = $('#viewUserModal');
+            var modalBodyy = viewUserModal.find('.modal-body');
+            $('#view_user_button').on('click', function () {
+                $.ajax({
+                    url: '<%= user_url(user.id) %>',
+                    method: 'get',
+                    success: function (data) {
+                        modalBodyy.html(data);
+                        viewUserModal.modal('show')
+                    }
+                })
+            })
+            viewUserModal.on('ajax:success', function (event) {
+                [data, status, xhr] = event.detail
+                viewUserModal.modal("hide")
+            }).on('ajax:error', function (event) {
+                // failed logic
+                //TODO
+            })
+        </script>
+
+
+
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -41,3 +85,5 @@
 <br>
 
 <%= link_to 'New User', new_user_path, class: "btn btn-primary" %>
+
+

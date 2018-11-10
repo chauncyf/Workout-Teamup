@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   post '/join_activity/:activity_id', to: 'users#join_activity'
   get '/joined_activities', to: 'users#joined_activities'
+  get '/show_starter_posters/:id', to: 'activities#show_starter_posters', as: :show_starter_posters
 
   resources :photos
   resources :user_locations

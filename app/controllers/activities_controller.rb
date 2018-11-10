@@ -12,6 +12,11 @@ class ActivitiesController < ApplicationController
   def show
   end
 
+  def show_starter_posters
+    #@activities = Activity.find_by(starter_id:current_user.id)
+    redirect_to joined_activities_url
+  end
+
   # GET /activities/new
   def new
     @activity = Activity.new
