@@ -45,7 +45,6 @@ $material-grey: #BDBDBD;
   color: #F8BBD0;
 }
 
-
 .material-head-blue {
   background-color: $material-blue !important;
 }
@@ -117,10 +116,9 @@ $material-grey: #BDBDBD;
 
 .navbar {
   .divider-vertical {
-    //height: 60px;
-    margin: 0 9px;
-    border-left: 0.5px solid #FFF;
-    border-right: 0.5px solid #FFF;
+    margin: 0 8px;
+    border: 0.6px solid;
+    color: #818181;
   }
 
   .dropdown:hover .dropdown-menu {

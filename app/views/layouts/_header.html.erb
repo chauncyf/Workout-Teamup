@@ -25,14 +25,17 @@
       <li class="divider-vertical"></li>
 
       <% if logged_in? %>
-        <li class="nav-item line-height: 50px"><%= avatar_for current_user %></li>
+<!--        <li class="nav-item line-height: 50px"><%#= avatar_for current_user %></li>-->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Me</a>
+<!--          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Me</a>-->
+          <a class="nav-link  p-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= avatar_for current_user %></a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <p class="dropdown-item">Hi, <%= current_user.user_name %></p>
+            <p class="dropdown-divider"></p>
             <a class="dropdown-item" href=<%= user_path(current_user) %>>Profile</a>
             <a class="dropdown-item" href="#">My Poster</a>
             <a class="dropdown-item" href="#">Analysis</a>
-            <div class="dropdown-divider"></div>
+            <p class="dropdown-divider"></p>
             <%= link_to "Logout", logout_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
