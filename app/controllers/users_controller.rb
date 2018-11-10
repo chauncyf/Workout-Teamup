@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   end
 
   def joined_activities
-    @activities = Activity.joins(:activity_participants).where("activity_participants.participant_id = #{current_user.id}")
+    @activities_joined = Activity.joins(:activity_participants).where("activity_participants.participant_id = #{current_user.id}")
+    @activities_started = Activity.where(starter_id: current_user)
   end
 
   # GET /users

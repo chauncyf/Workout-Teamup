@@ -40,7 +40,8 @@
                   <h5><%= @user.motto %></h5>
                 </div>
                 <div class="col-md-4 col-sm-6 col-xs-6 profile-header-section1 text-right pull-right">
-                  <a href="#" class="btn btn-primary btn-block">My Posters</a>
+                  <%= link_to 'My Achievements', joined_activities_path, class: "btn btn-primary" %>
+                  <!--<a href="#" class="btn btn-primary btn-block">My Achievements</a> -->
                 </div>
               </div>
             </div>
