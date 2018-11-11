@@ -236,18 +236,18 @@ footer {
   }
 
   // Medium devices (tablets, 768px and up)
-  @media (min-width: 768px) {
+  @media (min-width: 801px) {
     column-count: 3 !important;
 
   }
 
   // Large devices (desktops, 992px and up)
-  @media (min-width: 992px) {
+  @media (min-width: 1081px) {
     column-count: 4 !important;
   }
 
   //Extra large devices (large desktops, 1200px and up)
-  @media (min-width: 1200px) {
+  @media (min-width: 1441px) {
     column-count: 5 !important;
   }
 }
