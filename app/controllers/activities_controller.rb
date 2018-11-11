@@ -12,6 +12,11 @@ class ActivitiesController < ApplicationController
   def show
   end
 
+  def show_starter_posters
+    #@activities = Activity.find_by(starter_id:current_user.id)
+    redirect_to joined_activities_url
+  end
+
   # GET /activities/new
   def new
     @activity = Activity.new
@@ -33,8 +38,12 @@ class ActivitiesController < ApplicationController
         #format.js {render json: {status: 1}}
         format.html {redirect_to @activity, notice: 'Activity was successfully created.'}
         format.json {render :show, status: :created, location: @activity}
+
         # type 1 means new activity count means there is one more
-        User.all.each {|user| MessageChannel.broadcast_to(user, {type: 1, count: 1})}
+        User.all.each do |user|
+          MessageChannel.broadcast_to(user, {type: 1, count: 1, msg: {
+              text: 'a new poster is posted', title: 'Message'}})
+        end
       else
         #format.js {render json: {status: 2}}
         format.html {render :new}

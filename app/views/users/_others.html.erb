@@ -1,5 +1,3 @@
-<!--<p id="notice"><%#= notice %></p> -->
-
 <div class="container main-section">
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12 image-section">
@@ -8,14 +6,14 @@
         <div class="col-md-3 col-sm-3 col-xs-12 user-profile-part pull-left">
           <div class="row ">
             <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
-              <%= avatar_for @user,id: "upload_avatar_button", data: {toggle: "modal", target: "#upload_avatar_modal"} %>
+              <%=avatar_for(@user)%>
             </div>
+
             <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
               <!-- Edit user Button Trigger -->
-              <button type="button" class="btn btn-primary btn-block follow" id="userInfo_edit_button" data-toggle="modal" data-target="#editUserModal">Edit</button>
-              <!-- Change pwd Button Trigger -->
-              <button type="button" class="btn btn-success btn-block follow" id="change_pwd_button" data-toggle="modal" data-target="#changePwdModal">Change
-                Password
+              <!-- <button type="button" class="btn btn-primary btn-block follow" id="userInfo_edit_button" data-toggle="modal" data-target="#editUserModal">Edit</button> -->
+               <!-- Follow another user -->
+              <button type="button" class="btn btn-success btn-block follow" id="follow">Follow
               </button>
             </div>
             <div class="row user-detail-row">
@@ -40,8 +38,7 @@
                   <h5><%= @user.motto %></h5>
                 </div>
                 <div class="col-md-4 col-sm-6 col-xs-6 profile-header-section1 text-right pull-right">
-                  <%= link_to 'My Achievements', joined_activities_path, class: "btn btn-primary" %>
-                  <!--<a href="#" class="btn btn-primary btn-block">My Achievements</a> -->
+                  <%= link_to "My Achievements", show_starter_posters_path(@user.id), method: :get, class: "btn btn-primary" %>
                 </div>
               </div>
             </div>
@@ -50,12 +47,10 @@
                 <div class="col-md-8">
                   <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link active " href="#profile" role="tab" data-toggle="tab"><i class="fas fa-user-circle"></i>
-                        Basic Info</a>
+                      <a class="nav-link active " href="#profile" role="tab" data-toggle="tab"><i class="fas fa-user-circle"></i> Basic Info</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#physical" role="tab" data-toggle="tab"><i class="fas fa-child"></i>
-                        Physical Info</a>
+                      <a class="nav-link" href="#physical" role="tab" data-toggle="tab"><i class="fas fa-child"></i> Physical Info</a>
                     </li>
                   </ul>
 
@@ -158,24 +153,9 @@
   </div>
 </div>
 
-<div class="modal fade" id="upload_avatar_modal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="pwdModalLabel">upload your avatar!</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-      </div>
-    </div>
-  </div>
-</div>
 <!-- Edit user Modal -->
 
-<div class="modal fade" id="change_pwd_modal" tabindex="-1" role="dialog" aria-labelledby="pwdModalLabel" aria-hidden="true">
+<div class="modal fade" id="changePwdModal" tabindex="-1" role="dialog" aria-labelledby="pwdModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -225,8 +205,6 @@
     profileModal.on('ajax:success', function (event) {
         [data, status, xhr] = event.detail
         profileModal.modal("hide")
-        //refresh the posters
-        //TODO succeess show a notification ask chenfeng for the resolution
     }).on('ajax:error', function (event) {
         // failed logic
         //TODO
@@ -234,7 +212,7 @@
 </script>
 
 <script>
-    var pwdModal = $('#change_pwd_modal');
+    var pwdModal = $('#changePwdModal');
     var modalBody = pwdModal.find('.modal-body');
     $('#change_pwd_button').on('click', function () {
         $.ajax({
@@ -249,52 +227,8 @@
     pwdModal.on('ajax:success', function (event) {
         [data, status, xhr] = event.detail
         pwdModal.modal("hide")
-        //refresh the posters
-        //TODO succeess show a notification ask chenfeng for the resolution
     }).on('ajax:error', function (event) {
         // failed logic
         //TODO
     })
-
-    ;(function () {
-        var avatarModal = $('#upload_avatar_modal');
-        var modalBody = avatarModal.find('.modal-body');
-        $('#upload_avatar_button').on('click', function () {
-            $.ajax({
-                url: '<%= edit_avatar_path(@user.id) %>',
-                method: 'get',
-                success: function (data) {
-                    modalBody.html(data);
-                    avatarModal.modal('show')
-                }
-            })
-        })
-        avatarModal.on('click','#submit_avatar',function(e){
-            e.preventDefault();
-            document.getElementById('cropper').cropper.getCroppedCanvas().toBlob((blob)=>{
-                let formData=new FormData()
-                formData.append('avatar',blob)
-                $.ajax({
-                    url:'<%= upload_avatar_path(@user.id) %>',
-                    type:'post',
-                    data:formData,
-                    contentType:false,
-                    processData:false,
-                    success:()=>{
-                        avatarModal.modal('hide')
-                        $.ajax({
-                            url:'<%= user_avatar_url_path(@user.id) %>',
-                            type:'get',
-                            success:(data)=>{
-                                $('.avatar').attr('src',data)
-                            }
-                        })
-                        //TODO
-                    }
-                })
-            })
-
-        })
-    }());
 </script>
-

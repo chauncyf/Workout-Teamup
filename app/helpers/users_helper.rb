@@ -14,4 +14,5 @@ module UsersHelper
   def map_avatar_url user
     avatar_url user, "25x25!"
   end
+
 end

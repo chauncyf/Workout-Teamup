@@ -16,6 +16,8 @@
 //= require_tree .
 
 //= require cropper
+//= require pnotify.custom
+
 $(function () {
     $(document).on("change", "[data-file-refresh]", function (e) {
         $(this).next().html(e.currentTarget.files[0].name)
@@ -34,7 +36,7 @@ $(function () {
                 var cropper = new Cropper(document.getElementById(id), {
                     aspectRatio: 1,
                 })
-                dom.cropper=cropper
+                dom.cropper = cropper
             }
         })
         reader.readAsDataURL(file)
