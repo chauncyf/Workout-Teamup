@@ -190,7 +190,11 @@ footer {
 
 .modal-header {
   //font-family: 'Rancho', serif;
+  .close {
+    outline: 0;
+  }
 }
+
 
 .title-big {
   //font-family: 'Roboto Slab', serif;
@@ -217,6 +221,17 @@ footer {
 
   .card-title {
     font-family: 'Roboto Slab', serif;
+
+    a{
+      color: #FFF;
+      font-size: 2rem;
+      transition: transform 1.5s ease-in-out;
+    }
+    a:hover{
+      font-size: 2rem;
+      text-decoration: none;
+      transform: rotate(360deg);
+    }
   }
 
   .card-text {

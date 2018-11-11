@@ -116,9 +116,9 @@
           <div class="col px-2">
             <h1 class="card-title mt-0 mb-0 text-right">
               <% if !logged_in? %>
-                <%= link_to "+", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "text-white"}%>
+                <%= link_to "", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "fas fa-plus", id: "join-button"}%>
               <% else %>
-                <%= link_to "+", "/join_activity/#{activity.id}", class: "text-white" ,method: :post %>
+                <%= link_to "", "/join_activity/#{activity.id}", class: "fas fa-plus", id: "join-button" ,method: :post %>
               <% end %>
             </h1>
 
