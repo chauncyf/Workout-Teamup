@@ -189,8 +189,7 @@ footer {
 }
 
 .modal-header {
-  font-family: 'Rancho', serif;
-
+  //font-family: 'Rancho', serif;
 }
 
 .title-big {
@@ -206,13 +205,13 @@ footer {
   width: 95%;
 
   .card {
-    border-radius: 0.5rem !important;
+    border-radius: 0.55rem !important;
   }
 
   .card-header {
     border-bottom: 0;
-    border-top-right-radius: 0.4rem !important;
-    border-top-left-radius: 0.4rem !important;
+    border-top-right-radius: 0.5rem !important;
+    border-top-left-radius: 0.5rem !important;
   }
 
   .card-title {
@@ -228,21 +227,26 @@ footer {
 
   // Extra small devices (portrait phones, less than 576px)
   // No media query for `xs` since this is the default in Bootstrap
+  @media (min-width: 0px)  and (max-width: 575px) {
+    column-count: 1 !important;
+    .card {
+      max-width: 365px;
+      margin: auto;
+    }
+  }
 
   // Small devices (landscape phones, 576px and up)
   @media (min-width: 576px) {
     column-count: 2 !important;
-
   }
 
   // Medium devices (tablets, 768px and up)
   @media (min-width: 801px) {
     column-count: 3 !important;
-
   }
 
   // Large devices (desktops, 992px and up)
-  @media (min-width: 1081px) {
+  @media (min-width: 1151px) {
     column-count: 4 !important;
   }
 
@@ -251,39 +255,6 @@ footer {
     column-count: 5 !important;
   }
 }
-
-//@media (min-width: 0px) and (max-width: 659px) {
-//  .card-columns {
-//    column-count: 1 !important;
-//
-//  }
-//}
-//
-//@media (min-width: 660px) and (max-width: 989px) {
-//  .card-columns {
-//    column-count: 2 !important;
-//
-//  }
-//}
-//
-//@media (min-width: 990px) and (max-width: 1319px) {
-//  .card-columns {
-//    column-count: 3 !important;
-//
-//  }
-//}
-//@media (min-width: 1320px) and (max-width: 1649px) {
-//  .card-columns {
-//    column-count: 4 !important;
-//
-//  }
-//}
-//@media (min-width: 1650px) {
-//  .card-columns {
-//    column-count: 5 !important;
-//
-//  }
-//}
 
 //.card-container {
 //  margin: auto;
@@ -312,6 +283,7 @@ footer {
 //}
 
 .header-row {
+  //width: 99%;
   #header-col-button {
     margin-right: 2.5%;
   }

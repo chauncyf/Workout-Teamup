@@ -1,0 +1,17 @@
+<%= form_for(:session, url: login_path) do |form| %>
+
+  <div class="form-group">
+    <%= form.label "Email" %>
+    <%= form.text_field :email, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "Password" %>
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="actions float-right">  <!-- modal-footer -->
+    <%= form.submit "Log in", class: "btn btn-primary" %>
+  </div>
+<% end %>
+<p>New user? <%= link_to "Sign up now!", signup_path, {remote: true, 'data-toggle': "modal", 'data-target': "#signup", 'data-dismiss': "modal"} %></p>

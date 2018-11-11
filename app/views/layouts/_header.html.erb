@@ -13,7 +13,13 @@
         <%= link_to "Discover", root_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href=<%= joined_activities_path %>>Achievement</a>
+        <% if !logged_in? %>
+          <%= link_to "Achievement", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"}%>
+<!--          <button type="button" class="btn text-white float-right" id="login_button" data-toggle="modal" data-target="#login" data-whatever="Poster Date">Create-->
+
+      <% else %>
+          <a class="nav-link" href=<%= joined_activities_path %>>Achievement</a>
+        <% end %>
       </li>
       <li class="nav-item">
         <%= link_to "Map", :map_path, class: "nav-link" %>
@@ -53,7 +59,8 @@
 
       <% else %>
         <li class="nav-item">
-          <a class="nav-link" href=<%= login_path %>>Login</a>
+          <!-- 'data-backdrop': true, 'data-keyboard': true -->
+          <%= link_to "Login", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"}%>
         </li>
       <% end %>
 
