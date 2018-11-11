@@ -13,6 +13,8 @@
  *= require_self
  */
 @import "cropper";
+@import "animate";
+@import "pnotify.custom";
 @import "users";
 
 // color theme
@@ -28,9 +30,11 @@ $material-grey: #BDBDBD;
 .material-head-purple {
   background-color: $material-purple !important;
 }
+
 .material-body-purple {
   color: $material-purple;
 }
+
 .material-footer-purple {
   color: #E1BEE7;
 }
@@ -38,9 +42,11 @@ $material-grey: #BDBDBD;
 .material-head-pink {
   background-color: $material-pink !important;
 }
+
 .material-body-pink {
   color: $material-pink;
 }
+
 .material-footer-pink {
   color: #F8BBD0;
 }
@@ -48,9 +54,11 @@ $material-grey: #BDBDBD;
 .material-head-blue {
   background-color: $material-blue !important;
 }
+
 .material-body-blue {
   color: $material-blue;
 }
+
 .material-footer-blue {
   color: #BBDEFB;
 }
@@ -58,9 +66,11 @@ $material-grey: #BDBDBD;
 .material-head-cyan {
   background-color: $material-teal !important;
 }
+
 .material-body-cyan {
   color: $material-teal;
 }
+
 .material-footer-cyan {
   color: #B2DFDB;
 }
@@ -68,9 +78,11 @@ $material-grey: #BDBDBD;
 .material-head-green {
   background-color: $material-green !important;
 }
+
 .material-body-green {
   color: $material-green;
 }
+
 .material-footer-green {
   color: #C8E6C9;
 }
@@ -78,9 +90,11 @@ $material-grey: #BDBDBD;
 .material-head-orange {
   background-color: $material-orange !important;
 }
+
 .material-body-orange {
   color: $material-orange;
 }
+
 .material-footer-orange {
   color: #FFCCBC;
 }
@@ -88,9 +102,11 @@ $material-grey: #BDBDBD;
 .material-head-brown {
   background-color: #BCAAA4 !important;
 }
+
 .material-body-brown {
   color: #BCAAA4;
 }
+
 .material-footer-brown {
   color: #D7CCC8;
 }
@@ -98,13 +114,14 @@ $material-grey: #BDBDBD;
 .material-head-grey {
   background-color: #BDBDBD !important;
 }
+
 .material-body-grey {
   color: #BDBDBD;
 }
+
 .material-footer-grey {
   color: #E0E0E0;
 }
-
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -229,7 +246,7 @@ footer {
     column-count: 4 !important;
   }
 
-   //Extra large devices (large desktops, 1200px and up)
+  //Extra large devices (large desktops, 1200px and up)
   @media (min-width: 1200px) {
     column-count: 5 !important;
   }
@@ -475,13 +492,12 @@ footer {
   }
 }
 
-.avatar{
+.avatar {
   cursor: pointer;
 }
 
-
 .color-checker {
-  input[type="radio"]{
+  input[type="radio"] {
     display: none;
   }
 
@@ -494,7 +510,7 @@ footer {
   }
 
   .radio-btn-purple {
-      background-color: $material-purple;
+    background-color: $material-purple;
   }
   .radio-btn-pink {
     background-color: $material-pink;
