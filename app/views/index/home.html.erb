@@ -14,7 +14,6 @@
     <% if !logged_in? %>
       <!--  render login modal partial -->
       <%= link_to "Create Your Poster !", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "btn text-white float-right"}%>
-
     <% else %>
       <!--  render create poster form partial-->
       <button type="button" class="btn text-white float-right" id="new_poster_button">Create Your Poster !</button>
@@ -94,7 +93,7 @@
 
   <% @activities.reverse_each do |activity| %>
 <!--    style="width: 330px"   m-3-->
-    <div class="card">
+    <div class="card shadow mb-3">
 <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
 
       <div class="card-header px-3 pt-0 pb-1 text-white material-head-<%= activity.theme_color %>">

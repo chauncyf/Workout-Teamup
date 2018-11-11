@@ -205,13 +205,14 @@ footer {
   width: 95%;
 
   .card {
-    border-radius: 0.55rem !important;
+    border: 0;
+    border-radius: 0.75rem !important;
   }
 
   .card-header {
     border-bottom: 0;
-    border-top-right-radius: 0.5rem !important;
-    border-top-left-radius: 0.5rem !important;
+    border-top-right-radius: 0.7rem !important;
+    border-top-left-radius: 0.7rem !important;
   }
 
   .card-title {
