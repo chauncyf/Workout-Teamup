@@ -287,6 +287,11 @@
                             type:'get',
                             success:(data)=>{
                                 $('.avatar').attr('src',data)
+                                new PNotify({
+                                    title: 'success',
+                                    text: 'uploading avatar successfully!',
+                                    type:'success'
+                                });
                             }
                         })
                         //TODO
