@@ -16,9 +16,13 @@
 //= require_tree .
 
 //= require cropper
-//= require pnotify.custom
+////= require pnotify.custom
 
 $(function () {
+
+    /*PNotify.defaults.styling='bootstrap4'
+    PNotify.defaults.icons='bootstrap4'*/
+
     $(document).on("change", "[data-file-refresh]", function (e) {
         $(this).next().html(e.currentTarget.files[0].name)
     })

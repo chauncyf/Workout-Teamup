@@ -57,6 +57,10 @@ var init = function(root){
   var do_when_ready = function(){
     body = $("body");
     PNotify.prototype.options.stack.context = body;
+    $(document).on('turbolinks:load',function(){
+        PNotify.prototype.options.stack.context=$("body")
+        body = $("body")
+    })
     jwindow = $(root);
     // Reposition the notices when the window resizes.
     jwindow.bind('resize', function(){
