@@ -15,17 +15,23 @@
       <li class="nav-item">
         <% if !logged_in? %>
           <%= link_to "Achievement", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"}%>
-<!--          <button type="button" class="btn text-white float-right" id="login_button" data-toggle="modal" data-target="#login" data-whatever="Poster Date">Create-->
-
-      <% else %>
+        <% else %>
           <a class="nav-link" href=<%= joined_activities_path %>>Achievement</a>
         <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to "Map", :map_path, class: "nav-link" %>
+        <% if !logged_in? %>
+          <%= link_to "Map", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"}%>
+        <% else %>
+          <%= link_to "Map", :map_path, class: "nav-link" %>
+        <% end %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Chat</a>
+        <% if !logged_in? %>
+          <%= link_to "Chat", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"}%>
+        <% else %>
+          <a class="nav-link" href="#">Chat</a>
+      <% end %>
       </li>
 
       <li class="divider-vertical"></li>

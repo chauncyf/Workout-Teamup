@@ -147,7 +147,7 @@ $material-grey: #BDBDBD;
 /* footer */
 
 footer {
-  margin-top: 45px;
+
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #777;
@@ -188,12 +188,50 @@ footer {
   }
 }
 
-.modal-header {
-  //font-family: 'Rancho', serif;
-  .close {
-    outline: 0;
+.modal {
+  .modal-header {
+    //font-family: 'Rancho', serif;
+    .close {
+      outline: 0;
+    }
+  }
+  .form-control {
+    border-radius: .5rem;
+  }
+  .input-group-text {
+    background-color: $material-blue;
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+    i {
+      color: white;
+    }
+  }
+  //.bootstrap-datetimepicker-widget {
+  //  i {
+  //    color: $material-blue;
+  //  }
+  //}
+
+  .bootstrap-datetimepicker-widget table td.active, .bootstrap-datetimepicker-widget table td.active:hover {
+    background-color: $material-blue;
+    i {
+      color: $material-blue;
+    }
+  }
+  .btn {
+    border-radius: 1.5rem;
+  }
+  .radio-btn-color {
+    border-radius: .5rem;
+  }
+  .btn-group>.btn:hover {
+    z-index: 0;
+  }
+  i {
+    font-size: 90%;
   }
 }
+
 
 
 .title-big {
@@ -522,3 +560,26 @@ footer {
     background-color: $material-grey;
   }
 }
+
+
+
+.btn-group {
+  .btn {
+    //border-radius: 5rem;
+  }
+}
+//  border-radius: 1rem !important;
+//  .radio-btn-color {
+//    border-radius: 0!important;
+//  }
+//
+//}
+.header-row {
+  .btn {
+    border-radius: 1.5rem !important;
+  }
+  .form-control {
+    border-radius: 1.5rem !important;
+  }
+}
+
