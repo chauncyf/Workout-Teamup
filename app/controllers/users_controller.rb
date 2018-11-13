@@ -24,6 +24,9 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    if params[:op] == 'showButton'
+      render 'show', layout: false
+    end
   end
 
   # GET /users/new
