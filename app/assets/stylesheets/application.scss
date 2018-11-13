@@ -13,6 +13,8 @@
  *= require_self
  */
 @import "cropper";
+@import "animate";
+@import "pnotify.custom";
 @import "users";
 
 // color theme
@@ -28,9 +30,11 @@ $material-grey: #BDBDBD;
 .material-head-purple {
   background-color: $material-purple !important;
 }
+
 .material-body-purple {
   color: $material-purple;
 }
+
 .material-footer-purple {
   color: #E1BEE7;
 }
@@ -38,9 +42,11 @@ $material-grey: #BDBDBD;
 .material-head-pink {
   background-color: $material-pink !important;
 }
+
 .material-body-pink {
   color: $material-pink;
 }
+
 .material-footer-pink {
   color: #F8BBD0;
 }
@@ -48,29 +54,35 @@ $material-grey: #BDBDBD;
 .material-head-blue {
   background-color: $material-blue !important;
 }
+
 .material-body-blue {
   color: $material-blue;
 }
+
 .material-footer-blue {
   color: #BBDEFB;
 }
 
-.material-head-cyan {
+.material-head-teal {
   background-color: $material-teal !important;
 }
-.material-body-cyan {
+
+.material-body-teal {
   color: $material-teal;
 }
-.material-footer-cyan {
+
+.material-footer-teal {
   color: #B2DFDB;
 }
 
 .material-head-green {
   background-color: $material-green !important;
 }
+
 .material-body-green {
   color: $material-green;
 }
+
 .material-footer-green {
   color: #C8E6C9;
 }
@@ -78,9 +90,11 @@ $material-grey: #BDBDBD;
 .material-head-orange {
   background-color: $material-orange !important;
 }
+
 .material-body-orange {
   color: $material-orange;
 }
+
 .material-footer-orange {
   color: #FFCCBC;
 }
@@ -88,9 +102,11 @@ $material-grey: #BDBDBD;
 .material-head-brown {
   background-color: #BCAAA4 !important;
 }
+
 .material-body-brown {
   color: #BCAAA4;
 }
+
 .material-footer-brown {
   color: #D7CCC8;
 }
@@ -98,13 +114,14 @@ $material-grey: #BDBDBD;
 .material-head-grey {
   background-color: #BDBDBD !important;
 }
+
 .material-body-grey {
   color: #BDBDBD;
 }
+
 .material-footer-grey {
   color: #E0E0E0;
 }
-
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -130,7 +147,7 @@ $material-grey: #BDBDBD;
 /* footer */
 
 footer {
-  margin-top: 45px;
+
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #777;
@@ -171,10 +188,51 @@ footer {
   }
 }
 
-.modal-header {
-  font-family: 'Rancho', serif;
+.modal {
+  .modal-header {
+    //font-family: 'Rancho', serif;
+    .close {
+      outline: 0;
+    }
+  }
+  .form-control {
+    border-radius: .5rem;
+  }
+  .input-group-text {
+    background-color: $material-blue;
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+    i {
+      color: white;
+    }
+  }
+  //.bootstrap-datetimepicker-widget {
+  //  i {
+  //    color: $material-blue;
+  //  }
+  //}
 
+  .bootstrap-datetimepicker-widget table td.active, .bootstrap-datetimepicker-widget table td.active:hover {
+    background-color: $material-blue;
+    i {
+      color: $material-blue;
+    }
+  }
+  .btn {
+    border-radius: 1.5rem;
+  }
+  .radio-btn-color {
+    border-radius: .5rem;
+  }
+  .btn-group>.btn:hover {
+    z-index: 0;
+  }
+  i {
+    font-size: 90%;
+  }
 }
+
+
 
 .title-big {
   //font-family: 'Roboto Slab', serif;
@@ -189,17 +247,29 @@ footer {
   width: 95%;
 
   .card {
-    border-radius: 0.5rem !important;
+    border: 0;
+    border-radius: 0.75rem !important;
   }
 
   .card-header {
     border-bottom: 0;
-    border-top-right-radius: 0.4rem !important;
-    border-top-left-radius: 0.4rem !important;
+    border-top-right-radius: 0.7rem !important;
+    border-top-left-radius: 0.7rem !important;
   }
 
   .card-title {
     font-family: 'Roboto Slab', serif;
+
+    a{
+      color: #FFF;
+      font-size: 2rem;
+      transition: transform 1.5s ease-in-out;
+    }
+    a:hover{
+      font-size: 2rem;
+      text-decoration: none;
+      transform: rotate(-360deg);
+    }
   }
 
   .card-text {
@@ -211,62 +281,34 @@ footer {
 
   // Extra small devices (portrait phones, less than 576px)
   // No media query for `xs` since this is the default in Bootstrap
+  @media (min-width: 0px)  and (max-width: 575px) {
+    column-count: 1 !important;
+    .card {
+      max-width: 365px;
+      margin: auto;
+    }
+  }
 
   // Small devices (landscape phones, 576px and up)
   @media (min-width: 576px) {
     column-count: 2 !important;
-
   }
 
   // Medium devices (tablets, 768px and up)
-  @media (min-width: 768px) {
+  @media (min-width: 801px) {
     column-count: 3 !important;
-
   }
 
   // Large devices (desktops, 992px and up)
-  @media (min-width: 992px) {
+  @media (min-width: 1151px) {
     column-count: 4 !important;
   }
 
-   //Extra large devices (large desktops, 1200px and up)
-  @media (min-width: 1200px) {
+  //Extra large devices (large desktops, 1200px and up)
+  @media (min-width: 1441px) {
     column-count: 5 !important;
   }
 }
-
-//@media (min-width: 0px) and (max-width: 659px) {
-//  .card-columns {
-//    column-count: 1 !important;
-//
-//  }
-//}
-//
-//@media (min-width: 660px) and (max-width: 989px) {
-//  .card-columns {
-//    column-count: 2 !important;
-//
-//  }
-//}
-//
-//@media (min-width: 990px) and (max-width: 1319px) {
-//  .card-columns {
-//    column-count: 3 !important;
-//
-//  }
-//}
-//@media (min-width: 1320px) and (max-width: 1649px) {
-//  .card-columns {
-//    column-count: 4 !important;
-//
-//  }
-//}
-//@media (min-width: 1650px) {
-//  .card-columns {
-//    column-count: 5 !important;
-//
-//  }
-//}
 
 //.card-container {
 //  margin: auto;
@@ -295,6 +337,7 @@ footer {
 //}
 
 .header-row {
+  //width: 99%;
   #header-col-button {
     margin-right: 2.5%;
   }
@@ -475,13 +518,12 @@ footer {
   }
 }
 
-.avatar{
+.avatar {
   cursor: pointer;
 }
 
-
 .color-checker {
-  input[type="radio"]{
+  input[type="radio"] {
     display: none;
   }
 
@@ -494,7 +536,7 @@ footer {
   }
 
   .radio-btn-purple {
-      background-color: $material-purple;
+    background-color: $material-purple;
   }
   .radio-btn-pink {
     background-color: $material-pink;
@@ -518,3 +560,26 @@ footer {
     background-color: $material-grey;
   }
 }
+
+
+
+.btn-group {
+  .btn {
+    //border-radius: 5rem;
+  }
+}
+//  border-radius: 1rem !important;
+//  .radio-btn-color {
+//    border-radius: 0!important;
+//  }
+//
+//}
+.header-row {
+  .btn {
+    border-radius: 1.5rem !important;
+  }
+  .form-control {
+    border-radius: 1.5rem !important;
+  }
+}
+

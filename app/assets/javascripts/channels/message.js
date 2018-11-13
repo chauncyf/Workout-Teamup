@@ -3,6 +3,11 @@ App.cable.subscriptions.create({
 
 }, {
     received(data) {
-        console.log(data)
+        if (data.msg) {
+            new PNotify({
+                title: data.msg.title,
+                text: data.msg.text
+            });
+        }
     }
 })

@@ -13,13 +13,25 @@
         <%= link_to "Discover", root_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href=<%= joined_activities_path %>>Achievement</a>
+        <% if !logged_in? %>
+          <%= link_to "Achievement", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"}%>
+        <% else %>
+          <a class="nav-link" href=<%= joined_activities_path %>>Achievement</a>
+        <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to "Map", :map_path, class: "nav-link" %>
+        <% if !logged_in? %>
+          <%= link_to "Map", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"}%>
+        <% else %>
+          <%= link_to "Map", :map_path, class: "nav-link" %>
+        <% end %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Chat</a>
+        <% if !logged_in? %>
+          <%= link_to "Chat", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"}%>
+        <% else %>
+          <a class="nav-link" href="#">Chat</a>
+      <% end %>
       </li>
 
       <li class="divider-vertical"></li>
@@ -53,7 +65,8 @@
 
       <% else %>
         <li class="nav-item">
-          <a class="nav-link" href=<%= login_path %>>Login</a>
+          <!-- 'data-backdrop': true, 'data-keyboard': true -->
+          <%= link_to "Login", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"}%>
         </li>
       <% end %>
 

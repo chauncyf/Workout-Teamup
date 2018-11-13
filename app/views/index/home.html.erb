@@ -1,22 +1,19 @@
 
 <h1 class="text-center my-4 title-big font-effect-canvas-print">Find Interested Activity</h1>
 
-<div class="row header-row">
-  <div class="col  align-self-start" id="header-col-search">
+<div class="row header-row mx-0">
+  <div class="col  align-self-start p-0" id="header-col-search">
     <form class="form-inline my-2 my-lg-0 ">
     <input class="form-control mr-sm-2" type="text" placeholder="Search">
     <button class="btn text-white" type="submit">Search</button>
     </form>
   </div>
 
-  <div class="col align-self-end" id="header-col-button">
+  <div class="col align-self-end p-0" id="header-col-button">
     <!-- Button trigger modal -->
     <% if !logged_in? %>
       <!--  render login modal partial -->
-      <button type="button" class="btn text-white float-right" id="login_button" data-toggle="modal" data-target="#login" data-whatever="Poster Date">Create
-        Your Poster !
-      </button>
-      <%#= button_to "Create Your Poster !",  %>
+      <%= link_to "Create Your Poster !", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "btn text-white float-right"}%>
     <% else %>
       <!--  render create poster form partial-->
       <button type="button" class="btn text-white float-right" id="new_poster_button">Create Your Poster !</button>
@@ -26,6 +23,7 @@
 
 
 <!-- New poster Modal -->
+<!--TODO emoji support-->
 <div class="modal fade" id="newPosterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -64,34 +62,12 @@
         </button>
       </div>
       <div class="modal-body">
-        <!--          todo: here js render login partial-->
-
-        <%= form_for(:session, url: login_path) do |form| %>
-
-          <div class="form-group">
-            <%= form.label "Email" %>
-            <%= form.text_field :email, class: "form-control" %>
-          </div>
-
-          <div class="form-group">
-            <%= form.label "Password" %>
-            <%= form.password_field :password, class: "form-control" %>
-          </div>
-
-          <div class="actions float-right">  <!-- modal-footer -->
-            <%= form.submit "Log in", class: "btn btn-primary" %>
-          </div>
-        <% end %>
-        <!--        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#newPosterModal" data-whatever="xxx" >Create Your Poster !</button>-->
-
-        <p>New
-          user? <%= link_to "Sign up now!", signup_path, {"data-toggle": "modal", "data-dismiss": "modal", "data-target": "#signup"} %></p>
-
+        <!-- here js render login form partial-->
+        <p>New user? <%= link_to "Sign up now!", signup_path, {"data-toggle": "modal", "data-dismiss": "modal", "data-target": "#signup"} %></p>
       </div>
     </div>
   </div>
 </div>
-
 
 <!-- sign up modal -->
 <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -104,46 +80,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <!--          todo: here js render login partial-->
-
-        <%= form_with(model: User.new, local: true) do |form| %>
-          <%# if User.new.errors.any? %>
-          <!--            <div id="error_explanation">-->
-          <!--              <h2><%#= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>-->
-
-          <!--              <ul>-->
-          <%# user.errors.full_messages.each do |message| %>
-          <!--                  <li><%#= message %></li>-->
-          <%# end %>
-          <!--              </ul>-->
-          <!--            </div>-->
-          <%# end %>
-
-          <div class="form-group">
-            <%= form.label :user_name %>
-            <%= form.text_field :user_name, class: "form-control" %>
-          </div>
-
-          <div class="form-group">
-            <%= form.label :email %>
-            <%= form.text_field :email, class: "form-control" %>
-          </div>
-
-          <div class="form-group">
-            <%= form.label :password %>
-            <%= form.password_field :password, class: "form-control" %>
-          </div>
-
-          <div class="form-group">
-            <%= form.label :password_confirmation, "Confirmation" %>
-            <%= form.password_field :password_confirmation, class: "form-control" %>
-          </div>
-
-          <div class="actions float-right">
-            <%= form.submit "Confirm", class: "btn btn-primary" %>
-          </div>
-        <% end %>
-
+        <!--  here js render signup form partial-->
       </div>
     </div>
   </div>
@@ -156,7 +93,7 @@
 
   <% @activities.reverse_each do |activity| %>
 <!--    style="width: 330px"   m-3-->
-    <div class="card">
+    <div class="card shadow mb-3">
 <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
 
       <div class="card-header px-3 pt-0 pb-1 text-white material-head-<%= activity.theme_color %>">
@@ -177,7 +114,13 @@
           </div>
 
           <div class="col px-2">
-            <h1 class="card-title mt-0 mb-0 text-right"><%= link_to "+", "/join_activity/#{activity.id}", class: "text-white" ,method: :post %></h1>
+            <h1 class="card-title mt-0 mb-0 text-right">
+              <% if !logged_in? %>
+                <%= link_to "", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "fas fa-plus"}%>
+              <% else %>
+                <%= link_to "", "/join_activity/#{activity.id}", class: "fas fa-plus", method: :post %>
+              <% end %>
+            </h1>
 
             <h2 class="card-title mt-0 mb-1 text-right">
               <%= activity.place %>
