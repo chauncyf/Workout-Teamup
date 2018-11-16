@@ -40,6 +40,10 @@ class User < ApplicationRecord
     acitivities.where(status: 2)
   end
 
+  scope :working,->{
+    joins(:activity_participants).joins(:activities).merge(Activity.working)
+  }
+
   def is_working
     on_going_activity.count > 1;
   end

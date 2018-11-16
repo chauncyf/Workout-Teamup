@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   resources :photos
   resources :user_locations
+  get '/working_user_location', to: 'user_locations#working',as: :user_location_working
   resources :gyms
   resources :activity_tags
   resources :tags

@@ -4,7 +4,13 @@ class UserLocationsController < ApplicationController
   # GET /user_locations
   # GET /user_locations.json
   def index
-    @user_locations = UserLocation.all
+
+  end
+
+  def working
+    respond_to do |format|
+      format.json{render json: User.working}
+    end
   end
 
   # GET /user_locations/1

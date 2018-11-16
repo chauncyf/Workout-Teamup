@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2018_11_10_233938) do
   end
 
   create_table "activity_participants", force: :cascade do |t|
-    t.integer "participant_id"
+    t.integer "user_id"
     t.integer "activity_id"
     t.integer "identity"
     t.datetime "created_at", null: false

@@ -71,6 +71,9 @@
         $.ajax({
             url: 'users/' + userId,
             method: 'get',
+            data: {
+                op: 'showButton'
+            },
             success: function (data) {
                 modalBodyy.html(data);
                 viewUserModal.modal('show')
