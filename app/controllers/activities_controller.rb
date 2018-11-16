@@ -4,7 +4,11 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.all
+    if logged_in? && current_user.identity.eql?(1)
+      @activities = Activity.all
+    else
+      redirect_to not_found_path
+    end
   end
 
   # GET /activities/1

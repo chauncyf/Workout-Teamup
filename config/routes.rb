@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'index#home' # can be called as root_path
 
+  get '/not_found', to: 'index#not_found'
+
   get 'map/show', as: :map_path
 
   get    '/login',   to: 'sessions#new'

@@ -4,7 +4,11 @@ class ActivityParticipantsController < ApplicationController
   # GET /activity_participants
   # GET /activity_participants.json
   def index
-    @activity_participants = ActivityParticipant.all
+    if logged_in? && current_user.identity.eql?(1)
+      @activity_participants = ActivityParticipant.all
+    else
+      redirect_to not_found_path
+    end
   end
 
   # GET /activity_participants/1

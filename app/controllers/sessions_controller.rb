@@ -3,6 +3,9 @@ class SessionsController < ApplicationController
 
 
   def new
+    unless request.xhr?
+      redirect_to not_found_path
+    end
   end
 
   def create

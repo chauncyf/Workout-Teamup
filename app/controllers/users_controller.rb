@@ -17,7 +17,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if logged_in? && current_user.identity.eql?(1)
+      @users = User.all
+    else
+      redirect_to not_found_path
+    end
   end
 
   # GET /users/1
@@ -28,7 +32,11 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    if request.xhr?
+      @user = User.new
+    else
+      redirect_to not_found_path
+    end
   end
 
   def upload_avatar
