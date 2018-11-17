@@ -1,10 +1,12 @@
 class SessionsController < ApplicationController
+  include ApplicationHelper
+
   # skip_before_action :require_login, only: [:new, :create]
 
 
   def new
     unless request.xhr?
-      redirect_to not_found_path
+      not_found
     end
   end
 

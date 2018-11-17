@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
-  include UsersHelper
+  include UsersHelper, ApplicationHelper
   before_action :set_user, only: [:show, :edit, :edit_password, :update, :destroy, :edit_avatar, :upload_avatar, :user_avatar_url]
 
   def join_activity
     ActivityParticipant.create(participant_id: current_user.id, activity_id: params[:activity_id], identity: 2)
     flash[:success] = 'Activity joined!'
-
     redirect_to root_path
   end
 
@@ -20,16 +19,20 @@ class UsersController < ApplicationController
     if logged_in? && current_user.identity.eql?(1)
       @users = User.all
     else
-      redirect_to not_found_path
+      not_found
     end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
-    if params[:op] == 'showButton'
-      render 'show', layout: false
+    if logged_in? && params[:id] == current_user.id.to_s
+      @user = User.find(params[:id])
+      if params[:op] == 'showButton'
+        render 'show', layout: false
+      end
+    else
+      not_found
     end
   end
 
@@ -38,7 +41,7 @@ class UsersController < ApplicationController
     if request.xhr?
       @user = User.new
     else
-      redirect_to not_found_path
+      not_found
     end
   end
 

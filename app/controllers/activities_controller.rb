@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+  include ApplicationHelper
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
   # GET /activities
@@ -7,7 +8,7 @@ class ActivitiesController < ApplicationController
     if logged_in? && current_user.identity.eql?(1)
       @activities = Activity.all
     else
-      redirect_to not_found_path
+      not_found
     end
   end
 
@@ -19,12 +20,17 @@ class ActivitiesController < ApplicationController
   def show_starter_posters
     #@activities = Activity.find_by(starter_id:current_user.id)
     redirect_to joined_activities_url
+
   end
 
   # GET /activities/new
   def new
-    @activity = Activity.new
-    render layout: false
+    if request.xhr?
+      @activity = Activity.new
+      render layout: false
+    else
+      not_found
+    end
   end
 
   # GET /activities/1/edit
