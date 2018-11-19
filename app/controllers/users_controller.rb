@@ -26,14 +26,12 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    if logged_in? && params[:id] == current_user.id.to_s
+
       @user = User.find(params[:id])
       if params[:op] == 'showButton'
         render 'show', layout: false
       end
-    else
-      not_found
-    end
+
   end
 
   # GET /users/new
