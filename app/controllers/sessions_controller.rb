@@ -19,7 +19,9 @@ class SessionsController < ApplicationController
     else
       # Create an error message.
       flash.now[:danger] = 'Invalid email/password combination' # Not quite right!
-      render 'new'
+      # todo, refresh modal
+      # render 'new'
+
     end
   end
 

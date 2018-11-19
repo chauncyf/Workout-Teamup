@@ -1,4 +1,5 @@
 class ActivityParticipantsController < ApplicationController
+  include ApplicationHelper
   before_action :set_activity_participant, only: [:show, :edit, :update, :destroy]
 
   # GET /activity_participants
@@ -7,7 +8,7 @@ class ActivityParticipantsController < ApplicationController
     if logged_in? && current_user.identity.eql?(1)
       @activity_participants = ActivityParticipant.all
     else
-      redirect_to not_found_path
+      not_found
     end
   end
 
@@ -18,6 +19,7 @@ class ActivityParticipantsController < ApplicationController
 
   # GET /activity_participants/new
   def new
+    # todo
     @activity_participant = ActivityParticipant.new
   end
 
