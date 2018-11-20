@@ -247,100 +247,129 @@ footer {
 
 .card-columns {
   margin: auto;
-  width: 95%;
+
+  html {
+    font-size: 16px;
+  }
 
   .card {
+    margin: auto;
     border: 0;
     border-radius: 0.85rem !important;
-  }
 
-  .card-header {
-    border-bottom: 0;
-    border-top-right-radius: 0.8rem !important;
-    border-top-left-radius: 0.8rem !important;
-  }
-
-  .card-title {
-    font-family: 'Roboto Slab', serif;
-
-    a{
-      color: #FFF;
-      font-size: 2rem;
-      transition: transform 1.5s ease-in-out;
+    .card-header {
+      border-bottom: 0;
+      border-top-right-radius: 0.8rem !important;
+      border-top-left-radius: 0.8rem !important;
+      //min-height: 30vw;
     }
-    a:hover{
-      font-size: 2rem;
-      text-decoration: none;
-      transform: rotate(-360deg);
+
+    .card-title {
+      font-family: 'Roboto Slab', serif;
+      //font-size: 2em;
+
+      a{
+        color: #FFF;
+        transition: transform 1.5s ease-in-out;
+      }
+      a:hover{
+        text-decoration: none;
+        transform: rotate(-360deg);
+      }
+    }
+    .card-title-date {
+      //font-size: 11vw;
+      font-size: 2.5em;
+    }
+    .card-title-button {
+      //font-size: 10vw;
+      font-size: 2em;
+    }
+    .card-title-time {
+      //font-size: 7vw;
+      font-size: 1.5em;
+    }
+    .card-title-place {
+      //font-size: 6vw;
+      font-size: 1.8em;
+    }
+
+    .card-body {
+      font-size: 1.5em;
+
+      //font-family: 'Roboto', sans-serif;
+      font-family: 'Patrick Hand', cursive;
+    }
+    .card-footer {
+      border-top: none;
+      font-size: 0.8em;
+
+      //font-family: 'Roboto', sans-serif;
+      font-family: 'Patrick Hand', cursive;
     }
   }
 
-  .card-text {
-    //font-family: 'Roboto', sans-serif;
-    font-family: 'Patrick Hand', cursive;
-
-    font-size: 18pt;
-  }
 
   // Extra small devices (portrait phones, less than 576px)
   // No media query for `xs` since this is the default in Bootstrap
   @media (min-width: 0px)  and (max-width: 575px) {
-    //width: 100% !important;
-
     column-count: 1 !important;
     .card {
-      //max-width: 365px;
-
-      margin: auto;
+      width: 96vw;
+      min-height: 96vmin;
     }
   }
 
   // Small devices (landscape phones, 576px and up)
   @media (min-width: 576px) {
     column-count: 2 !important;
+    width: 95vw;
+    .card {
+      width: 47.5vw;
+      min-height: 47.5vw;
+    }
   }
 
   // Medium devices (tablets, 768px and up)
-  @media (min-width: 801px) {
+  @media (min-width: 851px) {
     column-count: 3 !important;
+    width: 93vw;
+    .card {
+      width: 31vw;
+      min-height: 31vw;
+    }
   }
 
   // Large devices (desktops, 992px and up)
   @media (min-width: 1151px) {
     column-count: 4 !important;
+    width: 92vw;
+    .card {
+      width: 23vw;
+      min-height: 23vw;
+    }
   }
 
   //Extra large devices (large desktops, 1200px and up)
   @media (min-width: 1441px) {
     column-count: 5 !important;
+    width: 90vw;
+    .card {
+      width: 18vw;
+      min-height: 18vw;
+    }
+  }
+
+  // 4k - 2560px
+  @media (min-width: 2011px) {
+    column-count: 6 !important;
+    width: 87vw;
+    .card {
+      width: 14.5vw;
+      min-height: 14.5vw;
+    }
   }
 }
-
-//.card-container {
-//  margin: auto;
-//
-//  display: flex;
-//  flex-flow: column wrap;
-//  max-height: 800px;
-//  width: 95%;
-//
-//  align-content: flex-start;
-//  .card {
-//    margin: 0 8px 8px 0;
-//  }
-//
-//  .card-header {
-//    border-bottom: 0px;
-//  }
-//
-//  .card-title {
-//    font-family: 'Roboto Slab', serif;
-//  }
-//  .card-text {
-//    font-family: 'Roboto', sans-serif;
-//    font-size: 15pt;
-//  }
-//}
 
 .header-row {
   //width: 99%;

@@ -40,60 +40,54 @@
 
 <hr class="my-4">
 
-<!--<div class="card-container">-->
 <div class="card-columns">
-
   <% @activities.reverse_each do |activity| %>
-<!--    style="width: 330px"   m-3-->
     <div class="card shadow mb-3">
 <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
 
-      <div class="card-header px-3 pt-0 pb-1 text-white material-head-<%= activity.theme_color %>">
-        <div class="row p-0">
-          <div class="col px-2">
+      <div class="card-header py-2 text-white material-head-<%= activity.theme_color %>">
+        <div class="row align-items-center justify-content-between">
+          <div class="col col-auto card-title card-title-date m-0">
             <% if !activity.activity_date.nil? %>
-              <h1 class="card-title mt-1 mb-1 text-left">
-                <%= activity.activity_date.strftime("%b %d") %>
-              </h1>
-              <h3 class="card-title mb-1 text-left">
-                <%= activity.activity_date.strftime("%a %H:%M") %>
-              </h3>
+              <%= activity.activity_date.strftime("%b %d") %>
             <% else %>
-              <h2 class="card-title mt-1 mb-2 text-left">
-                Sometime
-              </h2>
+              Sometime
             <% end %>
           </div>
 
-          <div class="col px-2">
-            <h1 class="card-title mt-0 mb-0 text-right">
-              <% if !logged_in? %>
-                <%= link_to "", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "fas fa-plus"}%>
-              <% else %>
-                <%= link_to "", "/join_activity/#{activity.id}", class: "fas fa-plus", method: :post %>
-              <% end %>
-            </h1>
-
-            <h2 class="card-title mt-0 mb-1 text-right">
-              <%= activity.place %>
-            </h2>
+          <div class="col col-auto card-title card-title-button text-right m-0">
+            <% if !logged_in? %>
+              <%= link_to "", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "fas fa-plus"}%>
+            <% else %>
+              <%= link_to "", "/join_activity/#{activity.id}", class: "fas fa-plus", method: :post %>
+            <% end %>
           </div>
         </div>
 
+        <div class="row align-items-center justify-content-between">
+          <div class="col col-auto card-title card-title-time m-0">
+            <% if !activity.activity_date.nil? %>
+              <%= activity.activity_date.strftime("%a %H:%M") %>
+            <% else %>
+              Undecided
+            <% end %>
+          </div>
+
+          <div class="col col-auto card-title card-title-place text-right m-0">
+            <%= activity.place %>
+          </div>
+        </div>
       </div>
-      <div class="card-body px-3 pt-3 pb-2">
 
-        <p class="card-text material-body-<%= activity.theme_color %>" style="min-height: 120px;"><%= activity.content %></p>
+      <div class="card-body material-body-<%= activity.theme_color %> ">
+        <%= activity.content %>
+      </div>
 
-        <%#= link_to "Join!", "/join_activity/#{activity.id}", class: "btn btn-sm btn-outline-primary align-bottom", method: :post %>
-        <p class="card-text text-right material-footer-<%= activity.theme_color %>">
-          <span style="font-size: small;">Update: <%= activity.updated_at.strftime("%m/%d/%y %H:%M") %></span>
-        </p>
+      <div class="card-footer text-right bg-transparent pt-0 material-footer-<%= activity.theme_color %>">
+        Update: <%= activity.updated_at.strftime("%m/%d/%y %H:%M") %>
       </div>
     </div>
   <% end %>
-
-  </div>
 </div>
 
 <script>
