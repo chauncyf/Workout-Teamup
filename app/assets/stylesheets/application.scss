@@ -136,6 +136,10 @@ $material-grey: #BDBDBD;
     margin-left: 2.5%;
   }
 
+  .navbar-toggler {
+    margin-right: 2.5%;
+  }
+
   #navbarSupportedContent {
     margin-right: 2.5%;
   }
@@ -281,9 +285,12 @@ footer {
   // Extra small devices (portrait phones, less than 576px)
   // No media query for `xs` since this is the default in Bootstrap
   @media (min-width: 0px)  and (max-width: 575px) {
+    //width: 100% !important;
+
     column-count: 1 !important;
     .card {
-      max-width: 365px;
+      //max-width: 365px;
+
       margin: auto;
     }
   }
