@@ -45,7 +45,7 @@
     <div class="card shadow mb-3">
 <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
 
-      <div class="card-header py-2 text-white material-head-<%= activity.theme_color %>">
+      <div class="card-header px-3 py-1 text-white material-head-<%= activity.theme_color %>">
         <div class="row align-items-center justify-content-between">
           <div class="col col-auto card-title card-title-date m-0">
             <% if !activity.activity_date.nil? %>
@@ -67,6 +67,7 @@
         <div class="row align-items-center justify-content-between">
           <div class="col col-auto card-title card-title-time m-0">
             <% if !activity.activity_date.nil? %>
+              <%#= activity.activity_date.strftime("%a %H:%M") %>
               <%= activity.activity_date.strftime("%a %H:%M") %>
             <% else %>
               Undecided
@@ -79,11 +80,12 @@
         </div>
       </div>
 
-      <div class="card-body material-body-<%= activity.theme_color %> ">
+      <div class="card-body p-3 material-body-<%= activity.theme_color %> ">
         <%= activity.content %>
       </div>
 
-      <div class="card-footer text-right bg-transparent pt-0 material-footer-<%= activity.theme_color %>">
+<!--      todo footer not show at bottom-->
+      <div class="card-footer text-right bg-transparent px-3 pt-0 material-footer-<%= activity.theme_color %>">
         Update: <%= activity.updated_at.strftime("%m/%d/%y %H:%M") %>
       </div>
     </div>

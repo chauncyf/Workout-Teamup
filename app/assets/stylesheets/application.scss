@@ -27,6 +27,15 @@ $material-orange: #FFAB91;
 $material-brown: #BCAAA4;
 $material-grey: #BDBDBD;
 
+html {
+  font-size: 16px;
+}
+* {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+
 .material-head-purple {
   background-color: $material-purple !important;
 }
@@ -236,21 +245,17 @@ footer {
 }
 
 
-
 .title-big {
   //font-family: 'Roboto Slab', serif;
-  font-family: 'Rancho', serif;
-  font-size: 56px;
+  font-family: 'Pacifico', cursive;
 
-  //text-shadow: 3px 3px 3px #aaa;
+  font-size: 3em;
+
+  //text-shadow: 2px 2px 2px #aaa;
 }
 
 .card-columns {
   margin: auto;
-
-  html {
-    font-size: 16px;
-  }
 
   .card {
     margin: auto;
@@ -266,7 +271,7 @@ footer {
 
     .card-title {
       font-family: 'Roboto Slab', serif;
-      //font-size: 2em;
+        font-weight: 300;
 
       a{
         color: #FFF;
@@ -279,7 +284,7 @@ footer {
     }
     .card-title-date {
       //font-size: 11vw;
-      font-size: 2.5em;
+      font-size: 2.3em;
     }
     .card-title-button {
       //font-size: 10vw;
@@ -287,25 +292,29 @@ footer {
     }
     .card-title-time {
       //font-size: 7vw;
-      font-size: 1.5em;
+      font-size: 1.3em;
     }
     .card-title-place {
       //font-size: 6vw;
-      font-size: 1.8em;
+      font-size: 1.3em;
     }
 
     .card-body {
-      font-size: 1.5em;
+      font-size: 1.2em;
 
-      //font-family: 'Roboto', sans-serif;
-      font-family: 'Patrick Hand', cursive;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+
+      //font-family: 'Patrick Hand', cursive;
     }
     .card-footer {
       border-top: none;
       font-size: 0.8em;
 
-      //font-family: 'Roboto', sans-serif;
-      font-family: 'Patrick Hand', cursive;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+
+      //font-family: 'Patrick Hand', cursive;
     }
   }
 
@@ -372,10 +381,6 @@ footer {
 }
 
 .header-row {
-  //width: 99%;
-  #header-col-button {
-    margin-right: 2.5%;
-  }
   #header-col-button {
     margin-right: 2.5%;
   }
