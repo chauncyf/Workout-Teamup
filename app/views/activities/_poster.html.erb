@@ -13,7 +13,7 @@
 
       <div class="col col-auto card-title card-title-button text-right m-0">
         <% if !logged_in? %>
-          <%= link_to "", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "fas fa-plus"}%>
+          <%= link_to "", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "fas fa-plus"} %>
         <% else %>
           <%= link_to "", "/join_activity/#{activity.id}", class: "fas fa-plus", method: :post %>
         <% end %>
@@ -44,4 +44,8 @@
   <div class="card-footer text-right bg-transparent px-3 pt-0 material-footer-<%= activity.theme_color %>">
     Update: <%= activity.updated_at.strftime("%m/%d/%y %H:%M") %>
   </div>
+  <div data-raty="true"></div>
 </div>
+<script>
+    ratyAll()// make sure every raty is transformed
+</script>
