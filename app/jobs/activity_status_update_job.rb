@@ -4,5 +4,6 @@ class ActivityStatusUpdateJob < ApplicationJob
   def perform(*args)
     # Do something later
     #
+    Activity.where()
   end
 end
