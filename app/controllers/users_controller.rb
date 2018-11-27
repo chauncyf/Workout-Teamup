@@ -3,13 +3,13 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :edit_password, :update, :destroy, :edit_avatar, :upload_avatar, :user_avatar_url]
 
   def join_activity
-    ActivityParticipant.create(participant_id: current_user.id, activity_id: params[:activity_id], identity: 2)
+    ActivityParticipant.create(user_id: current_user.id, activity_id: params[:activity_id], identity: 2)
     flash[:success] = 'Activity joined!'
     redirect_to root_path
   end
 
   def joined_activities
-    @activities_joined = Activity.joins(:activity_participants).where("activity_participants.participant_id = #{current_user.id}")
+    @activities_joined = current_user.activities
     @activities_started = Activity.where(starter_id: current_user)
   end
 
@@ -27,10 +27,10 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
 
-      @user = User.find(params[:id])
-      if params[:op] == 'showButton'
-        render 'show', layout: false
-      end
+    @user = User.find(params[:id])
+    if params[:op] == 'showButton'
+      render 'show', layout: false
+    end
 
   end
 
