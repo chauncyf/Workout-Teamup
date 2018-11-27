@@ -5,28 +5,17 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">Activity Id</th>
-      <th scope="col">Activity Date</th>
-      <th scope="col">Place</th>
-      <th scope="col">Content</th>
-      <th scope="col">Status</th>
-      <th scope="col">Starter</th>
-      <th colspan=3></th>
+
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @activities_joined.each do |activity| %>
       <tr>
-        <td><%= activity.id %></td>
-        <td><%= activity.activity_date %></td>
-        <td><%= activity.place %></td>
-        <td><%= activity.content %></td>
-        <td><%= activity.status %></td>
-        <td><%= activity.starter_id %></td>
-        <td><%= link_to 'Show', activity %></td>
-        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       <td>
+         <%= render partial: 'activities/poster', locals: {activity: activity} %>
+       </td>
       </tr>
     <% end %>
   </tbody>
@@ -37,28 +26,16 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <th scope="col">Activity Id</th>
-    <th scope="col">Activity Date</th>
-    <th scope="col">Place</th>
-    <th scope="col">Content</th>
-    <th scope="col">Status</th>
-    <th scope="col">Starter</th>
-    <th colspan=3></th>
+    <th></th>
   </tr>
   </thead>
 
   <tbody>
   <% @activities_started.each do |activity| %>
     <tr>
-      <td><%= activity.id %></td>
-      <td><%= activity.activity_date %></td>
-      <td><%= activity.place %></td>
-      <td><%= activity.content %></td>
-      <td><%= activity.status %></td>
-      <td><%= activity.starter_id %></td>
-      <td><%= link_to 'Show', activity %></td>
-      <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-      <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td>
+        <%= render partial: 'activities/poster', locals: {activity: activity} %>
+      </td>
     </tr>
   <% end %>
   </tbody>
