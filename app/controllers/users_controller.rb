@@ -13,6 +13,15 @@ class UsersController < ApplicationController
     @activities_started = Activity.where(starter_id: current_user)
   end
 
+  def follow
+    Follow.create(followee_id: params[:followee_id], follower_id: current_user.id)
+  end
+
+  def unfollow
+    follow_id = Follow.find_by(followee_id: params[:followee_id], follower_id: current_user.id).id
+    Follow.destroy(follow_id)
+  end
+
   # GET /users
   # GET /users.json
   def index
@@ -137,6 +146,6 @@ class UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:user_name, :email, :password, :password_confirmation, :height, :weight, :physical_condition, :motto, :avatar)
+    params.require(:user).permit(:user_name, :email, :password, :password_confirmation, :height, :weight, :physical_condition, :motto, :avatar, :followee_id)
   end
 end
