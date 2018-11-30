@@ -84,7 +84,11 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         log_in @user
-        flash[:success] = 'Welcome to Workout TeamUp' # Todo not working
+        # flash[:success] = 'Welcome to Workout TeamUp' # Todo not working
+
+        # Tell the UserMailer to send a welcome email after save
+        UserMailer.with(user: @user).welcome_email.deliver_now
+
         format.html {redirect_to root_path}
         format.json {render :show, status: :created, location: @user}
 

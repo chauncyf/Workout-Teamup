@@ -89,7 +89,7 @@ class ActivitiesController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_activity
+  def set_activitySA
     @activity = Activity.find(params[:id])
   end
 
