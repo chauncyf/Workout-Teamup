@@ -14,8 +14,9 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-
+//= require jquery.raty
 //= require cropper
+//= require lodash
 ////= require pnotify.custom
 
 $(function () {
@@ -58,9 +59,13 @@ function dataURItoBlob(dataURI) {
 // separate out the mime component
     var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
 // write the bytes of the string to a typed array
-    var ia = new Uint8Array(byteString.length);
+    var u8a = new Uint8Array(byteString.length);
     for (var i = 0; i < byteString.length; i++) {
-        ia[i] = byteString.charCodeAt(i);
+        u8a[i] = byteString.charCodeAt(i);
     }
-    return new Blob([ia], {type: mimeString});
+    return new Blob([u8a], {type: mimeString});
 }
+
+window.ratyAll = _.throttle(() => {
+    $('[data-raty]').raty({starType: 'i'}).removeAttr('data-raty')
+}, 300)
