@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   get '/joined_activities', to: 'users#joined_activities'
   get '/show_starter_posters/:id', to: 'activities#show_starter_posters', as: :show_starter_posters
 
+  post '/follow/:followee_id', to: 'users#follow'
+  delete '/unfollow/:followee_id', to: 'users#unfollow'
+
   resources :photos
   resources :user_locations
   get '/working_user_location', to: 'user_locations#working', as: :user_location_working

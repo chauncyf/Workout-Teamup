@@ -12,9 +12,14 @@
             <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
               <!-- Edit user Button Trigger -->
               <!-- <button type="button" class="btn btn-primary btn-block follow" id="userInfo_edit_button" data-toggle="modal" data-target="#editUserModal">Edit</button> -->
-               <!-- Follow another user -->
-              <button type="button" class="btn btn-success btn-block follow" id="follow">Follow
-              </button>
+              <!-- Follow another user -->
+
+              <!--<button type="button" class="btn btn-success btn-block follow" id="follow_button"> Follow </button> -->
+              <% if Follow.exists?(followee_id: @user.id, follower_id: current_user.id) %>
+                <%= link_to "Unfollow", "/unfollow/#{@user.id}", method: :delete, class: "btn btn-success btn-block follow", id: "#{@user.id}", follow: true %>
+              <% else %>
+                <%= link_to "Follow", "/follow/#{@user.id}", method: :post, class: "btn btn-primary btn-block follow", id: "#{@user.id}", follow: false %>
+              <% end %>
             </div>
             <div class="row user-detail-row">
               <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
@@ -23,7 +28,7 @@
                 <p>FOLLOWER</p>
                 <span>320</span>
                 <p>FOLLOWING</p>
-                <span>500</span>
+                <span>5</span>
               </div>
             </div>
 
@@ -152,83 +157,31 @@
     </div>
   </div>
 </div>
-
-<!-- Edit user Modal -->
-
-<div class="modal fade" id="changePwdModal" tabindex="-1" role="dialog" aria-labelledby="pwdModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="pwdModalLabel">Change Password</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="pwd">
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Edit user Modal -->
-<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="editUserModalLabel">Edit your profile</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="userInfo">
-
-      </div>
-    </div>
-  </div>
-</div>
-
+<!-- Incorrect, please change-->
 <script>
-    var profileModal = $('#editUserModal');
-    var modalBodyy = profileModal.find('.modal-body');
-    $('#userInfo_edit_button').on('click', function () {
-        $.ajax({
-            url: '<%= edit_user_path(@user.id) %>',
-            method: 'get',
-            success: function (data) {
-                modalBodyy.html(data);
-                profileModal.modal('show')
-            }
-        })
-    })
-    profileModal.on('ajax:success', function (event) {
-        [data, status, xhr] = event.detail
-        profileModal.modal("hide")
-    }).on('ajax:error', function (event) {
-        // failed logic
-        //TODO
-    })
-</script>
+    $('.follow').on('click', function () {
+        let userId = $(this).data('id');
+        let follow_status = $(this).data('follow');
+        if (follow_status) {
+            $.ajax({
 
-<script>
-    var pwdModal = $('#changePwdModal');
-    var modalBody = pwdModal.find('.modal-body');
-    $('#change_pwd_button').on('click', function () {
-        $.ajax({
-            url: '<%= edit_password_path(@user.id) %>',
-            method: 'get',
-            success: function (data) {
-                modalBody.html(data);
-                pwdModal.modal('show')
-            }
+                url: 'unfollow/' + userId,
+                method: 'delete',
+                success: () => {
+                    $(this).html('Follow');
+                }
+            })
+        }
+        else {
+            $.ajax({
+                url: 'follow/' + userId,
+                method: 'post',
+                success: () => {
+                    $(this).html('Unfollow');
+                }
+            })
+        }
         })
-    })
-    pwdModal.on('ajax:success', function (event) {
-        [data, status, xhr] = event.detail
-        pwdModal.modal("hide")
-    }).on('ajax:error', function (event) {
-        // failed logic
-        //TODO
-    })
+
+
 </script>
