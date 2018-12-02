@@ -433,7 +433,7 @@
     },
 
     _getWidth: function() {
-      var width = this.stars[0].width || parseFloat(this.stars.eq(0).css('font-size'));
+      var width = this.stars[0].width || parseFloat(this.stars.eq(0).css('fonts-size'));
 
       if (!width) {
         methods._error.call(this, 'Could not get the icon width!');

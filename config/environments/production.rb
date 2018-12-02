@@ -74,13 +74,14 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_options = { from: 'workout.teamup@gmail.com' }
+  config.action_mailer.default_options = { from: 'Workout Teamup' }
+  config.action_mailer.default_url_options = { host: "workout-teamup.herokuapp.com" }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       address:              'smtp.gmail.com',
       port:                 587,
-      domain:               'example.com',
+      domain:               'workout-teamup.herokuapp.com',
       user_name:            'workout.teamup@gmail.com',
       password:             'teamup1234',
       authentication:       'plain',

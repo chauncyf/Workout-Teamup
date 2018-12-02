@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create(user_name: 'fcf', email: 'fcf@brandeis.edu', password: '123456789', identity: 1)
-User.create(user_name: 'zxr', email: 'zxr@brandeis.edu', password: '123456789', identity: 1)
-User.create(user_name: 'glm', email: 'glm@brandeis.edu', password: '123456789', identity: 1)
+User.create(user_name: 'fcf', email: 'fanc@brandeis.edu', password: '123456789', email_confirmed: true, identity: 1)
+User.create(user_name: 'zxr', email: 'xiangranzhao@brandeis.edu', password: '123456789', email_confirmed: true, identity: 1)
+User.create(user_name: 'glm', email: 'limianguo@gmail.com', password: '123456789', email_confirmed: true, identity: 1)
 User.create(user_name: 'visitor1', email: 'visitor1@brandeis.edu', password: '123456789', identity: 2)
 User.create(user_name: 'visitor1', email: 'visitor1@brandeis.edu', password: '123456789', identity: 2)
 

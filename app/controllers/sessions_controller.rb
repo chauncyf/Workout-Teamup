@@ -5,26 +5,32 @@ class SessionsController < ApplicationController
 
 
   def new
-    unless request.xhr?
-      not_found
-    end
+    # unless request.xhr?
+    #   not_found
+    # end
   end
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
-      log_in user
+      # UserMailer.with(user: user).confirmation_email.deliver_now
+      if user.email_confirmed
+        log_in user
+        redirect_to root_url
+      else
 
-      UserMailer.with(user: user).welcome_email.deliver_now
+        flash[:danger] = 'Please activate your account by following the instructions in the account confirmation email'
+        redirect_to login_path
+      end
 
-      redirect_to root_url
+      # log_in user
+      # redirect_to root_url
       # Log the user in and redirect to the user's show page.
     else
       # Create an error message.
-      flash.now[:danger] = 'Invalid email/password combination' # Not quite right!
+      flash[:danger] = 'Invalid email/password combination' # Not quite right!
       # todo, refresh modal
-      # render 'new'
-
+      redirect_to login_path
     end
   end
 
