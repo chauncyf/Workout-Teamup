@@ -1,36 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Activities I Joined</h1>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @activities_joined.each do |activity| %>
+<h1 class="text-center">Activities I Joined</h1>
+<hr>
+<div class="card-columns">
+<!--<table class="table table-striped">-->
+<!--  <tbody>-->
+  <% @activities_joined.each do |activity| %>
       <tr>
        <td>
          <%= render partial: 'activities/poster', locals: {activity: activity} %>
        </td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+</div>
+<!--  </tbody>-->
+<!--</table>-->
 
-<h1>Activities Started By Me</h1>
-
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th></th>
-  </tr>
-  </thead>
-
-  <tbody>
+<h1 class="text-center mt-5">Activities Started By Me</h1>
+<hr>
+<div class="card-columns">
+<!--<table class="table table-striped">-->
+<!--  <tbody>-->
   <% @activities_started.each do |activity| %>
     <tr>
       <td>
@@ -38,5 +28,6 @@
       </td>
     </tr>
   <% end %>
-  </tbody>
-</table>
+<!--  </tbody>-->
+<!--</table>-->
+</div>
