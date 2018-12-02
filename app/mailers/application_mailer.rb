@@ -3,11 +3,19 @@ class ApplicationMailer < ActionMailer::Base
 
   def welcome_email
     @user = params[:user]
+    @activity =
     # @url = 'http://example.com/login'
     # mail(to: @user.email, subject: 'Welcome')
-    mail(to: @user.email, subject: 'Welcome to Workout Teamup')
+    mail(to: @user.email, subject: '[Workout Teamup] Welcome')
   end
 
-  # layout 'mailer'
+  def reminder_email
+    @user = params[:user]
+    mail(to: @user.email, subject: '[Workout Teamup] Activity Reminder')
+  end
 
+  def material_design
+    @user = params[:user]
+    mail(to: @user.email, subject: '[Workout Teamup] Activity Reminder')
+  end
 end
