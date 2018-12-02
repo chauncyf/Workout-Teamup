@@ -18,7 +18,6 @@ class SessionsController < ApplicationController
         log_in user
         redirect_to root_url
       else
-
         flash[:danger] = 'Please activate your account by following the instructions in the account confirmation email'
         redirect_to login_path
       end

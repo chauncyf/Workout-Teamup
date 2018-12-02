@@ -323,6 +323,10 @@ footer {
       font-weight: 400;
 
       //fonts-family: 'Patrick Hand', cursive;
+
+      .rate-star {
+        font-size: 0.7em;
+      }
     }
   }
 
@@ -343,7 +347,7 @@ footer {
     width: 95vw;
     .card {
       width: 47.5vw;
-      min-height: 47.5vw;
+      //min-height: 47.5vw;
     }
   }
 
@@ -353,7 +357,7 @@ footer {
     width: 93vw;
     .card {
       width: 31vw;
-      min-height: 31vw;
+      //min-height: 31vw;
     }
   }
 
@@ -363,7 +367,7 @@ footer {
     width: 92vw;
     .card {
       width: 23vw;
-      min-height: 23vw;
+      //min-height: 23vw;
     }
   }
 
@@ -373,7 +377,7 @@ footer {
     width: 90vw;
     .card {
       width: 18vw;
-      min-height: 18vw;
+      //min-height: 18vw;
     }
   }
 
@@ -383,7 +387,7 @@ footer {
     width: 87vw;
     .card {
       width: 14.5vw;
-      min-height: 14.5vw;
+      //min-height: 14.5vw;
     }
   }
 }

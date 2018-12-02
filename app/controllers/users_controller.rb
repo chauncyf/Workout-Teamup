@@ -90,7 +90,7 @@ class UsersController < ApplicationController
         # Tell the UserMailer to send a welcome email after save
         UserMailer.with(user: @user).confirmation_email.deliver_now
 
-        flash[:success] = 'Welcome to Workout Teamup, please confirm your email address to finish registration.' # Todo not working
+        flash[:success] = 'Welcome to Workout Teamup, please confirm your email address to finish registration.'
         format.html {redirect_to login_path}
         format.json {render :show, status: :created, location: @user}
       else
@@ -108,7 +108,7 @@ class UsersController < ApplicationController
       log_in user
       flash[:success] = 'Welcome back, your email address has been confirmed.'
     else
-      flash[:error] = 'Sorry. User does not exist'
+      flash[:danger] = 'Your email address was already confirmed.'
     end
     redirect_to root_path
   end
