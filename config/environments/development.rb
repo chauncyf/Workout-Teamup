@@ -38,13 +38,14 @@ Rails.application.configure do
   # }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_options = { from: 'workout.teamup@gmail.com' }
+  config.action_mailer.default_options = { from: 'Workout Teamup' }
+  config.action_mailer.default_url_options = { host: '0.0.0.0', port: '3000' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       address:              'smtp.gmail.com',
       port:                 587,
-      domain:               'example.com',
+      # domain:               'example.com',
       user_name:            'workout.teamup@gmail.com',
       password:             'teamup1234',
       authentication:       'plain',

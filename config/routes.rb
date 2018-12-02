@@ -34,9 +34,13 @@ Rails.application.routes.draw do
   resources :activity_participants
   resources :activities
   resources :follows
-  resources :users
+  resources :users do
+    member do
+      get :confirm_email
+      # default_url_options :host => '0.0.0.0', port: '3000'
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-
-  get '/getqrcode/:url',to:'qrcodes#get',as: :getQRcodeUrl
+  get '/getqrcode/:url', to: 'qrcodes#get', as: :getQRcodeUrl
 end

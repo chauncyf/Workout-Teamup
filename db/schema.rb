@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2018_11_10_233938) do
   end
 
   create_table "activity_participants", force: :cascade do |t|
-    t.integer "participant_id"
+    t.integer "user_id"
     t.integer "activity_id"
     t.integer "identity"
     t.datetime "created_at", null: false
@@ -130,6 +130,8 @@ ActiveRecord::Schema.define(version: 2018_11_10_233938) do
     t.string "user_name"
     t.string "password_digest"
     t.string "email"
+    t.string "confirm_token"
+    t.boolean "email_confirmed", default: false
     t.string "potrait_url"
     t.float "height"
     t.float "weight"

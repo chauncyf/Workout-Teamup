@@ -203,7 +203,7 @@ footer {
 
 .modal {
   .modal-header {
-    //font-family: 'Rancho', serif;
+    //fonts-family: 'Rancho', serif;
     .close {
       outline: 0;
     }
@@ -247,13 +247,20 @@ footer {
 
 
 .title-big {
-  //font-family: 'Roboto Slab', serif;
+  //fonts-family: 'Roboto Slab', serif;
   font-family: 'Pacifico', cursive;
 
   font-size: 3em;
 
   //text-shadow: 2px 2px 2px #aaa;
 }
+
+.login-card {
+  max-width: 32em;
+  border: none !important;
+  border-radius: 1rem !important;
+}
+
 
 .card-columns {
   margin: auto;
@@ -284,19 +291,19 @@ footer {
       }
     }
     .card-title-date {
-      //font-size: 11vw;
+      //fonts-size: 11vw;
       font-size: 2.3em;
     }
     .card-title-button {
-      //font-size: 10vw;
+      //fonts-size: 10vw;
       font-size: 1.6em;
     }
     .card-title-time {
-      //font-size: 7vw;
+      //fonts-size: 7vw;
       font-size: 1.3em;
     }
     .card-title-place {
-      //font-size: 6vw;
+      //fonts-size: 6vw;
       font-size: 1.3em;
     }
 
@@ -306,7 +313,7 @@ footer {
       font-family: 'Roboto', sans-serif;
       font-weight: 400;
 
-      //font-family: 'Patrick Hand', cursive;
+      //fonts-family: 'Patrick Hand', cursive;
     }
     .card-footer {
       border-top: none;
@@ -315,7 +322,11 @@ footer {
       font-family: 'Roboto', sans-serif;
       font-weight: 400;
 
-      //font-family: 'Patrick Hand', cursive;
+      //fonts-family: 'Patrick Hand', cursive;
+
+      .rate-star {
+        font-size: 0.6em;
+      }
     }
   }
 
@@ -336,7 +347,7 @@ footer {
     width: 95vw;
     .card {
       width: 47.5vw;
-      min-height: 47.5vw;
+      //min-height: 47.5vw;
     }
   }
 
@@ -346,7 +357,7 @@ footer {
     width: 93vw;
     .card {
       width: 31vw;
-      min-height: 31vw;
+      //min-height: 31vw;
     }
   }
 
@@ -356,7 +367,7 @@ footer {
     width: 92vw;
     .card {
       width: 23vw;
-      min-height: 23vw;
+      //min-height: 23vw;
     }
   }
 
@@ -366,7 +377,7 @@ footer {
     width: 90vw;
     .card {
       width: 18vw;
-      min-height: 18vw;
+      //min-height: 18vw;
     }
   }
 
@@ -376,7 +387,7 @@ footer {
     width: 87vw;
     .card {
       width: 14.5vw;
-      min-height: 14.5vw;
+      //min-height: 14.5vw;
     }
   }
 }

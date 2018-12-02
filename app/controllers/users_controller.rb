@@ -35,21 +35,21 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-
     @user = User.find(params[:id])
     if params[:op] == 'showButton'
       render 'show', layout: false
     end
-
   end
 
   # GET /users/new
   def new
-    if request.xhr?
-      @user = User.new
-    else
-      not_found
-    end
+    @user = User.new
+
+    # if request.xhr?
+    #   @user = User.new
+    # else
+    #   not_found
+    # end
   end
 
   def upload_avatar
@@ -82,31 +82,35 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new({user_name: user_params[:user_name], email: user_params[:email], password: user_params[:password], identity: 2})
-    # if @user.save
-    #   # Handle a successful save.
-    #   log_in @user
-    #   flash[:success] = 'Welcome to Workout Teamup'
-    #   redirect_to @user
-    # else
-    #   render 'new'
-    # end
+
     respond_to do |format|
       if @user.save
-        log_in @user
-        # flash[:success] = 'Welcome to Workout TeamUp' # Todo not working
+        # log_in @user
 
         # Tell the UserMailer to send a welcome email after save
-        UserMailer.with(user: @user).welcome_email.deliver_now
+        UserMailer.with(user: @user).confirmation_email.deliver_now
 
-        format.html {redirect_to root_path}
+        flash[:success] = 'Welcome to Workout Teamup, please confirm your email address to finish registration.'
+        format.html {redirect_to login_path}
         format.json {render :show, status: :created, location: @user}
-
-
       else
         format.html {render :new}
         format.json {render json: @user.errors, status: :unprocessable_entity}
       end
     end
+  end
+
+
+  def confirm_email
+    user = User.find_by_confirm_token(params[:id])
+    if user
+      user.email_activate
+      log_in user
+      flash[:success] = 'Welcome back, your email address has been confirmed.'
+    else
+      flash[:danger] = 'Your email address was already confirmed.'
+    end
+    redirect_to root_path
   end
 
 

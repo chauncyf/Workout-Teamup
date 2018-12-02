@@ -42,10 +42,14 @@
   </div>
 
   <!--      todo footer not show at bottom-->
-  <div class="card-footer text-right bg-transparent px-3 pt-0 material-footer-<%= activity.theme_color %>">
-    Update: <%= activity.updated_at.strftime("%m/%d/%y %H:%M") %>
+  <div class="card-footer bg-transparent px-3 pt-0 material-footer-<%= activity.theme_color %>">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-auto text-left rate-star" data-raty="true"></div>
+      <div class="col-auto text-right">
+        Update: <%= activity.updated_at.strftime("%m/%d/%y %H:%M") %>
+      </div>
+    </div>
   </div>
-  <div data-raty="true"></div>
 </div>
 <script>
     ratyAll()// make sure every raty is transformed
