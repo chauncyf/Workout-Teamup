@@ -16,7 +16,7 @@ class ActivityParticipantsTest < ApplicationSystemTestCase
 
     fill_in "Activity", with: @activity_participant.activity_id
     fill_in "Identity", with: @activity_participant.identity
-    fill_in "Participant", with: @activity_participant.participant_id
+    fill_in "Participant", with: @activity_participant.user_id
     click_on "Create Activity participant"
 
     assert_text "Activity participant was successfully created"
@@ -29,7 +29,7 @@ class ActivityParticipantsTest < ApplicationSystemTestCase
 
     fill_in "Activity", with: @activity_participant.activity_id
     fill_in "Identity", with: @activity_participant.identity
-    fill_in "Participant", with: @activity_participant.participant_id
+    fill_in "Participant", with: @activity_participant.user_id
     click_on "Update Activity participant"
 
     assert_text "Activity participant was successfully updated"

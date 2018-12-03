@@ -67,5 +67,30 @@ function dataURItoBlob(dataURI) {
 }
 
 window.ratyAll = _.throttle(() => {
-    $('[data-raty]').raty({starType: 'i'}).removeAttr('data-raty')
+    $('[data-raty]').each(function () {
+        $(this).raty({
+            starType: 'i',
+            score: $(this).data('score') || 0,
+            click(param) {
+                $.ajax({
+                    method: 'put',
+                    url: `/activity_participants/${$(this).data('id')}.json`,
+                    data: {
+                        activity_participant: {
+                            rating: param
+                        }
+                    },
+                    success(data) {
+                        if (data.id) {
+                            new PNotify({
+                                title: 'rating succeed!',
+                                type: 'success',
+                                delay: 2000
+                            });
+                        }
+                    }
+                })
+            }
+        }).removeAttr('data-raty')
+    })
 }, 300)

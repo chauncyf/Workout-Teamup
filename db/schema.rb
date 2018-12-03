@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2018_11_10_233938) do
     t.integer "user_id"
     t.integer "activity_id"
     t.integer "identity"
+    t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

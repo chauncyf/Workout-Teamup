@@ -1,4 +1,6 @@
 class IndexController < ApplicationController
+  include SessionsHelper
+
   def home
     @activities = Activity.all
   end

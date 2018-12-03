@@ -33,11 +33,11 @@ class ActivityParticipantsController < ApplicationController
 
     respond_to do |format|
       if @activity_participant.save
-        format.html { redirect_to @activity_participant, notice: 'Activity participant was successfully created.' }
-        format.json { render :show, status: :created, location: @activity_participant }
+        format.html {redirect_to @activity_participant, notice: 'Activity participant was successfully created.'}
+        format.json {render :show, status: :created, location: @activity_participant}
       else
-        format.html { render :new }
-        format.json { render json: @activity_participant.errors, status: :unprocessable_entity }
+        format.html {render :new}
+        format.json {render json: @activity_participant.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -47,11 +47,11 @@ class ActivityParticipantsController < ApplicationController
   def update
     respond_to do |format|
       if @activity_participant.update(activity_participant_params)
-        format.html { redirect_to @activity_participant, notice: 'Activity participant was successfully updated.' }
-        format.json { render :show, status: :ok, location: @activity_participant }
+        format.html {redirect_to @activity_participant, notice: 'Activity participant was successfully updated.'}
+        format.json {render :show, status: :ok, location: @activity_participant}
       else
-        format.html { render :edit }
-        format.json { render json: @activity_participant.errors, status: :unprocessable_entity }
+        format.html {render :edit}
+        format.json {render json: @activity_participant.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -61,19 +61,20 @@ class ActivityParticipantsController < ApplicationController
   def destroy
     @activity_participant.destroy
     respond_to do |format|
-      format.html { redirect_to activity_participants_url, notice: 'Activity participant was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html {redirect_to activity_participants_url, notice: 'Activity participant was successfully destroyed.'}
+      format.json {head :no_content}
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_activity_participant
-      @activity_participant = ActivityParticipant.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def activity_participant_params
-      params.require(:activity_participant).permit(:participant_id, :activity_id, :identity)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_activity_participant
+    @activity_participant = ActivityParticipant.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def activity_participant_params
+    params.require(:activity_participant).permit(:user_id, :activity_id, :identity, :rating)
+  end
 end
