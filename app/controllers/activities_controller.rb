@@ -1,6 +1,4 @@
 class ActivitiesController < ApplicationController
-  include SessionsHelper
-  include ApplicationHelper
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
   # GET /activities

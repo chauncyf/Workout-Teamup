@@ -1,5 +1,4 @@
 class ActivityParticipantsController < ApplicationController
-  include ApplicationHelper
   before_action :set_activity_participant, only: [:show, :edit, :update, :destroy]
 
   # GET /activity_participants

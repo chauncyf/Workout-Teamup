@@ -260,6 +260,13 @@ footer {
   border: none !important;
   border-radius: 1rem !important;
 }
+.not-found-card {
+  @extend .login-card;
+  max-width: 28rem;
+  .card-title, a {
+    color: #F48FB1;
+  }
+}
 
 
 .card-columns {

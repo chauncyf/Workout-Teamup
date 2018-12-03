@@ -7,12 +7,13 @@
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html.erb -->
-  <div class="card text-center shadow m-5 p-4 mx-auto" style="max-width: 28rem">
-    <div class="card-body p-0">
-      <h1 class="card-title mb-3" style="color: #F48FB1">Oops</h1>
+  <div class="card not-found-card text-center shadow-lg mx-auto my-5">
+    <div class="card-body">
+      <h1 class="card-title text-center mt-3 mb-5">Oops</h1>
       <p class="card-text">You may have mistyped the address or the page may have moved.</p>
-      <div class="card-footer  bg-transparent ">You can go back,  or try to <%= mail_to 'fanc@brandeis.edu', 'contact us', style: 'color: #F48FB1' %> if you need a hand.</div>
+      <div class="card-footer  bg-transparent ">You can go back,  or try to <%= mail_to 'fanc@brandeis.edu', 'contact us' %> if you need a hand.</div>
     </div>
   </div>
 </body>
 </html>
+
