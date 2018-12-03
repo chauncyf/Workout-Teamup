@@ -13,6 +13,10 @@ class Activity < ApplicationRecord
     comments.order(created_at: :desc)
   end
 
-  scope :working,->{where(status:2)}
+  def get_participation_by_user_id user_id
+    activity_participants.where(user_id: user_id)
+  end
+
+  scope :working, -> {where(status: 2)}
 
 end

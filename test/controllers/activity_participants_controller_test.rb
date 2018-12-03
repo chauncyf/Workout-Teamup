@@ -17,7 +17,7 @@ class ActivityParticipantsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create activity_participant" do
     assert_difference('ActivityParticipant.count') do
-      post activity_participants_url, params: { activity_participant: { activity_id: @activity_participant.activity_id, identity: @activity_participant.identity, participant_id: @activity_participant.participant_id } }
+      post activity_participants_url, params: { activity_participant: { activity_id: @activity_participant.activity_id, identity: @activity_participant.identity, user_id: @activity_participant.user_id } }
     end
 
     assert_redirected_to activity_participant_url(ActivityParticipant.last)
@@ -34,7 +34,7 @@ class ActivityParticipantsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update activity_participant" do
-    patch activity_participant_url(@activity_participant), params: { activity_participant: { activity_id: @activity_participant.activity_id, identity: @activity_participant.identity, participant_id: @activity_participant.participant_id } }
+    patch activity_participant_url(@activity_participant), params: { activity_participant: { activity_id: @activity_participant.activity_id, identity: @activity_participant.identity, user_id: @activity_participant.user_id } }
     assert_redirected_to activity_participant_url(@activity_participant)
   end
 

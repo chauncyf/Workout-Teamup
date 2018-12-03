@@ -17,7 +17,7 @@
     <% @activity_participants.each do |activity_participant| %>
       <tr>
         <td><%= activity_participant.id %></td>
-        <td><%= activity_participant.participant_id %></td>
+        <td><%= activity_participant.user_id %></td>
         <td><%= activity_participant.activity_id %></td>
         <td><%= activity_participant.identity %></td>
         <td><%= link_to 'Show', activity_participant %></td>
