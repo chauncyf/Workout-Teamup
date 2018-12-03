@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  include UsersHelper, ApplicationHelper
+  include UsersHelper
   before_action :set_user, only: [:show, :edit, :edit_password, :update, :destroy, :edit_avatar, :upload_avatar, :user_avatar_url]
 
   def join_activity
