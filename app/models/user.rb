@@ -42,8 +42,11 @@ class User < ApplicationRecord
     acitivities.where(status: 2)
   end
 
-  scope :working,->{
+  scope :working, -> {
     joins(:activity_participants).joins(:activities).merge(Activity.working)
+  }
+  scope :active_position, -> {
+    working.map(&:current_position)
   }
 
   def is_working

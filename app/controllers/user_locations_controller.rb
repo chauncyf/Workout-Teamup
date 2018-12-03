@@ -9,7 +9,7 @@ class UserLocationsController < ApplicationController
 
   def working
     respond_to do |format|
-      format.json{render json: User.working}
+      format.json {render json: User.active_position}
     end
   end
 
@@ -34,11 +34,11 @@ class UserLocationsController < ApplicationController
 
     respond_to do |format|
       if @user_location.save
-        format.html { redirect_to @user_location, notice: 'User location was successfully created.' }
-        format.json { render :show, status: :created, location: @user_location }
+        format.html {redirect_to @user_location, notice: 'User location was successfully created.'}
+        format.json {render :show, status: :created, location: @user_location}
       else
-        format.html { render :new }
-        format.json { render json: @user_location.errors, status: :unprocessable_entity }
+        format.html {render :new}
+        format.json {render json: @user_location.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -48,11 +48,11 @@ class UserLocationsController < ApplicationController
   def update
     respond_to do |format|
       if @user_location.update(user_location_params)
-        format.html { redirect_to @user_location, notice: 'User location was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user_location }
+        format.html {redirect_to @user_location, notice: 'User location was successfully updated.'}
+        format.json {render :show, status: :ok, location: @user_location}
       else
-        format.html { render :edit }
-        format.json { render json: @user_location.errors, status: :unprocessable_entity }
+        format.html {render :edit}
+        format.json {render json: @user_location.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -62,19 +62,20 @@ class UserLocationsController < ApplicationController
   def destroy
     @user_location.destroy
     respond_to do |format|
-      format.html { redirect_to user_locations_url, notice: 'User location was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html {redirect_to user_locations_url, notice: 'User location was successfully destroyed.'}
+      format.json {head :no_content}
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user_location
-      @user_location = UserLocation.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_location_params
-      params.require(:user_location).permit(:user_id, :latitude, :longitude, :status)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user_location
+    @user_location = UserLocation.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_location_params
+    params.require(:user_location).permit(:user_id, :latitude, :longitude, :status)
+  end
 end

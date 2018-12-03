@@ -39,7 +39,7 @@
 
 <hr class="my-4">
 
-<div class="card-columns">
+<div id="post_display_container" class="card-columns">
   <% @activities.reverse_each do |activity| %>
     <%= render partial: 'activities/poster', locals: {activity: activity} %>
   <% end %>
@@ -83,12 +83,14 @@
 </script>
 
 <script>
+  // get current posion and upload them every 10 seconds
     var interval = setInterval(() => {
         navigator.geolocation.getCurrentPosition(({coords}) => {
             console.log(`latitude:${coords.latitude},longitude:${coords.longitude}`)
             //$.ajax() // use ajax to upload user location
         })
     }, 10000);
+    // make sure all the interval is cleared
     $(document).on('turbolinks:load', () => {
         clearTurboLink = () => {
             clearInterval(interval);

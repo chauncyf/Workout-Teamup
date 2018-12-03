@@ -3,9 +3,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :edit_password, :update, :destroy, :edit_avatar, :upload_avatar, :user_avatar_url]
 
   def join_activity
-    ActivityParticipant.create(user_id: current_user.id, activity_id: params[:activity_id], identity: 2)
-    flash[:success] = 'Activity joined!'
-    redirect_to root_path
+    activity_participation = ActivityParticipant.create(user_id: current_user.id, activity_id: params[:activity_id], identity: 2)
+    @activities = Activity.all
+    render 'join_activity'
   end
 
   def joined_activities

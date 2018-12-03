@@ -1,0 +1,5 @@
+$('#post_display_container').html(`
+    <% @activities.reverse_each do |activity| %>
+    <%= render partial: 'activities/poster', locals: {activity: activity} %>
+    <% end %>
+`)
