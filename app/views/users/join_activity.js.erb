@@ -3,3 +3,7 @@ $('#post_display_container').html(`
     <%= render partial: 'activities/poster', locals: {activity: activity} %>
     <% end %>
 `)
+new PNotify({
+    title: 'successfully join activity',
+    type: 'success'
+});

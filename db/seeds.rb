@@ -20,28 +20,28 @@ User.create(user_name: 'visitor1', email: 'visitor1@brandeis.edu', password: '12
                   place: Faker::Games::Overwatch.location,
                   content: Faker::MostInterestingManInTheWorld.quote,
                   theme_color: [:purple, :pink, :blue, :teal, :green, :orange, :brown, :grey].sample,
-                  starter_id: 1, status: 1)
+                  starter_id: 1, status: 2)
 end
 10.times do
   Activity.create(activity_date: Faker::Time.forward(30),
                   place: Faker::Hobbit.location,
                   content: Faker::Hobbit.quote,
                   theme_color: [:purple, :pink, :blue, :teal, :green, :orange, :brown, :grey].sample,
-                  starter_id: 1, status: 1)
+                  starter_id: 1, status: 2)
 end
 10.times do
   Activity.create(activity_date: Faker::Time.forward(30),
                   place: Faker::Games::Overwatch.location,
                   content: Faker::FamousLastWords.last_words,
                   theme_color: [:purple, :pink, :blue, :teal, :green, :orange, :brown, :grey].sample,
-                  starter_id: 1, status: 1)
+                  starter_id: 1, status: 2)
 end
 10.times do
   Activity.create(activity_date: Faker::Time.forward(30),
                   place: Faker::Games::Overwatch.location,
                   content: Faker::Games::Overwatch.quote,
                   theme_color: [:purple, :pink, :blue, :teal, :green, :orange, :brown, :grey].sample,
-                  starter_id: 1, status: 1)
+                  starter_id: 1, status: 2)
 end
 
 Tag.create(type_name: 'pullup', color: 'green')
