@@ -80,4 +80,14 @@
     }).on('ajax:error', function (event) {
         //TODO
     })
+
+    window.refreshPosts = function () {
+        $.ajax({
+            url: '<%= refresh_posts_url %>',
+            data: {
+                page: 1,
+                size: 20,
+            }
+        })
+    }
 </script>
