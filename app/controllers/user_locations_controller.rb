@@ -8,9 +8,7 @@ class UserLocationsController < ApplicationController
   end
 
   def working
-    respond_to do |format|
-      format.json {render json: User.active_position}
-    end
+    render json: User.active_position
   end
 
   # GET /user_locations/1
