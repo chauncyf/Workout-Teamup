@@ -47,7 +47,7 @@ class User < ApplicationRecord
         .merge(Activity.working).distinct
   }
   scope :active_position, -> {
-    working.map {|x| x.as_json.merge(x.current_position.as_json)}
+    working.map {|x| x.current_position.as_json.merge(x.as_json)}
   }
 
   def is_working

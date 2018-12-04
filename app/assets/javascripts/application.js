@@ -23,7 +23,7 @@ $(function () {
 
     /*PNotify.defaults.styling='bootstrap4'
     PNotify.defaults.icons='bootstrap4'*/
-
+    // binding all image upload dom
     $(document).on("change", "[data-file-refresh]", function (e) {
         $(this).next().html(e.currentTarget.files[0].name)
     })

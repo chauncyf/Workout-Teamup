@@ -50,6 +50,17 @@
         }
     }
 
+    function getOthersPosition() {
+        $.ajax({
+            url: '<%=user_location_working_url %>',
+            method: 'get',
+            success() {
+
+            }
+        })
+    }
+
+    getOthersPosition()
     // make sure to call initMap
     $(() => {
         initMap()
