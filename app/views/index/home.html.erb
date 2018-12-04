@@ -76,7 +76,7 @@
         [data, status, xhr] = event.detail
         posterModal.modal("hide")
         console.log(data)
-        //TODO page refresh
+        refreshPosts()
     }).on('ajax:error', function (event) {
         //TODO
     })
