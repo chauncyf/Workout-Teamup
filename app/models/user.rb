@@ -44,10 +44,10 @@ class User < ApplicationRecord
 
   scope :working, -> {
     left_joins(:activity_participants).left_joins(:activities)
-                                      .merge(Activity.working).distinct
+        .merge(Activity.working).distinct
   }
   scope :active_position, -> {
-    working
+    working.map {|x| x.as_json.merge(x.current_position.as_json)}
   }
 
   def is_working

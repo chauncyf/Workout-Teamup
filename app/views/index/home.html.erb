@@ -81,21 +81,3 @@
         //TODO
     })
 </script>
-
-<script>
-  // get current posion and upload them every 10 seconds
-    var interval = setInterval(() => {
-        navigator.geolocation.getCurrentPosition(({coords}) => {
-            console.log(`latitude:${coords.latitude},longitude:${coords.longitude}`)
-            //$.ajax() // use ajax to upload user location
-        })
-    }, 10000);
-    // make sure all the interval is cleared
-    $(document).on('turbolinks:load', () => {
-        clearTurboLink = () => {
-            clearInterval(interval);
-            $(document).off('turbolinks:load', clearTurboLink)
-        };
-        $(document).on('turbolinks:load', clearTurboLink)
-    })
-</script>
