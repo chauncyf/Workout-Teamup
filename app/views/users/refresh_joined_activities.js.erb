@@ -1,0 +1,20 @@
+$('#post_display_container_joined').html(`
+<% @activities_joined.each do |activity| %>
+    <tr>
+      <td>
+        <%= render partial: 'activities/poster', locals: {activity: activity} %>
+      </td>
+    </tr>
+  <% end %>
+`)
+
+
+$('#post_display_container_started').html(`
+<% @@activities_started.each do |activity| %>
+    <tr>
+      <td>
+        <%= render partial: 'activities/poster', locals: {activity: activity} %>
+      </td>
+    </tr>
+  <% end %>
+`)

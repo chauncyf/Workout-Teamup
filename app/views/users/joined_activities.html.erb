@@ -2,25 +2,25 @@
 
 <h1 class="title-big text-center">Activities I Joined</h1>
 <hr>
-<div class="card-columns">
-<!--<table class="table table-striped">-->
-<!--  <tbody>-->
+<div id="post_display_container_joined" class="card-columns">
+  <!--<table class="table table-striped">-->
+  <!--  <tbody>-->
   <% @activities_joined.each do |activity| %>
-      <tr>
-       <td>
-         <%= render partial: 'activities/poster', locals: {activity: activity} %>
-       </td>
-      </tr>
-    <% end %>
+    <tr>
+      <td>
+        <%= render partial: 'activities/poster', locals: {activity: activity} %>
+      </td>
+    </tr>
+  <% end %>
 </div>
 <!--  </tbody>-->
 <!--</table>-->
 
 <h1 class="title-big text-center mt-5">Activities Started By Me</h1>
 <hr>
-<div class="card-columns">
-<!--<table class="table table-striped">-->
-<!--  <tbody>-->
+<div id="post_display_container_started" class="card-columns">
+  <!--<table class="table table-striped">-->
+  <!--  <tbody>-->
   <% @activities_started.each do |activity| %>
     <tr>
       <td>
@@ -28,6 +28,17 @@
       </td>
     </tr>
   <% end %>
-<!--  </tbody>-->
-<!--</table>-->
+  <!--  </tbody>-->
+  <!--</table>-->
 </div>
+<script>
+    window.refreshPosts = function () {
+        $.ajax({
+            url: '<%= refresh_posts_achievements_url %>',
+            data: {
+                page: 1,
+                size: 20,
+            }
+        })
+    }
+</script>
