@@ -84,31 +84,33 @@
 
 <%= debug(params) if Rails.env.development? %>
 </body>
-<script>
-    // get current posion and upload them every 10 seconds
-    var interval = setInterval(() => {
-        navigator.geolocation.getCurrentPosition(({coords}) => {
-            console.log(`latitude:${coords.latitude},longitude:${coords.longitude}`)
-            $.ajax({
-                method: 'post',
-                url: '<%= user_locations_url %>' + '.json',
-                data: {
-                    user_location: {
-                        latitude: coords.latitude,
-                        longitude: coords.longitude,
-                        user_id: '<%= current_user.id %>'
-                    }
-                }
-            })
-        })
-    }, 10000);
-    // make sure all the interval is cleared
-    $(document).on('turbolinks:load', () => {
-        let clearTurboLink = () => {
-            clearInterval(interval);
-            $(document).off('turbolinks:load', clearTurboLink)
-        };
-        $(document).on('turbolinks:load', clearTurboLink)
-    })
-</script>
+<% if logged_in? %>
+  <script>
+      // get current posion and upload them every 10 seconds
+      var interval = setInterval(() => {
+          navigator.geolocation.getCurrentPosition(({coords}) => {
+              console.log(`latitude:${coords.latitude},longitude:${coords.longitude}`)
+              $.ajax({
+                  method: 'post',
+                  url: '<%= user_locations_url %>' + '.json',
+                  data: {
+                      user_location: {
+                          latitude: coords.latitude,
+                          longitude: coords.longitude,
+                          user_id: '<%= current_user.id %>'
+                      }
+                  }
+              })
+          })
+      }, 10000);
+      // make sure all the interval is cleared
+      $(document).on('turbolinks:load', () => {
+          let clearTurboLink = () => {
+              clearInterval(interval);
+              $(document).off('turbolinks:load', clearTurboLink)
+          };
+          $(document).on('turbolinks:load', clearTurboLink)
+      })
+  </script>
+<% end %>
 </html>

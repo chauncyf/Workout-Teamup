@@ -2,6 +2,7 @@ class User < ApplicationRecord
   before_create :confirmation_token
 
   include Gravtastic
+  include UsersHelper
   gravtastic :email
   has_one_attached :avatar
   has_many :follows, foreign_key: :followee
@@ -46,9 +47,14 @@ class User < ApplicationRecord
     left_joins(:activity_participants).left_joins(:activities)
         .merge(Activity.working).distinct
   }
-  scope :active_position, -> {
-    working.map {|x| x.current_position.as_json.merge(x.as_json)}
-  }
+
+  def self.active_position
+    working.map do |x|
+      res = x.current_position.as_json.merge(x.as_json)
+      res = map_avatar_url(x)
+      res
+    end
+  end
 
   def is_working
     on_going_activity.count > 1
