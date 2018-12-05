@@ -49,11 +49,7 @@ class User < ApplicationRecord
   }
 
   def self.active_position
-    working.map do |x|
-      res = x.current_position.as_json.merge(x.as_json)
-      res = map_avatar_url(x)
-      res
-    end
+    working
   end
 
   def is_working

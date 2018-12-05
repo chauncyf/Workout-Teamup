@@ -39,11 +39,12 @@
                 map.setCenter(pos);
                 map.setZoom(17);
                 let iconUrl = '<%= map_avatar_url current_user %>'
+                console.log(iconUrl)
                 var marker = new google.maps.Marker({
                     position: pos,
                     title: "Here you are!",
                     animation: google.maps.Animation.DROP,
-                    icon: iconUrl,
+                    icon: iconUrl.replace(/&amp;/g, '&'),
                 });
                 marker.setMap(map);
             }, function () {
@@ -71,9 +72,9 @@
                             lat: user.latitude,
                             lng: user.longitude
                         },
-                        icon: user.avatar_url,
+                        icon: user.avatar_url.replace(/&amp;/g, '&'),
                     });
-                    if (user.id != currentId) {
+                    if (currentUserFlag && user.id != currentId) {
                         marker.setMap(map)
                     }
                     return marker

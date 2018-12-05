@@ -1,4 +1,5 @@
 class UserLocationsController < ApplicationController
+  include UsersHelper
   before_action :set_user_location, only: [:show, :edit, :update, :destroy]
 
   # GET /user_locations
@@ -8,7 +9,12 @@ class UserLocationsController < ApplicationController
   end
 
   def working
-    render json: User.active_position
+    users = User.active_position.map {|x|
+      res = x.current_position.as_json.merge(x.as_json)
+      res[:avatar_url]=map_avatar_url(x)
+      res
+    }
+    render json:users
   end
 
   # GET /user_locations/1
