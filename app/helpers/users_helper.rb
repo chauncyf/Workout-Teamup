@@ -15,4 +15,12 @@ module UsersHelper
     avatar_url user, "25x25!"
   end
 
+  def activity_starter_avatar(starter_id)
+    user = User.get_one(starter_id)
+    avatar_for(user)
+  end
+
+  def activity_starter_name(starter_id)
+    User.get_one(starter_id).user_name
+  end
 end

@@ -1,40 +1,46 @@
 <div class="card shadow mb-3">
   <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
 
-  <div class="card-header px-3 py-1 text-white material-head-<%= activity.theme_color %>">
-    <div class="row align-items-center justify-content-between">
-      <div class="col col-auto card-title card-title-date m-0">
-        <% if !activity.activity_date.nil? %>
-          <%= activity.activity_date.strftime("%b %d") %>
-        <% else %>
-          Sometime
-        <% end %>
-      </div>
+  <div class="card-header px-3 py-2 text-white material-head-<%= activity.theme_color %>">
 
+    <div class="row justify-content-between">
+      <div class="col col-auto card-title card-starter-avatar m-0"><%= activity_starter_avatar(activity.starter_id) %>  <%= activity_starter_name(activity.starter_id) %></div>
+<!--      <div class="col col-auto"><%#= activity_starter_name(activity.starter_id) %></div>-->
+
+      <%# if activity joined  %>
+<!--        <div class="col col-auto fas fa-check"></div>-->
+      <%# end %>
       <div class="col col-auto card-title card-title-button text-right m-0">
         <% if !logged_in? %>
           <%= link_to "", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "fas fa-ellipsis-v"} %>
         <% else %>
           <%#= link_to "", "/join_activity/#{activity.id}", class: "fas fa-plus", method: :post %>
-          <%= link_to "", "/join_activity/#{activity.id}", remote: true, class: "fas fa-ellipsis-v", method: :post %>
+          <div class="dropdown">
+            <div class="fas fa-ellipsis-v" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Join Activity</a>
+
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Follow <%= activity_starter_name(activity.starter_id) %></a>
+              <a class="dropdown-item" href="#">Email <%= activity_starter_name(activity.starter_id) %></a>
+            </div>
+          </div>
         <% end %>
       </div>
     </div>
 
-    <div class="row align-items-center justify-content-between">
-      <div class="col col-auto card-title card-title-time m-0">
-        <% if !activity.activity_date.nil? %>
-          <%#= activity.activity_date.strftime("%a %H:%M") %>
-          <%= activity.activity_date.strftime("%a %H:%M") %>
-        <% else %>
-          Undecided
-        <% end %>
-      </div>
-
-      <div class="col col-auto card-title card-title-place text-right m-0">
-        <%= activity.place %>
-      </div>
+    <div class="card-title card-title-date m-0">
+      <% if !activity.activity_date.nil? %>
+        <%= activity.activity_date.strftime("%b %d, %a %H:%M") %>
+      <% else %>
+        Sometime
+      <% end %>
     </div>
+
+    <div class="card-title card-title-place m-0">
+      <%= activity.place %>
+    </div>
+
   </div>
 
   <div class="card-body p-3 material-body-<%= activity.theme_color %> ">

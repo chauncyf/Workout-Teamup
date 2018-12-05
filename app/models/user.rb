@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   before_create :confirmation_token
 
-  include Gravtastic
+  include Gravtastic, UsersHelper
   gravtastic :email
   has_one_attached :avatar
   has_many :follows, foreign_key: :followee
