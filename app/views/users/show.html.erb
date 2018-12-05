@@ -29,9 +29,9 @@
                 <div class="border"></div>
                 <!-- need to reflect real number of follows and followers -->
                 <p>FOLLOWER</p>
-                <span>320</span>
+                <span><%= Follow.where(followee_id: @user.id).count %></span>
                 <p>FOLLOWING</p>
-                <span>500</span>
+                <span><%= Follow.where(follower_id: @user.id).count %></span>
               </div>
             </div>
 
