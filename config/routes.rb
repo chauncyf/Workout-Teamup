@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :activity_contents
   root 'index#home' # can be called as root_path
 
   get '/not_found', to: 'index#not_found'

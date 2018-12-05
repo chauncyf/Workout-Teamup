@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_10_233938) do
+ActiveRecord::Schema.define(version: 2018_12_05_222841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,22 @@ ActiveRecord::Schema.define(version: 2018_11_10_233938) do
     t.string "theme_color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "activity_contents", force: :cascade do |t|
+    t.integer "activity_id"
+    t.string "sport_option"
+    t.string "customize_sport"
+    t.float "quantity"
+    t.string "quan_unit"
+    t.float "duration"
+    t.string "dur_unit"
+    t.string "equipment"
+    t.text "suggestion"
+    t.text "alert"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "strength"
   end
 
   create_table "activity_participants", force: :cascade do |t|

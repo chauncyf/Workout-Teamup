@@ -9,6 +9,8 @@ class Activity < ApplicationRecord
 
   has_many :photos
 
+  has_many :activity_contents
+
   def commentsList # comments ordered by time
     comments.order(created_at: :desc)
   end
