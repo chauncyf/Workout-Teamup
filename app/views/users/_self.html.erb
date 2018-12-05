@@ -6,7 +6,7 @@
         <div class="col-md-3 col-sm-3 col-xs-12 user-profile-part pull-left">
           <div class="row ">
             <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
-              <%=avatar_for(@user)%>
+              <%= avatar_for @user,id: "upload_avatar_button", data: {toggle: "modal", target: "#upload_avatar_modal"} %>
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
               <!-- Edit user Button Trigger -->
@@ -155,6 +155,22 @@
   </div>
 </div>
 
+<!-- Upload Avatar Modal -->
+<div class="modal fade" id="upload_avatar_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="pwdModalLabel">upload your avatar!</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Change password Modal -->
 
 <div class="modal fade" id="changePwdModal" tabindex="-1" role="dialog" aria-labelledby="pwdModalLabel" aria-hidden="true">
@@ -233,4 +249,44 @@
         // failed logic
         //TODO
     })
+
+    ;(function () {
+        var avatarModal = $('#upload_avatar_modal');
+        var modalBody = avatarModal.find('.modal-body');
+        $('#upload_avatar_button').on('click', function () {
+            $.ajax({
+                url: '<%= edit_avatar_path(@user.id) %>',
+                method: 'get',
+                success: function (data) {
+                    modalBody.html(data);
+                    avatarModal.modal('show')
+                }
+            })
+        })
+        avatarModal.on('click','#submit_avatar',function(e){
+            e.preventDefault();
+            document.getElementById('cropper').cropper.getCroppedCanvas().toBlob((blob)=>{
+                let formData=new FormData()
+                formData.append('avatar',blob)
+                $.ajax({
+                    url:'<%= upload_avatar_path(@user.id) %>',
+                    type:'post',
+                    data:formData,
+                    contentType:false,
+                    processData:false,
+                    success:()=>{
+                        avatarModal.modal('hide')
+                        $.ajax({
+                            url:'<%= user_avatar_url_path(@user.id) %>',
+                            type:'get',
+                            success:(data)=>{
+                                $('.avatar').attr('src',data)
+                            }
+                        })
+                        //TODO
+                    }
+                })
+            })
+        })
+    }());
 </script>

@@ -13,6 +13,14 @@ class UsersController < ApplicationController
     @activities_started = Activity.where(starter_id: current_user)
   end
 
+  def refresh_joined_activities
+    page = params[:page]
+    size = params[:size]
+    @activities_joined = current_user.activities
+    @activities_started = Activity.where(starter_id: current_user)
+    render 'refresh_joined_activities'
+  end
+
   def follow
     Follow.create(followee_id: params[:followee_id], follower_id: current_user.id)
   end

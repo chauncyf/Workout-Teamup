@@ -53,6 +53,7 @@ class ActivitiesController < ApplicationController
           MessageChannel.broadcast_to(user, {type: 1, count: 1, msg: {
               text: 'a new poster is posted', title: 'Message'}})
         end
+        format.js{render 'users/create_activity'}
 
       else
         #format.js {render json: {status: 2}}

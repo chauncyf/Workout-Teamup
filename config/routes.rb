@@ -5,16 +5,19 @@ Rails.application.routes.draw do
 
   get 'map/show', as: :map_path
 
-  get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 
-  get  '/signup',  to: 'users#new'
-  post '/signup',  to: 'users#create'
-  get  '/users/:id/edit_password', to: 'users#edit_password', as: :edit_password
-  get '/users/:id/edit_avatar', to:'users#edit_avatar',as: :edit_avatar
-  post '/upload_avatar/:id', to:'users#upload_avatar',as: :upload_avatar
-  get '/users/:id/user_avatar_url', to:'users#user_avatar_url', as: :user_avatar_url
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
+  get '/users/:id/edit_password', to: 'users#edit_password', as: :edit_password
+  get '/users/:id/edit_avatar', to: 'users#edit_avatar', as: :edit_avatar
+  post '/upload_avatar/:id', to: 'users#upload_avatar', as: :upload_avatar
+  get '/users/:id/user_avatar_url', to: 'users#user_avatar_url', as: :user_avatar_url
+
+  get '/index/refresh', to: 'index#refresh', as: :refresh_posts
+  get '/users/refresh_posts', to: 'users#refresh_joined_activities', as: :refresh_posts_achievements
 
   post '/join_activity/:activity_id', to: 'users#join_activity'
   get '/joined_activities', to: 'users#joined_activities'
