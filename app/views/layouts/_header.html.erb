@@ -37,12 +37,9 @@
       <li class="divider-vertical"></li>
 
       <% if logged_in? %>
-<!--        <li class="nav-item line-height: 50px"><%#= avatar_for current_user %></li>-->
         <li class="nav-item dropdown">
-<!--          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Me</a>-->
-          <a class="nav-link p-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= avatar_for current_user %></a>
+          <div class="nav-link p-0" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= avatar_for current_user %></div>
           <div class="dropdown-menu shadow-lg" aria-labelledby="navbarDropdown">
-<!--          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">-->
             <div class="dropdown-item mb-0">Hi, <%= current_user.user_name %></div>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href=<%= user_path(current_user) %>>Profile</a>
@@ -55,9 +52,8 @@
 
         <% if current_user.identity == 1 %>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ControlPanel</a>
+            <div class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ControlPanel</div>
             <div class="dropdown-menu shadow-lg" aria-labelledby="navbarDropdown">
-<!--            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">-->
               <a class="dropdown-item" href=<%= users_path %>>All Users</a>
               <a class="dropdown-item" href=<%= activities_path %>>All Activities</a>
               <a class="dropdown-item" href=<%= activity_participants_path %>>All Activity Participants</a>
@@ -67,7 +63,6 @@
 
       <% else %>
         <li class="nav-item">
-          <!-- 'data-backdrop': true, 'data-keyboard': true -->
           <%= link_to "Login", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"}%>
         </li>
       <% end %>

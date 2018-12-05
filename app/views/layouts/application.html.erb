@@ -33,7 +33,7 @@
   <!--    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">-->
 
   <!-- google map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= getMapKey %>" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV.fetch('MAP_KEY') %>" async defer></script>
 </head>
 <body>
 <%= render 'layouts/header' %>

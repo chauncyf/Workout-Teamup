@@ -75,15 +75,15 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_options = { from: 'Workout Teamup' }
-  config.action_mailer.default_url_options = { host: "workout-teamup.herokuapp.com" }
+  config.action_mailer.default_url_options = { host: ENV.fetch('APPLICATION_HOST') }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      address:              'smtp.gmail.com',
-      port:                 587,
-      domain:               'workout-teamup.herokuapp.com',
-      user_name:            'workout.teamup@gmail.com',
-      password:             'teamup1234',
+      address:              ENV.fetch('SMTP_ADDRESS'),
+      port:                 ENV.fetch('SMTP_PORT'),
+      domain:               ENV.fetch('SMTP_DOMAIN'),
+      user_name:            ENV.fetch('SMTP_USERNAME'),
+      password:             ENV.fetch('SMTP_PASSWORD'),
       authentication:       'plain',
       enable_starttls_auto: true }
 

@@ -152,10 +152,10 @@ a {
   //text-shadow: 2px 2px 2px #aaa;
 }
 
-.dropdown:hover .dropdown-menu, .dropdown-menu.show, .dropleft:hover .dropdown-menu {
+.dropdown:hover .dropdown-menu, .dropleft:hover .dropdown-menu, .dropdown-menu.show {
   display: block;
   border: none;
-  border-radius: 0.5rem
+  border-radius: 0.5rem;
 }
 
 /* navbar */
