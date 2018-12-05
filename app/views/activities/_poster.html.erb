@@ -18,8 +18,7 @@
           <div class="dropdown">
             <div class="fas fa-ellipsis-v" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Join Activity</a>
-
+              <%= link_to "Join Activity", "/join_activity/#{activity.id}", remote: true, class: "dropdown-item", method: :post %>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Follow <%= activity_starter_name(activity.starter_id) %></a>
               <a class="dropdown-item" href="#">Email <%= activity_starter_name(activity.starter_id) %></a>
