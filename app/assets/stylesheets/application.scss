@@ -152,6 +152,12 @@ a {
   //text-shadow: 2px 2px 2px #aaa;
 }
 
+.dropdown:hover .dropdown-menu, .dropdown-menu.show, .dropleft:hover .dropdown-menu {
+  display: block;
+  border: none;
+  border-radius: 0.5rem
+}
+
 /* navbar */
 
 .navbar {
@@ -171,10 +177,6 @@ a {
     margin: 0 8px;
     border: 0.6px solid;
     color: #818181;
-  }
-
-  .dropdown:hover .dropdown-menu {
-    display: block;
   }
 
   .nav-link {
@@ -356,20 +358,26 @@ footer {
       font-family: 'Roboto Slab', serif;
         font-weight: 300;
 
-      .fas{
-        color: #FFF;
-        transition: transform 1.5s ease-in-out;
-      }
-      .fas:hover{
-        text-decoration: none;
-        transform: rotate(-360deg);
-      }
+      //.fas{
+        //color: #FFF;
+        //transition: transform 1.5s ease-in-out;
+      //}
+      //.fas:hover{
+      //  text-decoration: none;
+      //  transform: rotate(-360deg);
+      //}
     }
     .card-starter-avatar {
       img {
         width: 2.2rem;
         height: 2.2rem;
         margin-right: 0.1em;
+        transition: transform 1.5s ease-in-out;
+
+      }
+      img:hover {
+        transform: rotate(-360deg);
+
       }
       font-size: 1.5em;
     }

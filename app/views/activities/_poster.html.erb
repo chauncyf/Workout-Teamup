@@ -12,12 +12,12 @@
       <%# end %>
       <div class="col col-auto card-title card-title-button text-right m-0">
         <% if !logged_in? %>
-          <%= link_to "", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "fas fa-ellipsis-v"} %>
+          <%= link_to "", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "fas fa-ellipsis-v text-white"} %>
         <% else %>
           <%#= link_to "", "/join_activity/#{activity.id}", class: "fas fa-plus", method: :post %>
-          <div class="dropdown">
+          <div class="dropleft">
             <div class="fas fa-ellipsis-v" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdownMenuButton">
               <%= link_to "Join Activity", "/join_activity/#{activity.id}", remote: true, class: "dropdown-item", method: :post %>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Follow <%= activity_starter_name(activity.starter_id) %></a>
