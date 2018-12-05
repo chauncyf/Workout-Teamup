@@ -356,30 +356,39 @@ footer {
       font-family: 'Roboto Slab', serif;
         font-weight: 300;
 
-      a{
+      .fas{
         color: #FFF;
         transition: transform 1.5s ease-in-out;
       }
-      a:hover{
+      .fas:hover{
         text-decoration: none;
         transform: rotate(-360deg);
       }
     }
-    .card-title-date {
-      //fonts-size: 11vw;
-      font-size: 2.3em;
+    .card-starter-avatar {
+      img {
+        width: 2.2rem;
+        height: 2.2rem;
+        margin-right: 0.1em;
+      }
+      font-size: 1.5em;
     }
-    .card-title-button {
-      //fonts-size: 10vw;
-      font-size: 1.6em;
+
+    .card-title-date {
+      //font-size: 2.3em;
+      font-size: 1em;
+
     }
     .card-title-time {
-      //fonts-size: 7vw;
-      font-size: 1.3em;
+      //font-size: 1.3em;
+      font-size: 1em;
+    }
+    .card-title-button {
+      font-size: 1.6em;
     }
     .card-title-place {
-      //fonts-size: 6vw;
-      font-size: 1.3em;
+      //font-size: 1.3em;
+      font-size: 1em;
     }
 
     .card-body {

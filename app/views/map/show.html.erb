@@ -14,7 +14,13 @@
 </style>
 <div id="map"></div>
 <script>
-    var map, infoWindow;
+    let map, infoWindow;
+    let currentUserFlag = false// if we cannot get current user's position
+    // from the browser, we can get it from database
+    let currentId = '<%= current_user.id %>'
+    let object = {}// use this object to indicate if the page is re rendered,
+    // so we can clear the timeout easily by checking it
+    window.mapRefreshSymbol = object
 
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -22,9 +28,9 @@
             zoom: 6
         });
         infoWindow = new google.maps.InfoWindow;
-
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
+            currentUserFlag = true//
             navigator.geolocation.getCurrentPosition(function (position) {
                 var pos = {
                     lat: position.coords.latitude,
@@ -33,12 +39,12 @@
                 map.setCenter(pos);
                 map.setZoom(17);
                 let iconUrl = '<%= map_avatar_url current_user %>'
+                console.log(iconUrl)
                 var marker = new google.maps.Marker({
                     position: pos,
                     title: "Here you are!",
                     animation: google.maps.Animation.DROP,
-                    icon: iconUrl,
-                    optimized: false
+                    icon: iconUrl.replace(/&amp;/g, '&'),
                 });
                 marker.setMap(map);
             }, function () {
@@ -50,17 +56,44 @@
         }
     }
 
+    let markerData = []
+
     function getOthersPosition() {
         $.ajax({
             url: '<%=user_location_working_url %>',
             method: 'get',
-            success() {
-
+            success(data) {
+                markerData.forEach((marker) => {
+                    marker.setMap(null)
+                })
+                markerData = data.map((user) => {
+                    var marker = new google.maps.Marker({
+                        position: {
+                            lat: user.latitude,
+                            lng: user.longitude
+                        },
+                        icon: user.avatar_url.replace(/&amp;/g, '&'),
+                    });
+                    if (currentUserFlag && user.id != currentId) {
+                        marker.setMap(map)
+                    }
+                    return marker
+                })
             }
         })
     }
 
     getOthersPosition()
+
+    function timeout() {
+        setTimeout(() => {
+            if (window.mapRefreshSymbol != object) return
+            timeout();
+            getOthersPosition()
+        }, 30000)
+    }
+
+    timeout()
     // make sure to call initMap
     $(() => {
         initMap()

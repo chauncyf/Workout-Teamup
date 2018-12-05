@@ -17,6 +17,6 @@ class Activity < ApplicationRecord
     activity_participants.where(user_id: user_id)
   end
 
-  scope :working, -> {where(status: 2)}
+  scope :working, -> { where(status: 2) }
 
 end
