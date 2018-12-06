@@ -1,4 +1,8 @@
 class Activity < ApplicationRecord
+  validates :place, :activity_date, presence: true
+
+
+
   has_many :activity_participants
   has_many :users, through: :activity_participants
 
