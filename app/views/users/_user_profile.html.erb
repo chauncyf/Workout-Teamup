@@ -219,13 +219,13 @@
 
 <script>
     var profileModal = $('#editUserModal');
-    var modalBodyy = profileModal.find('.modal-body');
+    var modalBody = profileModal.find('.modal-body');
     $('#userInfo_edit_button').on('click', function () {
         $.ajax({
             url: '<%= edit_user_path(user.id) %>',
             method: 'get',
             success: function (data) {
-                modalBodyy.html(data);
+                modalBody.html(data);
                 profileModal.modal('show')
             }
         })

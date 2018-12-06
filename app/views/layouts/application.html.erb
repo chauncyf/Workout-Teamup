@@ -36,6 +36,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV.fetch('MAP_KEY') %>" async defer></script>
 </head>
 <body>
+<%= render 'layouts/modals' %>
 <%= render 'layouts/header' %>
 
 <% flash.each do |message_type, message| %>
@@ -89,7 +90,6 @@
       // get current posion and upload them every 10 seconds
       var interval = setInterval(() => {
           navigator.geolocation.getCurrentPosition(({coords}) => {
-              console.log(`latitude:${coords.latitude},longitude:${coords.longitude}`)
               $.ajax({
                   method: 'post',
                   url: '<%= user_locations_url %>' + '.json',
