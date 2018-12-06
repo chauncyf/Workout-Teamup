@@ -14,24 +14,24 @@
       </li>
       <li class="nav-item">
         <% if !logged_in? %>
-          <%= link_to "Achievement", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"}%>
+          <%= link_to "Achievement", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"} %>
         <% else %>
           <a class="nav-link" href=<%= joined_activities_path %>>Achievement</a>
         <% end %>
       </li>
       <li class="nav-item">
         <% if !logged_in? %>
-          <%= link_to "Map", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"}%>
+          <%= link_to "Map", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"} %>
         <% else %>
           <%= link_to "Map", :map_path, class: "nav-link" %>
         <% end %>
       </li>
       <li class="nav-item">
         <% if !logged_in? %>
-          <%= link_to "Chat", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"}%>
+          <%= link_to "Chat", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"} %>
         <% else %>
           <a class="nav-link" href="#">Chat</a>
-      <% end %>
+        <% end %>
       </li>
 
       <li class="divider-vertical"></li>
@@ -42,7 +42,7 @@
           <div class="dropdown-menu shadow-lg" aria-labelledby="navbarDropdown">
             <div class="dropdown-item mb-0">Hi, <%= current_user.user_name %></div>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href=<%= user_path(current_user) %>>Profile</a>
+            <a class="dropdown-item" href=<%= profile_path(current_user) %>>Profile</a>
             <a class="dropdown-item" href="#">My Poster</a>
             <a class="dropdown-item" href="#">Analysis</a>
             <div class="dropdown-divider"></div>
@@ -63,13 +63,13 @@
 
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"}%>
+          <%= link_to "Login", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"} %>
         </li>
       <% end %>
 
-<!--      <li class="nav-item">-->
-        <%#= request.location.city %>
-<!--      </li>-->
+      <!--      <li class="nav-item">-->
+      <%#= request.location.city %>
+      <!--      </li>-->
     </ul>
   </div>
 </nav>

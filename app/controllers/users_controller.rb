@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   include UsersHelper
-  before_action :set_user, only: [:show, :edit, :edit_password, :update, :destroy, :edit_avatar, :upload_avatar, :user_avatar_url]
+  before_action :set_user, only: [:show, :edit, :edit_password, :update, :destroy, :edit_avatar, :upload_avatar, :user_avatar_url, :profile]
 
   def join_activity
     activity_participation = ActivityParticipant.create(user_id: current_user.id, activity_id: params[:activity_id], identity: 2)
@@ -43,11 +43,13 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
-    if params[:op] == 'showButton'
-      render 'show', layout: false
-    end
+    render 'show', layout: false
   end
+
+  def profile
+    render 'show'
+  end
+
 
   # GET /users/new
   def new
