@@ -42,8 +42,9 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(starter_id: current_user.id, activity_date: activity_params[:activity_date], place: activity_params[:place], content: activity_params[:content], status: activity_params[:status], theme_color: activity_params[:theme_color])
 
     respond_to do |format|
-      if @activity.validate
+      if @activity.validate(params[ :place, :activity_date])
         @activity.save
+
         #  status 1 success 2 failed
         #format.js {render json: {status: 1}}
         format.html {redirect_to @activity, notice: 'Activity was successfully created.'}
@@ -53,13 +54,13 @@ class ActivitiesController < ApplicationController
           MessageChannel.broadcast_to(user, {type: 1, count: 1, msg: {
               text: 'a new poster is posted', title: 'Message'}})
         end
-        format.js {render 'users/create_activity'}
+        format.js{render 'users/create_activity'}
 
       else
         #format.js {render json: {status: 2}}
         format.html {render :new}
         format.json {render json: @activity.errors, status: :unprocessable_entity}
-        format.js {render 'activities/create', layout: false, content_type: 'text/javascript'}
+        format.js   {render layout: false, content_type: 'text/javascript' }
       end
     end
   end

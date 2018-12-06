@@ -2,7 +2,6 @@ class Activity < ApplicationRecord
   validates :place, presence: true
   validates :activity_date, presence: true
 
-
   has_many :activity_participants
   has_many :users, through: :activity_participants
 
@@ -23,6 +22,6 @@ class Activity < ApplicationRecord
     activity_participants.where(user_id: user_id)
   end
 
-  scope :working, -> {where(status: 2)}
+  scope :working, -> { where(status: 2) }
 
 end
