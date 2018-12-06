@@ -12,7 +12,7 @@ This is a course project repository for COSI 166B
 * Ruby version - 2.5.1 
 * Rails version - 5.2.1
 * Bootstrap - v4.1.x
-* [Link to Heroku](https://teamup12341.herokuapp.com/)
+* [Link to Heroku](https://workout-teamup.herokuapp.com/)
 * [Link to Trello](https://trello.com/b/pVBKKavl/teamup)
 * Contributor: Xiangran, Limian, Chenfeng
 

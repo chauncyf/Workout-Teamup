@@ -7,8 +7,4 @@ class UserMailerPreview < ActionMailer::Preview
   def reminder_email
     UserMailer.with(user: User.first).reminder_email
   end
-
-  def material_design
-    UserMailer.with(user: User.first).material_design
-  end
 end

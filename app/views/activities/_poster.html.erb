@@ -16,7 +16,7 @@
         <% else %>
           <%#= link_to "", "/join_activity/#{activity.id}", class: "fas fa-plus", method: :post %>
           <div class="dropleft">
-            <div class="fas fa-ellipsis-v" id="dropdownMenuButton" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
+            <a class="fas fa-ellipsis-v" id="dropdownMenuButton" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
             <div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdownMenuButton">
               <%= link_to "Join Activity", "/join_activity/#{activity.id}", remote: true, class: "dropdown-item", method: :post %>
               <div class="dropdown-divider"></div>

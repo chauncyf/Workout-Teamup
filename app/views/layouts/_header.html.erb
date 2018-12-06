@@ -38,7 +38,7 @@
 
       <% if logged_in? %>
         <li class="nav-item dropdown">
-          <div class="nav-link p-0" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= avatar_for current_user %></div>
+          <a class="nav-link p-0" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= avatar_for current_user %></a>
           <div class="dropdown-menu shadow-lg" aria-labelledby="navbarDropdown">
             <div class="dropdown-item mb-0">Hi, <%= current_user.user_name %></div>
             <div class="dropdown-divider"></div>
@@ -52,7 +52,7 @@
 
         <% if current_user.identity == 1 %>
           <li class="nav-item dropdown">
-            <div class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ControlPanel</div>
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ControlPanel</a>
             <div class="dropdown-menu shadow-lg" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href=<%= users_path %>>All Users</a>
               <a class="dropdown-item" href=<%= activities_path %>>All Activities</a>
