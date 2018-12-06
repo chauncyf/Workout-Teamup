@@ -6,23 +6,23 @@
         <div class="col-md-3 col-sm-3 col-xs-12 user-profile-part pull-left">
           <div class="row ">
             <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
-              <%= avatar_for @user,id: "upload_avatar_button", data: {toggle: "modal", target: "#upload_avatar_modal"} %>
+              <%= avatar_for @user, id: "upload_avatar_button", data: {toggle: "modal", target: "#upload_avatar_modal"} %>
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
               <% if @user == current_user %>
-              <!-- Edit user Button Trigger -->
-              <button type="button" class="btn btn-primary btn-block follow" id="userInfo_edit_button" data-toggle="modal" data-target="#editUserModal">Edit</button>
-              <!-- Change pwd Button Trigger -->
-              <button type="button" class="btn btn-success btn-block follow" id="change_pwd_button" data-toggle="modal" data-target="#changePwdModal">Change
-                Password
-              </button>
-              <% else%>
+                <!-- Edit user Button Trigger -->
+                <button type="button" class="btn btn-primary btn-block follow" id="userInfo_edit_button" data-toggle="modal" data-target="#editUserModal">Edit</button>
+                <!-- Change pwd Button Trigger -->
+                <button type="button" class="btn btn-success btn-block follow" id="change_pwd_button" data-toggle="modal" data-target="#changePwdModal">Change
+                  Password
+                </button>
+              <% else %>
                 <% if Follow.exists?(followee_id: @user.id, follower_id: current_user.id) %>
                   <%= link_to "Unfollow", "/unfollow/#{@user.id}", method: :delete, class: "btn btn-success btn-block follow", id: "#{@user.id}", follow: true %>
                 <% else %>
                   <%= link_to "Follow", "/follow/#{@user.id}", method: :post, class: "btn btn-primary btn-block follow", id: "#{@user.id}", follow: false %>
                 <% end %>
-              <% end%>
+              <% end %>
             </div>
             <div class="row user-detail-row">
               <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
@@ -57,10 +57,12 @@
                 <div class="col-md-8">
                   <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link active " href="#profile" role="tab" data-toggle="tab"><i class="fas fa-user-circle"></i> Basic Info</a>
+                      <a class="nav-link active " href="#profile" role="tab" data-toggle="tab"><i class="fas fa-user-circle"></i>
+                        Basic Info</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#physical" role="tab" data-toggle="tab"><i class="fas fa-child"></i> Physical Info</a>
+                      <a class="nav-link" href="#physical" role="tab" data-toggle="tab"><i class="fas fa-child"></i>
+                        Physical Info</a>
                     </li>
                   </ul>
 
@@ -271,24 +273,24 @@
                 }
             })
         })
-        avatarModal.on('click','#submit_avatar',function(e){
+        avatarModal.on('click', '#submit_avatar', function (e) {
             e.preventDefault();
-            document.getElementById('cropper').cropper.getCroppedCanvas().toBlob((blob)=>{
-                let formData=new FormData()
-                formData.append('avatar',blob)
+            document.getElementById('cropper').cropper.getCroppedCanvas().toBlob((blob) => {
+                let formData = new FormData()
+                formData.append('avatar', blob)
                 $.ajax({
-                    url:'<%= upload_avatar_path(@user.id) %>',
-                    type:'post',
-                    data:formData,
-                    contentType:false,
-                    processData:false,
-                    success:()=>{
+                    url: '<%= upload_avatar_path(@user.id) %>',
+                    type: 'post',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: () => {
                         avatarModal.modal('hide')
                         $.ajax({
-                            url:'<%= user_avatar_url_path(@user.id) %>',
-                            type:'get',
-                            success:(data)=>{
-                                $('.avatar').attr('src',data)
+                            url: '<%= user_avatar_url_path(@user.id) %>',
+                            type: 'get',
+                            success: (data) => {
+                                $('.avatar').attr('src', data)
                             }
                         })
                         //TODO
@@ -297,4 +299,25 @@
             })
         })
     }());
+    $('.follow').on('click', function () {
+        let userId = $(this).data('id');
+        let follow_status = $(this).data('follow');
+        if (follow_status) {
+            $.ajax({
+                url: 'unfollow/' + userId,
+                method: 'delete',
+                success: () => {
+                    $(this).html('Follow');
+                }
+            })
+        } else {
+            $.ajax({
+                url: 'follow/' + userId,
+                method: 'post',
+                success: () => {
+                    $(this).html('Unfollow');
+                }
+            })
+        }
+    })
 </script>
