@@ -42,12 +42,12 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(starter_id: current_user.id, activity_date: activity_params[:activity_date], place: activity_params[:place], content: activity_params[:content], status: activity_params[:status], theme_color: activity_params[:theme_color])
 
     respond_to do |format|
-      if @activity.save
+      if @activity.validate(params[ :activity_date, :place])
+        @activity.save
         #  status 1 success 2 failed
         #format.js {render json: {status: 1}}
         format.html {redirect_to @activity, notice: 'Activity was successfully created.'}
         format.json {render :show, status: :created, location: @activity}
-          
         # type 1 means new activity count means there is one more
         User.all.each do |user|
           MessageChannel.broadcast_to(user, {type: 1, count: 1, msg: {
@@ -59,6 +59,7 @@ class ActivitiesController < ApplicationController
         #format.js {render json: {status: 2}}
         format.html {render :new}
         format.json {render json: @activity.errors, status: :unprocessable_entity}
+        format.js   {render layout: false, content_type: 'text/javascript' }
       end
     end
   end
