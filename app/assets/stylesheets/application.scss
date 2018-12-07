@@ -269,11 +269,12 @@ footer {
   @include box_sizing;
 }
 
-
 .invalid-feedback, .valid-feedback {
   display: none;
 }
-.field_with_errors + .invalid-feedback, .field_with_errors + .input-group-append + .invalid-feedback {
+.field_with_errors + .invalid-feedback,
+.field_with_errors + .input-group-append + .invalid-feedback,
+.field_with_errors > .form-group > .invalid-feedback  {
   display: block !important;
   color: $material-pink;
 }

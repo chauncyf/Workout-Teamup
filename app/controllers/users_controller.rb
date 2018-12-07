@@ -106,6 +106,7 @@ class UsersController < ApplicationController
       else
         format.html {render :new}
         format.json {render json: @user.errors, status: :unprocessable_entity}
+        format.js   {render layout: false, content_type: 'text/javascript' }
       end
     end
   end

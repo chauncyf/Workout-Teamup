@@ -1,14 +1,31 @@
-<%= form_for(:session, url: login_path) do |form| %>
-
+<%= form_for(:session, url: login_path, remote: true) do |form| %>
+  <% if @invalid_key %>
+    <div class="field_with_errors">
+  <% end %>
   <div class="form-group">
-    <%= form.label "Email" %>
-    <%= form.text_field :email, class: "form-control" %>
+  <%= form.label "Email" %>
+  <%= form.text_field :email, class: "form-control", placeholder: 'Your Email address..' %>
+  <% if @invalid_key %>
+    <div class="invalid-feedback"> Invalid username of password </div>
+  <% end %>
   </div>
+  <% if @invalid_key %>
+    </div>
+  <% end %>
 
+  <% if @invalid_key %>
+    <div class="field_with_errors">
+  <% end %>
   <div class="form-group">
     <%= form.label "Password" %>
-    <%= form.password_field :password, class: "form-control" %>
+    <%= form.password_field :password, class: "form-control", placeholder: 'Your password..' %>
+    <% if @invalid_key %>
+      <div class="invalid-feedback"> Invalid username of password </div>
+    <% end %>
   </div>
+  <% if @invalid_key %>
+    </div>
+  <% end %>
 
   <div class="actions float-right">  <!-- modal-footer -->
     <%= form.submit "Log in", class: "btn btn-primary" %>

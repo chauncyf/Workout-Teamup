@@ -1,34 +1,46 @@
 <%= form_with(model: @user) do |form| %>
-  <%# if @user.errors.any? %>
-<!--    <div id="error_explanation">-->
-<!--      <h2><%#= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>-->
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-<!--      <ul>-->
-      <%# @user.errors.full_messages.each do |message| %>
-<!--        <li><%#= message %></li>-->
-      <%# end %>
-<!--      </ul>-->
-<!--    </div>-->
-  <%# end %>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div class="form-group">
     <%= form.label :user_name %>
     <%= form.text_field :user_name, class: "form-control" %>
+    <div class="invalid-feedback">
+      User name can't be blank
+    </div>
   </div>
 
   <div class="form-group">
     <%= form.label :email %>
     <%= form.text_field :email, class: "form-control" %>
+    <div class="invalid-feedback">
+      Email can't be blank / Email is invalid
+    </div>
   </div>
 
   <div class="form-group">
     <%= form.label :password %>
     <%= form.password_field :password, class: "form-control" %>
+    <div class="invalid-feedback">
+      Password can't be blank
+    </div>
   </div>
 
   <div class="form-group">
     <%= form.label :password_confirmation, "Confirmation" %>
     <%= form.password_field :password_confirmation, class: "form-control" %>
+    <div class="invalid-feedback">
+      Password input two times are different
+    </div>
   </div>
 
   <div class="actions float-right">

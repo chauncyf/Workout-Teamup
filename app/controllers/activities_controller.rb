@@ -42,8 +42,8 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(starter_id: current_user.id, activity_date: activity_params[:activity_date], place: activity_params[:place], content: activity_params[:content], status: activity_params[:status], theme_color: activity_params[:theme_color])
 
     respond_to do |format|
-      if @activity.validate
-        @activity.save
+      if @activity.save
+        # @activity.save
 
         #  status 1 success 2 failed
         #format.js {render json: {status: 1}}

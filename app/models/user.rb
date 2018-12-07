@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   before_save {self.email = email.downcase}
 
-  validates :user_name, presence: true, length: { maximum: 20 }
+  validates :user_name, presence: true, length: { maximum: 20 }  #TODO: check uniqueness
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
@@ -28,7 +28,7 @@ class User < ApplicationRecord
             uniqueness: {case_sensitive: false}
 
   has_secure_password
-  validates :password, presence: true, length: { minimum: 12 }, allow_blank: true
+  validates :password, presence: true, length: { minimum: 8 }, allow_blank: true
 
   def self.get_one id
     User.find_by_id id

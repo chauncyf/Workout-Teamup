@@ -1,1 +1,1 @@
-$('.modal-body').html('<%= escape_javascript(render partial: 'users/form') %>');
+$('.modal-body').html('<%= escape_javascript(render partial: 'users/form', user: @user) %>');
