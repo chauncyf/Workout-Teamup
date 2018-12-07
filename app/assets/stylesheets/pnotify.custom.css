@@ -81,6 +81,8 @@ body > .ui-pnotify-modal-overlay {
   padding: .8em;
   height: 100%;
   margin: 0;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
 }
 .ui-pnotify-container:after {
   content: " "; /* Older browser do not support empty content */
@@ -137,25 +139,21 @@ Color Scheme: http://paletton.com/palette.php?uid=c1T3n2J040kpEKzpEKzbEPSOEyiNk9
   margin-bottom: 12px;
 }
 .brighttheme-notice {
-  background-color: #FFFFA2;
-  border: 0 solid #FFFF00;
-  color: #4F4F00;
+  background-color: #fcf8e3;
+  color: #8a6d3b;
 }
 .brighttheme-info {
-  background-color: #8FCEDD;
-  border: 0 solid #0286A5;
-  color: #012831;
+  background-color: #d9edf7;
+  color: #31708f;
 }
 .brighttheme-success {
-  background-color: #AFF29A;
-  border: 0 solid #35DB00;
-  color: #104300;
+  background-color: #dff0d8;
+  color: #3c763d;
 }
 .brighttheme-error {
-  background-color: #FFABA2;
+  background-color: #f2dede;
   background-image: repeating-linear-gradient(135deg, transparent, transparent 35px, rgba(255,255,255,.3) 35px, rgba(255,255,255,.3) 70px);
-  border: 0 solid #FF1800;
-  color: #4F0800;
+  color: #a94442;
 }
 .brighttheme-icon-notice,
 .brighttheme-icon-info,
@@ -163,8 +161,8 @@ Color Scheme: http://paletton.com/palette.php?uid=c1T3n2J040kpEKzpEKzbEPSOEyiNk9
 .brighttheme-icon-closer,
 .brighttheme-icon-sticker {
   position: relative;
-  width: 16px;
-  height: 16px;
+  width: 1.2rem;
+  height: 1.2rem;
   font-size: 12px;
   font-weight: bold;
   line-height: 16px;
@@ -177,43 +175,45 @@ Color Scheme: http://paletton.com/palette.php?uid=c1T3n2J040kpEKzpEKzbEPSOEyiNk9
 .brighttheme-icon-closer:after,
 .brighttheme-icon-sticker:after {
   position: absolute;
-  top: 0;
+  top: 2px;
   left: 4px;
 }
 .brighttheme-icon-notice {
-  background-color: #2E2E00;
-  color: #FFFFA2;
+  background-color: #fcf8e3;
+  color: #8a6d3b;
   margin-top: 2px;
 }
 .brighttheme-icon-notice:after {
   content: "!";
 }
 .brighttheme-icon-info {
-  background-color: #012831;
-  color: #8FCEDD;
+  background-color: #d9edf7;
+  color: #31708f;
   margin-top: 2px;
 }
 .brighttheme-icon-info:after {
   content: "i";
 }
 .brighttheme-icon-success {
-  background-color: #104300;
-  color: #AFF29A;
-  margin-top: 2px;
+  background-color: #3c763d;
+  color: #dff0d8;
+  margin-top: 6px;
 }
 .brighttheme-icon-success:after {
   content: "\002713";
+  font-size: 1.2em;
 }
 .brighttheme-icon-error {
   position: relative;
   width: 0;
   height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 16px solid #2E0400;
+  /*border-left: 8px solid transparent;*/
+  /*border-right: 8px solid transparent;*/
+  /*border-bottom: 16px solid #2E0400;*/
   font-size: 0;
   line-height: 0;
-  color: #FFABA2;
+  background-color: #f2dede;
+  color: #a94442;
   margin-top: 1px;
 }
 .brighttheme-icon-error:after {
