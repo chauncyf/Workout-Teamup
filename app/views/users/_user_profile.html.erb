@@ -165,67 +165,15 @@
   </div>
 </div>
 
-<!-- Upload Avatar Modal -->
-<div class="modal fade" id="upload_avatar_modal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="pwdModalLabel">upload your avatar!</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Change password Modal -->
-
-<div class="modal fade" id="changePwdModal" tabindex="-1" role="dialog" aria-labelledby="pwdModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="pwdModalLabel">Change Password</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="pwd">
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Edit user Modal -->
-<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="editUserModalLabel">Edit your profile</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="userInfo">
-
-      </div>
-    </div>
-  </div>
-</div>
 
 <script>
     var profileModal = $('#editUserModal');
-    var modalBody = profileModal.find('.modal-body');
     $('#userInfo_edit_button').on('click', function () {
         $.ajax({
             url: '<%= edit_user_path(user.id) %>',
             method: 'get',
             success: function (data) {
-                modalBody.html(data);
+                profileModal.find('.modal-body').html(data);
                 profileModal.modal('show')
             }
         })
@@ -241,13 +189,12 @@
 
 <script>
     var pwdModal = $('#changePwdModal');
-    var modalBody = pwdModal.find('.modal-body');
     $('#change_pwd_button').on('click', function () {
         $.ajax({
             url: '<%= edit_password_path(user.id) %>',
             method: 'get',
             success: function (data) {
-                modalBody.html(data);
+                pwdModal.find('.modal-body').html(data);
                 pwdModal.modal('show')
             }
         })
