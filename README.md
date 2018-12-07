@@ -36,3 +36,6 @@ $ rails db:schema:load
 ```
 $ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 ```
+
+### References
+[Rails server says port already used, how to kill that process?](https://stackoverflow.com/questions/4473229/rails-server-says-port-already-used-how-to-kill-that-process)

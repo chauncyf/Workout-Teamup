@@ -269,6 +269,14 @@ footer {
   @include box_sizing;
 }
 
+
+.invalid-feedback, .valid-feedback {
+  display: none;
+}
+.field_with_errors + .invalid-feedback, .field_with_errors + .input-group-append + .invalid-feedback {
+  display: block !important;
+  color: $material-pink;
+}
 .field_with_errors {
   padding: 1px;
   flex: 1 1 auto;
@@ -283,6 +291,8 @@ footer {
 }
 
 #error_explanation {
+  display: none;
+
   border-radius: 0.5em;
   background-color: $material-pink;
   padding: 8px 12px;
@@ -301,15 +311,12 @@ footer {
   ul {
     margin: 0;
     padding-left: 20px;
-    //padding-inline-start: 40px;
-
   }
   ul li {
     font-size: 1em;
     color: white;
     list-style: square;
   }
-
 }
 
 .modal {
@@ -330,6 +337,12 @@ footer {
       color: white;
     }
   }
+
+  .input-group-append > .input-group-text{
+    border-bottom-right-radius: 0.5em !important;
+    border-top-right-radius: 0.5em !important;
+  }
+
   //.bootstrap-datetimepicker-widget {
   //  i {
   //    color: $material-blue;

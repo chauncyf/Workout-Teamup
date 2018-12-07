@@ -96,10 +96,10 @@ body > .ui-pnotify-modal-overlay {
   -moz-border-radius: 0;
   border-radius: 0;
 }
-.ui-pnotify-title {
+h4> .ui-pnotify-title {
   display: block;
-  margin-bottom: .4em;
-  margin-top: 0;
+  /*margin-bottom: .4em;*/
+  /*margin-top: 0;*/
 }
 .ui-pnotify-text {
   display: block;
@@ -136,7 +136,7 @@ Color Scheme: http://paletton.com/palette.php?uid=c1T3n2J040kpEKzpEKzbEPSOEyiNk9
   padding: 18px;
 }
 .brighttheme .ui-pnotify-title {
-  margin-bottom: 12px;
+  /*margin-bottom: 12px;*/
 }
 .brighttheme-notice {
   background-color: #fcf8e3;
@@ -160,6 +160,7 @@ Color Scheme: http://paletton.com/palette.php?uid=c1T3n2J040kpEKzpEKzbEPSOEyiNk9
 .brighttheme-icon-success,
 .brighttheme-icon-closer,
 .brighttheme-icon-sticker {
+  display: none !important;
   position: relative;
   width: 1.2rem;
   height: 1.2rem;
@@ -177,6 +178,8 @@ Color Scheme: http://paletton.com/palette.php?uid=c1T3n2J040kpEKzpEKzbEPSOEyiNk9
   position: absolute;
   top: 2px;
   left: 4px;
+  font-size: 1.8em;
+
 }
 .brighttheme-icon-notice {
   background-color: #fcf8e3;

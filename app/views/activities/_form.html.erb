@@ -21,18 +21,27 @@
       <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
       </div>
+      <div class="invalid-feedback">
+        Please choose an activity date
+      </div>
     </div>
-
   </div>
 
   <div class="form-group">
     <%= form.label "Where?" %>
     <%= form.text_field :place, class: "form-control", placeholder: "where to meet.." %>
+    <div class="invalid-feedback">
+      Please choose a place to meet
+    </div>
   </div>
+
 
   <div class="form-group">
     <%= form.label "What?" %>
-    <%= form.text_area :content, class: "form-control", placeholder: "what is the Activity about.." %>
+    <%= form.text_area :content, class: "form-control", placeholder: "what is the activity about.." %>
+    <div class="invalid-feedback">
+      Please say something
+    </div>
   </div>
 
   <div class="row">
