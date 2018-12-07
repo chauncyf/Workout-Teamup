@@ -1,6 +1,16 @@
-refreshPosts();
-new PNotify({
-    title: '<i class="fas fa-check-circle"></i> Success',
-    text: 'Activity joined',
-    type: 'success'
-});
+<% if @join_status %>
+  refreshPosts();
+  new PNotify({
+      title: '<i class="fas fa-check-circle"></i> Success',
+      text: 'Activity joined',
+      type: 'success'
+  });
+<% else %>
+  new PNotify({
+      title: '<i class="fas fa-exclamation-circle"></i> Failed',
+      text: 'Activity already joined',
+      type: 'error'
+  });
+<% end %>
+
+

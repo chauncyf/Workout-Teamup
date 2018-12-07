@@ -3,10 +3,6 @@ class SessionsController < ApplicationController
 
 
   def new
-    @user = User.new
-    # @user = User.find_by(email: params[:session][:email].downcase)
-
-
     # unless request.xhr?
     #   not_found
     # end

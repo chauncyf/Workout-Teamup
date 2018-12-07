@@ -52,7 +52,8 @@ class ActivitiesController < ApplicationController
         # type 1 means new activity count means there is one more
         User.all.each do |user|
           MessageChannel.broadcast_to(user, {type: 1, count: 1, msg: {
-              title: '<i class="fas fa-plus-circle"></i> New Poster', text: 'A new poster has been posted', type: 'info'}})
+              title: '<i class="fas fa-plus-circle"></i> New Poster',
+              text: 'A new poster has been posted', type: 'info'}})
         end
         format.js{render 'users/create_activity'}
 

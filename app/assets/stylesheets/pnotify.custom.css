@@ -207,6 +207,7 @@ Color Scheme: http://paletton.com/palette.php?uid=c1T3n2J040kpEKzpEKzbEPSOEyiNk9
   font-size: 1.2em;
 }
 .brighttheme-icon-error {
+  display: none !important;
   position: relative;
   width: 0;
   height: 0;

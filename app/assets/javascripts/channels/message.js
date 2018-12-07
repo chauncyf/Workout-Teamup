@@ -6,7 +6,8 @@ App.cable.subscriptions.create({
         if (data.msg) {
             new PNotify({
                 title: data.msg.title,
-                text: data.msg.text
+                text: data.msg.text,
+                type:data.msg.type
             });
         }
     }
