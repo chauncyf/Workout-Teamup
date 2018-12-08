@@ -51,7 +51,19 @@ $(function () {
         $(this).parent().next('.reviews').collapse("toggle")
     })
 
-    $(document).popover({
+    $(document).on('show.bs.dropdown mouseover', '[data-avatar-pop]', function () {
+        if ($(this).children('.dropdown-menu').html().startsWith('loading')) {
+            return
+        }
+        $.ajax({
+            url: '/users/' + $(this).data('avatar-pop'),
+            success: (data) => {
+                $(this).children('.dropdown-menu').html(data)
+            }
+        })
+        return
+    })
+    /*$(document).popover({
         selector: '[data-avatar-pop]',
         content() {
             if ($(this).data('data-content')) return
@@ -69,9 +81,9 @@ $(function () {
             '<div class="arrow"></div>' +
             '<div class="popover-body"></div>' +
             '</div>',
-        trigger: 'hover',
+        trigger: 'click',
         html: true
-    })
+    })*/
 })
 
 function dataURItoBlob(dataURI) {
