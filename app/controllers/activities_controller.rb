@@ -18,7 +18,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show_starter_posters
-    #@activities = Activity.find_by(starter_id:current_user.id)
+    #@activities = Activity.find_by(starter_id:current_user_id)
     redirect_to joined_activities_url
 
   end
@@ -40,7 +40,7 @@ class ActivitiesController < ApplicationController
   # POST /activities
   # POST /activities.json
   def create
-    @activity = Activity.new(starter_id: current_user.id, activity_date: activity_params[:activity_date], place: activity_params[:place], content: activity_params[:content], status: activity_params[:status], theme_color: activity_params[:theme_color])
+    @activity = Activity.new(starter_id: current_user_id, activity_date: activity_params[:activity_date], place: activity_params[:place], content: activity_params[:content], status: activity_params[:status], theme_color: activity_params[:theme_color])
 
     respond_to do |format|
       if @activity.save

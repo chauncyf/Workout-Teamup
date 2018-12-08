@@ -1,3 +1,11 @@
+<%
+  @isJoined = logged_in?
+  if (@isJoined)
+    @join = activity.get_participation_by_user_id(current_user_id).first
+    @isJoined = @isJoined && !@join.nil?
+  end
+%>
+
 <div class="card shadow mb-3 poster">
   <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
 
@@ -55,11 +63,11 @@
   <!--      todo footer not show at bottom-->
   <div class="card-footer bg-transparent px-3 pt-0 material-footer-<%= activity.theme_color %>">
     <div class="">
-      <% unless !logged_in? || activity.get_participation_by_user_id(current_user.id).size == 0 %>
+      <% if @isJoined %>
         <div class="col-auto text-left rate-star" data-raty="true"
-             <%= activity.get_participation_by_user_id(current_user.id).first.rating != 0 ? "data-readonly='true'" : "" %>
-             data-id="<%= activity.get_participation_by_user_id(current_user.id).first.id %>"
-             data-score="<%= activity.get_participation_by_user_id(current_user.id).first.rating %>"
+             <%= @join.rating != 0 ? "data-readonly='true'" : "" %>
+             data-id="<%= @join.id %>"
+             data-score="<%= @join.rating %>"
         ></div>
       <% end %>
       <!--<div class="col-auto text-right">

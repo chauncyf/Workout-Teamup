@@ -17,7 +17,7 @@
                   Password
                 </button>
               <% else %>
-                <% if Follow.exists?(followee_id: user.id, follower_id: current_user.id) %>
+                <% if Follow.exists?(followee_id: user.id, follower_id: current_user_id) %>
                   <%= link_to "Unfollow", "/unfollow/#{user.id}", method: :delete, class: "btn btn-success btn-block follow", id: "#{user.id}", follow: true %>
                 <% else %>
                   <%= link_to "Follow", "/follow/#{user.id}", method: :post, class: "btn btn-primary btn-block follow", id: "#{user.id}", follow: false %>

@@ -17,9 +17,13 @@ module SessionsHelper
     User.get_one id
   end
 
+  def current_user_id
+    session[:user_id]
+  end
+
   # Returns true if the user is logged in, false otherwise.
   def logged_in?
-    flag = !current_user.nil?
+    flag = session[:user_id]
     unless flag
       cookies.delete :user_id # delete the cookie for actioncable authorization
     end
