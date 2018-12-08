@@ -85,7 +85,6 @@ class UsersController < ApplicationController
 
   # GET /users/1/editPwd
   def edit_password
-
     render layout: false
   end
 
@@ -97,7 +96,9 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new({user_name: user_params[:user_name], email: user_params[:email], password: user_params[:password], identity: 2})
-
+    if @user.errors.include?(:password_confirmation)
+      @user.errors.delete(:password_confirmation)
+    end
     respond_to do |format|
       if @user.save
         # log_in @user
@@ -109,6 +110,10 @@ class UsersController < ApplicationController
         format.html {redirect_to login_path}
         format.json {render :show, status: :created, location: @user}
       else
+        if user_params[:password] != user_params[:password_confirmation]
+          # @user.errors.add(:password_confirmation, message: "Password input two times are different")
+          @user.errors.add(:password_confirmation, :invalid, message: "input different from password")
+        end
         format.html {render :new}
         format.json {render json: @user.errors, status: :unprocessable_entity}
         format.js   {render layout: false, content_type: 'text/javascript' }
@@ -122,11 +127,11 @@ class UsersController < ApplicationController
     if user
       user.email_activate
       log_in user
-      flash[:success] = 'Welcome back, your email address has been confirmed.'
+      @confirm_success = true
     else
-      flash[:danger] = 'Your email address was already confirmed.'
+      @confirm_success = false
     end
-    redirect_to root_path
+    render 'confirm_email'
   end
 
 

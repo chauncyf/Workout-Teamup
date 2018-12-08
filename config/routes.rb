@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   resources :activity_contents
   root 'index#home' # can be called as root_path
 
@@ -41,11 +43,9 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :confirm_email
-      # default_url_options :host => '0.0.0.0', port: '3000'
     end
   end
   get '/users/profile/:id', to: 'users#profile', as: :profile
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/getqrcode/:url', to: 'qrcodes#get', as: :getQRcodeUrl
 end

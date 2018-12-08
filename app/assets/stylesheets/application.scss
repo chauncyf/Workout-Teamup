@@ -31,12 +31,10 @@ $material-grey: #BDBDBD;
 html {
   font-size: 16px;
 }
-
 * {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
 }
-
 a {
   color: $material-blue;
 }
@@ -172,8 +170,8 @@ a {
   }
 
   .navbar-toggler, #navbarSupportedContent {
-    //margin-right: 2.5%;
-  }
+      //margin-right: 2.5%;
+    }
 
   .divider-vertical {
     margin: 0 8px;
@@ -194,7 +192,7 @@ a {
     }
   }
 
-  @media (min-width: 0px) and (max-width: 575px) {
+  @media (min-width: 0px)  and (max-width: 575px) {
     .navbar-brand {
       margin-left: 2vw;
     }
@@ -253,10 +251,8 @@ footer {
   small {
     margin-left: 2.5%;
   }
-
   a {
     color: #555;
-
     &:hover {
       color: #222;
     }
@@ -273,17 +269,19 @@ footer {
   @include box_sizing;
 }
 
-.invalid-feedback, .valid-feedback {
-  display: none;
-}
-
-.field_with_errors + .invalid-feedback,
-.field_with_errors + .input-group-append + .invalid-feedback,
-.field_with_errors > .form-group > .invalid-feedback {
+.invalid-feedback {
   display: block !important;
-  color: $material-pink;
-}
+  color: $material-pink !important;
 
+
+  //display: none;
+}
+//.field_with_errors + .invalid-feedback,
+//.field_with_errors + .input-group-append + .invalid-feedback,
+//.field_with_errors > .form-group > .invalid-feedback  {
+//  display: block !important;
+//  color: $material-pink;
+//}
 .field_with_errors {
   padding: 1px;
   flex: 1 1 auto;
@@ -300,7 +298,7 @@ footer {
 }
 
 #error_explanation {
-  display: none;
+  //display: none;
 
   border-radius: 0.5em;
   background-color: $material-pink;
@@ -321,7 +319,6 @@ footer {
     margin: 0;
     padding-left: 20px;
   }
-
   ul li {
     font-size: 1em;
     color: white;
@@ -336,22 +333,19 @@ footer {
       outline: 0;
     }
   }
-
   .form-control {
     border-radius: .5rem;
   }
-
   .input-group-text {
     background-color: $material-blue;
     border-top-right-radius: .5rem;
     border-bottom-right-radius: .5rem;
-
     i {
       color: white;
     }
   }
 
-  .input-group-append > .input-group-text {
+  .input-group-append > .input-group-text{
     border-bottom-right-radius: 0.5em !important;
     border-top-right-radius: 0.5em !important;
   }
@@ -364,24 +358,19 @@ footer {
 
   .bootstrap-datetimepicker-widget table td.active, .bootstrap-datetimepicker-widget table td.active:hover {
     background-color: $material-blue;
-
     i {
       color: $material-blue;
     }
   }
-
   .btn {
     border-radius: .5rem;
   }
-
   .radio-btn-color {
     border-radius: .5rem;
   }
-
-  .btn-group > .btn:hover {
+  .btn-group>.btn:hover {
     z-index: 0;
   }
-
   i {
     font-size: 90%;
   }
@@ -392,16 +381,13 @@ footer {
   max-width: 32em;
   border: none !important;
   border-radius: 1rem !important;
-
   a {
     color: $material-blue;
   }
 }
-
 .not-found-card {
   @extend .login-card;
   max-width: 28rem;
-
   .card-title, a {
     color: $material-pink;
   }
@@ -425,18 +411,17 @@ footer {
 
     .card-title {
       font-family: 'Roboto Slab', serif;
-      font-weight: 300;
+        font-weight: 300;
 
       //.fas{
-      //color: #FFF;
-      //transition: transform 1.5s ease-in-out;
+        //color: #FFF;
+        //transition: transform 1.5s ease-in-out;
       //}
       //.fas:hover{
       //  text-decoration: none;
       //  transform: rotate(-360deg);
       //}
     }
-
     .card-starter-avatar {
       img {
         width: 2.2rem;
@@ -445,12 +430,10 @@ footer {
         transition: transform 1.5s ease-in-out;
 
       }
-
       img:hover {
         transform: rotate(-360deg);
 
       }
-
       font-size: 1.5em;
     }
 
@@ -459,20 +442,16 @@ footer {
       font-size: 1em;
 
     }
-
     .card-title-time {
       //font-size: 1.3em;
       font-size: 1em;
     }
-
     .card-title-button {
       font-size: 1.6em;
-
       #dropdownMenuButton:hover {
-        text-shadow: 0px 3px 10px rgba(0, 0, 0, .175)
+        text-shadow: 0px 3px 10px rgba(0,0,0,.175)
       }
     }
-
     .card-title-place {
       //font-size: 1.3em;
       font-size: 1em;
@@ -486,7 +465,6 @@ footer {
 
       //fonts-family: 'Patrick Hand', cursive;
     }
-
     .card-footer {
       border-top: none;
       font-size: 0.8em;
@@ -505,7 +483,7 @@ footer {
 
   // Extra small devices (portrait phones, less than 576px)
   // No media query for `xs` since this is the default in Bootstrap
-  @media (min-width: 0px) and (max-width: 575px) {
+  @media (min-width: 0px)  and (max-width: 575px) {
     column-count: 1 !important;
     .card {
       width: 96vw;
@@ -569,15 +547,12 @@ footer {
   #header-col-button {
     margin-right: 2.5%;
   }
-
   #header-col-search {
     margin-left: 2.5%;
   }
-
   .form-control {
     border-radius: 1.5rem !important;
   }
-
   .btn {
     border-radius: 1.5rem !important;
     background-color: $material-blue;
@@ -754,70 +729,40 @@ footer {
   .radio-btn-purple {
     background-color: $material-purple;
   }
-
   .radio-btn-pink {
     background-color: $material-pink;
   }
-
   .radio-btn-blue {
     background-color: $material-blue;
   }
-
   .radio-btn-teal {
     background-color: $material-teal;
   }
-
   .radio-btn-green {
     background-color: $material-green;
   }
-
   .radio-btn-orange {
     background-color: $material-orange;
   }
-
   .radio-btn-brown {
     background-color: $material-brown;
   }
-
   .radio-btn-grey {
     background-color: $material-grey;
   }
 }
 
-.modal {
-  .poser {
-    .reviews {
-      display: block;
-    }
-  }
-}
-
-.poster {
-  .rate-star {
+.poster{
+  .rate-star{
     float: left;
-    padding-left: 0;
   }
-
-  .reviews {
-    display: none;
-  }
-
-  .comment_box {
+  .comment_box{
     float: right;
     padding-right: 0px;
-    transform: translateY(-8px);
-
-    a {
+    a{
       cursor: pointer;
       font-size: 20px;
     }
-  }
-}
-
-.avatar-pop {
-  max-width: 1200px !important;
-
-  .popover-body {
   }
 }
 

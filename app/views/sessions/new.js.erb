@@ -1,1 +1,1 @@
-$('.modal-body').html('<%= escape_javascript(render partial: 'sessions/form', user: @user) %>');
+$('.modal-body').html('<%= escape_javascript(render 'sessions/form', invalid_key: @invalid_key) %>');

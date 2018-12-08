@@ -1,0 +1,27 @@
+<script>
+    document.getElementById("home-button").click();
+
+    <% if @confirm_success %>
+      $(document).on('turbolinks:load', setTimeout(success_notify, 1000));
+      // setTimeout(success_notify, 1000);
+    <% else %>
+      $(document).on('turbolinks:load', setTimeout(failed_notify, 1000));
+      // setTimeout(failed_notify, 1000);
+    <% end %>
+
+    function success_notify() {
+        new PNotify({
+            title: '<i class="fas fa-check-circle"></i> Welcome back',
+            text: 'Your email address has been confirmed',
+            type: 'success'
+        });
+    }
+
+    function failed_notify() {
+        new PNotify({
+            title: '<i class="fas fa-exclamation-circle"></i> Opps',
+            text: 'Your email address was already confirmed',
+            type: 'error'
+        });
+    }
+</script>
