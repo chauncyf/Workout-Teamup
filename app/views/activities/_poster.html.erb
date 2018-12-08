@@ -12,14 +12,18 @@
   <div class="card-header px-3 py-2 text-white material-head-<%= activity.theme_color %>">
 
     <div class="row justify-content-between">
-      <div class="col col-auto card-title card-starter-avatar m-0 dropdown" data-avatar-pop="<%= activity.starter.id %>" data-toggle="dropdown">
-        <%= avatar_for(activity.starter) %>
-        <div class="dropdown-menu">
-          loading...
-        </div>
-        <span><%= activity.starter.user_name %></span>
+      <div class="col col-auto card-title m-0 dropdown" data-avatar-pop="<%= activity.starter.id %>" data-toggle="dropdown">
+        <div class="dropdown-menu">loading...</div>
+        <ul class="list-inline  mb-1">
+          <li class="list-inline-item align-middle" id="card-starter-avatar"><%= avatar_for(activity.starter) %></li>
+          <li class="list-inline-item align-middle">
+            <ul class="list-unstyled">
+              <li id="activity-starter-name"><%= activity.starter.user_name %></li>
+              <li id="activity-update-date"><%= activity.updated_at.strftime("%m/%d %H:%M") %></li>
+            </ul>
+          </li>
+        </ul>
       </div>
-      <!--      <div class="col col-auto"><%#= activity_starter_name(activity.starter_id) %></div>-->
 
       <%# if activity joined  %>
       <!--        <div class="col col-auto fas fa-check"></div>-->
@@ -43,6 +47,7 @@
     </div>
 
     <div class="card-title card-title-date m-0">
+      <i class="fas fa-calendar-alt"></i>
       <% if !activity.activity_date.nil? %>
         <%= activity.activity_date.strftime("%b %d, %a %H:%M") %>
       <% else %>
@@ -51,6 +56,7 @@
     </div>
 
     <div class="card-title card-title-place m-0">
+      <i class="fas fa-map-marker-alt"></i>
       <%= activity.place %>
     </div>
 
