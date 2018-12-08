@@ -7,13 +7,15 @@ class Activity < ApplicationRecord
 
   has_many :activity_participants
   has_many :users, through: :activity_participants
-  belongs_to :starter,foreign_key: :starter_id , class_name: "User"
+  belongs_to :starter, foreign_key: :starter_id, class_name: "User"
   has_many :comments
   has_many :ratings
 
   has_many :tags, through: :activity_tags
 
   has_many :photos
+  has_many :likes
+  has_many :liked, through: :likes, source: "user"
 
   has_many :activity_contents
 

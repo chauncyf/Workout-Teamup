@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   has_many :activity_participants
   has_many :activities, through: :activity_participants
+  has_many :likes
+  has_many :liked_poster, through: :likes, class_name: "Activity"
 
   has_many :comments
   has_many :ratings
@@ -20,15 +22,15 @@ class User < ApplicationRecord
 
   before_save {self.email = email.downcase}
 
-  validates :user_name, presence: true, length: { maximum: 20 }  #TODO: check uniqueness
+  validates :user_name, presence: true, length: {maximum: 20} #TODO: check uniqueness
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 },
+  validates :email, presence: true, length: {maximum: 255},
             format: {with: VALID_EMAIL_REGEX},
             uniqueness: {case_sensitive: false}
 
   has_secure_password
-  validates :password, presence: true, length: { minimum: 8 }, allow_blank: true
+  validates :password, presence: true, length: {minimum: 8}, allow_blank: true
 
   def self.get_one id
     User.find_by_id id
