@@ -183,6 +183,7 @@ a {
 
   .nav-link {
     font-size: 1.2em;
+    cursor: pointer;
   }
 
   .nav-item {
@@ -475,6 +476,7 @@ footer {
 
     .card-title-button {
       font-size: 1.6em;
+      cursor: pointer;
 
       #dropdownMenuButton:hover {
         text-shadow: 0px 3px 10px rgba(0, 0, 0, .175)

@@ -22,6 +22,51 @@
 
 <hr class="my-4">
 
+<div class="card-columns">
+  <div class="card">
+    <div class="card-body text-white material-head-purple">
+      <h5 class="card-title">Chest Workouts</h5>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body text-white material-head-pink">
+      <h5 class="card-title">Shoulder Workouts</h5>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body text-white material-head-blue">
+      <h5 class="card-title">Ab Workouts</h5>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body text-white material-head-teal">
+      <h5 class="card-title">Back Workouts</h5>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body text-white material-head-green">
+      <h5 class="card-title">Bicep Workouts</h5>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body text-white material-head-orange">
+      <h5 class="card-title">Tricep Workouts</h5>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body text-white material-head-brown">
+      <h5 class="card-title">Leg Workouts</h5>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body text-white material-head-grey">
+      <h5 class="card-title">Full-Body Workouts</h5>
+    </div>
+  </div>
+</div>
+
+<hr class="my-4">
+
 <div id="post_display_container" class="card-columns">
   <% @activities.reverse_each do |activity| %>
     <%= render partial: 'activities/poster', locals: {activity: activity} %>
