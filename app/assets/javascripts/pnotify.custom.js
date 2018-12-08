@@ -58,9 +58,9 @@ var init = function(root){
     body = $("body");
     PNotify.prototype.options.stack.context = body;
     $(document).on('turbolinks:load',function(){
-        PNotify.prototype.options.stack.context=$("body")
-        body = $("body")
-    })
+          PNotify.prototype.options.stack.context=$("body")
+          body = $("body")
+      })
     jwindow = $(root);
     // Reposition the notices when the window resizes.
     jwindow.bind('resize', function(){
@@ -144,7 +144,7 @@ var init = function(root){
       // After a delay, remove the notice.
       hide: true,
       // Delay in milliseconds before the notice is removed.
-      delay: 8000,
+      delay: 3000,
       // Reset the hide timer if the mouse moves over the notice.
       mouse_reset: true,
       // Remove the notice's elements from the DOM after it is removed.
@@ -1168,7 +1168,7 @@ return init(root);
 // Callbacks
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Register as a module.
+    // AMD. Register as a module.Z
     define('pnotify.callbacks', ['jquery', 'pnotify'], factory);
   } else if (typeof exports === 'object' && typeof module !== 'undefined') {
     // CommonJS

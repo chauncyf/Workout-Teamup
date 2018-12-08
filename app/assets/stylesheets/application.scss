@@ -269,15 +269,19 @@ footer {
   @include box_sizing;
 }
 
-.invalid-feedback, .valid-feedback {
-  display: none;
-}
-.field_with_errors + .invalid-feedback,
-.field_with_errors + .input-group-append + .invalid-feedback,
-.field_with_errors > .form-group > .invalid-feedback  {
+.invalid-feedback {
   display: block !important;
-  color: $material-pink;
+  color: $material-pink !important;
+
+
+  //display: none;
 }
+//.field_with_errors + .invalid-feedback,
+//.field_with_errors + .input-group-append + .invalid-feedback,
+//.field_with_errors > .form-group > .invalid-feedback  {
+//  display: block !important;
+//  color: $material-pink;
+//}
 .field_with_errors {
   padding: 1px;
   flex: 1 1 auto;
@@ -292,7 +296,7 @@ footer {
 }
 
 #error_explanation {
-  display: none;
+  //display: none;
 
   border-radius: 0.5em;
   background-color: $material-pink;

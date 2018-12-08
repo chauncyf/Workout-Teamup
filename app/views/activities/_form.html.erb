@@ -1,28 +1,15 @@
 <%= form_with(model: activity) do |form| %>
-  <% if activity.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
-
-      <ul>
-        <% activity.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="form-group">
     <%= form.label "When?" %>
 
     <div class="input-group date" id="datetimepicker" data-target-input="nearest">
       <!--                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker9"/>-->
       <%= form.text_field :activity_date, class: "form-control datetimepicker-input", "data-target": "#datetimepicker", placeholder: "when will the activity start.." %>
-
       <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
       </div>
       <div class="invalid-feedback">
-        Please choose an activity date
+        <%= activity.errors.full_messages_for(:activity_date).first %>
       </div>
     </div>
   </div>
@@ -31,7 +18,7 @@
     <%= form.label "Where?" %>
     <%= form.text_field :place, class: "form-control", placeholder: "where to meet.." %>
     <div class="invalid-feedback">
-      Please choose a place to meet
+      <%= activity.errors.full_messages_for(:place).first %>
     </div>
   </div>
 
@@ -40,7 +27,7 @@
     <%= form.label "What?" %>
     <%= form.text_area :content, class: "form-control", placeholder: "what is the activity about.." %>
     <div class="invalid-feedback">
-      Please say something
+      <%= activity.errors.full_messages_for(:content).first %>
     </div>
   </div>
 
