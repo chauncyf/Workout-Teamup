@@ -47,6 +47,9 @@ $(function () {
         reader.readAsDataURL(file)
     })
 
+    $(document).on('click', '.poster .comment', function () {
+        $(this).parent().next('.reviews').collapse("toggle")
+    })
 })
 
 function dataURItoBlob(dataURI) {
