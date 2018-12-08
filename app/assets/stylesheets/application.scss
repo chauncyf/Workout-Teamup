@@ -303,7 +303,7 @@ footer {
 }
 
 #error_explanation {
-  //display: none;
+  display: none;
 
   border-radius: 0.5em;
   background-color: $material-pink;
@@ -787,14 +787,30 @@ footer {
   }
 }
 
+.avatar-pop {
+  max-width: 1200px !important;
+}
+
+.modal {
+  .reviews {
+    display: block;
+  }
+}
+
 .poster {
   .rate-star {
     float: left;
+    padding-left: 0;
+  }
+
+  .reviews {
+    display: none;
   }
 
   .comment_box {
     float: right;
     padding-right: 0px;
+    transform: translateY(-8px);
 
     a {
       cursor: pointer;
