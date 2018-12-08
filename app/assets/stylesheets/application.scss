@@ -159,7 +159,9 @@ a {
   border: none;
   border-radius: 0.5rem;
 }
-
+.profile-dropdown {
+  width: 25vw;
+}
 /* navbar */
 
 .navbar {
@@ -433,8 +435,7 @@ footer {
     }
 
     .card-title {
-      font-family: 'Roboto Slab', serif;
-      font-weight: 300;
+      //font-family: 'Roboto Slab', serif;
 
       //.fas{
       //color: #FFF;
@@ -446,21 +447,22 @@ footer {
       //}
     }
 
-    .card-starter-avatar {
+    #card-starter-avatar {
+      margin-right: 3px;
       img {
-        width: 2.2rem;
-        height: 2.2rem;
-        margin-right: 0.1em;
+        width: 2.5rem;
+        height: 2.5rem;
         transition: transform 1.5s ease-in-out;
-
       }
-
       img:hover {
         transform: rotate(-360deg);
-
       }
-
-      font-size: 1.5em;
+    }
+    #activity-starter-name {
+      font-size: 1.2em;
+    }
+    #activity-update-date {
+      font-size: 0.7em;
     }
 
     .card-title-date {
@@ -519,7 +521,7 @@ footer {
     column-count: 1 !important;
     .card {
       width: 96vw;
-      min-height: 96vmin;
+      //min-height: 96vmin;
     }
 
   }
