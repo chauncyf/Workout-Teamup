@@ -750,6 +750,20 @@ footer {
   }
 }
 
+.poster{
+  .rate-star{
+    float: left;
+  }
+  .comment_box{
+    float: right;
+    padding-right: 0px;
+    a{
+      cursor: pointer;
+      font-size: 20px;
+    }
+  }
+}
+
 .btn-group {
   .btn {
     //border-radius: 5rem;

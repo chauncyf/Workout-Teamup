@@ -1,4 +1,4 @@
-<div class="card shadow mb-3">
+<div class="card shadow mb-3 poster">
   <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
 
   <div class="card-header px-3 py-2 text-white material-head-<%= activity.theme_color %>">
@@ -48,7 +48,7 @@
 
   <!--      todo footer not show at bottom-->
   <div class="card-footer bg-transparent px-3 pt-0 material-footer-<%= activity.theme_color %>">
-    <div class="row align-items-center justify-content-between">
+    <div class="">
       <% unless !logged_in? || activity.get_participation_by_user_id(current_user.id).size == 0 %>
         <div class="col-auto text-left rate-star" data-raty="true"
              <%= activity.get_participation_by_user_id(current_user.id).first.rating != 0 ? "data-readonly='true'" : "" %>
@@ -56,8 +56,17 @@
              data-score="<%= activity.get_participation_by_user_id(current_user.id).first.rating %>"
         ></div>
       <% end %>
-      <div class="col-auto text-right">
-        Update: <%= activity.updated_at.strftime("%m/%d/%y %H:%M") %>
+      <!--<div class="col-auto text-right">
+        Update: <%#= activity.updated_at.strftime("%m/%d/%y %H:%M") %>
+      </div>-->
+      <div class="col-auto text-right comment_box">
+        <a class="like"><i class="far fa-heart"></i></a>
+        <a class="comment"><i class="far fa-comments"></i></a>
+      </div>
+      <div class="collapse reviews" >
+        <div class="card card-body">
+          comment list
+        </div>
       </div>
     </div>
   </div>
