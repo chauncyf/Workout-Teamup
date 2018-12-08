@@ -1,7 +1,7 @@
 <%= form_with(model: user) do |form| %>
   <div class="form-group">
     <%= form.label :user_name %>
-    <%= form.text_field :user_name, class: "form-control", placeholder: 'A good name will help others remember you' %>
+    <%= form.text_field :user_name, class: "form-control", placeholder: 'A good name help others remember you..' %>
     <div class="invalid-feedback">
       <%= user.errors.full_messages_for(:user_name).first %>
     </div>
@@ -9,16 +9,15 @@
 
   <div class="form-group">
     <%= form.label :email %>
-    <%= form.text_field :email, class: "form-control" %>
+    <%= form.text_field :email, class: "form-control", placeholder: 'Your email address..' %>
     <div class="invalid-feedback">
       <%= user.errors.full_messages_for(:email).first %>
-
     </div>
   </div>
 
   <div class="form-group">
     <%= form.label :password %>
-    <%= form.password_field :password, class: "form-control" %>
+    <%= form.password_field :password, class: "form-control", placeholder: 'Password..' %>
     <div class="invalid-feedback">
       <%= user.errors.full_messages_for(:password).first %>
     </div>
@@ -26,7 +25,7 @@
 
   <div class="form-group">
     <%= form.label :password_confirmation, "Confirmation" %>
-    <%= form.password_field :password_confirmation, class: "form-control" %>
+    <%= form.password_field :password_confirmation, class: "form-control", placeholder: 'Enter you password again..' %>
     <div class="invalid-feedback">
       <%= user.errors.full_messages_for(:password_confirmation).first %>
     </div>
