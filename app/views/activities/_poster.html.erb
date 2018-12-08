@@ -4,11 +4,14 @@
   <div class="card-header px-3 py-2 text-white material-head-<%= activity.theme_color %>">
 
     <div class="row justify-content-between">
-      <div class="col col-auto card-title card-starter-avatar m-0"><%= activity_starter_avatar(activity.starter_id) %>  <%= activity_starter_name(activity.starter_id) %></div>
-<!--      <div class="col col-auto"><%#= activity_starter_name(activity.starter_id) %></div>-->
+      <div class="col col-auto card-title card-starter-avatar m-0">
+        <%= avatar_for(activity.starter, 'data-avatar-pop': activity.starter.id) %>
+        <span><%= activity.starter.user_name %></span>
+      </div>
+      <!--      <div class="col col-auto"><%#= activity_starter_name(activity.starter_id) %></div>-->
 
       <%# if activity joined  %>
-<!--        <div class="col col-auto fas fa-check"></div>-->
+      <!--        <div class="col col-auto fas fa-check"></div>-->
       <%# end %>
       <div class="col col-auto card-title card-title-button text-right m-0">
         <% if !logged_in? %>
@@ -16,12 +19,12 @@
         <% else %>
           <%#= link_to "", "/join_activity/#{activity.id}", class: "fas fa-plus", method: :post %>
           <div class="dropleft">
-            <a class="fas fa-ellipsis-v" id="dropdownMenuButton" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+            <a class="fas fa-ellipsis-v" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
             <div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdownMenuButton">
               <%= link_to "Join Activity", "/join_activity/#{activity.id}", remote: true, class: "dropdown-item", method: :post %>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Follow <%= activity_starter_name(activity.starter_id) %></a>
-              <a class="dropdown-item" href="#">Email <%= activity_starter_name(activity.starter_id) %></a>
+              <a class="dropdown-item" href="#">Follow <%= activity.starter.user_name %></a>
+              <a class="dropdown-item" href="#">Email <%= activity.starter.user_name %></a>
             </div>
           </div>
         <% end %>
@@ -63,7 +66,7 @@
         <a class="like"><i class="far fa-heart"></i></a>
         <a class="comment"><i class="far fa-comments"></i></a>
       </div>
-      <div class="collapse reviews" >
+      <div class="reviews">
         <div class="card card-body">
           comment list
         </div>
