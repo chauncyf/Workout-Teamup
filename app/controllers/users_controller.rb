@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    render 'show', layout: false
+    render partial: 'user_profile_card', locals: {user:@user}
   end
 
   def profile

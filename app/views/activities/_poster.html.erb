@@ -1,13 +1,12 @@
-<div class="card shadow mb-3 poster">
-  <!--      <img class="card-img-top" src="https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/figures/kitten.jpg" alt="Card image cap">-->
-
+<div class="card shadow mb-3" id="poster">
   <div class="card-header px-3 py-2 text-white material-head-<%= activity.theme_color %>">
-
     <div class="row justify-content-between">
-      <div class="col col-auto card-title m-0 dropdown" data-avatar-pop="<%= activity.starter.id %>" data-toggle="dropdown">
-        <div class="dropdown-menu">loading...</div>
-        <ul class="list-inline  mb-1">
-          <li class="list-inline-item align-middle" id="card-starter-avatar"><%= avatar_for(activity.starter) %></li>
+      <div class="col col-auto card-title m-0">
+        <ul class="list-inline mb-1">
+          <li class="list-inline-item align-middle dropdown" id="card-starter-avatar" data-avatar-pop="<%= activity.starter.id %>" data-toggle="dropdown">
+            <%= avatar_for(activity.starter) %>
+            <div class="dropdown-menu p-0" id="profile-dropdown">...</div>
+          </li>
           <li class="list-inline-item align-middle">
             <ul class="list-unstyled">
               <li id="activity-starter-name"><%= activity.starter.user_name %></li>
@@ -39,26 +38,19 @@
     </div>
 
     <div class="card-title card-title-date m-0">
-      <i class="fas fa-calendar-alt"></i>
-      <% if !activity.activity_date.nil? %>
-        <%= activity.activity_date.strftime("%b %d, %a %H:%M") %>
-      <% else %>
-        Sometime
-      <% end %>
+      <i class="fas fa-calendar"></i>
+      <%= activity.activity_date.strftime("%b %d, %a %H:%M") %>
     </div>
-
     <div class="card-title card-title-place m-0">
       <i class="fas fa-map-marker-alt"></i>
       <%= activity.place %>
     </div>
-
   </div>
 
   <div class="card-body p-3 material-body-<%= activity.theme_color %> ">
     <%= activity.content %>
   </div>
 
-  <!--      todo footer not show at bottom-->
   <div class="card-footer bg-transparent px-3 pt-0 material-footer-<%= activity.theme_color %>">
     <div class="">
       <% unless !logged_in? || activity.get_participation_by_user_id(current_user.id).size == 0 %>
@@ -68,12 +60,9 @@
              data-score="<%= activity.get_participation_by_user_id(current_user.id).first.rating %>"
         ></div>
       <% end %>
-      <!--<div class="col-auto text-right">
-        Update: <%#= activity.updated_at.strftime("%m/%d/%y %H:%M") %>
-      </div>-->
       <div class="col-auto text-right comment_box">
         <a class="like"><i class="far fa-heart"></i></a>
-        <a class="comment" data-id="<%= activity.id %>"><i class="far fa-comments"></i></a>
+        <a class="comment" data-id="<%= activity.id %>"><i class="far fa-comment"></i></a>
       </div>
       <div class="reviews">
         <div class="card card-body">
@@ -83,6 +72,7 @@
     </div>
   </div>
 </div>
+
 <script>
     ratyAll()// make sure every raty is transformed
 </script>

@@ -159,9 +159,26 @@ a {
   border: none;
   border-radius: 0.5rem;
 }
-.profile-dropdown {
-  width: 25vw;
+
+#profile-card, #profile-dropdown{
+  border: none;
+  border-radius: 0.85rem !important;
+  width: 15em;
+  .card-body  {
+    font-size: .8em;
+  }
+  .card-body > .row {
+    font-size: .7em;
+    a {
+      border-radius: 1.5rem;
+      width: 6.5em;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+  }
 }
+
 /* navbar */
 
 .navbar {
@@ -337,15 +354,25 @@ footer {
 
 .modal {
   .modal-content {
-    border: none;
+    //border: none;
     border-radius: .5rem;
+  }
+  #poster-modal-content, .poster-modal-body {
+    border-radius: .85rem;
+
   }
 
   .modal-header {
-    //fonts-family: 'Rancho', serif;
     .close {
       outline: 0;
     }
+    .reviews {
+      display: block;
+    }
+  }
+
+  .modal-body {
+    border: none;
   }
 
   .form-control {
@@ -356,7 +383,6 @@ footer {
     background-color: $material-blue;
     border-top-right-radius: .5rem;
     border-bottom-right-radius: .5rem;
-
     i {
       color: white;
     }
@@ -419,101 +445,100 @@ footer {
 }
 
 
-.card-columns {
+#poster {
   margin: auto;
+  border: 0;
+  border-radius: 0.85rem !important;
 
-  .card {
-    margin: auto;
-    border: 0;
-    border-radius: 0.85rem !important;
+  .card-header {
+    border-bottom: 0;
+    border-top-right-radius: 0.8rem !important;
+    border-top-left-radius: 0.8rem !important;
+    //min-height: 30vw;
+  }
 
-    .card-header {
-      border-bottom: 0;
-      border-top-right-radius: 0.8rem !important;
-      border-top-left-radius: 0.8rem !important;
-      //min-height: 30vw;
+  .card-title {
+    //font-family: 'Roboto Slab', serif;
+
+    //.fas{
+    //color: #FFF;
+    //transition: transform 1.5s ease-in-out;
+    //}
+    //.fas:hover{
+    //  text-decoration: none;
+    //  transform: rotate(-360deg);
+    //}
+  }
+
+  #card-starter-avatar {
+    margin-right: 3px;
+    img {
+      width: 2.5rem;
+      height: 2.5rem;
+      transition: transform 1.5s ease-in-out;
     }
-
-    .card-title {
-      //font-family: 'Roboto Slab', serif;
-
-      //.fas{
-      //color: #FFF;
-      //transition: transform 1.5s ease-in-out;
-      //}
-      //.fas:hover{
-      //  text-decoration: none;
-      //  transform: rotate(-360deg);
-      //}
+    img:hover {
+      transform: rotate(-360deg);
     }
+  }
+  #activity-starter-name {
+    font-size: 1.2em;
+  }
+  #activity-update-date {
+    font-size: 0.7em;
+  }
 
-    #card-starter-avatar {
-      margin-right: 3px;
-      img {
-        width: 2.5rem;
-        height: 2.5rem;
-        transition: transform 1.5s ease-in-out;
-      }
-      img:hover {
-        transform: rotate(-360deg);
-      }
-    }
-    #activity-starter-name {
-      font-size: 1.2em;
-    }
-    #activity-update-date {
-      font-size: 0.7em;
-    }
+  .card-title-date, .card-title-time {
+    font-size: 1em;
+  }
 
-    .card-title-date {
-      //font-size: 2.3em;
-      font-size: 1em;
+  .card-title-button {
+    font-size: 1.6em;
+    cursor: pointer;
 
-    }
-
-    .card-title-time {
-      //font-size: 1.3em;
-      font-size: 1em;
-    }
-
-    .card-title-button {
-      font-size: 1.6em;
-      cursor: pointer;
-
-      #dropdownMenuButton:hover {
-        text-shadow: 0px 3px 10px rgba(0, 0, 0, .175)
-      }
-    }
-
-    .card-title-place {
-      //font-size: 1.3em;
-      font-size: 1em;
-    }
-
-    .card-body {
-      font-size: 1.2em;
-
-      font-family: 'Roboto', sans-serif;
-      font-weight: 400;
-
-      //fonts-family: 'Patrick Hand', cursive;
-    }
-
-    .card-footer {
-      border-top: none;
-      font-size: 0.8em;
-
-      font-family: 'Roboto', sans-serif;
-      font-weight: 400;
-
-      //fonts-family: 'Patrick Hand', cursive;
-
-      .rate-star {
-        font-size: 0.6em;
-      }
+    #dropdownMenuButton:hover {
+      text-shadow: 0px 3px 10px rgba(0, 0, 0, .175)
     }
   }
 
+  .card-title-place {
+    font-size: 1em;
+  }
+
+  .card-body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 1.2em;
+  }
+
+  .card-footer {
+    border-top: none;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 0.8em;
+
+    .rate-star {
+      font-size: 0.6em;
+      float: left;
+      padding-left: 0;
+    }
+    .reviews {
+      display: none;
+    }
+    .comment_box {
+      float: right;
+      padding-right: 0px;
+      transform: translateY(-8px);
+      a {
+        cursor: pointer;
+        font-size: 20px;
+      }
+    }
+  }
+}
+.card-columns {
+  margin: auto;
 
   // Extra small devices (portrait phones, less than 576px)
   // No media query for `xs` since this is the default in Bootstrap
@@ -800,33 +825,6 @@ footer {
   max-width: 1200px !important;
 }
 
-.modal {
-  .reviews {
-    display: block;
-  }
-}
-
-.poster {
-  .rate-star {
-    float: left;
-    padding-left: 0;
-  }
-
-  .reviews {
-    display: none;
-  }
-
-  .comment_box {
-    float: right;
-    padding-right: 0px;
-    transform: translateY(-8px);
-
-    a {
-      cursor: pointer;
-      font-size: 20px;
-    }
-  }
-}
 
 .btn-group {
   .btn {
