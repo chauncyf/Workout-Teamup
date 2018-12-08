@@ -1,0 +1,31 @@
+<div class="row ">
+  <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
+    <%= avatar_for user, id: "upload_avatar_button", data: {toggle: "modal", target: "#upload_avatar_modal"} %>
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
+    <% if user == current_user %>
+      <!-- Edit user Button Trigger -->
+      <button type="button" class="btn btn-primary btn-block follow" id="userInfo_edit_button" data-toggle="modal" data-target="#editUserModal">Edit</button>
+      <!-- Change pwd Button Trigger -->
+      <button type="button" class="btn btn-success btn-block follow" id="change_pwd_button" data-toggle="modal" data-target="#changePwdModal">Change
+        Password
+      </button>
+    <% else %>
+      <% if Follow.exists?(followee_id: user.id, follower_id: current_user.id) %>
+        <%= link_to "Unfollow", "/unfollow/#{user.id}", method: :delete, class: "btn btn-success btn-block follow", id: "#{user.id}", follow: true %>
+      <% else %>
+        <%= link_to "Follow", "/follow/#{user.id}", method: :post, class: "btn btn-primary btn-block follow", id: "#{user.id}", follow: false %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="row user-detail-row">
+    <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
+      <div class="border"></div>
+      <!-- need to reflect real number of follows and followers -->
+      <p>FOLLOWER</p>
+      <span><%= Follow.where(followee_id: user.id).count %></span>
+      <p>FOLLOWING</p>
+      <span><%= Follow.where(follower_id: user.id).count %></span>
+    </div>
+  </div>
+</div>
