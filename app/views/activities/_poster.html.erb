@@ -4,8 +4,11 @@
   <div class="card-header px-3 py-2 text-white material-head-<%= activity.theme_color %>">
 
     <div class="row justify-content-between">
-      <div class="col col-auto card-title card-starter-avatar m-0">
-        <%= avatar_for(activity.starter, 'data-avatar-pop': activity.starter.id) %>
+      <div class="col col-auto card-title card-starter-avatar m-0 dropdown" data-avatar-pop="<%= activity.starter.id %>" data-toggle="dropdown">
+        <%= avatar_for(activity.starter) %>
+        <div class="dropdown-menu">
+          loading...
+        </div>
         <span><%= activity.starter.user_name %></span>
       </div>
       <!--      <div class="col col-auto"><%#= activity_starter_name(activity.starter_id) %></div>-->
@@ -64,7 +67,7 @@
       </div>-->
       <div class="col-auto text-right comment_box">
         <a class="like"><i class="far fa-heart"></i></a>
-        <a class="comment"><i class="far fa-comments"></i></a>
+        <a class="comment" data-id="<%= activity.id %>"><i class="far fa-comments"></i></a>
       </div>
       <div class="reviews">
         <div class="card card-body">

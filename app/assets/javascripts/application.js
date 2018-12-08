@@ -29,16 +29,16 @@ $(function () {
     })
 
     $(document).on("change", "[data-image-push-to]", function (e) {
-        var file = e.currentTarget.files[0]
-        var id = $(e.currentTarget).data('image-push-to')
-        var dom = document.getElementById(id)
-        var reader = new FileReader()
+        let file = e.currentTarget.files[0];
+        let id = $(e.currentTarget).data('image-push-to');
+        let dom = document.getElementById(id);
+        let reader = new FileReader();
         reader.addEventListener('load', () => {
             if (dom.cropper) {
                 dom.cropper.replace(reader.result)
             } else {
                 dom.src = reader.result
-                var cropper = new Cropper(document.getElementById(id), {
+                let cropper = new Cropper(document.getElementById(id), {
                     aspectRatio: 1,
                 })
                 dom.cropper = cropper
@@ -46,12 +46,34 @@ $(function () {
         })
         reader.readAsDataURL(file)
     })
-
+    var posterModal = $('#poserModal')
     $(document).on('click', '.poster .comment', function () {
-        $(this).parent().next('.reviews').collapse("toggle")
+        let id = $(this).data('id')
+        $.ajax({
+            url: '/activities/' + id,
+            method: 'get',
+            success: (data) => {
+                posterModal.find('.modal-body').html(data)
+                posterModal.modal('show')
+            }
+        })
     })
 
-    $(document).popover({
+    $(document).on('show.bs.dropdown mouseover', '[data-avatar-pop]', function () {
+        if ($(this).children('.dropdown-menu').data('loading')) {
+            return
+        }
+        $(this).children('.dropdown-menu').data('loading', 'true')
+        $.ajax({
+            url: '/users/' + $(this).data('avatar-pop'),
+            method: 'get',
+            success: (data) => {
+                $(this).children('.dropdown-menu').html(data)
+            }
+        })
+        return
+    })
+    /*$(document).popover({
         selector: '[data-avatar-pop]',
         content() {
             if ($(this).data('data-content')) return
@@ -69,9 +91,9 @@ $(function () {
             '<div class="arrow"></div>' +
             '<div class="popover-body"></div>' +
             '</div>',
-        trigger: 'hover',
+        trigger: 'click',
         html: true
-    })
+    })*/
 })
 
 function dataURItoBlob(dataURI) {
