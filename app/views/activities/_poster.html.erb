@@ -73,9 +73,9 @@
       <!--<div class="col-auto text-right">
         Update: <%#= activity.updated_at.strftime("%m/%d/%y %H:%M") %>
       </div>-->
-      <div class="col-auto text-right comment_box">
+      <div class="col-auto text-right comment_box" data-id="<%= activity.id %>">
         <a class="like"><i class="far fa-heart"></i></a>
-        <a class="comment" data-id="<%= activity.id %>"><i class="far fa-comments"></i></a>
+        <a class="comment" ><i class="far fa-comments"></i></a>
       </div>
       <div class="reviews">
         <div class="card card-body">

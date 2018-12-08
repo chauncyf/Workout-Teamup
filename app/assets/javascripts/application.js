@@ -65,7 +65,7 @@ $(function () {
         }
         $(this).children('.dropdown-menu').data('loading', 'true')
         $.ajax({
-            url: '/users/' + $(this).data('avatar-pop'),
+            url: '/users/' + $(this).parent().data('avatar-pop'),
             method: 'get',
             success: (data) => {
                 $(this).children('.dropdown-menu').html(data)
@@ -94,6 +94,16 @@ $(function () {
         trigger: 'click',
         html: true
     })*/
+
+    $(document).on('click', '.poster .like', function () {
+        $.ajax({
+            url: '/like_activity',
+            data: {
+                activity_id: $(this).parent().data('id')
+            },
+
+        })
+    })
 })
 
 function dataURItoBlob(dataURI) {

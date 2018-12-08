@@ -81,6 +81,17 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def like
+    Activity.transaction do
+      if Like.where(user_id: current_user_id, activity_id: params[:activity_id]).any?
+        Like.where(user_id: current_user_id, activity_id: params[:activity_id]).first.delete
+      else
+        Like.create(user_id: current_user_id, activity_id: params[:activity_id])
+      end
+    end
+    render 'users/join_activity'
+  end
+
   # DELETE /activities/1
   # DELETE /activities/1.json
   def destroy

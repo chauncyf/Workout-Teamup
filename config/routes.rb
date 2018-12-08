@@ -48,4 +48,6 @@ Rails.application.routes.draw do
   get '/users/profile/:id', to: 'users#profile', as: :profile
 
   get '/getqrcode/:url', to: 'qrcodes#get', as: :getQRcodeUrl
+
+  post '/like_activity', to: 'activity#like', as: :like_activity
 end
