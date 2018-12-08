@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
         @invalid_key = true
         format.html {render :new}
         format.json {render json: @invalid_key, status: :unprocessable_entity}
-        format.js   {render layout: false, content_type: 'text/javascript' }
+        format.js   {render layout: false, content_type: 'text/javascript',locals: {} }
       end
     end
   end

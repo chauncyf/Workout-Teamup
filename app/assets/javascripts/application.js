@@ -50,6 +50,28 @@ $(function () {
     $(document).on('click', '.poster .comment', function () {
         $(this).parent().next('.reviews').collapse("toggle")
     })
+
+    $(document).popover({
+        selector: '[data-avatar-pop]',
+        content() {
+            if ($(this).data('data-content')) return
+            $.ajax({
+                url: '/users/' + $(this).data('avatar-pop'),
+                success: (data) => {
+                    $(this).attr('data-content', data)
+                    $(this).popover('hide')
+                    $(this).popover('show')
+                }
+            })
+            return 'loading...'
+        },
+        template: '<div class="popover avatar-pop" role="tooltip">' +
+            '<div class="arrow"></div>' +
+            '<div class="popover-body"></div>' +
+            '</div>',
+        trigger: 'hover',
+        html: true
+    })
 })
 
 function dataURItoBlob(dataURI) {

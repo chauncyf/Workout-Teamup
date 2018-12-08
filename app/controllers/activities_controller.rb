@@ -14,6 +14,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/1
   # GET /activities/1.json
   def show
+    render layout: false
   end
 
   def show_starter_posters
@@ -55,13 +56,13 @@ class ActivitiesController < ApplicationController
               title: '<i class="fas fa-plus-circle"></i> New Poster',
               text: 'A new poster has been posted', type: 'info'}})
         end
-        format.js{render 'users/create_activity'}
+        format.js {render 'users/create_activity'}
 
       else
         #format.js {render json: {status: 2}}
         format.html {render :new}
         format.json {render json: @activity.errors, status: :unprocessable_entity}
-        format.js   {render layout: false, content_type: 'text/javascript' }
+        format.js {render layout: false, content_type: 'text/javascript'}
       end
     end
   end
