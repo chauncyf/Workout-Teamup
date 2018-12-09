@@ -4,6 +4,7 @@
     @join = activity.get_participation_by_user_id(current_user_id).first
     @isJoined = @isJoined && !@join.nil?
   end
+  show_comment = false if local_assigns[:show_comment].nil?
 %>
 
 <div class="card shadow mb-3 poster">
@@ -43,15 +44,15 @@
             <%= link_to "", "/join_activity/#{activity.id}", remote: true, class: "fas fa-plus", method: :post %>
           <% end %>
 
-<!--          <div class="dropleft">-->
-<!--            <a class="fas fa-ellipsis-v" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>-->
-<!--            <div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdownMenuButton">-->
-              <%#= link_to "Join Activity", "/join_activity/#{activity.id}", remote: true, class: "dropdown-item", method: :post %>
-<!--              <div class="dropdown-divider"></div>-->
-<!--              <a class="dropdown-item" href="#">Follow <%#= activity.starter.user_name %></a>-->
-<!--              <a class="dropdown-item" href="#">Email <%#= activity.starter.user_name %></a>-->
-<!--            </div>-->
-<!--          </div>-->
+          <!--          <div class="dropleft">-->
+          <!--            <a class="fas fa-ellipsis-v" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>-->
+          <!--            <div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdownMenuButton">-->
+          <%#= link_to "Join Activity", "/join_activity/#{activity.id}", remote: true, class: "dropdown-item", method: :post %>
+          <!--              <div class="dropdown-divider"></div>-->
+          <!--              <a class="dropdown-item" href="#">Follow <%#= activity.starter.user_name %></a>-->
+          <!--              <a class="dropdown-item" href="#">Email <%#= activity.starter.user_name %></a>-->
+          <!--            </div>-->
+          <!--          </div>-->
         <% end %>
       </div>
     </div>
@@ -84,11 +85,13 @@
         <a class="like"><i class="far fa-heart"></i></a>
         <a class="comment"><i class="far fa-comment"></i></a>
       </div>
-      <div class="reviews">
-        <div class="card card-body">
-          comment list
+      <% if show_comment %>
+        <div class="reviews">
+          <div class="card card-body">
+            comment list
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

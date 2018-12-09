@@ -51,6 +51,7 @@ $(function () {
         let id = $(this).parent().data('id')
         $.ajax({
             url: '/activities/' + id,
+            data: {show_comment: true},
             method: 'get',
             success: (data) => {
                 posterModal.find('.modal-body').html(data)
