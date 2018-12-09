@@ -46,9 +46,9 @@ $(function () {
         })
         reader.readAsDataURL(file)
     })
-    var posterModal = $('#poserModal')
+    var posterModal = $('#posterModal')
     $(document).on('click', '.poster .comment', function () {
-        let id = $(this).data('id')
+        let id = $(this).parent().data('id')
         $.ajax({
             url: '/activities/' + id,
             method: 'get',
