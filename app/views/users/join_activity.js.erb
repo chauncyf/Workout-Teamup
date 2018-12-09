@@ -1,6 +1,9 @@
 <% if !join_status.nil? %>
   <% if join_status %>
     refreshPosts();
+    if($('#posterModal').is(":not(':hidden')")){
+        posterModalRefresh()
+    }
     new PNotify({
         title: '<i class="fas fa-check-circle"></i> Activity Joined',
         text: 'See you',
@@ -18,6 +21,9 @@
 <% elsif !leave_status.nil? %>
   <% if leave_status %>
     refreshPosts();
+    if($('#posterModal').is(":not(':hidden')")){
+        posterModalRefresh()
+    }
     new PNotify({
         title: '<i class="fas fa-check-circle"></i> Activity Leaved',
         text: 'Looking forward to see you again',

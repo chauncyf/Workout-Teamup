@@ -49,15 +49,18 @@ $(function () {
     $(document).on('click', '.poster .comment', function () {
         var posterModal = $('#posterModal')
         let id = $(this).parent().data('id')
-        $.ajax({
-            url: '/activities/' + id,
-            data: {show_comment: true},
-            method: 'get',
-            success: (data) => {
-                posterModal.find('.modal-body').html(data)
-                posterModal.modal('show')
-            }
-        })
+        window.posterModalRefresh = () => {
+            $.ajax({
+                url: '/activities/' + id,
+                data: {show_comment: true},
+                method: 'get',
+                success: (data) => {
+                    posterModal.find('.modal-body').html(data)
+                    posterModal.modal('show')
+                }
+            })
+        }
+        posterModalRefresh()
     })
 
     $(document).on('show.bs.dropdown mouseover', '[data-avatar-pop]', function () {
