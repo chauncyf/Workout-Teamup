@@ -175,6 +175,7 @@ a {
   border: none;
   border-radius: 0.5rem;
 }
+
 //
 //.dropdown:hover .dropdown-menu, .dropleft:hover .dropdown-menu, .dropdown-menu.show {
 //  display: block;
@@ -183,9 +184,9 @@ a {
 //}
 
 .profile-dropdown {
-  border: none !important;
-  border-radius: 0.85rem !important;
   width: 15em;
+  border: none !important;
+  border-radius: .85rem !important;
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
 
   .profile-card {
@@ -492,8 +493,8 @@ footer {
 
   .card-header {
     border-bottom: 0;
-    border-top-right-radius: 0.8rem !important;
-    border-top-left-radius: 0.8rem !important;
+    border-top-right-radius: 0.85rem !important;
+    border-top-left-radius: 0.85rem !important;
     //min-height: 30vw;
   }
 
@@ -557,34 +558,18 @@ footer {
 
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 0.8em;
+    font-size: 1em;
 
-    .rate-star {
-      float: left;
-      padding-left: 0;
-
+    .row {
       i {
-        font-size: 16px;
+        font-size: 1em;
       }
 
-    }
-
-    /*.reviews {
-      display: none;
-    }*/
-    .comment_box {
-      float: right;
-      padding-right: 0px;
-      transform: translateY(-8px);
-
-      a {
-        cursor: pointer;
-        font-size: 20px;
+      .comment_box {
+        a {
+          cursor: pointer;
+        }
       }
-    }
-
-    .poster_footer {
-      height: 20px;
     }
 
     .reviews {

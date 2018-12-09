@@ -71,18 +71,18 @@
     <%= activity.content %>
   </div>
 
-  <div class="card-footer bg-transparent px-3 pt-0 material-footer-<%= activity.theme_color %>">
-    <div class="poster_footer">
+  <div class="card-footer bg-transparent px-3 pt-0 pb-2 material-footer-<%= activity.theme_color %>">
+    <div class="row align-items-center">
       <% if @isJoined %>
-        <div class="col-auto text-left rate-star" data-raty="true"
+        <div class="col-auto rate-star" data-raty="true"
              <%= @join.rating != 0 ? "data-readonly='true'" : "" %>
              data-id="<%= @join.id %>"
-             data-score="<%= @join.rating %>"
-        ></div>
+             data-score="<%= @join.rating %>">
+        </div>
       <% end %>
 
-      <div class="col-auto text-right comment_box" data-id="<%= activity.id %>">
-        <a class="like"><i class="far fa-heart"></i></a>
+      <div class="col comment_box text-right" data-id="<%= activity.id %>">
+        <a class="like mr-1"><i class="far fa-heart"></i></a>
         <a class="comment"><i class="far fa-comment"></i></a>
       </div>
     </div>
