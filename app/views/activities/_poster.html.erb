@@ -5,6 +5,7 @@
     @isJoined = @isJoined && !@join.nil?
   end
   show_comment = false if local_assigns[:show_comment].nil?
+
 %>
 
 <div class="card shadow mb-3 poster">
@@ -81,7 +82,7 @@
         </div>
       <% end %>
 
-      <div class="col-auto text-right comment_box" data-id="<%= activity.id %>">
+      <div class="col text-right comment_box" data-id="<%= activity.id %>">
         <% if activity.liked?(current_user_id) %>
           <a class="like mr-1"><i class="fa fa-heart"></i></a>
         <% else %>
