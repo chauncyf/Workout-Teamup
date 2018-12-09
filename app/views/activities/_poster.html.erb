@@ -12,14 +12,14 @@
     <div class="row justify-content-between">
       <div class="col col-auto card-title m-0">
         <ul class="list-inline mb-1">
-          <li class="list-inline-item align-middle dropdown" id="card-starter-avatar" data-avatar-pop="<%= activity.starter.id %>" data-toggle="dropdown">
+          <li class="list-inline-item align-middle dropdown card-starter-avatar"data-avatar-pop="<%= activity.starter.id %>" data-toggle="dropdown">
             <%= avatar_for(activity.starter) %>
-            <div class="dropdown-menu p-0" id="profile-dropdown"> ...</div>
+            <div class="dropdown-menu p-0 profile-dropdown" > ...</div>
           </li>
           <li class="list-inline-item align-middle">
             <ul class="list-unstyled">
-              <li id="activity-starter-name"><%= activity.starter.user_name %></li>
-              <li id="activity-update-date"><%= activity.updated_at.strftime("%m/%d %H:%M") %></li>
+              <li class="activity-starter-name"><%= activity.starter.user_name %></li>
+              <li class="activity-update-date"><%= activity.updated_at.strftime("%m/%d %H:%M") %></li>
             </ul>
           </li>
         </ul>
@@ -72,7 +72,7 @@
   </div>
 
   <div class="card-footer bg-transparent px-3 pt-0 material-footer-<%= activity.theme_color %>">
-    <div class="">
+    <div class="poster_footer">
       <% if @isJoined %>
         <div class="col-auto text-left rate-star" data-raty="true"
              <%= @join.rating != 0 ? "data-readonly='true'" : "" %>
@@ -85,14 +85,38 @@
         <a class="like"><i class="far fa-heart"></i></a>
         <a class="comment"><i class="far fa-comment"></i></a>
       </div>
-      <% if show_comment %>
-        <div class="reviews">
-          <div class="card card-body">
-            comment list
-          </div>
-        </div>
-      <% end %>
     </div>
+    <% if show_comment %>
+      <div class="reviews card">
+
+        <div class="card-body">
+          <h5 class="card-title">reviews</h5>
+          <ul class="list-group list-group-flush">
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><%= avatar_for(activity.starter) %>FCF</h5>
+                <small>3 days ago</small>
+              </div>
+              <p class="mb-1">
+                This is awesome
+              </p>
+              <small>motto</small>
+            </div>
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">FCF</h5>
+                <small>3 days ago</small>
+              </div>
+              <p class="mb-1">
+                This is awesome
+              </p>
+              <small>motto</small>
+            </div>
+
+          </ul>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 
