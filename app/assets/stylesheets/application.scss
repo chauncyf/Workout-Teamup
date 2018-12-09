@@ -165,16 +165,16 @@ a {
   border-radius: 0.85rem !important;
   width: 15em;
   .card-body  {
-    font-size: .8em;
-  }
-  .card-body > .row {
-    font-size: .7em;
-    a {
-      border-radius: 1.5rem;
-      width: 6.5em;
-    }
-    a:hover {
-      text-decoration: none;
+    font-size: 1em !important;
+    .row{
+      font-size: .8em !important;
+      a {
+        border-radius: 1.5rem;
+        width: 6.5em;
+      }
+      a:hover {
+        text-decoration: none;
+      }
     }
   }
 }

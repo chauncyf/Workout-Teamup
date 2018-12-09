@@ -17,7 +17,7 @@
     let map, infoWindow;
     let currentUserFlag = false// if we cannot get current user's position
     // from the browser, we can get it from database
-    let currentId = '<%= current_user.id %>'
+    let currentId = '<%= current_user_id %>'
     let object = {}// use this object to indicate if the page is re rendered,
     // so we can clear the timeout easily by checking it
     window.mapRefreshSymbol = object

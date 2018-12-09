@@ -94,6 +94,16 @@ $(function () {
         trigger: 'click',
         html: true
     })*/
+
+    $(document).on('click', '.poster .like', function () {
+        $.ajax({
+            url: '/like_activity',
+            data: {
+                activity_id: $(this).parent().data('id')
+            },
+
+        })
+    })
 })
 
 function dataURItoBlob(dataURI) {

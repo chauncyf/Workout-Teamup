@@ -29,4 +29,8 @@ class Activity < ApplicationRecord
 
   scope :working, -> {where(status: 2)}
 
+  def liked? user_id
+    liked.where(user_id: user_id).size > 0
+  end
+
 end

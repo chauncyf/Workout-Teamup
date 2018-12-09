@@ -3,12 +3,13 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :edit_password, :update, :destroy, :edit_avatar, :upload_avatar, :user_avatar_url, :profile]
 
   def join_activity
-    if ActivityParticipant.where(user_id: current_user.id, activity_id: params[:activity_id]).any?
-      @join_status = false
-    else
-      ActivityParticipant.create(user_id: current_user.id, activity_id: params[:activity_id], identity: 2)
-      @activities = Activity.all
-      @join_status = true
+    User.transaction do
+      if ActivityParticipant.where(user_id: current_user_id, activity_id: params[:activity_id]).any?
+        @join_status = false
+      else
+        ActivityParticipant.create(user_id: current_user_id, activity_id: params[:activity_id], identity: 2)
+        @join_status = true
+      end
     end
     render 'join_activity'
   end
@@ -27,11 +28,11 @@ class UsersController < ApplicationController
   end
 
   def follow
-    Follow.create(followee_id: params[:followee_id], follower_id: current_user.id)
+    Follow.create(followee_id: params[:followee_id], follower_id: current_user_id)
   end
 
   def unfollow
-    follow_id = Follow.find_by(followee_id: params[:followee_id], follower_id: current_user.id).id
+    follow_id = Follow.find_by(followee_id: params[:followee_id], follower_id: current_user_id).id
     Follow.destroy(follow_id)
   end
 
@@ -48,7 +49,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    render partial: 'user_profile_card', locals: {user:@user}
+    render partial: 'user_profile_card', locals: {user: @user }
   end
 
   def profile
@@ -116,7 +117,7 @@ class UsersController < ApplicationController
         end
         format.html {render :new}
         format.json {render json: @user.errors, status: :unprocessable_entity}
-        format.js   {render layout: false, content_type: 'text/javascript' }
+        format.js {render layout: false, content_type: 'text/javascript'}
       end
     end
   end
