@@ -1,6 +1,6 @@
 <% color = %w(purple pink blue teal green orange brown grey).sample %>
 
-<div class="card m-0" id="profile-card">
+<div class="card profile-card m-0">
   <div class="card-header px-3 py-2 text-white material-head-<%= color %>">
     <ul class="list-inline">
       <li class="list-inline-item align-middle">
@@ -8,8 +8,8 @@
       </li>
       <li class="list-inline-item align-middle">
         <ul class="list-unstyled">
-          <li id="activity-starter-name"><%= user.user_name %></li>
-          <li id="activity-update-date">
+          <li class="activity-starter-name"><%= user.user_name %></li>
+          <li class="activity-update-date">
             <ul class="list-inline">
               <li class="list-inline-item">Following: <%= Follow.where(follower_id: user.id).count %></li>
               <li class="list-inline-item">Follower: <%= Follow.where(followee_id: user.id).count %></li>

@@ -174,38 +174,42 @@ a {
   opacity: 1;
   border: none;
   border-radius: 0.5rem;
-  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
 }
-
+//
 //.dropdown:hover .dropdown-menu, .dropleft:hover .dropdown-menu, .dropdown-menu.show {
 //  display: block;
 //  border: none;
 //  border-radius: 0.5rem;
 //}
 
-#profile-card, #profile-dropdown {
-  border: none;
+.profile-dropdown {
+  border: none !important;
   border-radius: 0.85rem !important;
   width: 15em;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
 
-  .avatar {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
+  .profile-card {
+    border: none !important;
 
-  .card-body {
-    font-size: 1em !important;
+    .avatar {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
 
-    .row {
-      font-size: .8em !important;
+    .card-body {
+      font-size: 1em !important;
 
-      a {
-        border-radius: 1.5rem;
-        width: 6.5em;
-      }
+      .row {
+        font-size: .8em !important;
 
-      a:hover {
-        text-decoration: none;
+        a {
+          border-radius: 1.5rem;
+          width: 6.5em;
+        }
+
+        a:hover {
+          text-decoration: none;
+        }
       }
     }
   }
@@ -328,7 +332,6 @@ footer {
 .invalid-feedback {
   display: block !important;
   color: $material-pink !important;
-
 
   //display: none;
 }
@@ -463,7 +466,6 @@ footer {
   }
 }
 
-
 .login-card {
   max-width: 32em;
   border: none !important;
@@ -482,7 +484,6 @@ footer {
     color: $material-pink;
   }
 }
-
 
 .poster {
   margin: auto;
@@ -514,17 +515,17 @@ footer {
     margin-right: 3px;
   }
 
-  .avatar {
+  .card-starter-avatar > .avatar {
     width: 2.5rem;
     height: 2.5rem;
     transition: transform 1.5s ease-in-out;
   }
 
-  .avatar:hover {
+  .card-starter-avatar > .avatar:hover {
     transform: rotate(-360deg);
   }
 
-  .ctivity-starter-name {
+  .activity-starter-name {
     font-size: 1.2em;
   }
 
@@ -539,10 +540,6 @@ footer {
   .card-title-button {
     font-size: 1.6em;
     cursor: pointer;
-
-    .dropdownMenuButton:hover {
-      text-shadow: 0px 3px 10px rgba(0, 0, 0, .175)
-    }
   }
 
   .card-title-place {
@@ -571,7 +568,6 @@ footer {
       }
 
     }
-
 
     /*.reviews {
       display: none;
@@ -885,7 +881,6 @@ footer {
 .avatar-pop {
   max-width: 1200px !important;
 }
-
 
 .btn-group {
   .btn {
