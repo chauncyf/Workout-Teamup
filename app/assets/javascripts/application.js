@@ -97,8 +97,11 @@ $(function () {
     })*/
 
     $(document).on('click', '.poster .like', function () {
+        let url=''
+        if($(this).hasc)
         $.ajax({
             url: '/like_activity',
+            method: 'post',
             data: {
                 activity_id: $(this).parent().data('id')
             },

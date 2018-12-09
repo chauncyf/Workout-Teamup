@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   before_create :confirmation_token
 
-  include Gravtastic, UsersHelper
+  include UsersHelper
+  include Gravtastic
 
   gravtastic :email
   has_one_attached :avatar
@@ -11,7 +12,7 @@ class User < ApplicationRecord
   has_many :activity_participants
   has_many :activities, through: :activity_participants
   has_many :likes
-  has_many :liked_poster, through: :likes, class_name: "Activity"
+  has_many :liked_poster, through: :likes, class_name: 'Activity'
 
   has_many :comments
   has_many :ratings

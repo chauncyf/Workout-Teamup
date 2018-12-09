@@ -19,7 +19,7 @@ class Activity < ApplicationRecord
 
   has_many :activity_contents
 
-  def commentsList # comments ordered by time
+  def comments_list # comments ordered by time
     comments.order(created_at: :desc)
   end
 
@@ -30,7 +30,7 @@ class Activity < ApplicationRecord
   scope :working, -> {where(status: 2)}
 
   def liked? user_id
-    liked.where(user_id: user_id).size > 0
+    user_id && likes.where(user_id: user_id).size > 0
   end
 
 end

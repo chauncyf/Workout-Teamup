@@ -90,7 +90,7 @@ class ActivitiesController < ApplicationController
         Like.create(user_id: current_user_id, activity_id: params[:activity_id])
       end
     end
-    render 'users/join_activity'
+    render 'users/like_activity'
   end
 
   # DELETE /activities/1

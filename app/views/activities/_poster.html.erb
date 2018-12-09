@@ -12,9 +12,9 @@
     <div class="row justify-content-between">
       <div class="col col-auto card-title m-0">
         <ul class="list-inline mb-1">
-          <li class="list-inline-item align-middle dropdown card-starter-avatar"data-avatar-pop="<%= activity.starter.id %>" data-toggle="dropdown">
+          <li class="list-inline-item align-middle dropdown card-starter-avatar" data-avatar-pop="<%= activity.starter.id %>" data-toggle="dropdown">
             <%= avatar_for(activity.starter) %>
-            <div class="dropdown-menu profile-dropdown p-0" > ...</div>
+            <div class="dropdown-menu profile-dropdown p-0"> ...</div>
           </li>
           <li class="list-inline-item align-middle">
             <ul class="list-unstyled">
@@ -81,8 +81,12 @@
         </div>
       <% end %>
 
-      <div class="col comment_box text-right" data-id="<%= activity.id %>">
-        <a class="like mr-1"><i class="far fa-heart"></i></a>
+      <div class="col-auto text-right comment_box" data-id="<%= activity.id %>">
+        <% if activity.liked?(current_user_id) %>
+          <a class="like mr-1"><i class="fa fa-heart"></i></a>
+        <% else %>
+          <a class="like mr-1"><i class="far fa-heart"></i></a>
+        <% end %>
         <a class="comment"><i class="far fa-comment"></i></a>
       </div>
     </div>
@@ -92,28 +96,27 @@
         <div class="card-body">
           <h5 class="card-title">reviews</h5>
           <ul class="list-group list-group-flush">
-            <div class="list-group-item list-group-item-action flex-column align-items-start">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1"><%= avatar_for(activity.starter) %>FCF</h5>
-                <small>3 days ago</small>
+            <% activity.comments_list.each do |comment| %>
+              <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1"><%= avatar_for(activity.starter) %>FCF</h5>
+                  <small>3 days ago</small>
+                </div>
+                <p class="mb-1">
+                  <%= comment.content %>
+                </p>
+                <small>motto</small>
               </div>
-              <p class="mb-1">
-                This is awesome
-              </p>
-              <small>motto</small>
-            </div>
-            <div class="list-group-item list-group-item-action flex-column align-items-start">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">FCF</h5>
-                <small>3 days ago</small>
-              </div>
-              <p class="mb-1">
-                This is awesome
-              </p>
-              <small>motto</small>
-            </div>
-
+            <% end %>
           </ul>
+          <div class="input-group">
+
+            <textarea placeholder="Enter your comment here" class="form-control" aria-label="With textarea"></textarea>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button">submit</button>
+            </div>
+          </div>
+
         </div>
       </div>
     <% end %>
