@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/users/refresh_posts', to: 'users#refresh_joined_activities', as: :refresh_posts_achievements
 
   post '/join_activity/:activity_id', to: 'users#join_activity'
+  post '/leave_activity/:activity_id', to: 'users#leave_activity'
   get '/joined_activities', to: 'users#joined_activities'
   get '/show_starter_posters/:id', to: 'activities#show_starter_posters', as: :show_starter_posters
 

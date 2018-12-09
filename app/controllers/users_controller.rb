@@ -11,7 +11,19 @@ class UsersController < ApplicationController
         @join_status = true
       end
     end
-    render 'join_activity'
+    render 'join_activity', locals: {join_status: @join_status}
+  end
+
+  def leave_activity
+
+    User.transaction do
+      if ActivityParticipant.where(user_id: current_user_id, activity_id: params[:activity_id]).any?
+        ActivityParticipant.where(user_id: current_user_id, activity_id: params[:activity_id]).destroy_all
+        @leave_status = true
+      end
+    end
+    @join_status = nil
+    render 'join_activity.js.erb', locals: {leave_status: @leave_status, join_status: @join_status}
   end
 
   def joined_activities

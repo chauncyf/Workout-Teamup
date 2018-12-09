@@ -1,16 +1,28 @@
-<% if @join_status %>
-  refreshPosts();
-  new PNotify({
-      title: '<i class="fas fa-check-circle"></i> Congratulation',
-      text: 'Activity joined',
-      type: 'success'
-  });
-<% else %>
-  new PNotify({
-      title: '<i class="fas fa-exclamation-circle"></i> Opps',
-      text: 'Activity already joined',
-      type: 'error'
-  });
+<% if !join_status.nil? %>
+  <% if join_status %>
+    refreshPosts();
+    new PNotify({
+        title: '<i class="fas fa-check-circle"></i> Activity Joined',
+        text: 'See you',
+        type: 'success',
+        delay: 2000
+    });
+  <% else %>
+    new PNotify({
+        title: '<i class="fas fa-exclamation-circle"></i> Opps',
+        text: 'Activity already joined',
+        type: 'error',
+        delay: 2000
+    });
+  <% end %>
+<% elsif !leave_status.nil? %>
+  <% if leave_status %>
+    refreshPosts();
+    new PNotify({
+        title: '<i class="fas fa-check-circle"></i> Activity Leaved',
+        text: 'Looking forward to see you again',
+        type: 'success',
+        delay: 2000
+    });
+  <% end %>
 <% end %>
-
-

@@ -1,9 +1,9 @@
 <% color = %w(purple pink blue teal green orange brown grey).sample %>
 
-<div class="card shadow-lg m-0" id="profile-card">
+<div class="card m-0" id="profile-card">
   <div class="card-header px-3 py-2 text-white material-head-<%= color %>">
     <ul class="list-inline">
-      <li class="list-inline-item align-middle" id="card-starter-avatar">
+      <li class="list-inline-item align-middle">
         <%= avatar_for(user) %>
       </li>
       <li class="list-inline-item align-middle">
@@ -19,6 +19,8 @@
       </li>
     </ul>
   </div>
+
+<!--  TODO: follow refresh, notify-->
 
   <div class="card-body px-3 py-2 material-body-<%= color %>"><%= user.motto %>
     <div class="row justify-content-center text-center bg-transparent">

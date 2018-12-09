@@ -140,7 +140,7 @@ window.ratyAll = _.throttle(() => {
                     success(data) {
                         if (data.id) {
                             new PNotify({
-                                title: '<i class="fas fa-check-circle"></i> Rating success',
+                                title: '<i class="fas fa-check-circle"></i> Activity Rated',
                                 text: 'Thanks for your feedback',
                                 type: 'success',
                                 delay: 2000
