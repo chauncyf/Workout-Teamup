@@ -51,4 +51,5 @@ Rails.application.routes.draw do
   get '/getqrcode/:url', to: 'qrcodes#get', as: :getQRcodeUrl
 
   post '/like_activity', to: 'activities#like', as: :like_activity
+  post '/unlike_activity', to: 'activities#unlike', as: :unlike_activity
 end

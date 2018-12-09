@@ -97,10 +97,14 @@ $(function () {
     })*/
 
     $(document).on('click', '.poster .like', function () {
-        let url=''
-        if($(this).hasc)
+        let url = ''
+        if ($(this).hasClass('fa')) {// means already liked
+            url = '/unlike_activity'
+        } else {
+            url = '/like_activity'
+        }
         $.ajax({
-            url: '/like_activity',
+            url: url,
             method: 'post',
             data: {
                 activity_id: $(this).parent().data('id')

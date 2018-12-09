@@ -93,6 +93,11 @@ class ActivitiesController < ApplicationController
     render 'users/like_activity'
   end
 
+  def unlike
+    Like.where(user_id: current_user_id, activity_id: params[:activity_id]).destroy_all
+    render 'users/like_activity'
+  end
+
   # DELETE /activities/1
   # DELETE /activities/1.json
   def destroy
