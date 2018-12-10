@@ -20,7 +20,7 @@ class Activity < ApplicationRecord
   has_many :activity_contents
 
   def comments_list # comments ordered by time
-    comments.order(created_at: :desc)
+    comments.order(created_at: :asc)
   end
 
   def get_participation_by_user_id user_id

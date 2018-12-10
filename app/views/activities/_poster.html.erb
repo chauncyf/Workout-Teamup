@@ -20,7 +20,7 @@
           <li class="list-inline-item align-middle">
             <ul class="list-unstyled">
               <li class="activity-starter-name"><%= activity.starter.user_name %></li>
-              <li class="activity-update-date"><%= activity.updated_at.strftime("%m/%d %H:%M") %></li>
+              <li class="activity-update-date"><%= time_ago_in_words activity.updated_at %> ago</li>
             </ul>
           </li>
         </ul>
@@ -86,8 +86,8 @@
             <% activity.comments_list.each do |comment| %>
               <div class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1"><%= avatar_for(comment.user) %><%= comment.user.user_name %></h5>
-                  <small><%= comment.updated_at.strftime("%m/%d %H:%M") %></small>
+                  <h5 class="mb-1"><%= avatar_for(comment.user) %><%= comment.user.user_name %>:</h5>
+                  <small><%= time_ago_in_words comment.updated_at %> ago</small>
                 </div>
                 <p class="mb-1">
                   <%= comment.content %>
@@ -96,7 +96,7 @@
               </div>
             <% end %>
           </ul>
-          <div class="input-group">
+          <div class="input-group comment-input-group">
 
             <textarea placeholder="Enter your comment here" class="form-control" aria-label="With textarea"></textarea>
             <div class="input-group-append">
