@@ -578,6 +578,7 @@ footer {
       .avatar {
         width: 1.5em;
         height: 1.5em;
+        transform: translateX(-10px);
       }
     }
 
@@ -879,4 +880,9 @@ footer {
   .btn {
     //border-radius: 5rem;
   }
+}
+
+.poster_blocks {
+  padding-left: 20px;
+  padding-right: 20px;
 }
