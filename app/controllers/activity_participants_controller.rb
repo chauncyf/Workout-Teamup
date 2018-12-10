@@ -49,6 +49,7 @@ class ActivityParticipantsController < ApplicationController
       if @activity_participant.update(activity_participant_params)
         format.html {redirect_to @activity_participant, notice: 'Activity participant was successfully updated.'}
         format.json {render :show, status: :ok, location: @activity_participant}
+        format.js {render }
       else
         format.html {render :edit}
         format.json {render json: @activity_participant.errors, status: :unprocessable_entity}
