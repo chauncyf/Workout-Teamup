@@ -10,7 +10,7 @@ $('#post_display_container_joined').html(`
 
 
 $('#post_display_container_started').html(`
-<% @@activities_started.each do |activity| %>
+<% @activities_started.each do |activity| %>
     <tr>
       <td>
         <%= render partial: 'activities/poster', locals: {activity: activity} %>

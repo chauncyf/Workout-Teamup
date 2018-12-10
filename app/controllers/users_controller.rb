@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     size = params[:size]
     @activities_joined = current_user.activities
     @activities_started = Activity.where(starter_id: current_user)
-    render 'refresh_joined_activities'
+    render 'users/refresh_joined_activities'
   end
 
   def follow

@@ -61,6 +61,7 @@
         window.refreshPosts = function () {
             $.ajax({
                 url: '<%= refresh_posts_achievements_url %>',
+
                 data: {
                     page: 1,
                     size: 20,
