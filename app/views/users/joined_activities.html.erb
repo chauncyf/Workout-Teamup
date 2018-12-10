@@ -1,33 +1,46 @@
-<h1 class="title-big text-center">Activities I Joined</h1>
-<hr>
-<div id="post_display_container_joined" class="poster_blocks">
-  <!--<table class="table table-striped">-->
-  <!--  <tbody>-->
-  <% @activities_joined.each do |activity| %>
-    <tr>
-      <td>
-        <%= render partial: 'activities/poster', locals: {activity: activity} %>
-      </td>
-    </tr>
-  <% end %>
-</div>
-<!--  </tbody>-->
-<!--</table>-->
+<div class="achievement_container">
+  <div class="user_stat_box">
+    <div class="card">
+      <div class="card-body">
+        You were registered <%= time_ago_in_words current_user.created_at %> ago
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        You have joined <%= @activities_joined.size %> activites
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        You have started <%= @activities_started.size %> activites
+      </div>
+    </div>
+    <div id="join_stats" style="width: 400px;height: 400px;"></div>
+    <div id="start_stats" style="width: 400px;height: 400px;"></div>
+  </div>
+  <div id="post_display_container_joined" class="poster_blocks">
+    <h1 class="title-big text-center">Activities I Joined</h1>
+    <hr>
+    <% @activities_joined.each do |activity| %>
+      <tr>
+        <td>
+          <%= render partial: 'activities/poster', locals: {activity: activity} %>
+        </td>
+      </tr>
+    <% end %>
+  </div>
 
-<h1 class="title-big text-center mt-5">Activities Started By Me</h1>
-<hr>
-<div id="post_display_container_started" class="poster_blocks">
-  <!--<table class="table table-striped">-->
-  <!--  <tbody>-->
-  <% @activities_started.each do |activity| %>
-    <tr>
-      <td>
-        <%= render partial: 'activities/poster', locals: {activity: activity} %>
-      </td>
-    </tr>
-  <% end %>
-  <!--  </tbody>-->
-  <!--</table>-->
+  <div id="post_display_container_started" class="poster_blocks">
+    <h1 class="title-big text-center mt-5">Activities Started By Me</h1>
+    <hr>
+    <% @activities_started.each do |activity| %>
+      <tr>
+        <td>
+          <%= render partial: 'activities/poster', locals: {activity: activity} %>
+        </td>
+      </tr>
+    <% end %>
+  </div>
 </div>
 <script>
     window.refreshPosts = function () {
@@ -39,4 +52,42 @@
             }
         })
     }
+    let start_charts = echarts.init(document.getElementById('start_stats'))
+    start_charts.setOption({
+        title: {
+            text: 'ECharts 入门示例'
+        },
+        tooltip: {},
+        legend: {
+            data: ['销量']
+        },
+        xAxis: {
+            data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+        }]
+    })
+    let join_charts = echarts.init(document.getElementById('join_stats'))
+    join_charts.setOption({
+        title: {
+            text: 'ECharts 入门示例'
+        },
+        tooltip: {},
+        legend: {
+            data: ['销量']
+        },
+        xAxis: {
+            data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+        }]
+    })
 </script>

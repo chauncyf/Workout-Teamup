@@ -17,6 +17,7 @@
 //= require jquery.raty
 //= require cropper
 //= require lodash
+//= require echarts
 ////= require pnotify.custom
 
 $(function () {

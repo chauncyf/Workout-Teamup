@@ -882,7 +882,20 @@ footer {
   }
 }
 
+.achievement_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+}
+
 .poster_blocks {
   padding-left: 20px;
   padding-right: 20px;
+  width: 600px;
+}
+
+.user_stat_box {
+  width: 400px;
+  border: solid 1px;
+
 }
