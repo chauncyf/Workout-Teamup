@@ -70,9 +70,9 @@
 
       <div class="col text-right comment_box" data-id="<%= activity.id %>">
         <% if activity.liked?(current_user_id) %>
-          <a class="like mr-1"><i class="fa fa-heart"></i></a>
+          <a class="like mr-1"><i class="fa fa-heart"></i><span><%= activity.likes.size %></span></a>
         <% else %>
-          <a class="like mr-1"><i class="far fa-heart"></i></a>
+          <a class="like mr-1"><i class="far fa-heart"></i><span><%= activity.likes.size %></span></a>
         <% end %>
         <a class="comment"><i class="far fa-comment"></i></a>
       </div>
