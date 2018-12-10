@@ -126,6 +126,7 @@ $(function () {
         $this.attr('disabled', true)
         $.ajax({
             url: '/comments',
+            dataType: 'script',
             data: {
                 comment: {
                     activity_id: $this.data('id'),
