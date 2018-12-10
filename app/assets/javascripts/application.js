@@ -147,6 +147,10 @@ $(function () {
                 $this.attr('disabled', false)
             }
         })
+    }).on('click','.poster [data-upload-picture]',function(){
+        let $this=$(this)
+        let id=$this.data('data-upload-picture')
+
     })
 })
 

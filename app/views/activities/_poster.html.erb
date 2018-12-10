@@ -34,7 +34,8 @@
             <div class="dropdown">
               <a class="fas fa-check" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
               <div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdownMenuButton">
-                <%= link_to "Leave Activity", "/leave_activity/#{activity.id}", remote: true, class: "dropdown-item", method: :post %>
+                <a class="dropdown-item" data-upload-picture="<%= activity.id %>">upload picture</a>
+                <%= link_to "Leave Activity", "/leave_activity/#{activity.id}", remote: true, class: "dropdown-item", method: :post, data: {confirm: 'are you sure to leave this activity?'} %>
               </div>
             </div>
           <% else %>
