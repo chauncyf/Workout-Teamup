@@ -45,7 +45,7 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
-        # @activity.save
+        ActivityParticipant.create(user_id: current_user_id, activity_id: @activity.id, identity: 1)
 
         #  status 1 success 2 failed
         #format.js {render json: {status: 1}}
