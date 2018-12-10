@@ -2,13 +2,13 @@
   activities_joined = @activities_joined.as_json
   activities_joined_time = activities_joined.group_by {|x| x['created_at'].strftime("%Y-%m-%d")}
   activities_joined_time_array = activities_joined_time
-      .map {|(key, val)| [key, val.size]}.sort {|a, b| a[0] < b[0]}
+      .map {|(key, val)| [key, val.size]}.sort {|a, b| a[0] <=> b[0]}
 
 
   activities_started = @activities_started.as_json
   activities_started_time = activities_started.group_by {|x| x['created_at'].strftime("%Y-%m-%d")}
   activities_started_time_array = activities_started_time
-      .map {|(key, val)| [key, val.size]}.sort {|a, b| a[0] < b[0]}
+      .map {|(key, val)| [key, val.size]}.sort {|a, b| a[0] <=> b[0]}
 
 %>
 <div class="achievement_container">
