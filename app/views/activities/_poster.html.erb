@@ -86,7 +86,7 @@
             <% activity.comments_list.each do |comment| %>
               <div class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1"><%= avatar_for(comment.user) %><%= comment.user.user_name %></h5>
+                  <h5 class="mb-1"><%= avatar_for(comment.user) %><%= comment.user.user_name %>:</h5>
                   <small><%= comment.updated_at.strftime("%m/%d %H:%M") %></small>
                 </div>
                 <p class="mb-1">
@@ -96,7 +96,7 @@
               </div>
             <% end %>
           </ul>
-          <div class="input-group">
+          <div class="input-group comment-input-group">
 
             <textarea placeholder="Enter your comment here" class="form-control" aria-label="With textarea"></textarea>
             <div class="input-group-append">

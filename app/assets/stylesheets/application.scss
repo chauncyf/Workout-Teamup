@@ -574,6 +574,15 @@ footer {
     .reviews {
       margin-top: 10px;
       color: black;
+
+      .avatar {
+        width: 1.5em;
+        height: 1.5em;
+      }
+    }
+
+    .comment-input-group {
+      margin-top: 15px;
     }
   }
 }
