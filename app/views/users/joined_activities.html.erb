@@ -57,51 +57,53 @@
   </div>
 </div>
 <script>
-    window.refreshPosts = function () {
-        $.ajax({
-            url: '<%= refresh_posts_achievements_url %>',
-            data: {
-                page: 1,
-                size: 20,
-            }
+    ;(function () {
+        window.refreshPosts = function () {
+            $.ajax({
+                url: '<%= refresh_posts_achievements_url %>',
+                data: {
+                    page: 1,
+                    size: 20,
+                }
+            })
+        }
+        let start_charts = echarts.init(document.getElementById('start_stats'))
+        start_charts.setOption({
+            title: {
+                text: 'stared activities'
+            },
+            tooltip: {},
+            legend: {
+                data: ['times']
+            },
+            xAxis: {
+                data: <%=activities_started_time_array.map{|x|x[0]}.to_json.html_safe %>,
+            },
+            yAxis: {},
+            series: [{
+                name: 'the number of activities you started that day',
+                type: 'bar',
+                data: <%=activities_started_time_array.map{|x|x[1]}.to_json.html_safe %>,
+            }]
         })
-    }
-    let start_charts = echarts.init(document.getElementById('start_stats'))
-    start_charts.setOption({
-        title: {
-            text: 'stared activities'
-        },
-        tooltip: {},
-        legend: {
-            data: ['times']
-        },
-        xAxis: {
-            data: <%=activities_started_time_array.map{|x|x[0]}.to_json.html_safe %>,
-        },
-        yAxis: {},
-        series: [{
-            name: 'the number of activities you started that day',
-            type: 'bar',
-            data: <%=activities_started_time_array.map{|x|x[1]}.to_json.html_safe %>,
-        }]
-    })
-    let join_charts = echarts.init(document.getElementById('join_stats'))
-    join_charts.setOption({
-        title: {
-            text: 'joined activities'
-        },
-        tooltip: {},
-        legend: {
-            data: ['times']
-        },
-        xAxis: {
-            data: <%=activities_joined_time_array.map{|x|x[0]}.to_json.html_safe %>,
-        },
-        yAxis: {},
-        series: [{
-            name: 'the number of activities you joined that day',
-            type: 'bar',
-            data: <%=activities_joined_time_array.map{|x|x[1]}.to_json.html_safe %>,
-        }]
-    })
+        let join_charts = echarts.init(document.getElementById('join_stats'))
+        join_charts.setOption({
+            title: {
+                text: 'joined activities'
+            },
+            tooltip: {},
+            legend: {
+                data: ['times']
+            },
+            xAxis: {
+                data: <%=activities_joined_time_array.map{|x|x[0]}.to_json.html_safe %>,
+            },
+            yAxis: {},
+            series: [{
+                name: 'the number of activities you joined that day',
+                type: 'bar',
+                data: <%=activities_joined_time_array.map{|x|x[1]}.to_json.html_safe %>,
+            }]
+        })
+    })()
 </script>
