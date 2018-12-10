@@ -48,6 +48,14 @@ $(function () {
     })
     $(document).on('click', '.poster .comment', function () {
         var posterModal = $('#posterModal')
+        if ($.contains(posterModal[0], this)) {// if already in the modal
+            let comment_submit = posterModal.find('.comment_submit')
+            comment_submit[0].scrollIntoView({
+                behavior: 'smooth',
+            })
+            comment_submit.parent().prev().focus()
+            return
+        }
         let id = $(this).parent().data('id')
         window.posterModalRefresh = () => {
             $.ajax({
