@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       end
     end
     @join_status = nil
-    render 'join_activity.js.erb', locals: {leave_status: @leave_status, join_status: @join_status}
+    render 'join_activity.js.erb', locals: {leave_status: @leave_status, join_status: nil}
   end
 
   def joined_activities
@@ -40,12 +40,16 @@ class UsersController < ApplicationController
   end
 
   def follow
+    # @user = set_user
     Follow.create(followee_id: params[:followee_id], follower_id: current_user_id)
+    render 'follow', locals: {follow_status: true}
   end
 
   def unfollow
+    # @user = set_user
     follow_id = Follow.find_by(followee_id: params[:followee_id], follower_id: current_user_id).id
     Follow.destroy(follow_id)
+    render 'follow.js.erb', locals: {follow_status: false}
   end
 
   # GET /users
@@ -61,7 +65,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    render partial: 'user_profile_card', locals: {user: @user }
+    render partial: 'user_profile_card', locals: {user: @user}
   end
 
   def profile

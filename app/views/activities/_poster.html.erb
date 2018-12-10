@@ -26,9 +26,6 @@
         </ul>
       </div>
 
-      <%# if activity joined  %>
-      <!--        <div class="col col-auto fas fa-check"></div>-->
-      <%# end %>
       <div class="col col-auto card-title card-title-button text-right m-0">
         <% if !logged_in? %>
           <%= link_to "", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "fas fa-ellipsis-v text-white"} %>
@@ -40,20 +37,9 @@
                 <%= link_to "Leave Activity", "/leave_activity/#{activity.id}", remote: true, class: "dropdown-item", method: :post %>
               </div>
             </div>
-            <%#= link_to "", "/join_activity/#{activity.id}", remote: true, class: "fas fa-check", method: :post %>
           <% else %>
             <%= link_to "", "/join_activity/#{activity.id}", remote: true, class: "fas fa-plus", method: :post %>
           <% end %>
-
-          <!--          <div class="dropleft">-->
-          <!--            <a class="fas fa-ellipsis-v" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>-->
-          <!--            <div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdownMenuButton">-->
-          <%#= link_to "Join Activity", "/join_activity/#{activity.id}", remote: true, class: "dropdown-item", method: :post %>
-          <!--              <div class="dropdown-divider"></div>-->
-          <!--              <a class="dropdown-item" href="#">Follow <%#= activity.starter.user_name %></a>-->
-          <!--              <a class="dropdown-item" href="#">Email <%#= activity.starter.user_name %></a>-->
-          <!--            </div>-->
-          <!--          </div>-->
         <% end %>
       </div>
     </div>
