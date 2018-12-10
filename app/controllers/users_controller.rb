@@ -11,6 +11,9 @@ class UsersController < ApplicationController
         @join_status = true
       end
     end
+    MessageChannel.broadcast_to(Activity.find(params[:activity_id]).starter, {type: 1, count: 1, msg: {
+        title: '<i class="fas fa-plus-circle"></i> New Friends Join!',
+        text: 'A new friend has joined your activity!', type: 'info'}})
     render 'join_activity', locals: {join_status: @join_status}
   end
 
@@ -22,6 +25,9 @@ class UsersController < ApplicationController
         @leave_status = true
       end
     end
+    MessageChannel.broadcast_to(Activity.find(params[:activity_id]).starter, {type: 1, count: 1, msg: {
+        title: '<i class="fas fa-plus-circle"></i> A friend left your team!',
+        text: 'A friend has left your activity!', type: 'info'}})
     render 'join_activity.js.erb', locals: {leave_status: @leave_status, join_status: nil}
   end
 

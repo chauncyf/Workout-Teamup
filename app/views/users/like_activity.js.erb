@@ -2,3 +2,8 @@ refreshPosts();
 if($('#posterModal').is(":not(':hidden')")){
     posterModalRefresh()
 }
+new PNotify({
+    title: '<i class="fas fa-check-circle"></i> Operation succeed',
+    type: 'success',
+    delay: 2000
+});
