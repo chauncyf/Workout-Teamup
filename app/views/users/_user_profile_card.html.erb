@@ -20,7 +20,7 @@
     </ul>
   </div>
 
-<!--  TODO: follow refresh, notify-->
+<!--  TODO: follow refresh -->
 
   <div class="card-body px-3 py-2 material-body-<%= color %>"><%= user.motto %>
     <div class="row justify-content-center text-center bg-transparent">
@@ -30,7 +30,8 @@
         <% else %>
           <%= link_to "Follow", "/follow/#{user.id}", method: :post, remote: true, class: "btn-primary col-auto m-1 material-head-#{color}", id: "#{user.id}", follow: false %>
         <% end %>
-        <a href="#" class="btn-primary col-auto m-1 material-head-<%=  color  %>">Message</a>
+        <%= mail_to user.email, "Email", subject: "[Workout TeamUp] User message", class: "btn-primary col-auto m-1 material-head-#{color}" %>
+        <!--        <a href="#" class="btn-primary col-auto m-1 material-head-<%#=  color  %>">Message</a>-->
       <% end %>
     </div>
   </div>

@@ -22,7 +22,6 @@ class UsersController < ApplicationController
         @leave_status = true
       end
     end
-    @join_status = nil
     render 'join_activity.js.erb', locals: {leave_status: @leave_status, join_status: nil}
   end
 
