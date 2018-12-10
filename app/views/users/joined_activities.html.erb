@@ -35,25 +35,20 @@
   <div id="post_display_container_joined" class="poster_blocks">
     <h1 class="title-big text-center">Activities I Joined</h1>
     <hr>
-    <% @activities_joined.each do |activity| %>
-      <tr>
-        <td>
-          <%= render partial: 'activities/poster', locals: {activity: activity} %>
-        </td>
-      </tr>
-    <% end %>
+    <div class="poster_box">
+      <% @activities_joined.each do |activity| %>
+        <%= render partial: 'activities/poster', locals: {activity: activity} %>
+      <% end %>
+    </div>
   </div>
-
   <div id="post_display_container_started" class="poster_blocks">
     <h1 class="title-big text-center mt-5">Activities Started By Me</h1>
     <hr>
-    <% @activities_started.each do |activity| %>
-      <tr>
-        <td>
-          <%= render partial: 'activities/poster', locals: {activity: activity} %>
-        </td>
-      </tr>
-    <% end %>
+    <div class="poster_box">
+      <% @activities_started.each do |activity| %>
+        <%= render partial: 'activities/poster', locals: {activity: activity} %>
+      <% end %>
+    </div>
   </div>
 </div>
 <script>
