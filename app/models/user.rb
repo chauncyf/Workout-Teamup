@@ -39,7 +39,7 @@ class User < ApplicationRecord
 
   # current position of this user
   def current_position
-    user_locations.order(created_at: :desc).first
+    user_locations.order(created_at: :desc).first || {}
   end
 
   def on_going_activity
