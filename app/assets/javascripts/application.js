@@ -46,18 +46,21 @@ $(function () {
         })
         reader.readAsDataURL(file)
     })
-    var posterModal = $('#posterModal')
     $(document).on('click', '.poster .comment', function () {
+        var posterModal = $('#posterModal')
         let id = $(this).parent().data('id')
-        $.ajax({
-            url: '/activities/' + id,
-            data: {show_comment: true},
-            method: 'get',
-            success: (data) => {
-                posterModal.find('.modal-body').html(data)
-                posterModal.modal('show')
-            }
-        })
+        window.posterModalRefresh = () => {
+            $.ajax({
+                url: '/activities/' + id,
+                data: {show_comment: true},
+                method: 'get',
+                success: (data) => {
+                    posterModal.find('.modal-body').html(data)
+                    posterModal.modal('show')
+                }
+            })
+        }
+        posterModalRefresh()
     })
 
     $(document).on('show.bs.dropdown mouseover', '[data-avatar-pop]', function () {
@@ -109,7 +112,30 @@ $(function () {
             data: {
                 activity_id: $(this).parent().data('id')
             },
-
+        })
+    }).on('click', '.poster .comment_submit', function () {
+        let $this = $(this)
+        let textArea = $this.parent().prev()
+        if (textArea.val().length == 0) {
+            new PNotify({
+                text: 'Comment cannot be empty!',
+                type: 'error'
+            })
+            return
+        }
+        $this.attr('disabled', true)
+        $.ajax({
+            url: '/comments',
+            data: {
+                comment: {
+                    activity_id: $this.data('id'),
+                    content: textArea.val(),
+                }
+            },
+            method: 'post',
+            success: () => {
+                $this.attr('disabled', false)
+            }
         })
     })
 })

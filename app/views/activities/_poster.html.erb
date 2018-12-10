@@ -86,13 +86,13 @@
             <% activity.comments_list.each do |comment| %>
               <div class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1"><%= avatar_for(activity.starter) %>FCF</h5>
-                  <small>3 days ago</small>
+                  <h5 class="mb-1"><%= avatar_for(comment.user) %><%= comment.user.user_name %></h5>
+                  <small><%= comment.updated_at.strftime("%m/%d %H:%M") %></small>
                 </div>
                 <p class="mb-1">
                   <%= comment.content %>
                 </p>
-                <small>motto</small>
+                <small><%= comment.user.motto %></small>
               </div>
             <% end %>
           </ul>
@@ -100,7 +100,10 @@
 
             <textarea placeholder="Enter your comment here" class="form-control" aria-label="With textarea"></textarea>
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button">submit</button>
+              <button class="btn btn-outline-secondary comment_submit"
+                      data-id="<%= activity.id %>"
+                      type="button">submit
+              </button>
             </div>
           </div>
 
