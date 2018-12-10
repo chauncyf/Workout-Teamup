@@ -886,16 +886,15 @@ footer {
   display: flex;
   justify-content: center;
   flex-direction: row-reverse;
+  padding-top: 30px;
 }
 
 .poster_blocks {
   padding-left: 20px;
   padding-right: 20px;
-  width: 600px;
+  width: 500px;
 }
 
 .user_stat_box {
-  width: 400px;
-  border: solid 1px;
-
+  width: 500px;
 }

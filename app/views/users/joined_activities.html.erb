@@ -1,5 +1,19 @@
+<%
+  activities_joined = @activities_joined.as_json
+  activities_joined_time = activities_joined.group_by {|x| x['created_at'].strftime("%Y-%m-%d")}
+  activities_joined_time_array = activities_joined_time
+      .map {|(key, val)| [key, val.size]}.sort {|a, b| a[0] - b[0]}
+
+
+  activities_started = @activities_started.as_json
+  activities_started_time = activities_started.group_by {|x| x['created_at'].strftime("%Y-%m-%d")}
+  activities_started_time_array = activities_started_time
+      .map {|(key, val)| [key, val.size]}.sort {|a, b| a[0] - b[0]}
+
+%>
 <div class="achievement_container">
   <div class="user_stat_box">
+    <h1 class="title-big text-center">Your achievements</h1>
     <div class="card">
       <div class="card-body">
         You were registered <%= time_ago_in_words current_user.created_at %> ago
@@ -15,8 +29,8 @@
         You have started <%= @activities_started.size %> activites
       </div>
     </div>
-    <div id="join_stats" style="width: 400px;height: 400px;"></div>
-    <div id="start_stats" style="width: 400px;height: 400px;"></div>
+    <div id="join_stats" style="width: 500px;height: 500px;"></div>
+    <div id="start_stats" style="width: 500px;height: 500px;"></div>
   </div>
   <div id="post_display_container_joined" class="poster_blocks">
     <h1 class="title-big text-center">Activities I Joined</h1>
@@ -55,39 +69,39 @@
     let start_charts = echarts.init(document.getElementById('start_stats'))
     start_charts.setOption({
         title: {
-            text: 'ECharts 入门示例'
+            text: 'stared activities'
         },
         tooltip: {},
         legend: {
-            data: ['销量']
+            data: ['times']
         },
         xAxis: {
-            data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+            data: <%=activities_started_time_array.map{|x|x[0]}.to_json.html_safe %>,
         },
         yAxis: {},
         series: [{
-            name: '销量',
+            name: 'the number of activities you started that day',
             type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
+            data: <%=activities_started_time_array.map{|x|x[1]}.to_json.html_safe %>,
         }]
     })
     let join_charts = echarts.init(document.getElementById('join_stats'))
     join_charts.setOption({
         title: {
-            text: 'ECharts 入门示例'
+            text: 'joined activities'
         },
         tooltip: {},
         legend: {
-            data: ['销量']
+            data: ['times']
         },
         xAxis: {
-            data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+            data: <%=activities_joined_time_array.map{|x|x[0]}.to_json.html_safe %>,
         },
         yAxis: {},
         series: [{
-            name: '销量',
+            name: 'the number of activities you joined that day',
             type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
+            data: <%=activities_joined_time_array.map{|x|x[1]}.to_json.html_safe %>,
         }]
     })
 </script>
