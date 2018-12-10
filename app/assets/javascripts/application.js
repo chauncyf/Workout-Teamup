@@ -115,7 +115,7 @@ $(function () {
         })
     }).on('click', '.poster .comment_submit', function () {
         let $this = $(this)
-        let textArea = $this.parent().prev()
+        let textArea = $this.parent().prev().focusout()
         if (textArea.val().length == 0) {
             new PNotify({
                 text: 'Comment cannot be empty!',
