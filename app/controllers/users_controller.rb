@@ -10,7 +10,7 @@ class UsersController < ApplicationController
         ActivityParticipant.create(user_id: current_user_id, activity_id: params[:activity_id], identity: 2)
         @join_status = true
         MessageChannel.broadcast_to(Activity.find(params[:activity_id]).starter, type: 1, count: 1, msg: {
-            title: '<i class="fas fa-plus-circle"></i> New Friends Join!',
+            title: '<i class="fas fa-plus-circle"></i> New Friend Join!',
             text: 'A new friend has joined your activity!', type: 'info'})
       end
     end
@@ -28,8 +28,8 @@ class UsersController < ApplicationController
         ActivityParticipant.where(user_id: current_user_id, activity_id: params[:activity_id]).destroy_all
         @leave_status = true
         MessageChannel.broadcast_to(Activity.find(params[:activity_id]).starter, type: 1, count: 1, msg: {
-            title: '<i class="fas fa-plus-circle"></i> A friend left your team!',
-            text: 'A friend has left your activity!', type: 'error'})
+            title: '<i class="fas fa-exclamation-circle"></i> Team Member Left',
+            text: 'A team member has left your activity', type: 'notice'})
       end
     end
 
@@ -54,7 +54,7 @@ class UsersController < ApplicationController
       if Follow.where(followee_id: params[:followee_id], follower_id: current_user_id).size == 0
         Follow.create(followee_id: params[:followee_id], follower_id: current_user_id)
         MessageChannel.broadcast_to(User.find(params[:followee_id]), type: 1, count: 1, msg: {
-            title: '<i class="fas fa-plus-circle"></i> A friend followed you!',
+            title: '<i class="fas fa-plus-circle"></i> A New Friend Started Following You!',
             text: 'What a star!', type: 'info'})
       end
 
@@ -67,8 +67,8 @@ class UsersController < ApplicationController
       if Follow.where(followee_id: params[:followee_id], follower_id: current_user_id).any?
         Follow.where(followee_id: params[:followee_id], follower_id: current_user_id).destroy_all
         MessageChannel.broadcast_to(User.find(params[:followee_id]), type: 1, count: 1, msg: {
-            title: '<i class="fas fa-plus-circle"></i> A friend stop following you!',
-            text: 'Don\' be upset!', type: 'info'})
+            title: '<i class="fas fa-exclamation-circle"></i> A Friend Stopped Following You',
+            text: 'Don\' be upset!', type: 'notice'})
       end
     end
     render 'follow.js.erb', locals: {follow_status: false, profile_id: params[:followee_id]}

@@ -103,6 +103,7 @@ h4> .ui-pnotify-title {
 }
 .ui-pnotify-text {
   display: block;
+  margin-top: 10px;
 }
 .ui-pnotify-icon, .ui-pnotify-icon span {
   display: block;
@@ -136,6 +137,7 @@ Color Scheme: http://paletton.com/palette.php?uid=c1T3n2J040kpEKzpEKzbEPSOEyiNk9
   padding: 18px;
 }
 .brighttheme .ui-pnotify-title {
+    margin-bottom: 0;
   /*margin-bottom: 12px;*/
 }
 .brighttheme-notice {
