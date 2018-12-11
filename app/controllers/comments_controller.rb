@@ -32,6 +32,12 @@ class CommentsController < ApplicationController
         format.html {redirect_to @comment, notice: 'Comment was successfully created.'}
         format.json {render :show, status: :created, location: @comment}
         format.js {render 'comments/create'}
+
+        Activity.find(params[:activity_id]).users.each do |user|
+          MessageChannel.broadcast_to(user, {type: 2, count: 1, msg: {
+              title: '<i class="fas fa-plus-circle"></i> New Comment',
+              text: 'Someone has commented on one of your involved activity', type: 'info'}})
+        end
       else
         format.html {render :new}
         format.json {render json: @comment.errors, status: :unprocessable_entity}
