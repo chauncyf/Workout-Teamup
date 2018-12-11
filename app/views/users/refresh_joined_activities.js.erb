@@ -1,12 +1,12 @@
 $('#post_display_container_joined').find('.poster_box').html(`
-<% @activities_joined.each do |activity| %>
-        <%= render partial: 'activities/poster', locals: {activity: activity} %>
+  <% @activities_joined.each do |activity| %>
+      <%= render partial: 'activities/poster', locals: {activity: activity} %>
   <% end %>
 `)
 
 
 $('#post_display_container_started').find('.poster_box').html(`
-<% @activities_started.each do |activity| %>
-        <%= render partial: 'activities/poster', locals: {activity: activity} %>
+  <% @activities_started.each do |activity| %>
+    <%= render partial: 'activities/poster', locals: {activity: activity} %>
   <% end %>
 `)

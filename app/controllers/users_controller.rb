@@ -9,8 +9,12 @@ class UsersController < ApplicationController
       else
         ActivityParticipant.create(user_id: current_user_id, activity_id: params[:activity_id], identity: 2)
         @join_status = true
+        MessageChannel.broadcast_to(Activity.find(params[:activity_id]).starter, type: 1, count: 1, msg: {
+            title: '<i class="fas fa-plus-circle"></i> New Friends Join!',
+            text: 'A new friend has joined your activity!', type: 'info'})
       end
     end
+
     render 'join_activity', locals: {join_status: @join_status}
   end
 
@@ -23,8 +27,12 @@ class UsersController < ApplicationController
         # end
         ActivityParticipant.where(user_id: current_user_id, activity_id: params[:activity_id]).destroy_all
         @leave_status = true
+        MessageChannel.broadcast_to(Activity.find(params[:activity_id]).starter, type: 1, count: 1, msg: {
+            title: '<i class="fas fa-plus-circle"></i> A friend left your team!',
+            text: 'A friend has left your activity!', type: 'error'})
       end
     end
+
     render 'join_activity.js.erb', locals: {leave_status: @leave_status, join_status: nil}
   end
 
@@ -42,15 +50,27 @@ class UsersController < ApplicationController
   end
 
   def follow
-    # @user = set_user
-    Follow.create(followee_id: params[:followee_id], follower_id: current_user_id)
+    Follow.transaction do
+      if Follow.where(followee_id: params[:followee_id], follower_id: current_user_id).size == 0
+        Follow.create(followee_id: params[:followee_id], follower_id: current_user_id)
+        MessageChannel.broadcast_to(User.find(params[:followee_id]), type: 1, count: 1, msg: {
+            title: '<i class="fas fa-plus-circle"></i> A friend followed you!',
+            text: 'What a star!', type: 'info'})
+      end
+
+    end
     render 'follow', locals: {follow_status: true}
   end
 
   def unfollow
-    # @user = set_user
-    follow_id = Follow.find_by(followee_id: params[:followee_id], follower_id: current_user_id).id
-    Follow.destroy(follow_id)
+    Follow.transaction do
+      if Follow.where(followee_id: params[:followee_id], follower_id: current_user_id).any?
+        Follow.where(followee_id: params[:followee_id], follower_id: current_user_id).destroy_all
+        MessageChannel.broadcast_to(User.find(params[:followee_id]), type: 1, count: 1, msg: {
+            title: '<i class="fas fa-plus-circle"></i> A friend stop following you!',
+            text: 'Don\' be upset!', type: 'info'})
+      end
+    end
     render 'follow.js.erb', locals: {follow_status: false, profile_id: params[:followee_id]}
   end
 
@@ -114,7 +134,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new({user_name: user_params[:user_name], email: user_params[:email], password: user_params[:password], identity: 2})
+    @user = User.new(user_name: user_params[:user_name], email: user_params[:email], password: user_params[:password], identity: 2)
     if @user.errors.include?(:password_confirmation)
       @user.errors.delete(:password_confirmation)
     end
