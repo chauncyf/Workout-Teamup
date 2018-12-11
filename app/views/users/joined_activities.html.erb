@@ -78,7 +78,7 @@
             yAxis: {},
             series: [{
                 name: 'times',
-                type: 'bar',
+                type: 'line',
                 data: <%=activities_started_time_array.map{|x|x[1]}.to_json.html_safe %>,
             }]
         })
@@ -97,7 +97,7 @@
             yAxis: {},
             series: [{
                 name: 'times',
-                type: 'bar',
+                type: 'line',
                 data: <%=activities_joined_time_array.map{|x|x[1]}.to_json.html_safe %>,
             }]
         })

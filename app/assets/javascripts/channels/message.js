@@ -3,11 +3,19 @@ App.cable.subscriptions.create({
 
 }, {
     received(data) {
-        if (data.msg) {
+        if (data.type == 2) {// need to show poster
             new PNotify({
                 title: data.msg.title,
                 text: data.msg.text,
                 type: data.msg.type
+            });
+            return
+        }
+        if (data.msg) {
+            new PNotify({
+                title: data.msg.title,
+                text: data.msg.text,
+                type: data.msg.type,
             });
         }
     }

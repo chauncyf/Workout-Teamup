@@ -48,7 +48,7 @@ $(function () {
         })
         reader.readAsDataURL(file)
     })
-    $(document).on('click', '.poster .comment', function () {
+    window.showPosterInModal = function (id) {
         var posterModal = $('#posterModal')
         if ($.contains(posterModal[0], this)) {// if already in the modal
             let comment_submit = posterModal.find('.comment_submit')
@@ -58,7 +58,7 @@ $(function () {
             comment_submit.parent().prev().focus()
             return
         }
-        let id = $(this).parent().data('id')
+        id = isNaN(id) ? $(this).parent().data('id') : id
         window.posterModalRefresh = () => {
             $.ajax({
                 url: '/activities/' + id,
@@ -71,7 +71,8 @@ $(function () {
             })
         }
         posterModalRefresh()
-    })
+    }
+    $(document).on('click', '.poster .comment', showPosterInModal)
 
     $(document).on('show.bs.dropdown mouseover', '[data-avatar-pop]', function () {
         if ($(this).children('.dropdown-menu').data('loading')) {
@@ -148,9 +149,9 @@ $(function () {
                 $this.attr('disabled', false)
             }
         })
-    }).on('click','.poster [data-upload-picture]',function(){
-        let $this=$(this)
-        let id=$this.data('data-upload-picture')
+    }).on('click', '.poster [data-upload-picture]', function () {
+        let $this = $(this)
+        let id = $this.data('data-upload-picture')
 
     })
 })
