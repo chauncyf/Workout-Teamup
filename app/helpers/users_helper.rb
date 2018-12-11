@@ -5,6 +5,9 @@ module UsersHelper
   end
 
   def avatar_url user, size = '100x100'
+    if user.is_a? String
+      user = User.find(user)
+    end
     if user.avatar.attached?
       avatar = user.avatar.variant(resize: size)
     end
