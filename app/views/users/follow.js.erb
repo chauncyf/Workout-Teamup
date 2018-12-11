@@ -1,14 +1,14 @@
 <% if follow_status %>
 
 new PNotify({
-    title: '<i class="fas fa-check-circle"></i> User Followed <%= profile_id %>',
+    title: '<i class="fas fa-check-circle"></i> User Followed',
     text: 'Yeah, let\'s follow up',
     type: 'success',
     delay: 2000
 });
 <% else %>
 new PNotify({
-    title: '<i class="fas fa-exclamation-circle"></i> User Unfollowed <%= profile_id %>',
+    title: '<i class="fas fa-exclamation-circle"></i> User Unfollowed',
     text: 'Sorry to see you leave',
     type: 'notice',
     delay: 2000
