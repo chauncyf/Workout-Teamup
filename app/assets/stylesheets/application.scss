@@ -542,6 +542,14 @@ footer {
   .card-title-button {
     font-size: 1.6em;
     cursor: pointer;
+    .leave {
+      color: #D32F2F;
+      //background-color: red;
+    }
+    .leave:hover {
+      color: white;
+      background-color: #D32F2F;;
+    }
   }
 
   .card-title-place {
