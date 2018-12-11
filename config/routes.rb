@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/users/:id/user_avatar_url', to: 'users#user_avatar_url', as: :user_avatar_url
 
   get '/index/refresh', to: 'index#refresh', as: :refresh_posts
+  get '/index/refresh_profile', to: 'index#refresh_profile', as: :refresh_profile
   get '/users/refresh_posts', to: 'users#refresh_joined_activities', as: :refresh_posts_achievements
 
   post '/join_activity/:activity_id', to: 'users#join_activity'

@@ -15,9 +15,12 @@ class UsersController < ApplicationController
   end
 
   def leave_activity
-
     User.transaction do
       if ActivityParticipant.where(user_id: current_user_id, activity_id: params[:activity_id]).any?
+        # TODO whether or not destroy the activity
+        # if ActivityParticipant.find(identity).equal?1
+        #   Activity.find(activity_id: params[:activity_id]).destroy
+        # end
         ActivityParticipant.where(user_id: current_user_id, activity_id: params[:activity_id]).destroy_all
         @leave_status = true
       end
@@ -48,7 +51,7 @@ class UsersController < ApplicationController
     # @user = set_user
     follow_id = Follow.find_by(followee_id: params[:followee_id], follower_id: current_user_id).id
     Follow.destroy(follow_id)
-    render 'follow.js.erb', locals: {follow_status: false}
+    render 'follow.js.erb', locals: {follow_status: false, profile_id: params[:followee_id]}
   end
 
   # GET /users

@@ -34,11 +34,11 @@
             <div class="dropdown">
               <a class="fas fa-check" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
               <div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdownMenuButton">
-                <%= link_to "Leave Activity", "/leave_activity/#{activity.id}", remote: true, class: "dropdown-item", method: :post %>
+                <%= link_to "Leave Activity", "/leave_activity/#{activity.id}", remote: true, method: :post, class: "dropdown-item" %>
               </div>
             </div>
           <% else %>
-            <%= link_to "", "/join_activity/#{activity.id}", remote: true, class: "fas fa-plus", method: :post %>
+            <%= link_to "", "/join_activity/#{activity.id}", remote: true, method: :post, class: "fas fa-plus", 'title': "join activity" %>
           <% end %>
         <% end %>
       </div>
@@ -70,47 +70,50 @@
 
       <div class="col text-right comment_box" data-id="<%= activity.id %>">
         <% if activity.liked?(current_user_id) %>
-          <a class="like mr-1"><i class="fa fa-heart"></i><span><%= activity.likes.size %></span></a>
+          <a class="like mr-1"><i class="fa fa-heart mr-1" title="unlike"></i><span><%= activity.likes.size %></span></a>
         <% else %>
-          <a class="like mr-1"><i class="far fa-heart"></i><span><%= activity.likes.size %></span></a>
+          <a class="like mr-1"><i class="far fa-heart mr-1" title="like"></i><span><%= activity.likes.size %></span></a>
         <% end %>
-        <a class="comment"><i class="far fa-comment"></i></a>
+        <a class="comment"><i class="far fa-comment mr-1" title="comment"></i><span><%= activity.comments.size %></span></a>
       </div>
     </div>
-    <% if show_comment %>
-      <div class="reviews card">
 
-        <div class="card-body">
-          <h5 class="card-title">reviews</h5>
-          <ul class="list-group list-group-flush">
-            <% activity.comments_list.each do |comment| %>
-              <div class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1"><%= avatar_for(comment.user) %><%= comment.user.user_name %>:</h5>
-                  <small><%= time_ago_in_words comment.updated_at %> ago</small>
-                </div>
-                <p class="mb-1">
-                  <%= comment.content %>
-                </p>
-                <small><%= comment.user.motto %></small>
+  </div>
+
+  <% if show_comment %>
+    <div class="card reviews">
+      <div class="card-body px-3 pt-3">
+        <div class="card-title mb-2">Reviews</div>
+        <ul class="list-group list-group-flush">
+          <% activity.comments_list.each do |comment| %>
+            <div class="list-group-item list-group-item-action flex-column align-items-start px-1">
+              <div class="d-flex w-100 justify-content-between mb-2">
+
+
+                <div class="comment-avatar"><%= avatar_for(comment.user) %><%= comment.user.user_name %></div>
+                <div class="comment-time"><%= time_ago_in_words comment.updated_at %> ago</div>
               </div>
-            <% end %>
-          </ul>
-          <div class="input-group comment-input-group">
-
-            <textarea placeholder="Enter your comment here" class="form-control" aria-label="With textarea"></textarea>
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary comment_submit"
-                      data-id="<%= activity.id %>"
-                      type="button">submit
-              </button>
+              <p class="comment-text mb-0">
+                <%= comment.content %>
+              </p>
+<!--              <small><%#= comment.user.motto %></small>-->
             </div>
-          </div>
+          <% end %>
+        </ul>
+        <div class="input-group comment-input-group mt-3">
 
+          <textarea placeholder="Enter your comment here" class="form-control" aria-label="With textarea"></textarea>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary comment_submit"
+                    data-id="<%= activity.id %>"
+                    type="button">submit
+            </button>
+          </div>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+
 </div>
 
 <script>

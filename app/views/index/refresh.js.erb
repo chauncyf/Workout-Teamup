@@ -3,3 +3,39 @@ $('#post_display_container').html(`
   <%= render partial: 'activities/poster', locals: {activity: activity} %>
 <% end %>
 `)
+
+
+//$(document).on('[data-avatar-pop]', function () {
+//        $.ajax({
+//            success: (data) => $(this).children('.dropdown-menu').html(`
+//                render partial: 'user_profile_card', locals: {user: @user}
+
+            <%#= render partial: 'user_profile_card', locals: $(this).data %>
+//            `)
+
+//    }
+//    })
+//    }
+//)
+
+
+//            url: '/users/' + $(this).data('avatar-pop'),
+//            method: 'get',
+//            success: (data) => {
+//            $(this).children('.dropdown-menu').html(data)
+
+
+//$(document).on('show.bs.dropdown mouseover', '[data-avatar-pop]', function () {
+//    if ($(this).children('.dropdown-menu').data('loading')) {
+//        return
+//    }
+//    $(this).children('.dropdown-menu').data('loading', 'true')
+//    $.ajax({
+//        url: '/users/' + $(this).data('avatar-pop'),
+//        method: 'get',
+//        success: (data) = > {
+//        $(this).children('.dropdown-menu').html(data)
+//}
+//})
+//    return
+//})

@@ -528,6 +528,7 @@ footer {
 
   .activity-starter-name {
     font-size: 1.2em;
+    //font-weight: bolder;
   }
 
   .activity-update-date {
@@ -570,20 +571,37 @@ footer {
         }
       }
     }
+  }
 
-    .reviews {
-      margin-top: 10px;
-      color: black;
-
-      .avatar {
-        width: 1.5em;
-        height: 1.5em;
-        transform: translateX(-10px);
-      }
+  .reviews {
+    border-bottom: none;
+    border-right: none;
+    border-left: none;
+    border-bottom-right-radius: .85rem;
+    border-bottom-left-radius: .85rem;
+    .card-title {
+      font-size: 1.1em;
     }
+    .comment-avatar {
+      .avatar {
+        width: 1.3em;
+        height: 1.3em;
+        margin-right: 4px;
+      }
+      font-size: .9em;
+      font-weight: bolder;
+    }
+    .comment-time {
+      font-size: .7em;
+    }
+    .comment-text {
+      font-size: 0.8em;
+    }
+  }
 
-    .comment-input-group {
-      margin-top: 15px;
+  .comment-input-group {
+    textarea {
+      height: 3em;
     }
   }
 }

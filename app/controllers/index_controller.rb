@@ -14,4 +14,9 @@ class IndexController < ApplicationController
     @activities = Activity.all
     render 'refresh'
   end
+
+  def refresh_profile
+    profile_id = params[:profile_id]
+    render 'refresh.js.erb'
+  end
 end
