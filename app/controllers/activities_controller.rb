@@ -126,6 +126,8 @@ class ActivitiesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def activity_params
-    params.require(:activity).permit(:activity_date, :place, :content, :starter_id, :status, :theme_color)
+    res=params.require(:activity).permit(:activity_date, :place, :content, :starter_id, :status, :theme_color)
+    res[:activity_date] = Time.strptime(res[:activity_date], '%m/%d/%Y %H:%M')
+    res
   end
 end
