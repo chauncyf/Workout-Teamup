@@ -32,11 +32,11 @@ class CommentsController < ApplicationController
         format.html {redirect_to @comment, notice: 'Comment was successfully created.'}
         format.json {render :show, status: :created, location: @comment}
         format.js {render 'comments/create'}
-
+        activity=
         Activity.find(comment_params[:activity_id]).users.each do |user|
           MessageChannel.broadcast_to(user, {type: 2, id: comment_params[:activity_id], count: 1, msg: {
               title: '<i class="fas fa-plus-circle"></i> New Comment',
-              text: 'Someone has commented on one of your involved activity', type: 'info'}})
+              text: "#{@comment.user.user_name} has commented on one of your involved activity, do you want see this?", type: 'info'}})
         end
       else
         format.html {render :new}
