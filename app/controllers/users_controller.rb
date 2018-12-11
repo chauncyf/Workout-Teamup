@@ -59,7 +59,7 @@ class UsersController < ApplicationController
       end
 
     end
-    render 'follow', locals: {follow_status: true}
+    render 'follow', locals: {follow_status: true, profile_id: params[:followee_id]}
   end
 
   def unfollow
