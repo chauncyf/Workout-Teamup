@@ -1,23 +1,20 @@
 <% if follow_status %>
-refreshProfile(profile_id);
 
 new PNotify({
-    title: '<i class="fas fa-check-circle"></i> User Followed',
+    title: '<i class="fas fa-check-circle"></i> User Followed <%= profile_id %>',
     text: 'Yeah, let\'s follow up',
     type: 'success',
     delay: 2000
 });
 <% else %>
 new PNotify({
-    title: '<i class="fas fa-exclamation-circle"></i> User Unfollowed',
+    title: '<i class="fas fa-exclamation-circle"></i> User Unfollowed <%= profile_id %>',
     text: 'Sorry to see you leave',
     type: 'notice',
     delay: 2000
 });
 <% end %>
 
-//window.refreshProfile = function () {
-//  $('.profile-dropdown').html(`
-  <%#= render partial: 'user_profile_card', locals: {user: @user} %>
-//  `)
-//}
+$('[data-avatar-pop=<%= profile_id %>]').children('.profile-dropdown').html(`
+    <%= render partial: 'users/user_profile_card', locals: {user: User.find(profile_id)} %>
+`)
