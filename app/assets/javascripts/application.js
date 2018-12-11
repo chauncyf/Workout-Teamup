@@ -135,7 +135,8 @@ $(function () {
         })
     }).on('click', '.poster .comment_submit', function () {
         let $this = $(this)
-        let textArea = $this.parent().prev().focusout()
+        if ($this.attr('disabled')) return
+        let textArea = $this.parent().prev()
         if (textArea.val().length === 0) {
             new PNotify({
                 text: 'Comment cannot be empty!',
@@ -154,9 +155,6 @@ $(function () {
                 }
             },
             method: 'post',
-            success: () => {
-                $this.attr('disabled', false)
-            }
         })
     }).on('click', '.poster [data-upload-picture]', function () {
         let $this = $(this)
