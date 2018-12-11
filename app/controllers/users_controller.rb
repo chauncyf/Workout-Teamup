@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         @join_status = true
         MessageChannel.broadcast_to(Activity.find(params[:activity_id]).starter, type: 1, count: 1, msg: {
             title: '<i class="fas fa-plus-circle"></i> New Friend Join!',
-            text: 'A new friend has joined your activity!', type: 'info'})
+            text: "#{current_user.user_name} has joined your activity!", type: 'info'})
       end
     end
 
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
         @leave_status = true
         MessageChannel.broadcast_to(Activity.find(params[:activity_id]).starter, type: 1, count: 1, msg: {
             title: '<i class="fas fa-exclamation-circle"></i> Team Member Left',
-            text: 'A team member has left your activity', type: 'notice'})
+            text: "#{current_user.user_name} has left your activity", type: 'notice'})
       end
     end
 
