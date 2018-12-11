@@ -34,38 +34,38 @@
   <div class="row">
     <div class="col form-group mb-0">
       <div class="btn-group color-checker" role="group" aria-label="First group">
-          <%= form.label :theme_color, class: "btn radio-btn-color radio-btn-purple mb-0" do %>
-            <%= form.radio_button :theme_color, 'purple' %>
-            <i class="fas fa-check text-white"></i>
-          <% end %>
-          <%= form.label :theme_color, class: "btn radio-btn-color radio-btn-pink mb-0" do %>
-            <%= form.radio_button :theme_color, 'pink' %>
-            <i class="fas fa-check text-white"></i>
-          <% end %>
-          <%= form.label :theme_color, class: "btn radio-btn-color radio-btn-blue mb-0" do %>
-            <%= form.radio_button :theme_color, 'blue', checked: true %>
-            <i class="fas fa-check text-white"></i>
-          <% end %>
-          <%= form.label :theme_color, class: "btn radio-btn-color radio-btn-teal mb-0" do %>
-            <%= form.radio_button :theme_color, 'teal' %>
-            <i class="fas fa-check text-white"></i>
-          <% end %>
-          <%= form.label :theme_color, class: "btn radio-btn-color radio-btn-green mb-0" do %>
-            <%= form.radio_button :theme_color, 'green' %>
-            <i class="fas fa-check text-white"></i>
-          <% end %>
-          <%= form.label :theme_color, class: "btn radio-btn-color radio-btn-orange mb-0" do %>
-            <%= form.radio_button :theme_color, 'orange' %>
-            <i class="fas fa-check text-white"></i>
-          <% end %>
-          <%= form.label :theme_color, class: "btn radio-btn-color radio-btn-brown mb-0" do %>
-            <%= form.radio_button :theme_color, 'brown' %>
-            <i class="fas fa-check text-white"></i>
-          <% end %>
-          <%= form.label :theme_color, class: "btn radio-btn-color radio-btn-grey mb-0" do %>
-            <%= form.radio_button :theme_color, 'grey' %>
-            <i class="fas fa-check text-white"></i>
-          <% end %>
+        <%= form.label :theme_color, class: "btn radio-btn-color radio-btn-purple mb-0" do %>
+          <%= form.radio_button :theme_color, 'purple' %>
+          <i class="fas fa-check text-white"></i>
+        <% end %>
+        <%= form.label :theme_color, class: "btn radio-btn-color radio-btn-pink mb-0" do %>
+          <%= form.radio_button :theme_color, 'pink' %>
+          <i class="fas fa-check text-white"></i>
+        <% end %>
+        <%= form.label :theme_color, class: "btn radio-btn-color radio-btn-blue mb-0" do %>
+          <%= form.radio_button :theme_color, 'blue', checked: true %>
+          <i class="fas fa-check text-white"></i>
+        <% end %>
+        <%= form.label :theme_color, class: "btn radio-btn-color radio-btn-teal mb-0" do %>
+          <%= form.radio_button :theme_color, 'teal' %>
+          <i class="fas fa-check text-white"></i>
+        <% end %>
+        <%= form.label :theme_color, class: "btn radio-btn-color radio-btn-green mb-0" do %>
+          <%= form.radio_button :theme_color, 'green' %>
+          <i class="fas fa-check text-white"></i>
+        <% end %>
+        <%= form.label :theme_color, class: "btn radio-btn-color radio-btn-orange mb-0" do %>
+          <%= form.radio_button :theme_color, 'orange' %>
+          <i class="fas fa-check text-white"></i>
+        <% end %>
+        <%= form.label :theme_color, class: "btn radio-btn-color radio-btn-brown mb-0" do %>
+          <%= form.radio_button :theme_color, 'brown' %>
+          <i class="fas fa-check text-white"></i>
+        <% end %>
+        <%= form.label :theme_color, class: "btn radio-btn-color radio-btn-grey mb-0" do %>
+          <%= form.radio_button :theme_color, 'grey' %>
+          <i class="fas fa-check text-white"></i>
+        <% end %>
       </div>
     </div>
 
@@ -82,7 +82,9 @@
             icons: {
                 time: "far fa-clock",
                 date: "far fa-calendar",
-            }
+            },
+            format: 'DD/MM/YYYY hh:mm'
         });
+
     });
 </script>

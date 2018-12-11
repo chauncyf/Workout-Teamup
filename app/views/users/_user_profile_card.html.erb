@@ -23,13 +23,16 @@
 
   <div class="card-body px-3 py-2 material-body-<%= color %>"><%= user.motto %>
     <div class="row justify-content-center text-center bg-transparent">
-      <% if user != current_user %>
+      <% if user.id != current_user_id %>
         <% if Follow.exists?(followee_id: user.id, follower_id: current_user_id) %>
           <%= link_to "Unfollow", "/unfollow/#{user.id}", method: :delete, remote: true, class: "btn-primary col-auto m-1 material-head-#{color}", id: "#{user.id}", follow: true %>
         <% else %>
           <%= link_to "Follow", "/follow/#{user.id}", method: :post, remote: true, class: "btn-primary col-auto m-1 material-head-#{color}", id: "#{user.id}", follow: false %>
         <% end %>
-        <%= mail_to user.email, "Email", subject: "[Workout TeamUp] User message", class: "btn-primary col-auto m-1 material-head-#{color}" %>
+        <button class="btn-primary col-auto m-1 material-head-<%= "#{color}" %>">
+          chat
+        </button>
+        <% # mail_to user.email, "Email", subject: "[Workout TeamUp] User message", class: "btn-primary col-auto m-1 material-head-#{color}" %>
         <!--        <a href="#" class="btn-primary col-auto m-1 material-head-<%#=  color  %>">Message</a>-->
       <% end %>
     </div>

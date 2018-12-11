@@ -74,48 +74,45 @@
 </div>
 
 <script>
-    var controlFlag = true; // used to switch off the endless refreshing
-    $('#scroll_container').on("scroll", function () {
-        var height = $(this).height();
-        var scrollTop = $(this).scrollTop();
-        var totalHeight = this.scrollHeight;
-        if (totalHeight - scrollTop - height < 20) {
-            if (controlFlag) {
-                console.log("ajax!")
-                //$.ajax() // do the ajax to add more content and set the controlFlag to true in the callback function
+    ;(function () {
+        var controlFlag = true; // used to switch off the endless refreshing
+        $('#scroll_container').on("scroll", function () {
+            var height = $(this).height();
+            var scrollTop = $(this).scrollTop();
+            var totalHeight = this.scrollHeight;
+            if (totalHeight - scrollTop - height < 20) {
+                if (controlFlag) {
+                    console.log("ajax!")
+                    //$.ajax() // do the ajax to add more content and set the controlFlag to true in the callback function
+                }
+                controlFlag = false // switch off
             }
-            controlFlag = false // switch off
+        });
+
+        var posterModal = $('#newPosterModal');
+        var modalBody = posterModal.find('.modal-body');
+        $('#new_poster_button').on('click', function () {
+            $.ajax({
+                url: '<%= new_activity_path %>',
+                method: 'get',
+                success: function (data) {
+                    modalBody.html(data);
+                    posterModal.modal('show')
+                }
+            })
+        })
+        posterModal.on('ajax:success', function (event) {
+            posterModal.modal("hide")
+        })
+
+        window.refreshPosts = function () {
+            $.ajax({
+                url: '<%= refresh_posts_url %>',
+                data: {
+                    page: 1,
+                    size: 20,
+                }
+            })
         }
-    });
-
-    var posterModal = $('#newPosterModal');
-    var modalBody = posterModal.find('.modal-body');
-    $('#new_poster_button').on('click', function () {
-        $.ajax({
-            url: '<%= new_activity_path %>',
-            method: 'get',
-            success: function (data) {
-                modalBody.html(data);
-                posterModal.modal('show')
-            }
-        })
-    })
-    posterModal.on('ajax:success', function (event) {
-        [data, status, xhr] = event.detail
-        posterModal.modal("hide")
-        console.log(data)
-        refreshPosts()
-    }).on('ajax:error', function (event) {
-        //TODO
-    })
-
-    window.refreshPosts = function () {
-        $.ajax({
-            url: '<%= refresh_posts_url %>',
-            data: {
-                page: 1,
-                size: 20,
-            }
-        })
-    }
+    })()
 </script>

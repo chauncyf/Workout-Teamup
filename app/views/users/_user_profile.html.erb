@@ -179,7 +179,6 @@
         })
     })
     profileModal.on('ajax:success', function (event) {
-        [data, status, xhr] = event.detail
         profileModal.modal("hide")
     }).on('ajax:error', function (event) {
         // failed logic
@@ -200,7 +199,6 @@
         })
     })
     pwdModal.on('ajax:success', function (event) {
-        [data, status, xhr] = event.detail
         pwdModal.modal("hide")
     }).on('ajax:error', function (event) {
         // failed logic
