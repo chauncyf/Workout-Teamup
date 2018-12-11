@@ -48,7 +48,7 @@ $(function () {
         })
         reader.readAsDataURL(file)
     })
-    window.showPosterInModal = function (id) {
+    window.showPosterInModal = function (arg) {
         var posterModal = $('#posterModal')
         if ($.contains(posterModal[0], this)) {// if already in the modal
             let comment_submit = posterModal.find('.comment_submit')
@@ -58,7 +58,7 @@ $(function () {
             comment_submit.parent().prev().focus()
             return
         }
-        id = isNaN(id) ? $(this).parent().data('id') : id
+        let id = isNaN(arg) ? $(this).parent().data('id') : arg
         window.posterModalRefresh = () => {
             $.ajax({
                 url: '/activities/' + id,
@@ -67,6 +67,15 @@ $(function () {
                 success: (data) => {
                     posterModal.find('.modal-body').html(data)
                     posterModal.modal('show')
+                    if (!isNaN(arg)) {
+                        // make sure we scroll to the bottom
+                        // by clicking the comment button
+                        posterModal.one('shown.bs.modal', function () {
+                            setTimeout(() => {
+                                posterModal.find('.poster .comment').click()
+                            }, 200)
+                        })
+                    }
                 }
             })
         }

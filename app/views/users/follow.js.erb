@@ -1,20 +1,29 @@
-<% if follow_status %>
+<% if logged_in? %>
+  <% if follow_status %>
 
-new PNotify({
-    title: '<i class="fas fa-check-circle"></i> User Followed',
-    text: 'Yeah, let\'s follow up',
-    type: 'success',
-    delay: 2000
-});
+  new PNotify({
+      title: '<i class="fas fa-check-circle"></i> User Followed',
+      text: 'Yeah, let\'s follow up',
+      type: 'success',
+      delay: 2000
+  });
+  <% else %>
+  new PNotify({
+      title: '<i class="fas fa-exclamation-circle"></i> User Unfollowed',
+      text: 'Sorry to see you leave',
+      type: 'notice',
+      delay: 2000
+  });
+  <% end %>
+
+  $('[data-avatar-pop=<%= profile_id %>]').children('.profile-dropdown').html(`
+      <%= render partial: 'users/user_profile_card', locals: {user: User.find(profile_id)} %>
+  `)
 <% else %>
-new PNotify({
-    title: '<i class="fas fa-exclamation-circle"></i> User Unfollowed',
-    text: 'Sorry to see you leave',
-    type: 'notice',
-    delay: 2000
-});
+  document.getElementById("login-button").click();
+  new PNotify({
+      title: '<i class="fas fa-exclamation-circle"></i> Please Login',
+      type: 'error',
+      delay: 2000
+  });
 <% end %>
-
-$('[data-avatar-pop=<%= profile_id %>]').children('.profile-dropdown').html(`
-    <%= render partial: 'users/user_profile_card', locals: {user: User.find(profile_id)} %>
-`)

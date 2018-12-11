@@ -1,16 +1,22 @@
 <% if logged_in? %>
+refreshPosts()
 if ($('#posterModal').is(":not(':hidden')")) {
     posterModalRefresh()
     new PNotify({
-        title: '<i class="fas fa-check-circle"></i> Comment Success',
+        title: '<i class="fas fa-check-circle"></i> Comment Succeed',
         type: 'success',
         delay: 2000
     });
 }
 <% else %>
-  new PNotify({
+
+  document.getElementById("login-button").click();
+//  posterModal.modal("hide")
+
+new PNotify({
       title: '<i class="fas fa-exclamation-circle"></i> Please login',
       type: 'error',
       delay: 2000
   });
+
 <% end %>

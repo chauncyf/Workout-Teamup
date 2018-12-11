@@ -393,6 +393,9 @@ footer {
 }
 
 .modal {
+  p > a {
+    color: $material-blue;
+  }
   .modal-content {
     //border: none;
     border-radius: .5rem;
@@ -927,4 +930,8 @@ footer {
 
 .user_stat_box {
   width: 500px;
+}
+
+.ui-pnotify-action-bar button{
+  cursor: pointer;
 }

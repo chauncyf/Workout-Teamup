@@ -57,7 +57,6 @@ class UsersController < ApplicationController
             title: '<i class="fas fa-plus-circle"></i> A New Friend Started Following You!',
             text: 'What a star!', type: 'info'})
       end
-
     end
     render 'follow', locals: {follow_status: true, profile_id: params[:followee_id]}
   end

@@ -63,7 +63,7 @@
 
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link", id: "login-button"} %>
+          <%= link_to "Login", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", 'data-dismiss': "modal", class: "nav-link", id: "login-button"} %>
         </li>
       <% end %>
 
