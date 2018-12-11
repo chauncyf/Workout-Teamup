@@ -86,16 +86,17 @@ class ActivitiesController < ApplicationController
     Activity.transaction do
       if Like.where(user_id: current_user_id, activity_id: params[:activity_id]).any?
         Like.where(user_id: current_user_id, activity_id: params[:activity_id]).first.delete
+        render 'users/like_activity', locals: {like: false, login: logged_in?}
       else
         Like.create(user_id: current_user_id, activity_id: params[:activity_id])
+        render 'users/like_activity', locals: {like: true, login: logged_in?}
       end
     end
-    render 'users/like_activity'
   end
 
   def unlike
     Like.where(user_id: current_user_id, activity_id: params[:activity_id]).destroy_all
-    render 'users/like_activity'
+    render 'users/like_activity.js.erb', locals: {like: false, login: logged_in?}
   end
 
   # DELETE /activities/1

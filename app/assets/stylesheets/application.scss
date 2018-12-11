@@ -41,6 +41,10 @@ a {
   color: $material-blue;
 }
 
+.btn {
+  text-align:center !important;
+  vertical-align: middle !important;
+}
 .btn-primary {
   background-color: $material-blue !important;
   border: none !important;

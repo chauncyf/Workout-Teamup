@@ -28,7 +28,7 @@
 
       <div class="col col-auto card-title card-title-button text-right m-0">
         <% if !logged_in? %>
-          <%= link_to "", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "fas fa-ellipsis-v text-white"} %>
+          <%= link_to "", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", 'data-dismiss': "modal", class: "fas fa-ellipsis-v text-white"} %>
         <% else %>
           <% if @isJoined %>
             <div class="dropdown">
@@ -105,10 +105,12 @@
 
           <textarea placeholder="Enter your comment here" class="form-control" aria-label="With textarea"></textarea>
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary comment_submit"
-                    data-id="<%= activity.id %>"
-                    type="button">submit
-            </button>
+            <% if !logged_in? %>
+              <%= link_to "Submit", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", 'data-dismiss': "modal", class: "btn btn-outline-secondary"} %>
+            <% else %>
+              <button class="btn btn-outline-secondary comment_submit" data-id="<%= activity.id %>" type="button">Submit</button>
+            <% end %>
+
           </div>
         </div>
       </div>

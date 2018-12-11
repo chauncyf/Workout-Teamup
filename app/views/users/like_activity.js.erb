@@ -1,9 +1,29 @@
+<% if login %>
 refreshPosts();
-if($('#posterModal').is(":not(':hidden')")){
+
+if ($('#posterModal').is(":not(':hidden')")) {
     posterModalRefresh()
 }
+<% if like %>
 new PNotify({
     title: '<i class="fas fa-check-circle"></i> Activity Liked',
     type: 'success',
     delay: 2000
 });
+<% elsif !like %>
+new PNotify({
+    title: '<i class="fas fa-exclamation-circle"></i> Activity Unliked',
+    type: 'notice',
+    delay: 2000
+});
+<% end %>
+<% else %>
+
+document.getElementById("login-button").click();
+
+new PNotify({
+    title: '<i class="fas fa-exclamation-circle"></i> Please Login',
+    type: 'error',
+    delay: 2000
+});
+<% end %>

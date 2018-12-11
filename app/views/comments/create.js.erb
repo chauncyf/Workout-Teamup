@@ -1,3 +1,4 @@
+<% if logged_in? %>
 if ($('#posterModal').is(":not(':hidden')")) {
     posterModalRefresh()
     new PNotify({
@@ -6,3 +7,10 @@ if ($('#posterModal').is(":not(':hidden')")) {
         delay: 2000
     });
 }
+<% else %>
+  new PNotify({
+      title: '<i class="fas fa-exclamation-circle"></i> Please login',
+      type: 'error',
+      delay: 2000
+  });
+<% end %>
