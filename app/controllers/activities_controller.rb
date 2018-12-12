@@ -41,11 +41,19 @@ class ActivitiesController < ApplicationController
   # POST /activities
   # POST /activities.json
   def create
-    @activity = Activity.new(starter_id: current_user_id, activity_date: activity_params[:activity_date], place: activity_params[:place], content: activity_params[:content], status: activity_params[:status], theme_color: activity_params[:theme_color])
+    @activity = Activity.new(starter_id: current_user_id,
+                             activity_date: activity_params[:activity_date],
+                             place: activity_params[:place],
+                             content: activity_params[:content],
+                             status: activity_params[:status],
+                             theme_color: activity_params[:theme_color])
 
     respond_to do |format|
-      if @activity.save
-        ActivityParticipant.create(user_id: current_user_id, activity_id: @activity.id, identity: 1)
+      if @activity.validate
+        @activity.save
+        ActivityParticipant.create(user_id: current_user_id,
+                                   activity_id: @activity.id,
+                                   identity: 1)
 
         #  status 1 success 2 failed
         #format.js {render json: {status: 1}}
@@ -118,6 +126,8 @@ class ActivitiesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def activity_params
-    params.require(:activity).permit(:activity_date, :place, :content, :starter_id, :status, :theme_color)
+    res=params.require(:activity).permit(:activity_date, :place, :content, :starter_id, :status, :theme_color)
+    res[:activity_date] = Time.strptime(res[:activity_date], '%m/%d/%Y %H:%M')
+    res
   end
 end

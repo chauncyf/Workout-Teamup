@@ -1,8 +1,8 @@
 <%
-  @isJoined = logged_in?
-  if (@isJoined)
-    @join = activity.get_participation_by_user_id(current_user_id).first
-    @isJoined = @isJoined && !@join.nil?
+  isJoined = logged_in?
+  if (isJoined)
+    join = activity.get_participation_by_user_id(current_user_id).first
+    isJoined = isJoined && !join.nil?
   end
   show_comment = false if local_assigns[:show_comment].nil?
 
@@ -30,16 +30,18 @@
         <% if !logged_in? %>
           <%= link_to "", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", 'data-dismiss': "modal", class: "fas fa-ellipsis-v text-white"} %>
         <% else %>
-          <% if @isJoined %>
-            <div class="dropdown">
-              <a class="fas fa-check" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-              <div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" data-upload-picture="<%= activity.id %>">Upload picture</a>
-                <%= link_to "Leave Activity", "/leave_activity/#{activity.id}", remote: true, class: "dropdown-item leave", method: :post %>
+          <% if activity.status != 3 %>
+            <% if isJoined %>
+              <div class="dropdown">
+                <a class="fas fa-check" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                <div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" data-upload-picture="<%= activity.id %>">Upload picture</a>
+                  <%= link_to "Leave Activity", "/leave_activity/#{activity.id}", remote: true, class: "dropdown-item leave", method: :post %>
+                </div>
               </div>
-            </div>
-          <% else %>
-            <%= link_to "", "/join_activity/#{activity.id}", remote: true, method: :post, class: "fas fa-plus", 'title': "join activity" %>
+            <% else %>
+              <%= link_to "", "/join_activity/#{activity.id}", remote: true, method: :post, class: "fas fa-plus", 'title': "join activity" %>
+            <% end %>
           <% end %>
         <% end %>
       </div>
@@ -61,11 +63,11 @@
 
   <div class="card-footer bg-transparent px-3 pt-0 pb-2 material-footer-<%= activity.theme_color %>">
     <div class="row align-items-center">
-      <% if @isJoined %>
+      <% if isJoined %>
         <div class="col-auto rate-star" data-raty="true"
-             <%= @join.rating != 0 ? "data-readonly='true'" : "" %>
-             data-id="<%= @join.id %>"
-             data-score="<%= @join.rating %>">
+             <%= join.rating != 0 ? "data-readonly='true'" : "" %>
+             data-id="<%= join.id %>"
+             data-score="<%= join.rating %>">
         </div>
       <% end %>
 
@@ -97,7 +99,7 @@
               <p class="comment-text mb-0">
                 <%= comment.content %>
               </p>
-<!--              <small><%#= comment.user.motto %></small>-->
+              <!--              <small><%#= comment.user.motto %></small>-->
             </div>
           <% end %>
         </ul>

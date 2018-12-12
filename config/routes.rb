@@ -52,4 +52,7 @@ Rails.application.routes.draw do
 
   post '/like_activity', to: 'activities#like', as: :like_activity
   post '/unlike_activity', to: 'activities#unlike', as: :unlike_activity
+
+  post '/send_message', to: 'chat#send', as: :send_message
+  get '/send_message/:id', to: 'chat#new'
 end
