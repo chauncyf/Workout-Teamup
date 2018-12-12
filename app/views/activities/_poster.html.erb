@@ -5,7 +5,7 @@
     isJoined = isJoined && !join.nil?
   end
   show_comment = false if local_assigns[:show_comment].nil?
-
+  starter=activity.starter
 %>
 
 <div class="card shadow mb-3 poster">
@@ -13,13 +13,17 @@
     <div class="row justify-content-between">
       <div class="col col-auto card-title m-0">
         <ul class="list-inline mb-1">
-          <li class="list-inline-item align-middle dropdown card-starter-avatar" data-avatar-pop="<%= activity.starter.id %>" data-toggle="dropdown">
-            <%= avatar_for(activity.starter) %>
+          <li class="list-inline-item align-middle dropdown card-starter-avatar" data-avatar-pop="<%= starter.id %>">
+            <% if activity.starter_id == current_user_id %>
+              <%= avatar_for(activity.starter) %>
+            <% else %>
+              <%= avatar_for(starter, 'data-chat': starter.id) %>
+            <% end %>
             <div class="dropdown-menu profile-dropdown p-0"> ...</div>
           </li>
           <li class="list-inline-item align-middle">
             <ul class="list-unstyled">
-              <li class="activity-starter-name"><%= activity.starter.user_name %></li>
+              <li class="activity-starter-name"><%= starter.user_name %></li>
               <li class="activity-update-date">updated <%= time_ago_in_words activity.updated_at %> ago</li>
             </ul>
           </li>

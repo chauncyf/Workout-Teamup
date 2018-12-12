@@ -29,9 +29,10 @@
         <% else %>
           <%= link_to "Follow", "/follow/#{user.id}", method: :post, remote: true, class: "btn-primary col-auto m-1 material-head-#{color}", id: "#{user.id}", follow: false %>
         <% end %>
-        <button data-chat="<%= user.id %>" class="btn-primary col-auto m-1 material-head-<%= "#{color}" %>">
+        <a data-chat="<%= user.id %>" class="btn-primary col-auto m-1 material-head-<%= color %>"
+           href="javascript:void(0)">
           chat
-        </button>
+        </a>
         <% # mail_to user.email, "Email", subject: "[Workout TeamUp] User message", class: "btn-primary col-auto m-1 material-head-#{color}" %>
         <!--        <a href="#" class="btn-primary col-auto m-1 material-head-<%#=  color  %>">Message</a>-->
       <% end %>

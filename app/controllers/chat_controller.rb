@@ -1,7 +1,9 @@
 class ChatController < ApplicationController
-  def send
-    MessageChannel.broadcast_to(User.find(params[:target]), {type: 3, count: 1, msg: {
-        title: '<i class="fas fa-plus-circle"></i> New Messages',
+
+  def send_message
+    user = current_user
+    MessageChannel.broadcast_to(User.find(params[:target]), {type: 3, id: current_user_id, count: 1, msg: {
+        title: "#{user.user_name} send you a message",
         text: params[:content], type: 'info'}})
   end
 

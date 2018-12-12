@@ -87,7 +87,7 @@ $(function () {
         if ($(this).children('.dropdown-menu').data('loading')) {
             return
         }
-        $(this).children('.dropdown-menu').data('loading', 'true')
+        $(this).children('.dropdown-menu').data('loading', true)
         $.ajax({
             url: '/users/' + $(this).data('avatar-pop'),
             method: 'get',
@@ -95,7 +95,6 @@ $(function () {
                 $(this).children('.dropdown-menu').html(data)
             }
         })
-        return
     })
     /*$(document).popover({
         selector: '[data-avatar-pop]',
@@ -162,20 +161,36 @@ $(function () {
         let id = $this.data('data-upload-picture')
 
     })
-    $(document).on('click', 'button[data-chat]', function () {
+    $(document).on('click', 'a[data-chat],img.avatar[data-chat]', function () {
         let $this = $(this)
-        let id = $this.data('id')
+        let id = $this.data('chat')
         let modal = $('#send_message_modal')
         $.ajax({
             url: '/send_message/' + id,
             method: 'get',
             success(data) {
-                modal.find('.modal-content').html(data)
-                    .modal('show')
+                modal.children().children().html(data)
+                modal.modal('show')
             }
         })
-    }).on('click','#send_message_modal .submit',function(){
-
+    }).on('click', '#send_message_modal .submit', function () {
+        let $this = $(this)
+        $.ajax({
+            url: '/send_message',
+            method: 'post',
+            data: {
+                target: $this.data('id'),
+                content: $this.parent().prev().children().val()
+            },
+            success() {
+                new PNotify({
+                    title: '<i class="fas fa-check-circle"></i> Message sent',
+                    type: 'success',
+                    delay: 2000
+                });
+                $('#send_message_modal').modal('hide')
+            }
+        })
     })
 
 })
