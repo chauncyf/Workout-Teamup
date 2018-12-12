@@ -170,8 +170,8 @@ $(function () {
             url: '/send_message/' + id,
             method: 'get',
             success(data) {
-                modal.modal('show').find('.modal-content').html(data)
-
+                modal.children().children().html(data)
+                modal.modal('show')
             }
         })
     }).on('click', '#send_message_modal .submit', function () {
