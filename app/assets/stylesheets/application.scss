@@ -42,9 +42,10 @@ a {
 }
 
 .btn {
-  text-align:center !important;
+  text-align: center !important;
   vertical-align: middle !important;
 }
+
 .btn-primary {
   background-color: $material-blue !important;
   border: none !important;
@@ -396,6 +397,7 @@ footer {
   p > a {
     color: $material-blue;
   }
+
   .modal-content {
     //border: none;
     border-radius: .5rem;
@@ -549,10 +551,12 @@ footer {
   .card-title-button {
     font-size: 1.6em;
     cursor: pointer;
+
     .leave {
       color: #D32F2F;
       //background-color: red;
     }
+
     .leave:hover {
       color: white;
       background-color: #D32F2F;;
@@ -594,21 +598,26 @@ footer {
     border-left: none;
     border-bottom-right-radius: .85rem;
     border-bottom-left-radius: .85rem;
+
     .card-title {
       font-size: 1.1em;
     }
+
     .comment-avatar {
       .avatar {
         width: 1.3em;
         height: 1.3em;
         margin-right: 4px;
       }
+
       font-size: .9em;
       font-weight: bolder;
     }
+
     .comment-time {
       font-size: .7em;
     }
+
     .comment-text {
       font-size: 0.8em;
     }
@@ -932,6 +941,12 @@ footer {
   width: 500px;
 }
 
-.ui-pnotify-action-bar button{
+.ui-pnotify-action-bar button {
   cursor: pointer;
+}
+
+.modal-title {
+  .avatar {
+    width: 25px;
+  }
 }
