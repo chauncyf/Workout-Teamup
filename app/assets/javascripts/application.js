@@ -21,7 +21,7 @@
 ////= require pnotify.custom
 
 $(function () {
-    // $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip()
 
     /*PNotify.defaults.styling='bootstrap4'
     PNotify.defaults.icons='bootstrap4'*/
@@ -211,7 +211,3 @@ window.ratyAll = _.throttle(() => {
         }).removeAttr('data-raty')
     })
 }, 300)
-
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-})
