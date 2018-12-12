@@ -95,7 +95,6 @@ $(function () {
                 $(this).children('.dropdown-menu').html(data)
             }
         })
-        return
     })
     /*$(document).popover({
         selector: '[data-avatar-pop]',
