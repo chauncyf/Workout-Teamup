@@ -2,10 +2,10 @@
     document.getElementById("home-button").click();
 
     <% if @confirm_success %>
-      $(document).on('turbolinks:load', setTimeout(success_notify, 1000));
+      $(document).on('turbolinks:load', setTimeout(success_notify, 3000));
       // setTimeout(success_notify, 1000);
     <% else %>
-      $(document).on('turbolinks:load', setTimeout(failed_notify, 1000));
+      $(document).on('turbolinks:load', setTimeout(failed_notify, 3000));
       // setTimeout(failed_notify, 1000);
     <% end %>
 
