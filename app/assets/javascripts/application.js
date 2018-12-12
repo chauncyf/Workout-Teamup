@@ -156,11 +156,28 @@ $(function () {
             },
             method: 'post',
         })
-    }).on('click', '.poster [data-upload-picture]', function () {
+    })
+    $(document).on('click', '.poster [data-upload-picture]', function () {
         let $this = $(this)
         let id = $this.data('data-upload-picture')
 
     })
+    $(document).on('click', 'button[data-chat]', function () {
+        let $this = $(this)
+        let id = $this.data('id')
+        let modal = $('#send_message_modal')
+        $.ajax({
+            url: '/send_message/' + id,
+            method: 'get',
+            success(data) {
+                modal.find('.modal-content').html(data)
+                    .modal('show')
+            }
+        })
+    }).on('click','#send_message_modal .submit',function(){
+
+    })
+
 })
 
 function dataURItoBlob(dataURI) {

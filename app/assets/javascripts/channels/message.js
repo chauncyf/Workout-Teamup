@@ -39,7 +39,7 @@ App.cable.subscriptions.create({
                     },
                 })).get().on('pnotify.confirm', function (e, notice, input) {
                     $.ajax({
-                        url: '',
+                        url: '/send_message',
                         method: 'post',
                         data: {
                             target: data.id,
@@ -48,7 +48,6 @@ App.cable.subscriptions.create({
                         success() {
                             notice.cancelRemove().update({
                                 title: 'Message sent!',
-                                text: '',
                                 icon: true,
                                 type: 'success',
                                 hide: true,
