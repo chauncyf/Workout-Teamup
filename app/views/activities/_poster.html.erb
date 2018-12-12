@@ -14,7 +14,11 @@
       <div class="col col-auto card-title m-0">
         <ul class="list-inline mb-1">
           <li class="list-inline-item align-middle dropdown card-starter-avatar" data-avatar-pop="<%= activity.starter.id %>" data-toggle="dropdown">
-            <%= avatar_for(activity.starter) %>
+            <% if activity.starter_id == current_user_id %>
+              <%= avatar_for(activity.starter) %>
+            <% else %>
+              <%= avatar_for(activity.starter, 'data-chat': activity.starter.id) %>
+            <% end %>
             <div class="dropdown-menu profile-dropdown p-0"> ...</div>
           </li>
           <li class="list-inline-item align-middle">

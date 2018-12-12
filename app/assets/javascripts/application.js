@@ -162,7 +162,7 @@ $(function () {
         let id = $this.data('data-upload-picture')
 
     })
-    $(document).on('click', 'a[data-chat]', function () {
+    $(document).on('click', 'a[data-chat],img.avatar[data-chat]', function () {
         let $this = $(this)
         let id = $this.data('chat')
         let modal = $('#send_message_modal')
