@@ -87,7 +87,7 @@ $(function () {
         if ($(this).children('.dropdown-menu').data('loading')) {
             return
         }
-        $(this).children('.dropdown-menu').data('loading', 'true')
+        $(this).children('.dropdown-menu').data('loading', true)
         $.ajax({
             url: '/users/' + $(this).data('avatar-pop'),
             method: 'get',
