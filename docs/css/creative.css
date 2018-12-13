@@ -324,8 +324,8 @@ header.masthead p {
 }
 
 .team-member img {
-  width: 225px;
-  height: 225px;
+  width: 225px !important;
+  height: 225px !important;
   border: 7px solid #fff;
 }
 
