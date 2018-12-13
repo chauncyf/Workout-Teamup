@@ -19,8 +19,8 @@ class MessageChannel < ApplicationCable::Channel
   end
 
   def receive data
-    if data[:type] == 3
-      chat = Chat.find(data[:id])
+    if data["type"] == 3
+      chat = Chat.find(data["id"])
       chat.status = 1
       chat.save
     end

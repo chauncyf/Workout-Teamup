@@ -11,7 +11,7 @@
                     (new PNotify({
                         title: data.msg.title,
                         text: data.msg.text,
-                        type: data.msg.type,
+                        type: data.msg.type || 'info',
                         hide: false,
                         confirm: {
                             confirm: true
@@ -44,7 +44,7 @@
                         new PNotify({
                             title: data.msg.title,
                             text: data.msg.text,
-                            type: data.msg.type,
+                            type: data.msg.type || 'info',
                         });
                     }
                     break;
@@ -67,7 +67,7 @@
             (new PNotify({
                 title: data.msg.title,
                 text: data.msg.text,
-                type: data.msg.type,
+                type: data.msg.type || 'info',
                 hide: false,
                 confirm: {
                     prompt: true,

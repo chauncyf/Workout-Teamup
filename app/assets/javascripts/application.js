@@ -18,10 +18,15 @@
 //= require cropper
 //= require lodash
 //= require echarts
-////= require pnotify.custom
+//= require pnotify.custom
 
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
+
+    $(document).on('turbolinks:before-cache', function () {
+        // don't cache any pnotify elements, just let them pass
+        PNotify.removeAll()
+    })
 
     /*PNotify.defaults.styling='bootstrap4'
     PNotify.defaults.icons='bootstrap4'*/

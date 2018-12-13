@@ -60,9 +60,10 @@ class ActivitiesController < ApplicationController
         format.html {redirect_to @activity, notice: 'Activity was successfully created.'}
         format.json {render :show, status: :created, location: @activity}
         # type 1 means new activity count means there is one more
-        User.all.each do |user|
+        starter = @activity.starter
+        starter.follower.each do |user|
           MessageChannel.broadcast_to(user, {type: 1, count: 1, msg: {
-              title: '<i class="fas fa-plus-circle"></i> New Poster',
+              title: "<i class='fas fa-plus-circle'></i> New Poster from #{starter.user_name}",
               text: 'A new poster has been posted', type: 'info'}})
         end
         format.js {render 'users/create_activity'}
@@ -126,8 +127,10 @@ class ActivitiesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def activity_params
-    res=params.require(:activity).permit(:activity_date, :place, :content, :starter_id, :status, :theme_color)
-    res[:activity_date] = Time.strptime(res[:activity_date], '%m/%d/%Y %H:%M')
+    res = params.require(:activity).permit(:activity_date, :place, :content, :starter_id, :status, :theme_color)
+    if res[:activity_date].size > 0
+      res[:activity_date] = Time.strptime(res[:activity_date], '%m/%d/%Y %H:%M')
+    end
     res
   end
 end

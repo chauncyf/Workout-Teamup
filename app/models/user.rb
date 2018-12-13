@@ -6,7 +6,14 @@ class User < ApplicationRecord
 
   gravtastic :email
   has_one_attached :avatar
-  has_many :follows, foreign_key: :followee
+
+
+  has_many :follower_relation, foreign_key: :follower_id, class_name: 'Follow'
+  has_many :followee_relation, foreign_key: :followee_id, class_name: 'Follow'
+
+  has_many :followed, through: :follower_relation, source: :followee
+  has_many :follower, through: :followee_relation, source: :follower
+
   # has_many :users, through: :follows, source: :follower  # what's this
 
   has_many :activity_participants
