@@ -56,6 +56,11 @@ App.cable.subscriptions.create({
                         }
                     })
                 })
+                // send message back so it will be marked as read
+                App.MessageChannel.send({
+                    id: data.chat_id,
+                    type: 3// confrim message received
+                })
                 break;
 
             case 1:

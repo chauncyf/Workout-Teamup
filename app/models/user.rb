@@ -20,6 +20,7 @@ class User < ApplicationRecord
   has_many :user_locations
 
   has_many :photos
+  has_many :chats
 
   before_save {self.email = email.downcase}
 
@@ -67,6 +68,10 @@ class User < ApplicationRecord
     self.email_confirmed = true
     self.confirm_token = nil
     save!(validate: false)
+  end
+
+  def unread_message
+    chats.merge(Chat.not_sent).order(created_at: :asc)
   end
 
   private
