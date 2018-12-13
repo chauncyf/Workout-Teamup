@@ -18,6 +18,7 @@ class User < ApplicationRecord
 
   has_many :activity_participants
   has_many :activities, through: :activity_participants
+  has_many :started_activities, foreign_key: :starter_id,class_name: 'Activity'
   has_many :likes
   has_many :liked_poster, through: :likes, class_name: 'Activity'
 
