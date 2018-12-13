@@ -21,7 +21,8 @@
 !/storage/.keep
 
 /node_modules
-/doc/node_modules
+/docs/node_modules
+/docs/bower_components
 /yarn-error.log
 
 /public/assets
