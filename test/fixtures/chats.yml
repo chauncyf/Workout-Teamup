@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  send_from: 1
+  send_to: 1
+  content: 1
+  status: 1
+
+two:
+  send_from: 1
+  send_to: 1
+  content: 1
+  status: 1

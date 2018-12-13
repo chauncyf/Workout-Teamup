@@ -20,7 +20,8 @@ class User < ApplicationRecord
   has_many :user_locations
 
   has_many :photos
-  has_many :chats
+  has_many :message, foreign_key: :send_to, class_name: 'Chat'
+  has_many :sent_messages, foreign_key: :send_from, class_name: 'Chat'
 
   before_save {self.email = email.downcase}
 
@@ -71,7 +72,7 @@ class User < ApplicationRecord
   end
 
   def unread_message
-    chats.merge(Chat.not_sent).order(created_at: :asc)
+    message.merge(Chat.not_sent).order(created_at: :asc)
   end
 
   private

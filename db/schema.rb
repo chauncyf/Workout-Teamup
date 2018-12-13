@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2018_12_12_234710) do
   create_table "chats", force: :cascade do |t|
     t.integer "send_from"
     t.integer "send_to"
-    t.integer "content"
+    t.string "content"
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
