@@ -15267,7 +15267,7 @@
          * @example
          *
          * var view = {
-         *   'label': 'doc',
+         *   'label': 'docs',
          *   'click': function() {
          *     console.log('clicked ' + this.label);
          *   }
@@ -15275,7 +15275,7 @@
          *
          * _.bindAll(view, ['click']);
          * jQuery(element).on('click', view.click);
-         * // => Logs 'clicked doc' when clicked.
+         * // => Logs 'clicked docs' when clicked.
          */
         var bindAll = flatRest(function(object, methodNames) {
             arrayEach(methodNames, function(key) {
