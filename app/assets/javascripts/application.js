@@ -198,6 +198,14 @@ $(function () {
         })
     })
 
+    $(document).on('click', '#post_display_container_joined .page-item-num,' +
+        ' #post_display_container_started .page-item-num', function () {
+        let $this = $(this)
+        $this.parent().children('.active').removeClass('active')
+        $this.addClass('active')
+        refreshPosts()
+    })
+
 })
 
 function dataURItoBlob(dataURI) {

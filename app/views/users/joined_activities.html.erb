@@ -14,6 +14,7 @@
 <div class="achievement_container">
   <div class="user_stat_box">
     <h1 class="title-big text-center">Your achievements</h1>
+    <hr>
     <div class="card">
       <div class="card-body">
         You were registered <%= time_ago_in_words current_user.created_at %> ago
@@ -36,19 +37,39 @@
     <h1 class="title-big text-center">Activities I Joined</h1>
     <hr>
     <div class="poster_box">
-      <% @activities_joined.each do |activity| %>
+      <% @activities_joined.limit(4).each do |activity| %>
         <%= render partial: 'activities/poster', locals: {activity: activity} %>
       <% end %>
     </div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="javascript:void(0)">Previous</a></li>
+        <li class="page-item page-item-num active"><a class="page-link" href="javascript:void(0)">1</a></li>
+        <% 2.upto(@activities_joined.size / 4) do |x| %>
+          <li class="page-item page-item-num "><a class="page-link" href="javascript:void(0)"><%= x %></a></li>
+        <% end %>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
+      </ul>
+    </nav>
   </div>
   <div id="post_display_container_started" class="poster_blocks">
-    <h1 class="title-big text-center mt-5">Activities Started By Me</h1>
+    <h1 class="title-big text-center">Activities Started</h1>
     <hr>
     <div class="poster_box">
-      <% @activities_started.each do |activity| %>
+      <% @activities_started.limit(4).each do |activity| %>
         <%= render partial: 'activities/poster', locals: {activity: activity} %>
       <% end %>
     </div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="javascript:void(0)">Previous</a></li>
+        <li class="page-item active page-item-num "><a class="page-link" href="javascript:void(0)">1</a></li>
+        <% 2.upto(@activities_joined.size / 4) do |x| %>
+          <li class="page-item page-item-num "><a class="page-link" href="javascript:void(0)"><%= x %></a></li>
+        <% end %>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
+      </ul>
+    </nav>
   </div>
 </div>
 <script>
@@ -56,10 +77,13 @@
         window.refreshPosts = function () {
             $.ajax({
                 url: '<%= refresh_posts_achievements_url %>',
-
                 data: {
-                    page: 1,
-                    size: 20,
+                    joined_page:
+                        $('#post_display_container_joined').find('.page-item.active .page-link').html(),
+                    joined_size: 4,
+                    started_page:
+                        $('#post_display_container_started').find('.page-item.active .page-link').html(),
+                    started_size: 4
                 }
             })
         }

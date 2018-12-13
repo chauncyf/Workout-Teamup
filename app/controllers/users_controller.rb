@@ -11,8 +11,8 @@ class UsersController < ApplicationController
         @join_status = true
         MessageChannel.broadcast_to(Activity.find(params[:activity_id]).starter,
                                     type: 1, count: 1, msg: {
-            title: '<i class="fas fa-plus-circle"></i> New Friend Join!',
-            text: "#{current_user.user_name} has joined your activity!", type: 'info'})
+                title: '<i class="fas fa-plus-circle"></i> New Friend Join!',
+                text: "#{current_user.user_name} has joined your activity!", type: 'info'})
       end
     end
 
@@ -38,15 +38,21 @@ class UsersController < ApplicationController
   end
 
   def joined_activities
-    @activities_joined = current_user.activities
-    @activities_started = Activity.where(starter_id: current_user)
+    @activities_joined = current_user.activities.order(created_at: :desc)
+    @activities_started = current_user.started_activities.order(created_at: :desc)
   end
 
   def refresh_joined_activities
-    page = params[:page]
-    size = params[:size]
-    @activities_joined = current_user.activities
-    @activities_started = Activity.where(starter_id: current_user)
+    joined_page = params[:joined_page].to_i || 1
+    joined_size = params[:joined_size].to_i || 4
+    started_page = params[:started_page].to_i || 1
+    started_size = params[:started_size].to_i || 4
+    @activities_joined = current_user
+                             .started_activities.order(created_at: :desc)
+                             .offset((joined_page - 1) * joined_size).limit 4
+    @activities_started = current_user
+                              .started_activities.order(created_at: :desc)
+                              .offset((started_page - 1) * started_size).limit 4
     render 'users/refresh_joined_activities'
   end
 
