@@ -38,6 +38,8 @@
     </div>
   </div>
 
+  <%= collection_select(:activity_type, :id, ActivityType.all, :id, :name, {prompt: true}) %>
+
   <!--
   <div class="row">
     <div class="col form-group mb-0">
