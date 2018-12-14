@@ -121,10 +121,13 @@ class ActivitiesController < ApplicationController
   end
 
   def qrcode
-    qrcode = RQRCode::QRCode.new('workout-teamup.herokuapp.com')
+    if Rails.env.development?
+      qrcode = RQRCode::QRCode.new("http://0.0.0.0:3000/?actvity_id=#{params[:id]}")
+    else
+      qrcode = RQRCode::QRCode.new("#{request.host}?actvity_id=#{params[:id]}")
+    end
     render 'qrcode.js.erb', locals: {activity_id: params[:id], qrcode: qrcode}
   end
-
 
   private
 
