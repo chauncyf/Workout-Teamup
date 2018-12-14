@@ -39,7 +39,13 @@
     </div>
   </div>
 
-  <%= collection_select(:activity, :activity_type_id, ActivityType.all, :id, :name, {prompt: true}) %>
+  <div class="form-group">
+    <%= form.label "Type?" %>
+    <div>
+    <%= collection_select(:activity, :activity_type_id, ActivityType.all, :id, :name, {prompt: true}, class: "form-control") %>
+    </div>
+  </div>
+
 
   <!--
   <div class="row">
