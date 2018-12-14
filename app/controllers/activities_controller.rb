@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+  require 'rqrcode'
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
   # GET /activities
@@ -117,6 +118,12 @@ class ActivitiesController < ApplicationController
       format.json {head :no_content}
     end
   end
+
+  def qrcode
+    qrcode = RQRCode::QRCode.new('workout-teamup.herokuapp.com')
+    render 'qrcode.js.erb', locals: {activity_id: params[:id], qrcode: qrcode}
+  end
+
 
   private
 

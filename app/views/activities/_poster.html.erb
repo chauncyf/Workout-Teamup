@@ -39,7 +39,8 @@
               <div class="dropdown">
                 <a class="fas fa-check" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
                 <div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" data-upload-picture="<%= activity.id %>">Upload picture</a>
+                  <%= link_to "QR Code", "/get_qrcode/#{activity.id}", remote: true, method: :post,  "data-qr-code": "#{activity.id}", class: "dropdown-item" %>
+                  <a class="dropdown-item" data-upload-picture="<%= activity.id %>">Upload Picture</a>
                   <%= link_to "Leave Activity", "/leave_activity/#{activity.id}", remote: true, class: "dropdown-item leave", method: :post %>
                 </div>
               </div>
@@ -95,20 +96,16 @@
           <% activity.comments_list.each do |comment| %>
             <div class="list-group-item list-group-item-action flex-column align-items-start px-1">
               <div class="d-flex w-100 justify-content-between mb-2">
-
-
                 <div class="comment-avatar"><%= avatar_for(comment.user) %><%= comment.user.user_name %></div>
                 <div class="comment-time"><%= time_ago_in_words comment.updated_at %> ago</div>
               </div>
               <p class="comment-text mb-0">
                 <%= comment.content %>
               </p>
-              <!--              <small><%#= comment.user.motto %></small>-->
             </div>
           <% end %>
         </ul>
         <div class="input-group comment-input-group mt-3">
-
           <textarea placeholder="Enter your comment here" class="form-control" aria-label="With textarea"></textarea>
           <div class="input-group-append">
             <% if !logged_in? %>
@@ -116,13 +113,11 @@
             <% else %>
               <button class="btn btn-outline-secondary comment_submit" data-id="<%= activity.id %>" type="button">Submit</button>
             <% end %>
-
           </div>
         </div>
       </div>
     </div>
   <% end %>
-
 </div>
 
 <script>
