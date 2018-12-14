@@ -11,7 +11,14 @@ User.create(user_name: 'chauncyf', email: 'fanc@brandeis.edu', password: '123456
 User.create(user_name: 'irenezxr', email: 'xiangranzhao@brandeis.edu', password: '123456789', email_confirmed: true, identity: 1)
 User.create(user_name: 'gggllm', email: 'limianguo@gmail.com', password: '123456789', email_confirmed: true, identity: 1)
 User.create(user_name: 'visitor', email: 'visitor@brandeis.edu', password: '123456789', email_confirmed: true, identity: 2)
-#
+
+Activity.create(activity_date: Faker::Time.forward(30),
+                place: Faker::Games::Overwatch.location,
+                content: Faker::MostInterestingManInTheWorld.quote,
+                activity_type_id: 1,
+                estimatedDuration: 30,
+                starter_id: 4, status: 2)
+
 # # To fix: timezone
 10.times do
   Activity.create(activity_date: Faker::Time.forward(30),
