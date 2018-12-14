@@ -28,13 +28,15 @@
       <h5 class="card-title">Cardio</h5>
     </div>
   </div>
+
+  <%= link_to "HIIT", {:controller => 'index',:action => 'refresh',:type => "hiit"}, class: "card text-white material-head-pink" %>
+
   <div class="card">
+    <!--<a href = "#" class = "card" role = "button"> -->
     <div class="card-body text-white material-head-pink">
       <h5 class="card-title">HIITs</h5>
-      <!--
-      <%#= button_to 'hiit',{:controller => 'activities',:action => 'index',:type => "hiit"}, class: "btn btn-primary",style: "color:#FFF" %>
-      -->
     </div>
+
   </div>
   <div class="card">
     <div class="card-body text-white material-head-blue">
