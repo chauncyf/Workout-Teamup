@@ -29,7 +29,7 @@
 <hr class="my-4">
 
 <div id="post_display_container" class="card-columns">
-  <% @activities.reverse_each do |activity| %>
+  <% @activities.each do |activity| %>
     <%= render partial: 'activities/poster', locals: {activity: activity} %>
   <% end %>
 </div>
