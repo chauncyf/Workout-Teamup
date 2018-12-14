@@ -928,20 +928,27 @@ footer {
   display: flex;
   justify-content: center;
   flex-direction: row-reverse;
+  flex-wrap: wrap;
   padding-top: 30px;
-  .card{
+
+  .card {
     margin-bottom: 20px;
   }
-}
 
-.poster_blocks {
-  padding-left: 20px;
-  padding-right: 20px;
-  width: 500px;
-}
+  .pagination {
+    max-width: 400px;
+    flex-wrap: wrap;
+  }
 
-.user_stat_box {
-  width: 500px;
+  .poster_blocks {
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 450px;
+  }
+
+  .user_stat_box {
+    width: 450px;
+  }
 }
 
 .ui-pnotify-action-bar button {
@@ -952,4 +959,12 @@ footer {
   .avatar {
     width: 25px;
   }
+}
+
+.poster_type {
+  cursor: pointer;
+}
+
+.poster_type.active {
+
 }
