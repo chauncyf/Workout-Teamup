@@ -46,6 +46,7 @@ class ActivitiesController < ApplicationController
                              activity_date: activity_params[:activity_date],
                              place: activity_params[:place],
                              content: activity_params[:content],
+                             type: activity_params[:type],
                              status: activity_params[:status],
                              theme_color: activity_params[:theme_color])
 
@@ -134,7 +135,7 @@ class ActivitiesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def activity_params
-    res = params.require(:activity).permit(:activity_date, :place, :content, :starter_id, :status, :theme_color)
+    res = params.require(:activity).permit(:activity_date, :place, :content, :type, :starter_id, :status, :theme_color)
     if res[:activity_date].size > 0
       res[:activity_date] = Time.strptime(res[:activity_date], '%m/%d/%Y %H:%M')
     end

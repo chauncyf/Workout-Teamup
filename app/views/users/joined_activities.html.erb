@@ -1,12 +1,14 @@
 <%
   activities_joined = @activities_joined.as_json
-  activities_joined_time = activities_joined.group_by {|x| x['activity_date'].strftime("%Y-%m")}
+  activities_joined_size = activities_joined.size
+  activities_joined_time = activities_joined.group_by {|x| x['activity_date'].beginning_of_week.strftime("%Y-%m-%d")}
   activities_joined_time_array = activities_joined_time
       .map {|(key, val)| [key, val.size]}.sort {|a, b| a[0] <=> b[0]}
 
 
   activities_started = @activities_started.as_json
-  activities_started_time = activities_started.group_by {|x| x['activity_date'].strftime("%Y-%m")}
+  activities_started_size = activities_started.size
+  activities_started_time = activities_started.group_by {|x| x['activity_date'].beginning_of_week.strftime("%Y-%m-%d")}
   activities_started_time_array = activities_started_time
       .map {|(key, val)| [key, val.size]}.sort {|a, b| a[0] <=> b[0]}
 
@@ -30,8 +32,8 @@
         You have started <%= @activities_started.size %> activites
       </div>
     </div>
-    <div id="join_stats" style="width: 500px;height: 500px;"></div>
-    <div id="start_stats" style="width: 500px;height: 500px;"></div>
+    <div id="join_stats" style="width: 450px;height: 450px;"></div>
+    <div id="start_stats" style="width: 450px;height: 450px;"></div>
   </div>
   <div id="post_display_container_joined" class="poster_blocks">
     <h1 class="title-big text-center">Activities I Joined</h1>
@@ -45,7 +47,7 @@
       <ul class="pagination">
         <li class="page-item"><a class="page-link" href="javascript:void(0)">Previous</a></li>
         <li class="page-item page-item-num active"><a class="page-link" href="javascript:void(0)">1</a></li>
-        <% 2.upto(@activities_joined.size / 4) do |x| %>
+        <% 2.upto((activities_joined_size.to_f / 4).ceil) do |x| %>
           <li class="page-item page-item-num "><a class="page-link" href="javascript:void(0)"><%= x %></a></li>
         <% end %>
         <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
@@ -64,7 +66,7 @@
       <ul class="pagination">
         <li class="page-item"><a class="page-link" href="javascript:void(0)">Previous</a></li>
         <li class="page-item active page-item-num "><a class="page-link" href="javascript:void(0)">1</a></li>
-        <% 2.upto(@activities_joined.size / 4) do |x| %>
+        <% 2.upto((activities_started_size.to_f / 4).ceil) do |x| %>
           <li class="page-item page-item-num "><a class="page-link" href="javascript:void(0)"><%= x %></a></li>
         <% end %>
         <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>

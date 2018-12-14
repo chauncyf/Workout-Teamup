@@ -11,7 +11,7 @@
                     (new PNotify({
                         title: data.msg.title,
                         text: data.msg.text,
-                        type: data.msg.type || 'info',
+                        type: data.msg.type,
                         hide: false,
                         confirm: {
                             confirm: true
@@ -44,7 +44,7 @@
                         new PNotify({
                             title: data.msg.title,
                             text: data.msg.text,
-                            type: data.msg.type || 'info',
+                            type: data.msg.type,
                         });
                     }
                     break;
@@ -52,6 +52,7 @@
             }
 
         },
+
     })
 
     $(document).on('turbolinks:load', function () {
@@ -67,7 +68,7 @@
             (new PNotify({
                 title: data.msg.title,
                 text: data.msg.text,
-                type: data.msg.type || 'info',
+                type: data.msg.type,
                 hide: false,
                 confirm: {
                     prompt: true,

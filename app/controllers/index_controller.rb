@@ -11,7 +11,11 @@ class IndexController < ApplicationController
   def refresh
     page = params[:page]
     size = params[:size]
-    @activities = Activity.all
+    if params[:type].blank?
+      @activities = Activity.all
+    else
+      @activities = Activity.where(:type => params[:type])
+    end
     render 'refresh'
   end
 end

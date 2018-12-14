@@ -23,45 +23,45 @@
 <hr class="my-4">
 
 <div class="card-columns">
-  <div class="card">
+  <div class="card poster_type">
     <div class="card-body text-white material-head-purple">
       <h5 class="card-title">Cardio</h5>
     </div>
   </div>
-  <div class="card">
+
+  <div class="card poster_type">
+    <!--<a href = "#" class = "card" role = "button"> -->
     <div class="card-body text-white material-head-pink">
       <h5 class="card-title">HIITs</h5>
-      <!--
-      <%#= button_to 'hiit',{:controller => 'activities',:action => 'index',:type => "hiit"}, class: "btn btn-primary",style: "color:#FFF" %>
-      -->
     </div>
+
   </div>
-  <div class="card">
+  <div class="card poster_type">
     <div class="card-body text-white material-head-blue">
       <h5 class="card-title">Play around</h5>
     </div>
   </div>
-  <div class="card">
+  <div class="card poster_type">
     <div class="card-body text-white material-head-teal">
       <h5 class="card-title">Fat Burn</h5>
     </div>
   </div>
-  <div class="card">
+  <div class="card poster_type">
     <div class="card-body text-white material-head-green">
       <h5 class="card-title">Anaerobic</h5>
     </div>
   </div>
-  <div class="card">
+  <div class="card poster_type">
     <div class="card-body text-white material-head-orange">
       <h5 class="card-title">Aerobics</h5>
     </div>
   </div>
-  <div class="card">
+  <div class="card poster_type">
     <div class="card-body text-white material-head-brown">
       <h5 class="card-title">Leg Day!</h5>
     </div>
   </div>
-  <div class="card">
+  <div class="card poster_type">
     <div class="card-body text-white material-head-grey">
       <h5 class="card-title">ETC.</h5>
     </div>
@@ -109,6 +109,10 @@
         })
 
         window.refreshPosts = function () {
+            var typeArray = []
+            $('.poster_type.active').each(function (index, value) {
+                typeArray.push()
+            })
             $.ajax({
                 url: '<%= refresh_posts_url %>',
                 data: {
