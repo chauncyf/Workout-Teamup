@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <%= collection_select(:activity_type, :id, ActivityType.all, :id, :name, {prompt: true}) %>
+  <%= collection_select(:activity, :activity_type_id, ActivityType.all, :id, :name, {prompt: true}) %>
 
   <!--
   <div class="row">
