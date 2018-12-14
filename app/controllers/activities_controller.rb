@@ -132,6 +132,11 @@ class ActivitiesController < ApplicationController
     render 'qrcode.js.erb', locals: {activity_id: params[:id], qrcode: qrcode}
   end
 
+  def canvas
+
+    render 'canvas.js.erb'
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

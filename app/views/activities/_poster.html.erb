@@ -40,6 +40,8 @@
                 <a class="fas fa-check" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
                 <div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdownMenuButton">
                   <%= link_to "QR Code", "/get_qrcode/#{activity.id}", remote: true, method: :post,  "data-qr-code": "#{activity.id}", class: "dropdown-item" %>
+                  <%= link_to "Save Poster", "/get_canvas/#{activity.id}", remote: true, method: :post,  "data-qr-code": "#{activity.id}", class: "dropdown-item" %>
+
                   <a class="dropdown-item" data-upload-picture="<%= activity.id %>">Upload Picture</a>
                   <%= link_to "Leave Activity", "/leave_activity/#{activity.id}", remote: true, class: "dropdown-item leave", method: :post %>
                 </div>
