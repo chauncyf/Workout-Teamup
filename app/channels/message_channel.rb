@@ -1,5 +1,6 @@
 class MessageChannel < ApplicationCable::Channel
   def subscribed
+    stop_all_streams
     user = current_user
     stream_for user
     unread_message = user.unread_message
@@ -15,7 +16,7 @@ class MessageChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
+    stop_all_streams
   end
 
   def receive data
