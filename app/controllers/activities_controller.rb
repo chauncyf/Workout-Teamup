@@ -42,12 +42,13 @@ class ActivitiesController < ApplicationController
   # POST /activities
   # POST /activities.json
   def create
+    params = activity_params
     @activity = Activity.new(starter_id: current_user_id,
-                             activity_date: activity_params[:activity_date],
-                             place: activity_params[:place],
-                             content: activity_params[:content],
-                             activity_type_id: activity_params[:activity_type_id],
-                             status: activity_params[:status])
+                             activity_date: params[:activity_date],
+                             place: params[:place],
+                             content: params[:content],
+                             activity_type_id: params[:activity_type_id],
+                             status: params[:status])
 
     respond_to do |format|
       if @activity.validate
@@ -71,6 +72,7 @@ class ActivitiesController < ApplicationController
 
       else
         #format.js {render json: {status: 2}}
+        @activity.activity_date = @activity.activity_date.strftime('%m/%d/%Y %H:%M')
         format.html {render :new}
         format.json {render json: @activity.errors, status: :unprocessable_entity}
         format.js {render layout: false, content_type: 'text/javascript'}
