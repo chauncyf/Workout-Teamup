@@ -19,6 +19,8 @@ class Activity < ApplicationRecord
 
   has_many :activity_contents
 
+  belongs_to :activity_type
+
   def comments_list # comments ordered by time
     comments.order(created_at: :asc)
   end

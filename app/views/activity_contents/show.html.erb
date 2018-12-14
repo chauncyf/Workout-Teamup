@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @activity_content.activity_id %>
+</p>
+
+<p>
+  <strong>Sport option:</strong>
+  <%= @activity_content.sport_option %>
+</p>
+
+<p>
+  <strong>Customize sport:</strong>
+  <%= @activity_content.customize_sport %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @activity_content.quantity %>
+</p>
+
+<p>
+  <strong>Quan unit:</strong>
+  <%= @activity_content.quan_unit %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @activity_content.duration %>
+</p>
+
+<p>
+  <strong>Dur unit:</strong>
+  <%= @activity_content.dur_unit %>
+</p>
+
+<p>
+  <strong>Equipment:</strong>
+  <%= @activity_content.equipment %>
+</p>
+
+<p>
+  <strong>Strength:</strong>
+  <%= @activity_content.strength %>
+</p>
+
+<p>
+  <strong>Suggestion:</strong>
+  <%= @activity_content.suggestion %>
+</p>
+
+<p>
+  <strong>Alert:</strong>
+  <%= @activity_content.alert %>
+</p>
+
+<%= link_to 'Edit', edit_activity_content_path(@activity_content) %> |
+<%= link_to 'Back', activity_contents_path %>

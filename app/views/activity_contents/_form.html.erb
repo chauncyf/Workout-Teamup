@@ -1,0 +1,72 @@
+<%= form_with(model: activity_content, local: true) do |form| %>
+  <% if activity_content.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(activity_content.errors.count, "error") %> prohibited this activity_content from being saved:</h2>
+
+      <ul>
+      <% activity_content.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :activity_id %>
+    <%= form.number_field :activity_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sport_option %>
+    <%= form.text_field :sport_option %>
+  </div>
+
+  <div class="field">
+    <%= form.label :customize_sport %>
+    <%= form.text_field :customize_sport %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.text_field :quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quan_unit %>
+    <%= form.text_field :quan_unit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :duration %>
+    <%= form.text_field :duration %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dur_unit %>
+    <%= form.text_field :dur_unit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :equipment %>
+    <%= form.text_field :equipment %>
+  </div>
+
+  <div class="field">
+    <%= form.label :strength %>
+    <%= form.text_field :strength %>
+  </div>
+
+  <div class="field">
+    <%= form.label :suggestion %>
+    <%= form.text_area :suggestion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :alert %>
+    <%= form.text_area :alert %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

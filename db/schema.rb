@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_12_234710) do
+ActiveRecord::Schema.define(version: 2018_12_14_170248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,9 +49,25 @@ ActiveRecord::Schema.define(version: 2018_12_12_234710) do
     t.integer "starter_id"
     t.integer "status"
     t.integer "estimatedDuration"
-    t.string "theme_color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "activity_type_id"
+  end
+
+  create_table "activity_contents", force: :cascade do |t|
+    t.integer "activity_id"
+    t.string "sport_option"
+    t.string "customize_sport"
+    t.float "quantity"
+    t.string "quan_unit"
+    t.float "duration"
+    t.string "dur_unit"
+    t.string "equipment"
+    t.text "suggestion"
+    t.text "alert"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "strength"
   end
 
   create_table "activity_participants", force: :cascade do |t|
@@ -66,6 +82,14 @@ ActiveRecord::Schema.define(version: 2018_12_12_234710) do
   create_table "activity_tags", force: :cascade do |t|
     t.integer "activity_id"
     t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "activity_types", force: :cascade do |t|
+    t.string "name"
+    t.integer "type_index"
+    t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

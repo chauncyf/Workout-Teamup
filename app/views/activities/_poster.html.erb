@@ -9,7 +9,7 @@
 %>
 
 <div class="card shadow mb-3 poster">
-  <div class="card-header px-3 py-2 text-white material-head-<%= activity.theme_color %>">
+  <div class="card-header px-3 py-2 text-white material-head-<%= ActivityType.find_by(id: activity.activity_type_id).color %>">
     <div class="row justify-content-between">
       <div class="col col-auto card-title m-0">
         <ul class="list-inline mb-1">
@@ -62,11 +62,11 @@
     </div>
   </div>
 
-  <div class="card-body p-3 material-body-<%= activity.theme_color %> ">
+  <div class="card-body p-3 material-body-<%= ActivityType.find_by(id:activity.activity_type_id).color %> ">
     <%= activity.content %>
   </div>
 
-  <div class="card-footer bg-transparent px-3 pt-0 pb-2 material-footer-<%= activity.theme_color %>">
+  <div class="card-footer bg-transparent px-3 pt-0 pb-2 material-footer-<%= ActivityType.find_by(id:activity.activity_type_id).color %>">
     <div class="row align-items-center">
       <% if isJoined %>
         <div class="col-auto rate-star" data-raty="true"
