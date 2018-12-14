@@ -943,11 +943,11 @@ footer {
   .poster_blocks {
     padding-left: 20px;
     padding-right: 20px;
-    width: 450px;
+    min-width: 450px;
   }
 
   .user_stat_box {
-    width: 450px;
+    min-width: 450px;
   }
 }
 
