@@ -23,12 +23,12 @@
 <hr class="my-4">
 
 <div class="card-columns">
-  <% ActivityType.all.each do |activity_type|%>
-  <div class="card poster_type">
-    <div class="card-body text-white material-head-<%= activity_type.color %>">
-      <h5 class="card-title"> <%= activity_type.name%></h5>
+  <% ActivityType.all.each do |activity_type| %>
+    <div class="card poster_type" data-id="<%= activity_type.id %>">
+      <div class="card-body text-white material-head-<%= activity_type.color %>">
+        <h5 class="card-title"> <%= activity_type.name %></h5>
+      </div>
     </div>
-  </div>
   <% end %>
 </div>
 
@@ -73,15 +73,17 @@
         })
 
         window.refreshPosts = function () {
-            var typeArray = []
+            let typeArray = []
             $('.poster_type.active').each(function (index, value) {
-                typeArray.push()
+                typeArray.push(parseInt($(value).data('id')))
             })
+            let type = typeArray.join(',')
             $.ajax({
                 url: '<%= refresh_posts_url %>',
                 data: {
                     page: 1,
                     size: 20,
+                    activity_type_ids: type
                 }
             })
         }
