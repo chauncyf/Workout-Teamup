@@ -11,34 +11,38 @@ User.create(user_name: 'chauncyf', email: 'fanc@brandeis.edu', password: '123456
 User.create(user_name: 'irenezxr', email: 'xiangranzhao@brandeis.edu', password: '123456789', email_confirmed: true, identity: 1)
 User.create(user_name: 'gggllm', email: 'limianguo@gmail.com', password: '123456789', email_confirmed: true, identity: 1)
 User.create(user_name: 'visitor', email: 'visitor@brandeis.edu', password: '123456789', email_confirmed: true, identity: 2)
-
-# To fix: timezone
+#
+# # To fix: timezone
 10.times do
   Activity.create(activity_date: Faker::Time.forward(30),
                   place: Faker::Games::Overwatch.location,
                   content: Faker::MostInterestingManInTheWorld.quote,
-                  theme_color: [:purple, :pink, :blue, :teal, :green, :orange, :brown, :grey].sample,
+                  activity_type_id: 1,
+                  estimatedDuration: 30,
                   starter_id: 4, status: 2)
 end
 10.times do
   Activity.create(activity_date: Faker::Time.forward(30),
                   place: Faker::Hobbit.location,
                   content: Faker::Hobbit.quote,
-                  theme_color: [:purple, :pink, :blue, :teal, :green, :orange, :brown, :grey].sample,
+                  activity_type_id: 2,
+                  estimatedDuration: 30,
                   starter_id: 3, status: 2)
 end
 10.times do
   Activity.create(activity_date: Faker::Time.forward(30),
                   place: Faker::Games::Overwatch.location,
                   content: Faker::FamousLastWords.last_words,
-                  theme_color: [:purple, :pink, :blue, :teal, :green, :orange, :brown, :grey].sample,
+                  activity_type_id: 3,
+                  estimatedDuration: 30,
                   starter_id: 2, status: 2)
 end
 10.times do
   Activity.create(activity_date: Faker::Time.forward(30),
                   place: Faker::Games::Overwatch.location,
                   content: Faker::Games::Overwatch.quote,
-                  theme_color: [:purple, :pink, :blue, :teal, :green, :orange, :brown, :grey].sample,
+                  activity_type_id: 4,
+                  estimatedDuration: 30,
                   starter_id: 1, status: 2)
 end
 
@@ -67,3 +71,13 @@ Follow.create(followee_id: 2, follower_id: 4)
 
 
 Gym.create(name: "gosman", description: "this is gosman gym for brandeis univeristy open time : xxxxx")
+
+ActivityType.create(name: 'CARDIO', type_index: 1, color: 'purple')
+ActivityType.create(name: 'PLAY GROUND', type_index: 2, color: 'blue')
+ActivityType.create(name: 'ANAEROBIC', type_index: 3, color: 'green')
+ActivityType.create(name: 'LEG DAY', type_index: 4, color: 'brown')
+ActivityType.create(name: 'HIIT', type_index: 5, color: 'pink')
+ActivityType.create(name: 'FAR BURN', type_index: 6, color: 'teal')
+ActivityType.create(name: 'AEROBICS', type_index: 7, color: 'orange')
+ActivityType.create(name: 'ETC.', type_index: 8, color: 'grey')
+
