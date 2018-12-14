@@ -8,7 +8,7 @@ class MessageChannel < ApplicationCable::Channel
       MessageChannel.broadcast_to(user, {type: 3,
                                          chat_id: chat.id,
                                          id: sender.id, count: 1, msg: {
-              title: "#{sender.user_name} left you a message",
+              title: "#{sender.user_name} left you a message at #{chat.created_at.strftime("%b %d, %a %H:%M")}",
               text: chat.content, type: 'info'}})
     end
 
