@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Activity Contents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Activity</th>
+      <th>Sport option</th>
+      <th>Customize sport</th>
+      <th>Quantity</th>
+      <th>Quan unit</th>
+      <th>Duration</th>
+      <th>Dur unit</th>
+      <th>Equipment</th>
+      <th>Strength</th>
+      <th>Suggestion</th>
+      <th>Alert</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activity_contents.each do |activity_content| %>
+      <tr>
+        <td><%= activity_content.activity_id %></td>
+        <td><%= activity_content.sport_option %></td>
+        <td><%= activity_content.customize_sport %></td>
+        <td><%= activity_content.quantity %></td>
+        <td><%= activity_content.quan_unit %></td>
+        <td><%= activity_content.duration %></td>
+        <td><%= activity_content.dur_unit %></td>
+        <td><%= activity_content.equipment %></td>
+        <td><%= activity_content.strength %></td>
+        <td><%= activity_content.suggestion %></td>
+        <td><%= activity_content.alert %></td>
+        <td><%= link_to 'Show', activity_content %></td>
+        <td><%= link_to 'Edit', edit_activity_content_path(activity_content) %></td>
+        <td><%= link_to 'Destroy', activity_content, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Activity Content', new_activity_content_path %>

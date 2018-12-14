@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  activity_id: 1
+  sport_option: MyString
+  customize_sport: MyString
+  quantity: 1.5
+  quan_unit: MyString
+  duration: 1.5
+  dur_unit: MyString
+  equipment: MyString
+  strength: 
+  suggestion: MyText
+  alert: MyText
+
+two:
+  activity_id: 1
+  sport_option: MyString
+  customize_sport: MyString
+  quantity: 1.5
+  quan_unit: MyString
+  duration: 1.5
+  dur_unit: MyString
+  equipment: MyString
+  strength: 
+  suggestion: MyText
+  alert: MyText
