@@ -26,7 +26,7 @@
   <% ActivityType.all.each do |activity_type| %>
     <div class="card poster_type" data-id="<%= activity_type.id %>">
       <div class="card-body text-white material-head-<%= activity_type.color %>">
-        <h5 class="card-title"> <%= activity_type.name %></h5>
+        <h5 class="card-title"> <%= activity_type.name %> <i class="fas fa-check-circle ml-1"></i></h5>
       </div>
     </div>
   <% end %>

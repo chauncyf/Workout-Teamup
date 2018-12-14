@@ -962,17 +962,16 @@ footer {
 }
 
 .poster_type {
+  border: none !important;
   cursor: pointer;
+  .fas {
+    display: none;
+  }
 }
 
 .poster_type.active {
-  transition: all 0.30s ease-in-out;
-  -webkit-transition: all 0.30s ease-in-out;
-  -moz-transition: all 0.30s ease-in-out;
-  outline: none;
-  border: #35a5e5 1px solid;
-  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-  -webkit-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-  -moz-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+  .fas{
+    display: inline;
+  }
 }
