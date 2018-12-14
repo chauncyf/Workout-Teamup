@@ -6,6 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+ActivityType.create(name: 'CARDIO', type_index: 1, color: 'purple')
+ActivityType.create(name: 'PLAY GROUND', type_index: 2, color: 'blue')
+ActivityType.create(name: 'ANAEROBIC', type_index: 3, color: 'green')
+ActivityType.create(name: 'LEG DAY', type_index: 4, color: 'brown')
+ActivityType.create(name: 'HIIT', type_index: 5, color: 'pink')
+ActivityType.create(name: 'FAR BURN', type_index: 6, color: 'teal')
+ActivityType.create(name: 'AEROBICS', type_index: 7, color: 'orange')
+ActivityType.create(name: 'ETC.', type_index: 8, color: 'grey')
 
 User.create(user_name: 'chauncyf', email: 'fanc@brandeis.edu', password: '123456789', email_confirmed: true, identity: 1)
 User.create(user_name: 'irenezxr', email: 'xiangranzhao@brandeis.edu', password: '123456789', email_confirmed: true, identity: 1)
@@ -79,12 +87,5 @@ Follow.create(followee_id: 2, follower_id: 4)
 
 Gym.create(name: "gosman", description: "this is gosman gym for brandeis univeristy open time : xxxxx")
 
-ActivityType.create(name: 'CARDIO', type_index: 1, color: 'purple')
-ActivityType.create(name: 'PLAY GROUND', type_index: 2, color: 'blue')
-ActivityType.create(name: 'ANAEROBIC', type_index: 3, color: 'green')
-ActivityType.create(name: 'LEG DAY', type_index: 4, color: 'brown')
-ActivityType.create(name: 'HIIT', type_index: 5, color: 'pink')
-ActivityType.create(name: 'FAR BURN', type_index: 6, color: 'teal')
-ActivityType.create(name: 'AEROBICS', type_index: 7, color: 'orange')
-ActivityType.create(name: 'ETC.', type_index: 8, color: 'grey')
+
 
