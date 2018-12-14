@@ -1,21 +1,16 @@
 class IndexController < ApplicationController
   include SessionsHelper
+  include ActivitiesHelper
 
   def home
-    @activities = Activity.all
+    @activities = get_activities size: 20, page: 1
   end
 
   def not_found
   end
 
   def refresh
-    page = params[:page]
-    size = params[:size]
-    if params[:type].blank?
-      @activities = Activity.all
-    else
-      @activities = Activity.where(:type => params[:type])
-    end
+    @activities = get_activities params
     render 'refresh'
   end
 end

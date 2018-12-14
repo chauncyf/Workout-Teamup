@@ -23,49 +23,13 @@
 <hr class="my-4">
 
 <div class="card-columns">
-  <div class="card poster_type">
-    <div class="card-body text-white material-head-purple">
-      <h5 class="card-title">Cardio</h5>
+  <% ActivityType.all.each do |activity_type| %>
+    <div class="card poster_type" data-id="<%= activity_type.id %>">
+      <div class="card-body text-white material-head-<%= activity_type.color %>">
+        <h5 class="card-title"> <%= activity_type.name %></h5>
+      </div>
     </div>
-  </div>
-
-  <div class="card poster_type">
-    <!--<a href = "#" class = "card" role = "button"> -->
-    <div class="card-body text-white material-head-pink">
-      <h5 class="card-title">HIITs</h5>
-    </div>
-
-  </div>
-  <div class="card poster_type">
-    <div class="card-body text-white material-head-blue">
-      <h5 class="card-title">Play around</h5>
-    </div>
-  </div>
-  <div class="card poster_type">
-    <div class="card-body text-white material-head-teal">
-      <h5 class="card-title">Fat Burn</h5>
-    </div>
-  </div>
-  <div class="card poster_type">
-    <div class="card-body text-white material-head-green">
-      <h5 class="card-title">Anaerobic</h5>
-    </div>
-  </div>
-  <div class="card poster_type">
-    <div class="card-body text-white material-head-orange">
-      <h5 class="card-title">Aerobics</h5>
-    </div>
-  </div>
-  <div class="card poster_type">
-    <div class="card-body text-white material-head-brown">
-      <h5 class="card-title">Leg Day!</h5>
-    </div>
-  </div>
-  <div class="card poster_type">
-    <div class="card-body text-white material-head-grey">
-      <h5 class="card-title">ETC.</h5>
-    </div>
-  </div>
+  <% end %>
 </div>
 
 <hr class="my-4">
@@ -109,15 +73,17 @@
         })
 
         window.refreshPosts = function () {
-            var typeArray = []
+            let typeArray = []
             $('.poster_type.active').each(function (index, value) {
-                typeArray.push()
+                typeArray.push(parseInt($(value).data('id')))
             })
+            let type = typeArray.join(',')
             $.ajax({
                 url: '<%= refresh_posts_url %>',
                 data: {
                     page: 1,
                     size: 20,
+                    activity_type_ids: type
                 }
             })
         }
