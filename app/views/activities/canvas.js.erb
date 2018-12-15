@@ -1,2 +1,24 @@
-html2canvas(document.querySelector("#post_display_container")).then(canvas => {
-    document.body.innerHTML = canvas});
+;(function () {
+    poster = $('.poster[data-poster=<%= activity_id %>]')[0]
+    html2canvas(poster).then(function (canvas) {
+        // Export the canvas to its data URI representation
+        var base64image = canvas.toDataURL("image/png");
+
+        // Open the image in a new window
+        downloadURI(base64image,'poster.jpg')
+    });
+
+    new PNotify({
+        title: '<i class="fas fa-check-circle"></i> Poster Saved',
+        type: 'success'
+    });
+})()
+
+function downloadURI(uri, name) {
+    var link = document.createElement("a");
+    link.download = name;
+    link.href = uri;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}

@@ -20,6 +20,7 @@
 //= require echarts
 //= require pnotify.custom
 //= require html2canvas
+
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 
