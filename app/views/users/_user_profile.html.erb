@@ -164,105 +164,64 @@
     </div>
   </div>
 </div>
-
-
 <script>
-    var profileModal = $('#editUserModal');
-    $('#userInfo_edit_button').on('click', function () {
-        $.ajax({
-            url: '<%= edit_user_path(user.id) %>',
-            method: 'get',
-            success: function (data) {
-                profileModal.find('.modal-body').html(data);
-                profileModal.modal('show')
-            }
-        })
-    })
-    profileModal.on('ajax:success', function (event) {
-        profileModal.modal("hide")
-    }).on('ajax:error', function (event) {
-        // failed logic
-        //TODO
-    })
-</script>
-
-<script>
-    var pwdModal = $('#changePwdModal');
-    $('#change_pwd_button').on('click', function () {
-        $.ajax({
-            url: '<%= edit_password_path(user.id) %>',
-            method: 'get',
-            success: function (data) {
-                pwdModal.find('.modal-body').html(data);
-                pwdModal.modal('show')
-            }
-        })
-    })
-    pwdModal.on('ajax:success', function (event) {
-        pwdModal.modal("hide")
-    }).on('ajax:error', function (event) {
-        // failed logic
-        //TODO
-    })
-
     ;(function () {
-        var avatarModal = $('#upload_avatar_modal');
-        var modalBody = avatarModal.find('.modal-body');
-        $('#upload_avatar_button').on('click', function () {
+        var profileModal = $('#editUserModal');
+        $('#userInfo_edit_button').on('click', function () {
             $.ajax({
-                url: '<%= edit_avatar_path(user.id) %>',
+                url: '<%= edit_user_path(user.id) %>',
                 method: 'get',
                 success: function (data) {
-                    modalBody.html(data);
-                    avatarModal.modal('show')
+                    profileModal.find('.modal-body').html(data);
+                    profileModal.modal('show')
                 }
             })
         })
-        avatarModal.on('click', '#submit_avatar', function (e) {
-            e.preventDefault();
-            document.getElementById('cropper').cropper.getCroppedCanvas().toBlob((blob) => {
-                let formData = new FormData()
-                formData.append('avatar', blob)
+        profileModal.on('ajax:success', function (event) {
+            profileModal.modal("hide")
+        }).on('ajax:error', function (event) {
+            // failed logic
+            //TODO
+        })
+        var pwdModal = $('#changePwdModal');
+        $('#change_pwd_button').on('click', function () {
+            $.ajax({
+                url: '<%= edit_password_path(user.id) %>',
+                method: 'get',
+                success: function (data) {
+                    pwdModal.find('.modal-body').html(data);
+                    pwdModal.modal('show')
+                }
+            })
+        })
+        pwdModal.on('ajax:success', function (event) {
+            pwdModal.modal("hide")
+        }).on('ajax:error', function (event) {
+            // failed logic
+            //TODO
+        })
+
+
+        $('.follow').on('click', function () {
+            let userId = $(this).data('id');
+            let follow_status = $(this).data('follow');
+            if (follow_status) {
                 $.ajax({
-                    url: '<%= upload_avatar_path(user.id) %>',
-                    type: 'post',
-                    data: formData,
-                    contentType: false,
-                    processData: false,
+                    url: 'unfollow/' + userId,
+                    method: 'delete',
                     success: () => {
-                        avatarModal.modal('hide')
-                        $.ajax({
-                            url: '<%= user_avatar_url_path(user.id) %>',
-                            type: 'get',
-                            success: (data) => {
-                                $('.avatar').attr('src', data)
-                            }
-                        })
-                        //TODO
+                        $(this).html('Follow');
                     }
                 })
-            })
+            } else {
+                $.ajax({
+                    url: 'follow/' + userId,
+                    method: 'post',
+                    success: () => {
+                        $(this).html('Unfollow');
+                    }
+                })
+            }
         })
     }());
-    $('.follow').on('click', function () {
-        let userId = $(this).data('id');
-        let follow_status = $(this).data('follow');
-        if (follow_status) {
-            $.ajax({
-                url: 'unfollow/' + userId,
-                method: 'delete',
-                success: () => {
-                    $(this).html('Follow');
-                }
-            })
-        } else {
-            $.ajax({
-                url: 'follow/' + userId,
-                method: 'post',
-                success: () => {
-                    $(this).html('Unfollow');
-                }
-            })
-        }
-    })
 </script>
