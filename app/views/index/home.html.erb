@@ -21,26 +21,26 @@
         </div>
     <% end %>
 
-      <div class='col-md-3'>
-        <div class="form-group">
-          <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-            <input id="start_time" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
-            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-            </div>
+    <div class='col-md-3'>
+      <div class="form-group">
+        <div class="input-group date" id="start_date_time" data-target-input="nearest">
+          <input id="start_time" type="text" class="form-control datetimepicker-input" data-target="#start_date_time"/>
+          <div class="input-group-append" data-target="#start_date_time" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
           </div>
         </div>
       </div>
-      <div class='col-md-3'>
-        <div class="form-group">
-          <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-            <input id="end_time" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
-            <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
-              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-            </div>
+    </div>
+    <div class='col-md-3'>
+      <div class="form-group">
+        <div class="input-group date" id="end_date_time" data-target-input="nearest">
+          <input id="end_time" type="text" class="form-control datetimepicker-input" data-target="#end_date_time"/>
+          <div class="input-group-append" data-target="#end_date_time" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
           </div>
         </div>
       </div>
+    </div>
 
     </div>
 
@@ -63,13 +63,13 @@
 <hr class="my-4">
 
 <div id="post_display_container">
-  <% @activities.each_slice(20) do |activities| %>
-    <div class="card-columns card-block">
-      <% activities.each do |activity| %>
-        <%= render partial: 'activities/poster', locals: {activity: activity} %>
-      <% end %>
-    </div>
-  <% end %>
+  <%# @activities.each_slice(20) do |activities| %>
+  <!--    <div class="card-columns card-block">-->
+  <%# activities.each do |activity| %>
+  <%#= render partial: 'activities/poster', locals: {activity: activity} %>
+  <%# end %>
+  <!--    </div>-->
+  <%# end %>
 </div>
 
 <script>
@@ -144,8 +144,9 @@
                     page: 1,
                     size: pageSize,
                     activity_type_ids: types,
-                    show_follows: show_follows
-                    // start_time: start_time
+                    show_follows: show_follows,
+                    start_time: $('#start_date_time').find('input').val(),
+                    end_time: $('#end_date_time').find('input').val(),
                 },
                 success() {
                     controlFlag = true
@@ -168,20 +169,35 @@
         $(() => {
             let activity_id = GetQueryString("activity_id")
             activity_id && showPosterInModal(activity_id)
+
+            refreshPosts()
+
+            let start_date_time = $('#start_date_time')
+            start_date_time.datetimepicker({
+                icons: {
+                    time: "far fa-clock",
+                    date: "far fa-calendar",
+                },
+                useCurrent: false
+            });
+            let end_date_time = $('#end_date_time')
+            end_date_time.datetimepicker({
+                icons: {
+                    time: "far fa-clock",
+                    date: "far fa-calendar",
+                },
+            });
+
+            start_date_time.on("change.datetimepicker", function (e) {
+                end_date_time.datetimepicker('minDate', e.date);
+                refreshPosts(true)
+            });
+            end_date_time.on("change.datetimepicker", function (e) {
+                start_date_time.datetimepicker('maxDate', e.date);
+                refreshPosts(true)
+            });
         })
     })()
 
-    $(function () {
-        $('#datetimepicker1').datetimepicker();
-        $('#datetimepicker2').datetimepicker({
-            useCurrent: false
-        });
-        $("#datetimepicker1").on("change.datetimepicker", function (e) {
-            $('#datetimepicker2').datetimepicker('minDate', e.date);
-        });
-        $("#datetimepicker2").on("change.datetimepicker", function (e) {
-            $('#datetimepicker1').datetimepicker('maxDate', e.date);
-        });
-    });
 
 </script>

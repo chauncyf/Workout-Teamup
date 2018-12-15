@@ -13,10 +13,13 @@ module ActivitiesHelper
       activities = activities.where(starter_id: current_user.followed)
     end
 
-    # if !params[:start_time].blank?
-    #   activities = activities.where(activities[:activity_date] > params[:start_time])
-    # end
+    unless params[:start_time].blank?
+      activities = activities.where("activity_date >= ?", params[:start_time])
+    end
 
+    unless params[:end_time].blank?
+      activities = activities.where("activity_date <= ?", params[:end_time])
+    end
     activities.order(updated_at: :desc)
         .offset((page - 1) * size).limit(size)
   end
