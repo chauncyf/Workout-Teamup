@@ -95,8 +95,7 @@
         }
 
         $(() => {
-            $(`.comment_box[data-id=${GetQueryString("actvity_id")}]`).find('.comment').click();
-
+            showPosterInModal(GetQueryString("actvity_id"))
         })
 
     })()
