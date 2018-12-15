@@ -983,3 +983,16 @@ canvas {
   max-height: 100%;
   max-width: 100%;
 }
+
+.user_profile {
+  .follow_span {
+    cursor: pointer;
+  }
+}
+
+
+.user_avatar_list {
+  .profile-card {
+    margin-bottom: 10px !important;
+  }
+}

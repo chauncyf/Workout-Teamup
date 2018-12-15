@@ -56,4 +56,7 @@ Rails.application.routes.draw do
 
   post '/send_message', to: 'chat#send_message', as: :send_message
   get '/send_message/:id', to: 'chat#new'
+
+  get '/follower/:id', to: 'users#follower', as: :follower
+  get '/followed/:id', to: 'users#followed', as: :followed
 end

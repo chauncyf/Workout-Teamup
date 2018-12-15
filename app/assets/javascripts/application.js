@@ -243,9 +243,9 @@ $(function () {
 
     $(document).on('click', '.show_follows', function () {
         let $this = $(this)
-        setTimeout(()=>{
+        setTimeout(() => {
             refreshPosts(true)
-        },0)
+        }, 0)
     })
 
     $(document).on('click', '.poster_type', function () {
@@ -254,24 +254,46 @@ $(function () {
         refreshPosts(true)
     })
 
+
+    // adding event listener to follow button
+    $(document).on('click', '.follow[data-id]', function () {
+        let userId = $(this).data('id');
+        let follow_status = $(this).data('follow');
+        if (follow_status) {
+            $.ajax({
+                url: '/unfollow/' + userId,
+                method: 'delete',
+                dataType: 'json',
+                success: () => {
+                    $(this).html('Follow');
+                    $(this).data('follow', false);
+                }
+            })
+        } else {
+            $.ajax({
+                url: '/follow/' + userId,
+                method: 'post',
+                dataType: 'json',
+                success: () => {
+                    $(this).html('Unfollow');
+                    $(this).data('follow', true);
+                }
+            })
+        }
+    }).on('click', '.follow_span[data-show-follow-relation]', function () {
+        let $this = $(this)
+        $.ajax({
+            url: `/${$this.data('show-follow-relation')}/${$this.parent().data('id')}`,
+            method: 'get',
+            success(data) {
+                $('#user_avatars_modal').modal('show')
+                    .find('.modal-content').html(data)
+            }
+        })
+    })
+
 })
 
-function dataURItoBlob(dataURI) {
-// convert base64/URLEncoded data component to raw binary data held in a string
-    var byteString;
-    if (dataURI.split(',')[0].indexOf('base64') >= 0)
-        byteString = atob(dataURI.split(',')[1]);
-    else
-        byteString = unescape(dataURI.split(',')[1]);
-// separate out the mime component
-    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-// write the bytes of the string to a typed array
-    var u8a = new Uint8Array(byteString.length);
-    for (var i = 0; i < byteString.length; i++) {
-        u8a[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([u8a], {type: mimeString});
-}
 
 window.ratyAll = _.throttle(() => {
     $('[data-raty]').each(function () {
