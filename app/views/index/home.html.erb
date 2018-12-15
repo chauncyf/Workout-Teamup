@@ -83,6 +83,7 @@
             // if resetSize is true, it means we are going to
             // reset our size to 20, set alloaded flag to be false
             // reset last size to 0
+            // we should set resetSize to true whenever a search condition changes
             if (resetSize) {
                 $post_display_container.data('allLoaded', false)
                 $post_display_container.data('lastSize', 0)
