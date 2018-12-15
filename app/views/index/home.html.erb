@@ -36,15 +36,16 @@
 
 <script>
     ;(function () {
+        let pageSize = 20
         var controlFlag = true; // used to switch off the endless refreshing
-        $('#scroll_container').on("scroll", function () {
+        $('#post_display_container').on("scroll", function () {
             var height = $(this).height();
             var scrollTop = $(this).scrollTop();
             var totalHeight = this.scrollHeight;
             if (totalHeight - scrollTop - height < 20) {
                 if (controlFlag) {
-                    console.log("ajax!")
-                    //$.ajax() // do the ajax to add more content and set the controlFlag to true in the callback function
+                    pageSize += 20
+                    refreshPosts()
                 }
                 controlFlag = false // switch off
             }
@@ -71,13 +72,16 @@
             $('.poster_type.active').each(function (index, value) {
                 typeArray.push(parseInt($(value).data('id')))
             })
-            let type = typeArray.join(',')
+            let types = typeArray.join(',')
             $.ajax({
                 url: '<%= refresh_posts_url %>',
                 data: {
                     page: 1,
-                    size: 20,
-                    activity_type_ids: type
+                    size: pageSize,
+                    activity_type_ids: types
+                },
+                success() {
+                    controlFlag = true
                 }
             })
         }
@@ -94,5 +98,6 @@
             $(`.comment_box[data-id=${GetQueryString("actvity_id")}]`).find('.comment').click();
 
         })
+
     })()
 </script>
