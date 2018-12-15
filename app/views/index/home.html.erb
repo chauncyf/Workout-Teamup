@@ -10,8 +10,41 @@
     <% else %>
       <!--  render create poster form partial-->
       <button type="button" class="btn text-white float-right" id="new_poster_button">Create Your Poster !</button>
+
+      <div class="container row">
+      <div>
+        <span class="switch show_follows" >
+          <label for="switch-id">All</label>
+          <input type="checkbox" class="switch" id="switch-id">
+          <label for="switch-id">Who you followed</label>
+        </span>
+      </div>
     <% end %>
+
+      <div class='col-md-3'>
+        <div class="form-group">
+          <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
+            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='col-md-3'>
+        <div class="form-group">
+          <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
+            <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
+
 </div>
 
 <hr class="my-4">
@@ -28,27 +61,40 @@
 
 <hr class="my-4">
 
-<div id="post_display_container" class="card-columns">
-  <% @activities.each do |activity| %>
-    <%= render partial: 'activities/poster', locals: {activity: activity} %>
+<div id="post_display_container">
+  <% @activities.each_slice(20) do |activities| %>
+    <div class="card-columns card-block">
+      <% activities.each do |activity| %>
+        <%= render partial: 'activities/poster', locals: {activity: activity} %>
+      <% end %>
+    </div>
   <% end %>
 </div>
 
 <script>
     ;(function () {
+        let pageSize = 20
         var controlFlag = true; // used to switch off the endless refreshing
-        $('#scroll_container').on("scroll", function () {
+        let $post_display_container = $('#post_display_container')
+        $(window).on("scroll", function () {
+            // if allLoaded flag is true, that means we will not load more data.
+            if ($post_display_container.data('allLoaded')) {
+                return
+            }
             var height = $(this).height();
             var scrollTop = $(this).scrollTop();
-            var totalHeight = this.scrollHeight;
-            if (totalHeight - scrollTop - height < 20) {
+            var totalHeight = document.documentElement.scrollHeight;
+            if (totalHeight - scrollTop - height < 5) {
                 if (controlFlag) {
-                    console.log("ajax!")
-                    //$.ajax() // do the ajax to add more content and set the controlFlag to true in the callback function
+                    pageSize += 20
+                    refreshPosts()
                 }
                 controlFlag = false // switch off
             }
         });
+        $(document).one("turbolinks:visit", function () {
+            $(window).off("scroll")
+        })
 
         var posterModal = $('#newPosterModal');
         var modalBody = posterModal.find('.modal-body');
@@ -66,22 +112,44 @@
             posterModal.modal("hide")
         })
 
-        window.refreshPosts = function () {
+        window.refreshPosts = function (resetSize) {
+            // if resetSize is true, it means we are going to
+            // reset our size to 20, set alloaded flag to be false
+            // reset last size to 0
+            // we should set resetSize to true whenever a search condition changes
+            if (resetSize) {
+                $post_display_container.data('allLoaded', false)
+                $post_display_container.data('lastSize', -1)
+                pageSize = 20
+            }
             let typeArray = []
             $('.poster_type.active').each(function (index, value) {
                 typeArray.push(parseInt($(value).data('id')))
             })
-            let type = typeArray.join(',')
+            let types = typeArray.join(',')
+            let show_follows = 0
+            let checkBox = document.getElementById("switch-id");
+            if (checkBox.checked === true){
+                show_follows = 1
+            }
             $.ajax({
                 url: '<%= refresh_posts_url %>',
                 data: {
                     page: 1,
-                    size: 20,
-                    activity_type_ids: type
+                    size: pageSize,
+                    activity_type_ids: types,
+                    show_follows: show_follows
+                },
+                success() {
+                    controlFlag = true
+
                 }
             })
         }
 
+        /**
+         * @return {string}
+         */
         function GetQueryString(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
             var r = window.location.search.substr(1).match(reg);
@@ -91,8 +159,22 @@
         }
 
         $(() => {
-            $(`.comment_box[data-id=${GetQueryString("actvity_id")}]`).find('.comment').click();
-
+            let activity_id = GetQueryString("activity_id")
+            activity_id && showPosterInModal(activity_id)
         })
     })()
+
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+        $('#datetimepicker2').datetimepicker({
+            useCurrent: false
+        });
+        $("#datetimepicker1").on("change.datetimepicker", function (e) {
+            $('#datetimepicker2').datetimepicker('minDate', e.date);
+        });
+        $("#datetimepicker2").on("change.datetimepicker", function (e) {
+            $('#datetimepicker1').datetimepicker('maxDate', e.date);
+        });
+    });
+
 </script>

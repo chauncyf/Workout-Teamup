@@ -17,6 +17,7 @@
 @import "pnotify.custom";
 @import "users";
 @import "jquery.raty";
+@import "switch";
 
 // color theme
 $material-purple: #CE93D8;
@@ -936,18 +937,18 @@ footer {
   }
 
   .pagination {
-    max-width: 400px;
+    max-width: 300px;
     flex-wrap: wrap;
   }
 
   .poster_blocks {
     padding-left: 20px;
     padding-right: 20px;
-    min-width: 450px;
+    width: 33vw;
   }
 
   .user_stat_box {
-    min-width: 450px;
+    min-width: 400px;
   }
 }
 
@@ -964,6 +965,7 @@ footer {
 .poster_type {
   border: none !important;
   cursor: pointer;
+
   .fas {
     display: none;
   }
@@ -971,7 +973,8 @@ footer {
 
 .poster_type.active {
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
-  .fas{
+
+  .fas {
     display: inline;
   }
 }
