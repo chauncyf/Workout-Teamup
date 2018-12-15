@@ -168,7 +168,11 @@
       </div>
     </div>
   </div>
-  <%= render 'photos/photo_list', photos: user.photos %>
+  <hr>
+  <h2><%= user.user_name %>'s gallery</h2>
+  <div class="row">
+    <%= render 'photos/photo_list', photos: user.photos.limit(20) %>
+  </div>
 </div>
 <script>
     ;(function () {
