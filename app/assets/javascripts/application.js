@@ -32,14 +32,16 @@ $(function () {
 
     /*PNotify.defaults.styling='bootstrap4'
     PNotify.defaults.icons='bootstrap4'*/
+
+
     // binding all image upload dom
     $(document).on("change", "[data-file-refresh]", function (e) {
         $(this).next().html(e.currentTarget.files[0].name)
-    })
-
-    $(document).on("change", "[data-image-push-to]", function (e) {
-        let file = e.currentTarget.files[0];
-        let id = $(e.currentTarget).data('image-push-to');
+    }).on("change", "[data-image-push-to]", function (e) {
+        let target = e.currentTarget
+        let $target = $(target)
+        let file = target.files[0];
+        let id = $target.data('image-push-to');
         let dom = document.getElementById(id);
         let reader = new FileReader();
         reader.addEventListener('load', () => {
@@ -48,13 +50,15 @@ $(function () {
             } else {
                 dom.src = reader.result
                 let cropper = new Cropper(document.getElementById(id), {
-                    aspectRatio: 1,
+                    aspectRatio: $target.data('ratio') ? $target.data('ratio') : NaN,
                 })
                 dom.cropper = cropper
             }
         })
         reader.readAsDataURL(file)
     })
+
+
     window.showPosterInModal = function (arg) {
         var posterModal = $('#posterModal')
         if ($.contains(posterModal[0], this)) {// if already in the modal
@@ -165,8 +169,37 @@ $(function () {
     })
     $(document).on('click', '.poster [data-upload-picture]', function () {
         let $this = $(this)
-        let id = $this.data('data-upload-picture')
-        $('#upload_picture_modal').modal('show')
+        let id = $this.data('upload-picture')
+        $.ajax({
+            url: '/photos/new',
+            method: 'get',
+            success(data) {
+                $('#upload_picture_modal').modal('show')
+                    .find('.modal-body').html(data)
+                $('#upload_picture_modal').data('activity_id', id)
+            }
+        })
+
+    }).on('click', '#upload_picture_modal .submit', function (e) {
+        e.preventDefault();
+        let picModal = $('#upload_picture_modal')
+        document.getElementById('photo_upload_preview').cropper.getCroppedCanvas().toBlob((blob) => {
+            let formData = new FormData()
+            formData.append('photo', blob)
+            formData.append('activity_id', picModal.data('activity_id'))
+            $.ajax({
+                url: '/photos',
+                method: 'post',
+                data: formData,
+                contentType: false,
+                dataType: 'json',
+                processData: false,
+                success: () => {
+                    picModal.modal('hide')
+                    // refresh data here if needed
+                }
+            })
+        })
     })
     $(document).on('click', 'a[data-chat],img.avatar[data-chat]', function () {
         let $this = $(this)
