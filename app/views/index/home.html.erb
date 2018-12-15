@@ -41,26 +41,7 @@
           </div>
         </div>
       </div>
-    <div class='col-md-3'>
-      <div class="form-group">
-        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-          <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
-          <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class='col-md-3'>
-      <div class="form-group">
-        <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-          <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
-          <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
-            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-          </div>
-        </div>
-      </div>
-    </div>
+
     </div>
 
   </div>
@@ -155,7 +136,7 @@
                 show_follows = 1
             }
 
-            let start_time = $('#start_date').val()
+            //let start_time = $('#start_date').val()
 
             $.ajax({
                 url: '<%= refresh_posts_url %>',
@@ -163,8 +144,8 @@
                     page: 1,
                     size: pageSize,
                     activity_type_ids: types,
-                    show_follows: show_follows,
-                    start_time: start_time
+                    show_follows: show_follows
+                    // start_time: start_time
                 },
                 success() {
                     controlFlag = true

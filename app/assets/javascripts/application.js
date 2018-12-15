@@ -23,8 +23,6 @@
 //= require users
 
 $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-
     $(document).on('turbolinks:before-cache', function () {
         // don't cache any pnotify elements, just let them pass
         PNotify.removeAll()
@@ -256,29 +254,11 @@ $(function () {
         refreshPosts(true)
     })
 
-    $(document).on('change', '#start_time', function () {
+    // $(document).on('change', '#start_time', function () {
+    //
+    //     refreshPosts(true)
+    // })
 
-        refreshPosts(true)
-    })
-
-})
-
-function dataURItoBlob(dataURI) {
-// convert base64/URLEncoded data component to raw binary data held in a string
-    var byteString;
-    if (dataURI.split(',')[0].indexOf('base64') >= 0)
-        byteString = atob(dataURI.split(',')[1]);
-    else
-        byteString = unescape(dataURI.split(',')[1]);
-// separate out the mime component
-    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-// write the bytes of the string to a typed array
-    var u8a = new Uint8Array(byteString.length);
-    for (var i = 0; i < byteString.length; i++) {
-        u8a[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([u8a], {type: mimeString});
-}
 
     // adding event listener to follow button
     $(document).on('click', '.follow[data-id]', function () {
