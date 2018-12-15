@@ -164,7 +164,7 @@ $(function () {
     $(document).on('click', '.poster [data-upload-picture]', function () {
         let $this = $(this)
         let id = $this.data('data-upload-picture')
-
+        $('#upload_picture_modal').modal('show')
     })
     $(document).on('click', 'a[data-chat],img.avatar[data-chat]', function () {
         let $this = $(this)
