@@ -3,45 +3,47 @@
 <div class="row header-row mx-0 px-3">
 
   <div class="col align-self-end p-0" id="header-col-button">
-    <!-- Button trigger modal -->
-    <% if !logged_in? %>
-      <!--  render login modal partial -->
-      <%= link_to "Create Your Poster !", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "btn text-white float-right"} %>
-    <% else %>
-      <!--  render create poster form partial-->
-      <button type="button" class="btn text-white float-right" id="new_poster_button">Create Your Poster !</button>
-
-      <div class="container row">
-        <div>
-        <span class="switch">
+    <div class="container row">
+      <% if logged_in? %>
+      <span class="switch col-md-3">
           <label for="follow_switch">All</label>
           <input type="checkbox" class="switch" id="follow_switch">
           <label for="follow_switch">Who you followed</label>
         </span>
-        </div>
-    <% end %>
-
-    <div class='col-md-3'>
-      <div class="form-group">
-        <div class="input-group date" id="start_date_time" data-target-input="nearest">
-          <input type="text" class="form-control datetimepicker-input" data-target="#start_date_time"/>
-          <div class="input-group-append" data-target="#start_date_time" data-toggle="datetimepicker">
-            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+      <% end %>
+      <div class='col-md-3'>
+        <div class="form-group">
+          <div class="input-group date datepicker_with_label" id="start_date_time" data-target-input="nearest">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="start_date_time">start</label>
+            </div>
+            <input type="text" class="form-control datetimepicker-input" data-target="#start_date_time"/>
+            <div class="input-group-append" data-target="#start_date_time" data-toggle="datetimepicker">
+              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class='col-md-3'>
-      <div class="form-group">
-        <div class="input-group date" id="end_date_time" data-target-input="nearest">
-          <input type="text" class="form-control datetimepicker-input" data-target="#end_date_time"/>
-          <div class="input-group-append" data-target="#end_date_time" data-toggle="datetimepicker">
-            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+      <div class='col-md-3'>
+        <div class="form-group">
+          <div class="input-group date" id="end_date_time" data-target-input="nearest">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="end_date_time">end</label>
+            </div>
+            <input type="text" class="form-control datetimepicker-input" data-target="#end_date_time"/>
+            <div class="input-group-append" data-target="#end_date_time" data-toggle="datetimepicker">
+              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
+      <% if !logged_in? %>
+        <!--  render login modal partial -->
+        <%= link_to "Create Your Poster !", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "btn text-white col-md-2"} %>
+      <% else %>
+        <!--  render create poster form partial-->
+        <button type="button" class="btn text-white col-md-2" id="new_poster_button">Create Your Poster !</button>
+      <% end %>
     </div>
 
   </div>
