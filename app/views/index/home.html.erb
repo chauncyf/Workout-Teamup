@@ -24,7 +24,7 @@
     <div class='col-md-3'>
       <div class="form-group">
         <div class="input-group date" id="start_date_time" data-target-input="nearest">
-          <input id="start_time" type="text" class="form-control datetimepicker-input" data-target="#start_date_time"/>
+          <input type="text" class="form-control datetimepicker-input" data-target="#start_date_time"/>
           <div class="input-group-append" data-target="#start_date_time" data-toggle="datetimepicker">
             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
           </div>
@@ -34,7 +34,7 @@
     <div class='col-md-3'>
       <div class="form-group">
         <div class="input-group date" id="end_date_time" data-target-input="nearest">
-          <input id="end_time" type="text" class="form-control datetimepicker-input" data-target="#end_date_time"/>
+          <input type="text" class="form-control datetimepicker-input" data-target="#end_date_time"/>
           <div class="input-group-append" data-target="#end_date_time" data-toggle="datetimepicker">
             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
           </div>
@@ -63,13 +63,13 @@
 <hr class="my-4">
 
 <div id="post_display_container">
-  <%# @activities.each_slice(20) do |activities| %>
-  <!--    <div class="card-columns card-block">-->
-  <%# activities.each do |activity| %>
-  <%#= render partial: 'activities/poster', locals: {activity: activity} %>
-  <%# end %>
-  <!--    </div>-->
-  <%# end %>
+  <% @activities.each_slice(20) do |activities| %>
+    <div class="card-columns card-block">
+      <% activities.each do |activity| %>
+        <%= render partial: 'activities/poster', locals: {activity: activity} %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
 <script>
@@ -171,6 +171,10 @@
             activity_id && showPosterInModal(activity_id)
 
             refreshPosts()
+
+            $('#follow_switch').on('change', function () {
+                refreshPosts(true)
+            })
 
             let start_date_time = $('#start_date_time')
             start_date_time.datetimepicker({

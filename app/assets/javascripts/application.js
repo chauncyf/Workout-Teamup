@@ -244,10 +244,6 @@ $(function () {
         refreshPosts()
     })
 
-    $(document).on('change', '#follow_switch', function () {
-        refreshPosts(true)
-    })
-
     $(document).on('click', '.poster_type', function () {
         let $this = $(this)
         $this.toggleClass('active')
