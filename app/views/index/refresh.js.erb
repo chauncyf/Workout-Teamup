@@ -1,11 +1,19 @@
-$('#post_display_container').html(`
-<% @activities.each_slice(20) do |activities| %>
-  <div class="card-columns card-block">
-  <% activities.each do |activity| %>
-    <%= render partial: 'activities/poster', locals: {activity: activity} %>
-  <% end %>
-  </div>
-<% end %>
-`)
+;(function () {
+    // do something here to avoid add more data while there is no more
+    if ($('#post_display_container').data('lastSize') == <%= @activities.size %>) {
+        $('#post_display_container').data('allLoaded', true)
+        return
+    } else {
+        $('#post_display_container').data('lastSize', '<%= @activities.size %>')
+    }
 
-
+    $('#post_display_container').html(`
+      <% @activities.each_slice(20) do |activities| %>
+        <div class="card-columns card-block">
+        <% activities.each do |activity| %>
+          <%= render partial: 'activities/poster', locals: {activity: activity} %>
+        <% end %>
+        </div>
+      <% end %>
+    `)
+})()

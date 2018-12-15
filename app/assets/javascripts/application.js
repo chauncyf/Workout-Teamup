@@ -209,7 +209,7 @@ $(function () {
     $(document).on('click', '.poster_type', function () {
         let $this = $(this)
         $this.toggleClass('active')
-        refreshPosts()
+        refreshPosts(true)
     })
 
 })

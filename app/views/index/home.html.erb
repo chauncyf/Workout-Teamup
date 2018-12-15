@@ -42,11 +42,15 @@
     ;(function () {
         let pageSize = 20
         var controlFlag = true; // used to switch off the endless refreshing
+        let $post_display_container = $('#post_display_container')
         $(window).on("scroll", function () {
+            // if allLoaded flag is true, that means we will not load more data.
+            if ($post_display_container.data('allLoaded')) {
+                return
+            }
             var height = $(this).height();
             var scrollTop = $(this).scrollTop();
             var totalHeight = document.documentElement.scrollHeight;
-            console.log(height, scrollTop, totalHeight)
             if (totalHeight - scrollTop - height < 5) {
                 if (controlFlag) {
                     pageSize += 20
@@ -75,7 +79,15 @@
             posterModal.modal("hide")
         })
 
-        window.refreshPosts = function () {
+        window.refreshPosts = function (resetSize) {
+            // if resetSize is true, it means we are going to
+            // reset our size to 20, set alloaded flag to be false
+            // reset last size to 0
+            if (resetSize) {
+                $post_display_container.data('allLoaded', false)
+                $post_display_container.data('lastSize', 0)
+                pageSize = 20
+            }
             let typeArray = []
             $('.poster_type.active').each(function (index, value) {
                 typeArray.push(parseInt($(value).data('id')))
