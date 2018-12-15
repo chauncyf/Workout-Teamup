@@ -28,9 +28,13 @@
 
 <hr class="my-4">
 
-<div id="post_display_container" class="card-columns">
-  <% @activities.each do |activity| %>
-    <%= render partial: 'activities/poster', locals: {activity: activity} %>
+<div id="post_display_container">
+  <% @activities.each_slice(20) do |activities| %>
+    <div class="card-columns card-block">
+      <% activities.each do |activity| %>
+        <%= render partial: 'activities/poster', locals: {activity: activity} %>
+      <% end %>
+    </div>
   <% end %>
 </div>
 
@@ -38,11 +42,12 @@
     ;(function () {
         let pageSize = 20
         var controlFlag = true; // used to switch off the endless refreshing
-        $('#post_display_container').on("scroll", function () {
+        $(window).on("scroll", function () {
             var height = $(this).height();
             var scrollTop = $(this).scrollTop();
-            var totalHeight = this.scrollHeight;
-            if (totalHeight - scrollTop - height < 20) {
+            var totalHeight = document.documentElement.scrollHeight;
+            console.log(height, scrollTop, totalHeight)
+            if (totalHeight - scrollTop - height < 5) {
                 if (controlFlag) {
                     pageSize += 20
                     refreshPosts()
@@ -50,6 +55,9 @@
                 controlFlag = false // switch off
             }
         });
+        $(document).one("turbolinks:visit", function () {
+            $(window).off("scroll")
+        })
 
         var posterModal = $('#newPosterModal');
         var modalBody = posterModal.find('.modal-body');
