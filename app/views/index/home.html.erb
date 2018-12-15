@@ -10,6 +10,8 @@
     <% else %>
       <!--  render create poster form partial-->
       <button type="button" class="btn text-white float-right" id="new_poster_button">Create Your Poster !</button>
+
+      <div class="container row">
       <div>
         <span class="switch show_follows" >
           <label for="switch-id">All</label>
@@ -18,7 +20,31 @@
         </span>
       </div>
     <% end %>
+
+      <div class='col-md-3'>
+        <div class="form-group">
+          <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
+            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='col-md-3'>
+        <div class="form-group">
+          <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
+            <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
+
 </div>
 
 <hr class="my-4">
@@ -134,4 +160,18 @@
             actvity_id && showPosterInModal(actvity_id)
         })
     })()
+
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+        $('#datetimepicker2').datetimepicker({
+            useCurrent: false
+        });
+        $("#datetimepicker1").on("change.datetimepicker", function (e) {
+            $('#datetimepicker2').datetimepicker('minDate', e.date);
+        });
+        $("#datetimepicker2").on("change.datetimepicker", function (e) {
+            $('#datetimepicker1').datetimepicker('maxDate', e.date);
+        });
+    });
+
 </script>
