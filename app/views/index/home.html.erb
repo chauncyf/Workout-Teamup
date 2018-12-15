@@ -86,7 +86,7 @@
             // we should set resetSize to true whenever a search condition changes
             if (resetSize) {
                 $post_display_container.data('allLoaded', false)
-                $post_display_container.data('lastSize', 0)
+                $post_display_container.data('lastSize', -1)
                 pageSize = 20
             }
             let typeArray = []
@@ -116,7 +116,8 @@
         }
 
         $(() => {
-            showPosterInModal(GetQueryString("actvity_id"))
+            let actvity_id = GetQueryString("actvity_id")
+            actvity_id && showPosterInModal(actvity_id)
         })
 
     })()

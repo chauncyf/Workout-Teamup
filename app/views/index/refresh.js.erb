@@ -1,10 +1,10 @@
 ;(function () {
+    <% size=@activities.size %>
     // do something here to avoid add more data while there is no more
-    if ($('#post_display_container').data('lastSize') == <%= @activities.size %>) {
+    if ($('#post_display_container').data('lastSize') == <%= size %>) {
         $('#post_display_container').data('allLoaded', true)
-        return
     } else {
-        $('#post_display_container').data('lastSize', '<%= @activities.size %>')
+        $('#post_display_container').data('lastSize', '<%= size %>')
     }
 
     $('#post_display_container').html(`
