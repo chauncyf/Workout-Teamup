@@ -208,6 +208,13 @@ $(function () {
         refreshPosts()
     })
 
+    $(document).on('click', '.show_follows', function () {
+        let $this = $(this)
+        setTimeout(()=>{
+            refreshPosts(true)
+        },0)
+    })
+
     $(document).on('click', '.poster_type', function () {
         let $this = $(this)
         $this.toggleClass('active')
