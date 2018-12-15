@@ -15,13 +15,13 @@
     <%= form.label :avatar %>
     <div class="input-group mb-3">
       <div class="custom-file">
-        <%= form.file_field :avatar, class: "custom-file-input", data: {file_refresh: true, image_push_to: "cropper"} %>
+        <%= form.file_field :avatar, class: "custom-file-input", data: {file_refresh: true, ratio: 1, image_push_to: "cropper"} %>
         <label class="custom-file-label">Choose file</label>
       </div>
     </div>
   </div>
   <div class="actions">
-    <%= form.submit "Confirm",id: "submit_avatar" ,class: "btn btn-primary" %>
+    <%= form.submit "Confirm", id: "submit_avatar", class: "btn btn-primary" %>
   </div>
 
 <% end %>
