@@ -254,6 +254,11 @@ $(function () {
         refreshPosts(true)
     })
 
+    $(document).on('change', '#start_time', function () {
+
+        refreshPosts(true)
+    })
+
 })
 
 function dataURItoBlob(dataURI) {

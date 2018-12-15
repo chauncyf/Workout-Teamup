@@ -24,7 +24,7 @@
       <div class='col-md-3'>
         <div class="form-group">
           <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
+            <input id="start_time" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
             <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
               <div class="input-group-text"><i class="fa fa-calendar"></i></div>
             </div>
@@ -34,7 +34,7 @@
       <div class='col-md-3'>
         <div class="form-group">
           <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
+            <input id="end_time" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
             <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
               <div class="input-group-text"><i class="fa fa-calendar"></i></div>
             </div>
@@ -127,18 +127,23 @@
                 typeArray.push(parseInt($(value).data('id')))
             })
             let types = typeArray.join(',')
+
             let show_follows = 0
             let checkBox = document.getElementById("switch-id");
             if (checkBox.checked === true){
                 show_follows = 1
             }
+
+            let start_time = $('#start_date').val()
+
             $.ajax({
                 url: '<%= refresh_posts_url %>',
                 data: {
                     page: 1,
                     size: pageSize,
                     activity_type_ids: types,
-                    show_follows: show_follows
+                    show_follows: show_follows,
+                    start_time: start_time
                 },
                 success() {
                     controlFlag = true
@@ -165,6 +170,7 @@
     })()
 
     $(function () {
+
         $('#datetimepicker1').datetimepicker();
         $('#datetimepicker2').datetimepicker({
             useCurrent: false
@@ -176,5 +182,7 @@
             $('#datetimepicker1').datetimepicker('maxDate', e.date);
         });
     });
+
+
 
 </script>
