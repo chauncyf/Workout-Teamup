@@ -2,8 +2,9 @@
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-img#cropper{
+img#cropper, img#photo_upload_preview {
   width: 90%;
   margin-left: 5%;
   height: 200px;
 }
+

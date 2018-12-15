@@ -65,7 +65,14 @@ class UsersController < ApplicationController
             text: 'What a star!', type: 'info'})
       end
     end
-    render 'follow', locals: {follow_status: true, profile_id: params[:followee_id]}
+    respond_to do |format|
+      format.js {
+        render 'follow', locals: {follow_status: true, profile_id: params[:followee_id]}
+      }
+      format.json {
+        render json: {success: true}
+      }
+    end
   end
 
   def unfollow
@@ -77,7 +84,14 @@ class UsersController < ApplicationController
             text: 'Don\' be upset!', type: 'notice'})
       end
     end
-    render 'follow.js.erb', locals: {follow_status: false, profile_id: params[:followee_id]}
+    respond_to do |format|
+      format.js {
+        render 'follow.js.erb', locals: {follow_status: false, profile_id: params[:followee_id]}
+      }
+      format.json {
+        render json: {success: true}
+      }
+    end
   end
 
   # GET /users
@@ -205,6 +219,18 @@ class UsersController < ApplicationController
       format.html {redirect_to users_url, notice: 'User was successfully destroyed.'}
       format.json {head :no_content}
     end
+  end
+
+  def follower
+    @user = User.find(params[:id])
+    @users = @user.follower
+    render 'users/follower', layout: false
+  end
+
+  def followed
+    @user = User.find(params[:id])
+    @users = @user.followed
+    render 'users/followed', layout: false
   end
 
   private

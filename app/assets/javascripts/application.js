@@ -174,9 +174,9 @@ $(function () {
             url: '/photos/new',
             method: 'get',
             success(data) {
-                $('#upload_picture_modal').modal('show')
+                $('#upload_picture_modal')
+                    .data('activity_id', id).modal('show')
                     .find('.modal-body').html(data)
-                $('#upload_picture_modal').data('activity_id', id)
             }
         })
 
@@ -201,7 +201,12 @@ $(function () {
             })
         })
     })
-    $(document).on('click', 'a[data-chat],img.avatar[data-chat]', function () {
+    $(document).on('click', 'img.avatar[data-chat]', function () {
+        let $this = $(this)
+        let id = $this.data('chat')
+        Turbolinks.visit('/users/profile/' + id)
+    })
+    $(document).on('click', 'a[data-chat]', function () {
         let $this = $(this)
         let id = $this.data('chat')
         let modal = $('#send_message_modal')
@@ -243,9 +248,9 @@ $(function () {
 
     $(document).on('click', '.show_follows', function () {
         let $this = $(this)
-        setTimeout(()=>{
+        setTimeout(() => {
             refreshPosts(true)
-        },0)
+        }, 0)
     })
 
     $(document).on('click', '.poster_type', function () {
@@ -277,6 +282,57 @@ function dataURItoBlob(dataURI) {
     }
     return new Blob([u8a], {type: mimeString});
 }
+
+    // adding event listener to follow button
+    $(document).on('click', '.follow[data-id]', function () {
+        let userId = $(this).data('id');
+        let follow_status = $(this).data('follow');
+        if (follow_status) {
+            $.ajax({
+                url: '/unfollow/' + userId,
+                method: 'delete',
+                dataType: 'json',
+                success: () => {
+                    $(this).html('Follow');
+                    $(this).data('follow', false);
+                }
+            })
+        } else {
+            $.ajax({
+                url: '/follow/' + userId,
+                method: 'post',
+                dataType: 'json',
+                success: () => {
+                    $(this).html('Unfollow');
+                    $(this).data('follow', true);
+                }
+            })
+        }
+    }).on('click', '.follow_span[data-show-follow-relation]', function () {
+        let $this = $(this)
+        $.ajax({
+            url: `/${$this.data('show-follow-relation')}/${$this.parent().data('id')}`,
+            method: 'get',
+            success(data) {
+                $('#user_avatars_modal').modal('show')
+                    .find('.modal-content').html(data)
+            }
+        })
+    })
+
+    $(document).on('click', '.photo_preview[data-id]', function () {
+        $.ajax({
+            url: '/photos/' + $(this).data('id'),
+            method: 'get',
+            success(data) {
+                $('#picture_big_modal').modal('show')
+                    .find('.modal-body').html(data)
+
+            }
+        })
+    })
+})
+
 
 window.ratyAll = _.throttle(() => {
     $('[data-raty]').each(function () {

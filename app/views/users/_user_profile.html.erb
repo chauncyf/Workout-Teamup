@@ -1,4 +1,8 @@
-<div class="container main-section">
+<%
+
+%>
+
+<div class="container main-section user_profile">
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12 image-section">
       <img src="http://www.gate.ac.in/images/background/darling.jpg">
@@ -18,20 +22,21 @@
                 </button>
               <% else %>
                 <% if Follow.exists?(followee_id: user.id, follower_id: current_user_id) %>
-                  <%= link_to "Unfollow", "/unfollow/#{user.id}", method: :delete, class: "btn btn-success btn-block follow", id: "#{user.id}", follow: true %>
+                  <%= link_to "Unfollow", "javascript:void(0)", method: :delete, class: "btn btn-success btn-block follow", "data-id": "#{user.id}", "data-follow": true %>
                 <% else %>
-                  <%= link_to "Follow", "/follow/#{user.id}", method: :post, class: "btn btn-primary btn-block follow", id: "#{user.id}", follow: false %>
+                  <%= link_to "Follow", "javascript:void(0)", method: :post, class: "btn btn-success btn-block follow", "data-id": "#{user.id}", "data-follow": false %>
                 <% end %>
               <% end %>
             </div>
             <div class="row user-detail-row">
-              <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
+              <div class="col-md-12 col-sm-12 user-detail-section2 pull-left"
+                   data-id="<%= user.id %>">
                 <div class="border"></div>
                 <!-- need to reflect real number of follows and followers -->
                 <p>FOLLOWER</p>
-                <span><%= Follow.where(followee_id: user.id).count %></span>
+                <span class="follow_span" data-show-follow-relation="follower"><%= Follow.where(followee_id: user.id).count %></span>
                 <p>FOLLOWING</p>
-                <span><%= Follow.where(follower_id: user.id).count %></span>
+                <span class="follow_span" data-show-follow-relation="followed"><%= Follow.where(follower_id: user.id).count %></span>
               </div>
             </div>
 
@@ -162,6 +167,11 @@
         </div>
       </div>
     </div>
+  </div>
+  <hr>
+  <h2><%= user.user_name %>'s gallery</h2>
+  <div class="row">
+    <%= render 'photos/photo_list', photos: user.photos.limit(20) %>
   </div>
 </div>
 <script>
