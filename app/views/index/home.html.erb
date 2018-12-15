@@ -12,35 +12,35 @@
       <button type="button" class="btn text-white float-right" id="new_poster_button">Create Your Poster !</button>
 
       <div class="container row">
-      <div>
-        <span class="switch show_follows" >
-          <label for="switch-id">All</label>
-          <input type="checkbox" class="switch" id="switch-id">
-          <label for="switch-id">Who you followed</label>
+        <div>
+        <span class="switch">
+          <label for="follow_switch">All</label>
+          <input type="checkbox" class="switch" id="follow_switch">
+          <label for="follow_switch">Who you followed</label>
         </span>
-      </div>
+        </div>
     <% end %>
 
-      <div class='col-md-3'>
-        <div class="form-group">
-          <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
-            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-            </div>
+    <div class='col-md-3'>
+      <div class="form-group">
+        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+          <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
+          <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
           </div>
         </div>
       </div>
-      <div class='col-md-3'>
-        <div class="form-group">
-          <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
-            <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
-              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-            </div>
+    </div>
+    <div class='col-md-3'>
+      <div class="form-group">
+        <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+          <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
+          <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
           </div>
         </div>
       </div>
+    </div>
     </div>
 
   </div>
@@ -127,9 +127,11 @@
                 typeArray.push(parseInt($(value).data('id')))
             })
             let types = typeArray.join(',')
+
             let show_follows = 0
-            let checkBox = document.getElementById("switch-id");
-            if (checkBox.checked === true){
+            let checkBox = document.getElementById('follow_switch');
+
+            if (checkBox.checked === true) {
                 show_follows = 1
             }
             $.ajax({

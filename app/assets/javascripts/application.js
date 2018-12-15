@@ -246,11 +246,8 @@ $(function () {
         refreshPosts()
     })
 
-    $(document).on('click', '.show_follows', function () {
-        let $this = $(this)
-        setTimeout(() => {
-            refreshPosts(true)
-        }, 0)
+    $(document).on('change', '#follow_switch', function () {
+        refreshPosts(true)
     })
 
     $(document).on('click', '.poster_type', function () {
