@@ -174,9 +174,9 @@ $(function () {
             url: '/photos/new',
             method: 'get',
             success(data) {
-                $('#upload_picture_modal').modal('show')
+                $('#upload_picture_modal')
+                    .data('activity_id', id).modal('show')
                     .find('.modal-body').html(data)
-                $('#upload_picture_modal').data('activity_id', id)
             }
         })
 
@@ -297,6 +297,17 @@ $(function () {
         })
     })
 
+    $(document).on('click', '.photo_preview[data-id]', function () {
+        $.ajax({
+            url: '/photos/' + $(this).data('id'),
+            method: 'get',
+            success(data) {
+                $('#picture_big_modal').modal('show')
+                    .find('.modal-body').html(data)
+
+            }
+        })
+    })
 })
 
 

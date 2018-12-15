@@ -18,6 +18,6 @@ module PhotosHelper
   end
 
   def pic_big photo
-    url_for(photo.photo.variant ({resize: '200x200'}))
+    url_for(photo.photo.variant ({resize: '775x775'}))
   end
 end
