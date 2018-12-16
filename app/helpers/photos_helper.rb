@@ -11,4 +11,17 @@ module PhotosHelper
       cvrt << 'circle.png'
     end
   end
+
+  def pic_preview photo
+
+    url_for (photo.photo.variant({resize: '200x200'}))
+  end
+
+  def pic_preview_small photo
+    url_for (photo.photo.variant({resize: '100x100'}))
+  end
+
+  def pic_big photo
+    url_for(photo.photo.variant ({resize: '775x775'}))
+  end
 end

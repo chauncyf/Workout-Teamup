@@ -6,22 +6,23 @@ module ActivitiesHelper
     if params[:activity_type_ids].blank?
       activities = Activity.all
     else
-        activities = Activity.where(activity_type_id: params[:activity_type_ids].split(","))
+      activities = Activity.where(activity_type_id: params[:activity_type_ids].split(","))
     end
 
     if show_follows == 1
-      activities = activities.where(starter_id: Follow.where(follower_id: current_user_id).pluck(:followee_id))
+      activities = activities.where(starter_id: current_user.followed)
     end
 
-=begin
-    if params[:activity_type_ids].blank?
-      activities = Activity.all
-    else
-      activities = Activity.where(activity_type_id: params[:activity_type_ids].split(","))
-    endless
-=end
+    unless params[:start_time].blank?
+      activities = activities.where("activity_date >= ?", params[:start_time])
+    end
+
+    unless params[:end_time].blank?
+      activities = activities.where("activity_date <= ?", params[:end_time])
+    end
     activities.order(updated_at: :desc)
         .offset((page - 1) * size).limit(size)
   end
 
 end
+

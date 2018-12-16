@@ -3,29 +3,22 @@
 <div class="row header-row mx-0 px-3">
 
   <div class="col align-self-end p-0" id="header-col-button">
-    <!-- Button trigger modal -->
-    <% if !logged_in? %>
-      <!--  render login modal partial -->
-      <%= link_to "Create Your Poster !", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "btn text-white float-right"} %>
-    <% else %>
-      <!--  render create poster form partial-->
-      <button type="button" class="btn text-white float-right" id="new_poster_button">Create Your Poster !</button>
-
-      <div class="container row">
-      <div>
-        <span class="switch show_follows" >
-          <label for="switch-id">All</label>
-          <input type="checkbox" class="switch" id="switch-id">
-          <label for="switch-id">Who you followed</label>
+    <div class="container row">
+      <% if logged_in? %>
+      <span class="switch col-md-3">
+          <label for="follow_switch">All</label>
+          <input type="checkbox" class="switch" id="follow_switch">
+          <label for="follow_switch">Who you followed</label>
         </span>
-      </div>
-    <% end %>
-
+      <% end %>
       <div class='col-md-3'>
         <div class="form-group">
-          <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
-            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+          <div class="input-group date datepicker_with_label" id="start_date_time" data-target-input="nearest">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="start_date_time">start</label>
+            </div>
+            <input type="text" class="form-control datetimepicker-input" data-target="#start_date_time"/>
+            <div class="input-group-append" data-target="#start_date_time" data-toggle="datetimepicker">
               <div class="input-group-text"><i class="fa fa-calendar"></i></div>
             </div>
           </div>
@@ -33,14 +26,24 @@
       </div>
       <div class='col-md-3'>
         <div class="form-group">
-          <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
-            <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+          <div class="input-group date" id="end_date_time" data-target-input="nearest">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="end_date_time">end</label>
+            </div>
+            <input type="text" class="form-control datetimepicker-input" data-target="#end_date_time"/>
+            <div class="input-group-append" data-target="#end_date_time" data-toggle="datetimepicker">
               <div class="input-group-text"><i class="fa fa-calendar"></i></div>
             </div>
           </div>
         </div>
       </div>
+      <% if !logged_in? %>
+        <!--  render login modal partial -->
+        <%= link_to "Create Your Poster !", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "btn text-white col-md-2"} %>
+      <% else %>
+        <!--  render create poster form partial-->
+        <button type="button" class="btn text-white col-md-2" id="new_poster_button">Create Your Poster !</button>
+      <% end %>
     </div>
 
   </div>
@@ -127,18 +130,25 @@
                 typeArray.push(parseInt($(value).data('id')))
             })
             let types = typeArray.join(',')
+
             let show_follows = 0
-            let checkBox = document.getElementById("switch-id");
-            if (checkBox.checked === true){
+            let checkBox = document.getElementById('follow_switch');
+
+            if (checkBox.checked === true) {
                 show_follows = 1
             }
+
+            //let start_time = $('#start_date').val()
+
             $.ajax({
                 url: '<%= refresh_posts_url %>',
                 data: {
                     page: 1,
                     size: pageSize,
                     activity_type_ids: types,
-                    show_follows: show_follows
+                    show_follows: show_follows,
+                    start_time: $('#start_date_time').find('input').val(),
+                    end_time: $('#end_date_time').find('input').val(),
                 },
                 success() {
                     controlFlag = true
@@ -160,20 +170,41 @@
         $(() => {
             let activity_id = GetQueryString("activity_id")
             activity_id && showPosterInModal(activity_id)
+
+            refreshPosts()
+
+            $('#follow_switch').on('change', function () {
+                refreshPosts(true)
+            })
+
+            let start_date_time = $('#start_date_time')
+            start_date_time.datetimepicker({
+                icons: {
+                    time: "far fa-clock",
+                    date: "far fa-calendar",
+                },
+                useCurrent: false,
+                format: 'MM/DD/YYYY HH:mm'
+            });
+            let end_date_time = $('#end_date_time')
+            end_date_time.datetimepicker({
+                icons: {
+                    time: "far fa-clock",
+                    date: "far fa-calendar",
+                },
+                format: 'MM/DD/YYYY HH:mm'
+            });
+
+            start_date_time.on("change.datetimepicker", function (e) {
+                end_date_time.datetimepicker('minDate', e.date);
+                refreshPosts(true)
+            });
+            end_date_time.on("change.datetimepicker", function (e) {
+                start_date_time.datetimepicker('maxDate', e.date);
+                refreshPosts(true)
+            });
         })
     })()
 
-    $(function () {
-        $('#datetimepicker1').datetimepicker();
-        $('#datetimepicker2').datetimepicker({
-            useCurrent: false
-        });
-        $("#datetimepicker1").on("change.datetimepicker", function (e) {
-            $('#datetimepicker2').datetimepicker('minDate', e.date);
-        });
-        $("#datetimepicker2").on("change.datetimepicker", function (e) {
-            $('#datetimepicker1').datetimepicker('maxDate', e.date);
-        });
-    });
 
 </script>

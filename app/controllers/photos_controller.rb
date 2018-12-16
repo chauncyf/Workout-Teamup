@@ -10,6 +10,7 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.json
   def show
+    render layout: false
   end
 
   # GET /photos/new

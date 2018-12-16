@@ -629,6 +629,16 @@ footer {
       height: 3em;
     }
   }
+
+  .photo_gallery {
+    margin: 10px;
+    display: flex;
+
+    .photo_preview {
+      width: 100px;
+      margin-left: 10px;
+    }
+  }
 }
 
 .card-columns {
@@ -982,4 +992,35 @@ footer {
 canvas {
   max-height: 100%;
   max-width: 100%;
+}
+
+.photo_preview {
+  cursor: pointer;
+}
+
+.pic_big {
+  max-width: 100%;
+}
+
+.user_profile {
+  .follow_span {
+    cursor: pointer;
+  }
+
+  .photo_preview {
+    width: 200px;
+    margin: 20px;
+  }
+}
+
+
+.user_avatar_list {
+  .profile-card {
+    margin-bottom: 10px !important;
+  }
+}
+
+
+.form-control.datetimepicker-input {
+  border-radius: 0 !important;
 }

@@ -23,8 +23,6 @@
 //= require users
 
 $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-
     $(document).on('turbolinks:before-cache', function () {
         // don't cache any pnotify elements, just let them pass
         PNotify.removeAll()
@@ -174,9 +172,9 @@ $(function () {
             url: '/photos/new',
             method: 'get',
             success(data) {
-                $('#upload_picture_modal').modal('show')
+                $('#upload_picture_modal')
+                    .data('activity_id', id).modal('show')
                     .find('.modal-body').html(data)
-                $('#upload_picture_modal').data('activity_id', id)
             }
         })
 
@@ -201,7 +199,12 @@ $(function () {
             })
         })
     })
-    $(document).on('click', 'a[data-chat],img.avatar[data-chat]', function () {
+    $(document).on('click', 'img.avatar[data-chat]', function () {
+        let $this = $(this)
+        let id = $this.data('chat')
+        Turbolinks.visit('/users/profile/' + id)
+    })
+    $(document).on('click', 'a[data-chat]', function () {
         let $this = $(this)
         let id = $this.data('chat')
         let modal = $('#send_message_modal')
@@ -241,37 +244,68 @@ $(function () {
         refreshPosts()
     })
 
-    $(document).on('click', '.show_follows', function () {
-        let $this = $(this)
-        setTimeout(()=>{
-            refreshPosts(true)
-        },0)
-    })
-
     $(document).on('click', '.poster_type', function () {
         let $this = $(this)
         $this.toggleClass('active')
         refreshPosts(true)
     })
 
+    // $(document).on('change', '#start_time', function () {
+    //
+    //     refreshPosts(true)
+    // })
+
+
+    // adding event listener to follow button
+    $(document).on('click', '.follow[data-id]', function () {
+        let userId = $(this).data('id');
+        let follow_status = $(this).data('follow');
+        if (follow_status) {
+            $.ajax({
+                url: '/unfollow/' + userId,
+                method: 'delete',
+                dataType: 'json',
+                success: () => {
+                    $(this).html('Follow');
+                    $(this).data('follow', false);
+                }
+            })
+        } else {
+            $.ajax({
+                url: '/follow/' + userId,
+                method: 'post',
+                dataType: 'json',
+                success: () => {
+                    $(this).html('Unfollow');
+                    $(this).data('follow', true);
+                }
+            })
+        }
+    }).on('click', '.follow_span[data-show-follow-relation]', function () {
+        let $this = $(this)
+        $.ajax({
+            url: `/${$this.data('show-follow-relation')}/${$this.parent().data('id')}`,
+            method: 'get',
+            success(data) {
+                $('#user_avatars_modal').modal('show')
+                    .find('.modal-content').html(data)
+            }
+        })
+    })
+
+    $(document).on('click', '.photo_preview[data-id]', function () {
+        $.ajax({
+            url: '/photos/' + $(this).data('id'),
+            method: 'get',
+            success(data) {
+                $('#picture_big_modal').modal('show')
+                    .find('.modal-body').html(data)
+
+            }
+        })
+    })
 })
 
-function dataURItoBlob(dataURI) {
-// convert base64/URLEncoded data component to raw binary data held in a string
-    var byteString;
-    if (dataURI.split(',')[0].indexOf('base64') >= 0)
-        byteString = atob(dataURI.split(',')[1]);
-    else
-        byteString = unescape(dataURI.split(',')[1]);
-// separate out the mime component
-    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-// write the bytes of the string to a typed array
-    var u8a = new Uint8Array(byteString.length);
-    for (var i = 0; i < byteString.length; i++) {
-        u8a[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([u8a], {type: mimeString});
-}
 
 window.ratyAll = _.throttle(() => {
     $('[data-raty]').each(function () {
