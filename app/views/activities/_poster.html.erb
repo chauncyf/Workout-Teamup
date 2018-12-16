@@ -5,7 +5,7 @@
     isJoined = isJoined && !join.nil?
   end
   show_comment = false if local_assigns[:show_comment].nil?
-  starter=activity.starter
+  starter = activity.starter
 %>
 
 <div class="card shadow mb-3 poster" data-poster="<%= activity.id %>">
@@ -64,11 +64,11 @@
     </div>
   </div>
 
-  <div class="card-body p-3 material-body-<%= ActivityType.find_by(id:activity.activity_type_id).color %> ">
+  <div class="card-body p-3 material-body-<%= ActivityType.find_by(id: activity.activity_type_id).color %> ">
     <%= activity.content %>
   </div>
 
-  <div class="card-footer bg-transparent px-3 pt-0 pb-2 material-footer-<%= ActivityType.find_by(id:activity.activity_type_id).color %>">
+  <div class="card-footer bg-transparent px-3 pt-0 pb-2 material-footer-<%= ActivityType.find_by(id: activity.activity_type_id).color %>">
     <div class="row align-items-center">
       <% if isJoined %>
         <div class="col-auto rate-star" data-raty="true"
@@ -91,6 +91,13 @@
   </div>
 
   <% if show_comment %>
+    <% if activity.photos.size > 0 %>
+      <div class="card">
+        <div class="photo_gallery">
+          <%= render 'photos/photo_list_for_poster', photos: activity.photos %>
+        </div>
+      </div>
+    <% end %>
     <div class="card reviews">
       <div class="card-body px-3 pt-3">
         <div class="card-title mb-2">Reviews</div>

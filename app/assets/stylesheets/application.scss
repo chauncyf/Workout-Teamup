@@ -629,6 +629,16 @@ footer {
       height: 3em;
     }
   }
+
+  .photo_gallery {
+    margin: 10px;
+    display: flex;
+
+    .photo_preview {
+      width: 100px;
+      margin-left: 10px;
+    }
+  }
 }
 
 .card-columns {
@@ -999,7 +1009,7 @@ canvas {
 
   .photo_preview {
     width: 200px;
-    margin-left: 20px;
+    margin: 20px;
   }
 }
 
@@ -1012,5 +1022,5 @@ canvas {
 
 
 .form-control.datetimepicker-input {
-  border-radius: 0!important;
+  border-radius: 0 !important;
 }
