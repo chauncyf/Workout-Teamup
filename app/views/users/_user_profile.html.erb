@@ -173,6 +173,14 @@
   <div class="row">
     <%= render 'photos/photo_list', photos: user.photos.limit(20) %>
   </div>
+  <hr>
+  <h2><%= user.user_name %>'s recent activities</h2>
+  <div class="row">
+    <% user.activities.limit(20).each do |activity| %>
+      <%= render 'activities/poster', activity: activity %>
+    <% end %>
+  </div>
+
 </div>
 <script>
     ;(function () {

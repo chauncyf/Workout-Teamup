@@ -723,11 +723,12 @@ footer {
   //  border-radius: 1.5rem !important;
   //}
 
-  .input-group>.input-group-prepend>.input-group-text{
+  .input-group > .input-group-prepend > .input-group-text {
     border-top-left-radius: .5rem !important;
     border-bottom-left-radius: .5rem !important;
   }
-  .input-group>.input-group-append>.input-group-text {
+
+  .input-group > .input-group-append > .input-group-text {
     border-top-right-radius: .5rem !important;
     border-bottom-right-radius: .5rem !important;
   }
@@ -1023,5 +1024,9 @@ canvas {
   .photo_preview {
     width: 200px;
     margin: 20px;
+  }
+
+  .poster {
+    width: 300px;
   }
 }

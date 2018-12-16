@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     started_page = params[:started_page].to_i || 1
     started_size = params[:started_size].to_i || 4
     @activities_joined = current_user
-                             .started_activities.order(created_at: :desc)
+                             .activities.order(created_at: :desc)
                              .offset((joined_page - 1) * joined_size).limit 4
     @activities_started = current_user
                               .started_activities.order(created_at: :desc)

@@ -4,7 +4,7 @@ class Activity < ApplicationRecord
   validates :activity_date, presence: true #, format: { with: VALID_DATE_REGEX }
   validates :activity_end_time, presence: true
   validates :place, presence: true
-  validates :content, presence: true, length: {maximum: 140}
+  validates :content, presence: true
 
   has_many :activity_participants
   has_many :users, through: :activity_participants
