@@ -4,6 +4,8 @@
     html2canvas(poster, {
         dpi: 300,
 //        scale: 3,
+        useCORS: true,
+        letterRendering: true,
         onrendered: getPdf})
 
     new PNotify({
@@ -13,6 +15,11 @@
 })()
 
 function getPdf(canvas) {
+    var ctx = canvas.getContext('2d');
+    ctx.webkitImageSmoothingEnabled = false;
+    ctx.mozImageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = false;
+
 //         Export the canvas to its data URI representation
     var poster_image = canvas.toDataURL("image/png", 1.0);
 
