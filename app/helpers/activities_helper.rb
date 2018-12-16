@@ -10,6 +10,7 @@ module ActivitiesHelper
     end
 
     if show_follows == 1
+
       activities = activities.where(starter_id: current_user.followed)
     end
 
