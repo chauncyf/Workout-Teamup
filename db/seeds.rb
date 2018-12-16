@@ -20,43 +20,40 @@ User.create(user_name: 'irenezxr', email: 'xiangranzhao@brandeis.edu', password:
 User.create(user_name: 'gggllm', email: 'limianguo@gmail.com', password: '123456789', email_confirmed: true, identity: 1)
 User.create(user_name: 'visitor', email: 'visitor@brandeis.edu', password: '123456789', email_confirmed: true, identity: 2)
 
-Activity.create(activity_date: Faker::Time.forward(30),
-                place: Faker::Games::Overwatch.location,
-                content: Faker::MostInterestingManInTheWorld.quote,
-                activity_type_id: 1,
-                estimatedDuration: 30,
-                starter_id: 4, status: 2)
-
 # # To fix: timezone
 10.times do
   Activity.create(activity_date: Faker::Time.forward(30),
+                  activity_end_time: Faker::Time.forward(31),
                   place: Faker::Games::Overwatch.location,
                   content: Faker::MostInterestingManInTheWorld.quote,
-                  activity_type_id: 1,
+                  activity_type_id:[1,2,3,4,5,6,7,8].sample,
                   estimatedDuration: 30,
                   starter_id: 4, status: 2)
 end
 10.times do
   Activity.create(activity_date: Faker::Time.forward(30),
+                  activity_end_time: Faker::Time.forward(35),
                   place: Faker::Hobbit.location,
                   content: Faker::Hobbit.quote,
-                  activity_type_id: 2,
+                  activity_type_id: [1,2,3,4,5,6,7,8].sample,
                   estimatedDuration: 30,
                   starter_id: 3, status: 2)
 end
 10.times do
   Activity.create(activity_date: Faker::Time.forward(30),
+                  activity_end_time: Faker::Time.forward(32),
                   place: Faker::Games::Overwatch.location,
                   content: Faker::FamousLastWords.last_words,
-                  activity_type_id: 3,
+                  activity_type_id: [1,2,3,4,5,6,7,8].sample,
                   estimatedDuration: 30,
                   starter_id: 2, status: 2)
 end
 10.times do
   Activity.create(activity_date: Faker::Time.forward(30),
+                  activity_end_time: Faker::Time.forward(33),
                   place: Faker::Games::Overwatch.location,
                   content: Faker::Games::Overwatch.quote,
-                  activity_type_id: 4,
+                  activity_type_id: [1,2,3,4,5,6,7,8].sample,
                   estimatedDuration: 30,
                   starter_id: 1, status: 2)
 end
