@@ -184,7 +184,8 @@
                     time: "far fa-clock",
                     date: "far fa-calendar",
                 },
-                useCurrent: false
+                useCurrent: false,
+                format: 'MM/DD/YYYY HH:mm'
             });
             let end_date_time = $('#end_date_time')
             end_date_time.datetimepicker({
@@ -192,6 +193,7 @@
                     time: "far fa-clock",
                     date: "far fa-calendar",
                 },
+                format: 'MM/DD/YYYY HH:mm'
             });
 
             start_date_time.on("change.datetimepicker", function (e) {
