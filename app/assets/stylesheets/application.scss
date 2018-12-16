@@ -503,6 +503,10 @@ footer {
   border: none !important;
   border-radius: 0.85rem !important;
 
+  .poster_content {
+    list-style: none;
+  }
+
   .card-header {
     border-bottom: 0;
     border-top-right-radius: 0.85rem !important;
