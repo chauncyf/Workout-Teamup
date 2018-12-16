@@ -2,6 +2,7 @@ class Activity < ApplicationRecord
   VALID_DATE_REGEX = /(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/((20|)\d\d)\ |(((0[1-9]|1[0-2]|2[0-4]):[0-5][0-9])|(([1-9]|1[0-2]):[0-5][0-9]\ ([AP]M)))/i
   # mm/dd/(yy/yyyy) am or 24
   validates :activity_date, presence: true #, format: { with: VALID_DATE_REGEX }
+  validates :activity_end_time, presence: true
   validates :place, presence: true
   validates :content, presence: true, length: {maximum: 140}
 

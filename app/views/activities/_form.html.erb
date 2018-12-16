@@ -1,16 +1,29 @@
 <%= form_with(model: activity) do |form| %>
 
   <div class="form-group">
-    <%= form.label "When?" %>
+    <%= form.label "When to start?" %>
 
-    <div class="input-group date" id="datetimepicker" data-target-input="nearest">
-      <!--                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker9"/>-->
-      <%= form.text_field :activity_date, class: "form-control datetimepicker-input", "data-target": "#datetimepicker", placeholder: "when will the activity start.." %>
-      <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
+    <div class="input-group date" id="activity-start-time" data-target-input="nearest">
+      <%= form.text_field :activity_date, class: "form-control datetimepicker-input", "data-target": "#activity-start-time", placeholder: "when will the activity start.." %>
+      <div class="input-group-append" data-target="#activity-start-time" data-toggle="datetimepicker">
         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
       </div>
       <div class="invalid-feedback">
         <%= activity.errors.full_messages_for(:activity_date).first %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "When it ends?" %>
+
+    <div class="input-group date" id="activity-end-time" data-target-input="nearest">
+      <%= form.text_field :activity_end_time, class: "form-control datetimepicker-input", "data-target": "#activity-end-time", placeholder: "when will the activity end.." %>
+      <div class="input-group-append" data-target="#activity-end-time" data-toggle="datetimepicker">
+        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+      </div>
+      <div class="invalid-feedback">
+        <%= activity.errors.full_messages_for(:activity_end_time).first %>
       </div>
     </div>
   </div>
@@ -22,14 +35,6 @@
       <%= activity.errors.full_messages_for(:place).first %>
     </div>
   </div>
-
-  <!-- Temporary use, delete later
-  <div class="form-group">
-    <%#= form.label "Type?" %>
-    <%#= form.text_field :type, class: "form-control", placeholder: "tag for your activity.." %>
-
-  </div> -->
-
 
   <div class="form-group">
     <%= form.label "What?" %>
@@ -95,7 +100,17 @@
 
 <script type="text/javascript">
     $(function () {
-        $('#datetimepicker').datetimepicker({
+        $('#activity-start-time').datetimepicker({
+            icons: {
+                time: "far fa-clock",
+                date: "far fa-calendar",
+            },
+        });
+
+    });
+
+    $(function () {
+        $('#activity-end-time').datetimepicker({
             icons: {
                 time: "far fa-clock",
                 date: "far fa-calendar",
