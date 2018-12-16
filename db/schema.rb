@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_16_210012) do
+ActiveRecord::Schema.define(version: 2018_12_16_220226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,17 +58,9 @@ ActiveRecord::Schema.define(version: 2018_12_16_210012) do
   create_table "activity_contents", force: :cascade do |t|
     t.integer "activity_id"
     t.string "sport_option"
-    t.string "customize_sport"
-    t.float "quantity"
-    t.string "quan_unit"
-    t.float "duration"
-    t.string "dur_unit"
-    t.string "equipment"
-    t.text "suggestion"
-    t.text "alert"
+    t.string "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "strength"
     t.integer "content_order"
   end
 
