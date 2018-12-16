@@ -60,30 +60,34 @@
 </body>
 <% if logged_in? %>
   <script>
-      // get current posion and upload them every 10 seconds
-      var interval = setInterval(() => {
-          navigator.geolocation.getCurrentPosition(({coords}) => {
-              $.ajax({
-                  method: 'post',
-                  url: '<%= user_locations_url %>' + '.json',
-                  data: {
-                      user_location: {
-                          latitude: coords.latitude,
-                          longitude: coords.longitude,
-                          user_id: '<%= current_user_id %>'
+      ;(function () {
+          let upload = () => {
+              navigator.geolocation.getCurrentPosition(({coords}) => {
+                  $.ajax({
+                      method: 'post',
+                      url: '<%= user_locations_url %>' + '.json',
+                      data: {
+                          user_location: {
+                              latitude: coords.latitude,
+                              longitude: coords.longitude,
+                              user_id: '<%= current_user_id %>'
+                          }
                       }
-                  }
+                  })
               })
+          }
+          upload()
+          // get current posion and upload them every 10 seconds
+          let interval = setInterval(upload, 60000);
+          // make sure all the interval is cleared
+          $(document).on('turbolinks:load', () => {
+              let clearTurboLink = () => {
+                  clearInterval(interval);
+                  $(document).off('turbolinks:load', clearTurboLink)
+              };
+              $(document).on('turbolinks:load', clearTurboLink)
           })
-      }, 60000);
-      // make sure all the interval is cleared
-      $(document).on('turbolinks:load', () => {
-          let clearTurboLink = () => {
-              clearInterval(interval);
-              $(document).off('turbolinks:load', clearTurboLink)
-          };
-          $(document).on('turbolinks:load', clearTurboLink)
-      })
+      })()
   </script>
 <% end %>
 </html>

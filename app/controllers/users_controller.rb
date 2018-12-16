@@ -111,7 +111,8 @@ class UsersController < ApplicationController
   end
 
   def profile
-    render 'show'
+    layout = params[:layout].nil? ? true : false
+    render 'show', layout: layout
   end
 
 

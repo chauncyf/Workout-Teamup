@@ -293,7 +293,7 @@ $(function () {
         })
     })
 
-    $(document).on('click', '.photo_preview[data-id]', function () {
+    $(document).on('click', '#newPosterModal .photo_preview[data-id]', function () {
         $.ajax({
             url: '/photos/' + $(this).data('id'),
             method: 'get',
@@ -303,6 +303,13 @@ $(function () {
 
             }
         })
+    })
+
+
+    // logic that allow user to add contents to the activity field
+    $(document).on('click', '.add_contents', function () {
+        let $this = $(this)
+
     })
 })
 
@@ -336,3 +343,4 @@ window.ratyAll = _.throttle(() => {
         }).removeAttr('data-raty')
     })
 }, 300)
+
