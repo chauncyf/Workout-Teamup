@@ -28,10 +28,8 @@
                 center: {lat: -34.397, lng: 150.644},
                 zoom: 6
             });
-            infoWindow = new google.maps.InfoWindow;
             // Try HTML5 geolocation.
             if (navigator.geolocation) {
-                currentUserFlag = true//
                 navigator.geolocation.getCurrentPosition(function (position) {
                     var pos = {
                         lat: position.coords.latitude,
@@ -39,21 +37,10 @@
                     };
                     map.setCenter(pos);
                     map.setZoom(17);
-                    let iconUrl = '<%= map_avatar_url current_user %>'
-                    var marker = new google.maps.Marker({
-                        position: pos,
-                        title: "Here you are!",
-                        animation: google.maps.Animation.DROP,
-                        icon: iconUrl.replace(/&amp;/g, '&'),
-                    });
-                    marker.setMap(map);
-                }, function () {
-                    handleLocationError(true, infoWindow, map.getCenter());
                 });
-            } else {
-                // Browser doesn't support Geolocation
-                handleLocationError(false, infoWindow, map.getCenter());
             }
+            getOthersPosition()
+            timeout()
         }
 
         let markerData = []
@@ -67,34 +54,44 @@
                         marker.setMap(null)
                     })
                     markerData = data.map((user) => {
-                        var marker = new google.maps.Marker({
+                        let marker = new google.maps.Marker({
                             position: {
                                 lat: user.latitude,
                                 lng: user.longitude
                             },
                             icon: user.avatar_url.replace(/&amp;/g, '&'),
-                            title: user.user_name
+                            title: user.user_name,
                         });
-                        if (currentUserFlag && user.id != currentId) {
+                        if (!currentUserFlag || user.id != currentId) {
                             marker.setMap(map)
                         }
+                        marker.addListener('click', () => {
+                            $.ajax({
+                                url: '/users/profile/' + user.id,
+                                data: {
+                                    layout: false
+                                },
+                                method: 'get',
+                                success(data) {
+                                    $('#viewUserModal').modal('show')
+                                        .find('.modal-body').html(data)
+                                }
+                            })
+                        })
                         return marker
                     })
                 }
             })
         }
 
-        getOthersPosition()
-
         function timeout() {
             setTimeout(() => {
-                if (window.mapRefreshSymbol != object) return
+                if (window.mapRefreshSymbol !== object) return
                 timeout();
                 getOthersPosition()
             }, 30000)
         }
 
-        timeout()
         // make sure to call initMap
         $(() => {
             initMap()
