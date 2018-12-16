@@ -30,6 +30,7 @@ User.create(user_name: 'visitor', email: 'visitor@brandeis.edu', password: '1234
                   estimatedDuration: 30,
                   starter_id: 4, status: 2)
 end
+
 10.times do
   Activity.create(activity_date: Faker::Time.forward(30),
                   activity_end_time: Faker::Time.forward(35),
@@ -58,17 +59,44 @@ end
                   starter_id: 1, status: 2)
 end
 
-Tag.create(type_name: 'pullup', color: 'green')
-Tag.create(type_name: 'push', color: 'orange')
-Tag.create(type_name: 'squat', color: 'grey')
-Tag.create(type_name: 'bicerp', color: 'red')
-Tag.create(type_name: 'tricerp', color: 'green')
-Tag.create(type_name: 'sprint', color: 'orange')
-Tag.create(type_name: 'pushup', color: 'grey')
-Tag.create(type_name: 'belly', color: 'purple')
-Tag.create(type_name: 'pullup', color: 'yellow')
-Tag.create(type_name: 'bumperss', color: 'pink')
-Tag.create(type_name: 'chest press', color: 'green')
+(0..40).each do |i|
+  ActivityContent.create(activity_id: i,
+                         sport_option: Faker::Esport.event,
+                         quantity: Faker::Number.decimal(2),
+                         quan_unit: "times",
+                         duration: Faker::Number.decimal(2),
+                         dur_unit: "min",
+                         equipment: Faker::Kpop.boy_bands,
+                         strength: [1,2,3,4,5].sample,
+                         suggestion: "suggestion",
+                         alert: "alerts")
+end
+
+(0..40).each do |i|
+  ActivityContent.create(activity_id: i,
+                         sport_option: Faker::Esport.event,
+                         quantity: Faker::Number.decimal(2),
+                         quan_unit: "times",
+                         duration: Faker::Number.decimal(2),
+                         dur_unit: "min",
+                         equipment: Faker::Kpop.boy_bands,
+                         strength: [1,2,3,4,5].sample,
+                         suggestion: "suggestion",
+                         alert: "alerts")
+end
+
+
+# Tag.create(type_name: 'pullup', color: 'green')
+# Tag.create(type_name: 'push', color: 'orange')
+# Tag.create(type_name: 'squat', color: 'grey')
+# Tag.create(type_name: 'bicerp', color: 'red')
+# Tag.create(type_name: 'tricerp', color: 'green')
+# Tag.create(type_name: 'sprint', color: 'orange')
+# Tag.create(type_name: 'pushup', color: 'grey')
+# Tag.create(type_name: 'belly', color: 'purple')
+# Tag.create(type_name: 'pullup', color: 'yellow')
+# Tag.create(type_name: 'bumperss', color: 'pink')
+# Tag.create(type_name: 'chest press', color: 'green')
 
 
 Follow.create(followee_id: 1, follower_id: 2)

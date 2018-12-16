@@ -6,6 +6,8 @@
   end
   show_comment = false if local_assigns[:show_comment].nil?
   starter = activity.starter
+
+
 %>
 
 <div class="card shadow mb-3 poster" data-poster="<%= activity.id %>">
@@ -56,7 +58,7 @@
 
     <div class="card-title card-title-date m-0">
       <i class="fas fa-calendar"></i>
-      <%= activity.activity_date.strftime("%b %d, %a %H:%M") %>
+      <%= activity.activity_date.strftime("%b %d, %a %H:%M") %> - <%= activity.activity_end_time.strftime("%b %d, %a %H:%M") %>
     </div>
     <div class="card-title card-title-place m-0">
       <i class="fas fa-map-marker-alt"></i>
@@ -66,6 +68,9 @@
 
   <div class="card-body p-3 material-body-<%= ActivityType.find_by(id: activity.activity_type_id).color %> ">
     <%= activity.content %>
+    <% ActivityContent.where(activity_id: activity.id).each do |content|%>
+      <%= render partial: 'activities/content', locals: {content: content} %>
+    <% end %>
   </div>
 
   <div class="card-footer bg-transparent px-3 pt-0 pb-2 material-footer-<%= ActivityType.find_by(id: activity.activity_type_id).color %>">
