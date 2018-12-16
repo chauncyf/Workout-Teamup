@@ -307,9 +307,39 @@ $(function () {
 
 
     // logic that allow user to add contents to the activity field
-    $(document).on('click', '.add_contents', function () {
+    $(document).on('click', '.create-poster-form .add_contents', function () {
         let $this = $(this)
-
+        $this.parent().parent().children('.content_field').before(`
+        <div class="form-group">
+            <div class="form-row">
+                <div class="col">
+                   <input placeholder="activity name" class="form-control activity_name activity_content_input">
+               </div>
+               <div class="col"> 
+                   <input placeholder="times or duration" class="form-control activity_quantity activity_content_input">
+               </div>
+               <a class="btn btn-primary rounded-circle remove_contents"><i class="fa fa-minus"></i></a>
+            </div>
+        </div>
+        `)
+    }).on('click', '.create-poster-form .remove_contents', function () {
+        $(this).parent().parent().remove()
+    }).on('change', '.create-poster-form .activity_content_input', function () {
+        let $this = $(this)
+        let form = $(this).parents('.create-poster-form')
+        let names = form.find('.activity_name')
+        let quantities = form.find('.activity_quantity')
+        let data = []
+        names.each((index, input) => {
+            let name = input.value
+            let quantity = quantities[index].value
+            if (!name && !quantity) return
+            data.push({
+                sport_option: name,
+                quantity: quantity
+            })
+        })
+        form.find('.activity_contents').val(JSON.stringify(data))
     })
 })
 
