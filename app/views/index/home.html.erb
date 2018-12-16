@@ -36,7 +36,7 @@
   <div class="col text-right my-1 p-0" id="header-col-button">
     <% if !logged_in? %>
       <!--  render login modal partial -->
-      <%= link_to "Create Your Poster !", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "btn text-white col-md-2"} %>
+      <%= link_to "Create Your Poster !", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "btn text-white"} %>
     <% else %>
       <!--  render create poster form partial-->
       <button type="button" class="btn text-white" id="new_poster_button">Create Your Poster !</button>
