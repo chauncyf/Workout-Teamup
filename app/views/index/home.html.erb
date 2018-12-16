@@ -190,11 +190,11 @@
             });
 
             start_date_time.on("change.datetimepicker", function (e) {
-                end_date_time.datetimepicker('minDate', e.date);
+                //end_date_time.datetimepicker('minDate', e.date);
                 refreshPosts(true)
             });
             end_date_time.on("change.datetimepicker", function (e) {
-                start_date_time.datetimepicker('maxDate', e.date);
+                //start_date_time.datetimepicker('maxDate', e.date);
                 refreshPosts(true)
             });
         })
