@@ -189,37 +189,39 @@ a {
 //  border-radius: 0.5rem;
 //}
 
+.profile-card {
+  border: none !important;
+  border-radius: .85rem !important;
+
+  .avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .card-body {
+    font-size: 1em !important;
+
+    .row {
+      font-size: .8em !important;
+
+      a {
+        border-radius: 1.5rem;
+        width: 6.5em;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
 .profile-dropdown {
   width: 15em;
   border: none !important;
   border-radius: .85rem !important;
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
 
-  .profile-card {
-    border: none !important;
-
-    .avatar {
-      width: 2.5rem;
-      height: 2.5rem;
-    }
-
-    .card-body {
-      font-size: 1em !important;
-
-      .row {
-        font-size: .8em !important;
-
-        a {
-          border-radius: 1.5rem;
-          width: 6.5em;
-        }
-
-        a:hover {
-          text-decoration: none;
-        }
-      }
-    }
-  }
 }
 
 /* navbar */
@@ -707,16 +709,27 @@ footer {
 }
 
 .header-row {
-  #header-col-button {
-    margin-right: 2.5%;
-  }
+  width: 90vw;
 
-  #header-col-search {
-    margin-left: 2.5%;
-  }
+  //#header-col-button {
+  //  margin-right: 2.5%;
+  //}
+  //
+  //#header-col-search {
+  //  margin-left: 2.5%;
+  //}
+  //
+  //.form-control {
+  //  border-radius: 1.5rem !important;
+  //}
 
-  .form-control {
-    border-radius: 1.5rem !important;
+  .input-group>.input-group-prepend>.input-group-text{
+    border-top-left-radius: .5rem !important;
+    border-bottom-left-radius: .5rem !important;
+  }
+  .input-group>.input-group-append>.input-group-text {
+    border-top-right-radius: .5rem !important;
+    border-bottom-right-radius: .5rem !important;
   }
 
   .btn {
@@ -1011,20 +1024,4 @@ canvas {
     width: 200px;
     margin: 20px;
   }
-}
-
-
-.user_avatar_list {
-  .profile-card {
-    margin-bottom: 10px !important;
-  }
-}
-
-
-.form-control.datetimepicker-input {
-  border-radius: 0 !important;
-}
-
-.x2{
-  transform: scale(2,2);
 }

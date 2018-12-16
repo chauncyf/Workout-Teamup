@@ -30,8 +30,6 @@ function getPdf(canvas) {
     var doc = new jsPDF()
 
 //    doc.internal.scaleFactor = 1.8;
-
-
     doc.setFontSize(30)
     doc.text(20, 30, 'Scan QR Code To Join Activity!')
     doc.addImage(poster_image, 'PNG', 20, 50)
