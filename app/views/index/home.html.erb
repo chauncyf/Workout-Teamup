@@ -1,44 +1,39 @@
-<h1 class="text-center my-4 title-big">Find Interested Activity</h1>
+<h1 class="text-center my-5 title-big">Find Interested Activity</h1>
 
 <div class="row header-row align-items-center mx-0 px-3 m-auto">
 
-  <div class="col-auto align-self-start p-0" id="header-col-search">
-    <ul class="list-inline m-0">
-      <li class="form-group list-inline-item m-0">
-        <div class="input-group date datepicker_with_label" id="start_date_time" data-target-input="nearest">
-          <div class="input-group-prepend">
-            <label class="input-group-text" for="start_date_time">From</label>
-          </div>
-          <input type="text" class="form-control datetimepicker-input" data-target="#start_date_time"/>
-          <div class="input-group-append" data-target="#start_date_time" data-toggle="datetimepicker">
-            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-          </div>
-        </div>
-      </li>
-
-      <li class="form-group list-inline-item m-0">
-        <div class="input-group date" id="end_date_time" data-target-input="nearest">
-          <div class="input-group-prepend">
-            <label class="input-group-text" for="end_date_time">To</label>
-          </div>
-          <input type="text" class="form-control datetimepicker-input" data-target="#end_date_time"/>
-          <div class="input-group-append" data-target="#end_date_time" data-toggle="datetimepicker">
-            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-          </div>
-        </div>
-      </li>
-    </ul>
+  <div class="col-auto form-group my-1 px-1">
+    <div class="input-group date datepicker_with_label" id="start_date_time" data-target-input="nearest">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="start_date_time">From</label>
+      </div>
+      <input type="text" class="form-control datetimepicker-input" data-target="#start_date_time"/>
+      <div class="input-group-append" data-target="#start_date_time" data-toggle="datetimepicker">
+        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-auto form-group my-1 px-1">
+    <div class="input-group date" id="end_date_time" data-target-input="nearest">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="end_date_time">To</label>
+      </div>
+      <input type="text" class="form-control datetimepicker-input" data-target="#end_date_time"/>
+      <div class="input-group-append" data-target="#end_date_time" data-toggle="datetimepicker">
+        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+      </div>
+    </div>
   </div>
 
   <% if logged_in? %>
-    <div class="col-auto px-4 switch">
+    <div class="col-auto my-1 px-4 switch">
       <label class="m-0" for="follow_switch">Everyone</label>
       <input type="checkbox" class="switch" id="follow_switch">
       <label class="m-0" for="follow_switch">Followed</label>
     </div>
   <% end %>
 
-  <div class="col text-right align-self-end p-0" id="header-col-button">
+  <div class="col text-right my-1 p-0" id="header-col-button">
     <% if !logged_in? %>
       <!--  render login modal partial -->
       <%= link_to "Create Your Poster !", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "btn text-white col-md-2"} %>
@@ -47,7 +42,6 @@
       <button type="button" class="btn text-white" id="new_poster_button">Create Your Poster !</button>
     <% end %>
   </div>
-
 </div>
 
 <hr class="my-4">
