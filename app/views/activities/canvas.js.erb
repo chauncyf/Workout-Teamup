@@ -1,11 +1,21 @@
 ;(function () {
     poster = $('.poster[data-poster=<%= activity_id %>]')[0]
-    html2canvas(poster).then(function (canvas) {
-        // Export the canvas to its data URI representation
-        var base64image = canvas.toDataURL("image/png");
 
-        // Open the image in a new window
-        downloadURI(base64image,'poster.jpg')
+    html2canvas(poster).then(function (canvas) {
+//         Export the canvas to its data URI representation
+        var poster_image = canvas.toDataURL("image/png");
+
+        var qrcode_canvas = document.createElement('canvas')
+        canvg(qrcode_canvas, `<%= raw qrcode.as_svg %>`)
+        var qrcode_image = qrcode_canvas.toDataURL("image/png")
+
+        var doc = new jsPDF()
+        doc.setFontSize(30)
+        doc.text(20, 30, 'Scan QR Code To Join Activity!')
+        doc.addImage(poster_image, 'PNG', 20, 50)
+        doc.addImage(qrcode_image, 'PNG', 130, 50, 50, 50)
+
+        doc.save(`poster_<%= activity_id %>.pdf`)
     });
 
     new PNotify({
@@ -13,12 +23,3 @@
         type: 'success'
     });
 })()
-
-function downloadURI(uri, name) {
-    var link = document.createElement("a");
-    link.download = name;
-    link.href = uri;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}

@@ -133,7 +133,12 @@ class ActivitiesController < ApplicationController
   end
 
   def canvas
-    render 'canvas.js.erb', locals: {activity_id: params[:id]}
+    if Rails.env.development?
+      qrcode = RQRCode::QRCode.new("https://0.0.0.0:3000/?activity_id=#{params[:id]}")
+    else
+      qrcode = RQRCode::QRCode.new("https://#{request.host}/?activity_id=#{params[:id]}")
+    end
+    render 'canvas.js.erb', locals: {activity_id: params[:id], qrcode: qrcode}
   end
 
   private
