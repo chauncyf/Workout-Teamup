@@ -165,6 +165,20 @@
 
         $(() => {
             let activity_id = GetQueryString("activity_id")
+
+            <% if !logged_in? %>
+            // Store
+            if (activity_id) {
+                localStorage.setItem("activity_id_log", activity_id);
+            }
+            <% else %>
+            // Retrieve
+            if (localStorage.getItem("activity_id_log") != null) {
+                activity_id = localStorage.getItem("activity_id_log");
+                localStorage.removeItem("activity_id_log");
+            }
+            <% end %>
+
             activity_id && showPosterInModal(activity_id)
 
             refreshPosts()
