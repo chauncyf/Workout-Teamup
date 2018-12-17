@@ -64,6 +64,7 @@
     })
 
     function showMessage(data) {
+        console.log('showMessage', data)
         setTimeout(() => {
             (new PNotify({
                 title: data.msg.title,
