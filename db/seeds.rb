@@ -18,7 +18,7 @@ ActivityType.create(name: 'SWIMMING', type_index: 8, color: 'grey')
 User.create(user_name: 'chauncyf', email: 'fanc@brandeis.edu', password: '123456789', email_confirmed: true, identity: 1)
 User.create(user_name: 'irenezxr', email: 'xiangranzhao@brandeis.edu', password: '123456789', email_confirmed: true, identity: 1)
 User.create(user_name: 'gggllm', email: 'limianguo@gmail.com', password: '123456789', email_confirmed: true, identity: 1)
-User.create(user_name: 'visitor', email: 'visitor@brandeis.edu', password: '123456789', email_confirmed: true, identity: 2)
+
 
 # # To fix: timezone
 10.times do
@@ -111,4 +111,25 @@ Follow.create(followee_id: 2, follower_id: 4)
 Gym.create(name: "gosman", description: "this is gosman gym for brandeis univeristy open time : xxxxx")
 
 
+User.create(user_name: 'visitor1', email: 'visitor1@brandeis.edu', password: '123456789', email_confirmed: true, identity: 2)
+User.create(user_name: 'visitor2', email: 'visitor2@brandeis.edu', password: '123456789', email_confirmed: true, identity: 2)
+User.create(user_name: 'visitor3', email: 'visitor3@brandeis.edu', password: '123456789', email_confirmed: true, identity: 2)
+User.create(user_name: 'visitor4', email: 'visitor4@brandeis.edu', password: '123456789', email_confirmed: true, identity: 2)
 
+UserLocation.create(user_id: 4, latitude: 42.3714816, longitude: -71.258112)
+UserLocation.create(user_id: 5, latitude: 42.37847, longitude: -71.255162)
+UserLocation.create(user_id: 6, latitude: 42.37943, longitude: -71.258132)
+UserLocation.create(user_id: 7, latitude: 42.37545, longitude: -71.253142)
+
+ActivityParticipant.create(user_id: 4,
+                           activity_id: 5,
+                           identity: 1)
+ActivityParticipant.create(user_id: 5,
+                           activity_id: 8,
+                           identity: 1)
+ActivityParticipant.create(user_id: 6,
+                           activity_id: 7,
+                           identity: 1)
+ActivityParticipant.create(user_id: 7,
+                           activity_id: 3,
+                           identity: 1)
