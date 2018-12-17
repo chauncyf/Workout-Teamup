@@ -62,27 +62,13 @@ end
 (0..40).each do |i|
   ActivityContent.create(activity_id: i,
                          sport_option: Faker::Esport.event,
-                         quantity: Faker::Number.decimal(2),
-                         quan_unit: "times",
-                         duration: Faker::Number.decimal(2),
-                         dur_unit: "min",
-                         equipment: Faker::Kpop.boy_bands,
-                         strength: [1,2,3,4,5].sample,
-                         suggestion: "suggestion",
-                         alert: "alerts")
+                         quantity: "times")
 end
 
 (0..40).each do |i|
   ActivityContent.create(activity_id: i,
                          sport_option: Faker::Esport.event,
-                         quantity: Faker::Number.decimal(2),
-                         quan_unit: "times",
-                         duration: Faker::Number.decimal(2),
-                         dur_unit: "min",
-                         equipment: Faker::Kpop.boy_bands,
-                         strength: [1,2,3,4,5].sample,
-                         suggestion: "suggestion",
-                         alert: "alerts")
+                         quantity: "km")
 end
 
 
