@@ -1,4 +1,4 @@
-<h1 class="text-center my-5 title-big">Find Interested Activity</h1>
+<h1 id="home_title" class="text-center my-5 title-big">w</h1>
 
 <div class="row header-row align-items-center mx-0 px-3 m-auto">
 
@@ -197,6 +197,14 @@
                 //start_date_time.datetimepicker('maxDate', e.date);
                 refreshPosts(true)
             });
+
+            let theater = theaterJS()
+            theater.addActor('home_title')
+                .addScene('home_title:working out alone?')
+                .addScene(2000)
+                .addScene(-6)
+                .addScene('team up!')
+            theater.play()
         })
     })()
 
