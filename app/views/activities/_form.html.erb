@@ -18,7 +18,7 @@
       <%= form.label "When it ends?" %>
 
       <div class="input-group date" id="activity-end-time" data-target-input="nearest">
-        <%= form.text_field :activity_end_time, value: activity.activity_date.nil? ? "" : activity.activity_end_time.strftime('%m/%d/%Y %H:%M'), class: "form-control datetimepicker-input", "data-target": "#activity-end-time", placeholder: "when will the activity end.." %>
+        <%= form.text_field :activity_end_time, value: activity.activity_end_time.nil? ? "" : activity.activity_end_time.strftime('%m/%d/%Y %H:%M'), class: "form-control datetimepicker-input", "data-target": "#activity-end-time", placeholder: "when will the activity end.." %>
         <div class="input-group-append" data-target="#activity-end-time" data-toggle="datetimepicker">
           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
         </div>

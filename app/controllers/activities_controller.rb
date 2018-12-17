@@ -81,9 +81,9 @@ class ActivitiesController < ApplicationController
 
       else
         #format.js {render json: {status: 2}}
-        unless @activity.activity_date.nil?
-          @activity.activity_date = @activity.activity_date.strftime('%m/%d/%Y %H:%M')
-        end
+        # unless @activity.activity_date.nil?
+        #   @activity.activity_date = @activity.activity_date.strftime('%m/%d/%Y %H:%M')
+        # end
         format.html {render :new}
         format.json {render json: @activity.errors, status: :unprocessable_entity}
         format.js {render layout: false, content_type: 'text/javascript'}
