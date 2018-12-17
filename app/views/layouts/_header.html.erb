@@ -43,10 +43,10 @@
             <div class="dropdown-item mb-0">Hi, <%= current_user.user_name %></div>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href=<%= profile_path(current_user) %>>Profile</a>
-            <a class="dropdown-item" href="#">My Poster</a>
-            <a class="dropdown-item" href="#">Analysis</a>
+<!--            <a class="dropdown-item" href="#">My Poster</a>-->
+<!--            <a class="dropdown-item" href="#">Analysis</a>-->
             <div class="dropdown-divider"></div>
-            <%= link_to "Logout", logout_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "Logout", logout_path, method: :delete, class: "dropdown-item leave" %>
           </div>
         </li>
 

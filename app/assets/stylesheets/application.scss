@@ -51,6 +51,17 @@ a {
   background-color: $material-blue !important;
   border: none !important;
 }
+.dropdown-menu {
+  .leave {
+    color: #D32F2F;
+    //background-color: red;
+  }
+
+  .leave:hover {
+    color: white;
+    background-color: #D32F2F;;
+  }
+}
 
 .material-head-purple {
   background-color: $material-purple !important;
@@ -558,16 +569,6 @@ footer {
   .card-title-button {
     font-size: 1.6em;
     cursor: pointer;
-
-    .leave {
-      color: #D32F2F;
-      //background-color: red;
-    }
-
-    .leave:hover {
-      color: white;
-      background-color: #D32F2F;;
-    }
   }
 
   .card-title-place {
