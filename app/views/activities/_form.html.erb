@@ -4,7 +4,7 @@
       <%= form.label "When to start?" %>
 
       <div class="input-group date" id="activity-start-time" data-target-input="nearest">
-        <%= form.text_field :activity_date, class: "form-control datetimepicker-input", "data-target": "#activity-start-time", placeholder: "when will the activity start.." %>
+        <%= form.text_field :activity_date, value: activity.activity_date.nil? ? "" : activity.activity_date.strftime('%m/%d/%Y %H:%M'), class: "form-control datetimepicker-input", "data-target": "#activity-start-time", placeholder: "when will the activity start.." %>
         <div class="input-group-append" data-target="#activity-start-time" data-toggle="datetimepicker">
           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
         </div>
@@ -18,7 +18,7 @@
       <%= form.label "When it ends?" %>
 
       <div class="input-group date" id="activity-end-time" data-target-input="nearest">
-        <%= form.text_field :activity_end_time, class: "form-control datetimepicker-input", "data-target": "#activity-end-time", placeholder: "when will the activity end.." %>
+        <%= form.text_field :activity_end_time, value: activity.activity_date.nil? ? "" : activity.activity_end_time.strftime('%m/%d/%Y %H:%M'), class: "form-control datetimepicker-input", "data-target": "#activity-end-time", placeholder: "when will the activity end.." %>
         <div class="input-group-append" data-target="#activity-end-time" data-toggle="datetimepicker">
           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
         </div>
@@ -42,6 +42,24 @@
       <%= form.hidden_field :activity_contents, class: "activity_contents" %>
     </div>
 
+    <% activity.activity_contents.each do |content| %>
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col">
+            <input placeholder="activity name" class="form-control activity_name activity_content_input"
+                   value="<%= content.sport_option %>"
+            >
+          </div>
+          <div class="col">
+            <input placeholder="times or duration" class="form-control activity_quantity activity_content_input"
+                   value="<%= content.quantity %>"
+            >
+          </div>
+          <a class="btn btn-primary rounded-circle remove_contents"><i class="fa fa-minus"></i></a>
+        </div>
+      </div>
+    <% end %>
+
 
     <div class="form-group content_field">
       <%= form.label "What?" %>
@@ -62,38 +80,38 @@
     <!--  <div class="row">-->
     <!--    <div class="col form-group mb-0">-->
     <!--      <div class="btn-group color-checker" role="group" aria-label="First group">-->
-    <%#= form.label :activity_type.color, class: "btn radio-btn-color radio-btn-purple mb-0", 'data-toggle': "tooltip", 'data-placement': "top", 'title': 'Cardio' do %>
-    <%#= form.radio_button :activity_type.color, 'purple' %>
+<%#= form.label :activity_type.color, class: "btn radio-btn-color radio-btn-purple mb-0", 'data-toggle': "tooltip", 'data-placement': "top", 'title': 'Cardio' do %>
+<%#= form.radio_button :activity_type.color, 'purple' %>
     <!--            <i class="fas /fa-check text-white"></i>-->
-    <%# end %>
-    <%#= form.label :activity_type.color, class: "btn radio-btn-color radio-btn-pink mb-0", title: 'HIITs' do %>
-    <%#= form.radio_button :activity_type.color, 'pink' %>
+<%# end %>
+<%#= form.label :activity_type.color, class: "btn radio-btn-color radio-btn-pink mb-0", title: 'HIITs' do %>
+<%#= form.radio_button :activity_type.color, 'pink' %>
     <!--            <i class="fas fa-check text-white"></i>-->
-    <%# end %>
-    <%#= form.label :activity_type.color, class: "btn radio-btn-color radio-btn-blue mb-0", title: 'Play around' do %>
-    <%#= form.radio_button :activity_type.color, 'blue', checked: true %>
+<%# end %>
+<%#= form.label :activity_type.color, class: "btn radio-btn-color radio-btn-blue mb-0", title: 'Play around' do %>
+<%#= form.radio_button :activity_type.color, 'blue', checked: true %>
     <!--            <i class="fas fa-check text-white"></i>-->
-    <%# end %>
-    <%#= form.label :activity_type.color, class: "btn radio-btn-color radio-btn-teal mb-0", title: 'Fat Burn' do %>
-    <%#= form.radio_button :activity_type.color, 'teal' %>
+<%# end %>
+<%#= form.label :activity_type.color, class: "btn radio-btn-color radio-btn-teal mb-0", title: 'Fat Burn' do %>
+<%#= form.radio_button :activity_type.color, 'teal' %>
     <!--            <i class="fas fa-check text-white"></i>-->
-    <%# end %>
-    <%#= form.label :activity_type.color, class: "btn radio-btn-color radio-btn-green mb-0", title: 'Anaerobic' do %>
-    <%#= form.radio_button :activity_type.color, 'green' %>
+<%# end %>
+<%#= form.label :activity_type.color, class: "btn radio-btn-color radio-btn-green mb-0", title: 'Anaerobic' do %>
+<%#= form.radio_button :activity_type.color, 'green' %>
     <!--            <i class="fas fa-check text-white"></i>-->
-    <%# end %>
-    <%#= form.label :activity_type.color, class: "btn radio-btn-color radio-btn-orange mb-0", title: 'Aerobics' do %>
-    <%#= form.radio_button :activity_type.color, 'orange' %>
+<%# end %>
+<%#= form.label :activity_type.color, class: "btn radio-btn-color radio-btn-orange mb-0", title: 'Aerobics' do %>
+<%#= form.radio_button :activity_type.color, 'orange' %>
     <!--            <i class="fas fa-check text-white"></i>-->
-    <%# end %>
-    <%#= form.label :activity_type.color, class: "btn radio-btn-color radio-btn-brown mb-0", title: 'Leg Day!' do %>
-    <%#= form.radio_button :activity_type.color, 'brown' %>
+<%# end %>
+<%#= form.label :activity_type.color, class: "btn radio-btn-color radio-btn-brown mb-0", title: 'Leg Day!' do %>
+<%#= form.radio_button :activity_type.color, 'brown' %>
     <!--            <i class="fas fa-check text-white"></i>-->
-    <%# end %>
-    <%#= form.label :theme_color, class: "btn radio-btn-color radio-btn-grey mb-0", title: 'ETC.' do %>
-    <%#= form.radio_button :activity_type.color, 'grey' %>
+<%# end %>
+<%#= form.label :theme_color, class: "btn radio-btn-color radio-btn-grey mb-0", title: 'ETC.' do %>
+<%#= form.radio_button :activity_type.color, 'grey' %>
     <!--            <i class="fas fa-check text-white"></i>-->
-    <%# end %>
+<%# end %>
     <!--      </div>-->
     <!--    </div>-->
 
@@ -108,22 +126,36 @@
 
 <script type="text/javascript">
     $(function () {
-        $('#activity-start-time').datetimepicker({
+        let start = $('#activity-start-time')
+        start.datetimepicker({
             icons: {
                 time: "far fa-clock",
                 date: "far fa-calendar",
             },
             format: 'MM/DD/YYYY HH:mm'
+        });
+        let end = $('#activity-end-time')
+        end.datetimepicker({
+            icons: {
+                time: "far fa-clock",
+                date: "far fa-calendar",
+            },
+            format: 'MM/DD/YYYY HH:mm',
+            useCurrent: false,
         });
 
-        $('#activity-end-time').datetimepicker({
-            icons: {
-                time: "far fa-clock",
-                date: "far fa-calendar",
-            },
-            format: 'MM/DD/YYYY HH:mm'
+        start.on("change.datetimepicker", function (e) {
+            end.datetimepicker('minDate', e.date);
         });
-        $('.create-poster-form .form-group .add_contents').click()
+        end.on("change.datetimepicker", function (e) {
+            start.datetimepicker('maxDate', e.date);
+        });
+
+
+        if ($('.create-poster-form .activity_content_input').length == 0) {
+            $('.create-poster-form .form-group .add_contents').click()
+        }
+        $('.create-poster-form').find('.activity_content_input').trigger('change')
     });
 
 </script>

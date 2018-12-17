@@ -250,11 +250,6 @@ $(function () {
         refreshPosts(true)
     })
 
-    // $(document).on('change', '#start_time', function () {
-    //
-    //     refreshPosts(true)
-    // })
-
 
     // adding event listener to follow button
     $(document).on('click', '.follow[data-id]', function () {
@@ -305,6 +300,17 @@ $(function () {
         })
     })
 
+    // modify poster event binding
+    $(document).on('click', '.poster .modify', function () {
+        $.ajax({
+            url: `activities/${$(this).data('id')}/edit`,
+            method: 'get',
+            success(data) {
+                $('#newPosterModal').modal('show')
+                    .find('.modal-body').html(data)
+            }
+        })
+    })
 
     // logic that allow user to add contents to the activity field
     $(document).on('click', '.create-poster-form .add_contents', function () {

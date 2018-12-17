@@ -43,7 +43,9 @@
                 <div class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="dropdownMenuButton">
                   <%= link_to "QR Code", "/get_qrcode/#{activity.id}", remote: true, method: :post, class: "dropdown-item" %>
                   <%= link_to "Save Poster", "/get_canvas/#{activity.id}", remote: true, method: :post, class: "dropdown-item" %>
-
+                  <% if starter == current_user %>
+                    <a class="dropdown-item modify" data-id="<%= activity.id %>">Modify</a>
+                  <% end %>
                   <a class="dropdown-item" data-upload-picture="<%= activity.id %>">Upload Picture</a>
                   <%= link_to "Leave Activity", "/leave_activity/#{activity.id}", remote: true, class: "dropdown-item leave", method: :post %>
                 </div>
@@ -68,11 +70,11 @@
 
   <div class="card-body p-3 material-body-<%= ActivityType.find_by(id: activity.activity_type_id).color %> ">
     <%= activity.content %>
-
-    <% activity.activity_contents.each_with_index  do |content,index|%>
-      <%= render partial: 'activities/content', locals: {content: content,index: index} %>
+    <br>
+    <% activity.activity_contents.each_with_index do |content, index| %>
+      <%= render partial: 'activities/content', locals: {content: content, index: index} %>
     <% end %>
-
+    <br>
     <span>Ending time: <%= activity.activity_end_time.strftime("%b %d, %a %H:%M") %> </span>
   </div>
 

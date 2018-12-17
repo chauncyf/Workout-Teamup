@@ -37,11 +37,15 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/1/edit
   def edit
+    if request.xhr?
+      render layout: false
+    end
   end
 
   # POST /activities
   # POST /activities.json
   def create
+    activity_contents = params[:activity][:activity_contents]
     params = activity_params
     @activity = Activity.new(starter_id: current_user_id,
                              activity_date: params[:activity_date],
@@ -51,7 +55,6 @@ class ActivitiesController < ApplicationController
                              activity_type_id: params[:activity_type_id],
                              status: params[:status])
 
-    activity_contents = JSON.parse(params[:activity_contents])
 
     respond_to do |format|
       if @activity.validate
@@ -59,17 +62,15 @@ class ActivitiesController < ApplicationController
         ActivityParticipant.create(user_id: current_user_id,
                                    activity_id: @activity.id,
                                    identity: 1)
+        activity_contents = JSON.parse(activity_contents)
         activity_contents.each do |content|
           ActivityContent.create(activity_id: @activity.id,
                                  sport_option: content["sport_option"],
                                  quantity: content["quantity"])
 
         end
-        #  status 1 success 2 failed
-        #format.js {render json: {status: 1}}
         format.html {redirect_to @activity, notice: 'Activity was successfully created.'}
         format.json {render :show, status: :created, location: @activity}
-        # type 1 means new activity count means there is one more
         starter = @activity.starter
         starter.follower.each do |user|
           MessageChannel.broadcast_to(user, {type: 1, count: 1, msg: {
@@ -95,11 +96,21 @@ class ActivitiesController < ApplicationController
   def update
     respond_to do |format|
       if @activity.update(activity_params)
+        #remove all existed contents first
+        @activity.activity_contents.destroy_all
+        activity_contents = JSON.parse(params[:activity][:activity_contents])
+        activity_contents.each do |content|
+          ActivityContent.create(activity_id: @activity.id,
+                                 sport_option: content["sport_option"],
+                                 quantity: content["quantity"])
+        end
         format.html {redirect_to @activity, notice: 'Activity was successfully updated.'}
         format.json {render :show, status: :ok, location: @activity}
+        format.js {render 'users/create_activity'}
       else
         format.html {render :edit}
         format.json {render json: @activity.errors, status: :unprocessable_entity}
+        format.js {render 'activities/create', layout: false, content_type: 'text/javascript'}
       end
     end
   end
@@ -158,7 +169,7 @@ class ActivitiesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def activity_params
-    res = params.require(:activity).permit(:activity_date, :place, :content, :activity_type_id, :starter_id, :status, :activity_end_time, :activity_contents)
+    res = params.require(:activity).permit(:activity_date, :place, :content, :activity_type_id, :starter_id, :status, :activity_end_time)
     if res[:activity_date].size > 0
       res[:activity_date] = Time.strptime(res[:activity_date], '%m/%d/%Y %H:%M')
     end
