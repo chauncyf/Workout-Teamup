@@ -236,11 +236,30 @@ $(function () {
         })
     })
 
+    // pagination event binding
     $(document).on('click', '#post_display_container_joined .page-item-num,' +
         ' #post_display_container_started .page-item-num', function () {
         let $this = $(this)
         $this.parent().children('.active').removeClass('active')
         $this.addClass('active')
+        refreshPosts()
+    }).on('click', '#post_display_container_joined .next, #post_display_container_started .next', function () {
+        let $this = $(this)
+        let next = $this.parent().children('.active').next()
+        if (next.hasClass('next')) {
+            return
+        }
+        next.addClass('active')
+        next.prev().removeClass('active')
+        refreshPosts()
+    }).on('click', '#post_display_container_joined .previous, #post_display_container_started .previous', function () {
+        let $this = $(this)
+        let prev = $this.parent().children('.active').prev()
+        if (prev.hasClass('previous')) {
+            return
+        }
+        prev.addClass('active')
+        prev.next().removeClass('active')
         refreshPosts()
     })
 

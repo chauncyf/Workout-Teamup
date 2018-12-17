@@ -45,12 +45,12 @@
     </div>
     <nav aria-label="Page navigation example">
       <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="javascript:void(0)">Previous</a></li>
+        <li class="page-item previous"><a class="page-link" href="javascript:void(0)">Previous</a></li>
         <li class="page-item page-item-num active"><a class="page-link" href="javascript:void(0)">1</a></li>
         <% 2.upto((activities_joined_size.to_f / 4).ceil) do |x| %>
           <li class="page-item page-item-num "><a class="page-link" href="javascript:void(0)"><%= x %></a></li>
         <% end %>
-        <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
+        <li class="page-item next"><a class="page-link" href="javascript:void(0)">Next</a></li>
       </ul>
     </nav>
   </div>
@@ -64,12 +64,12 @@
     </div>
     <nav aria-label="Page navigation example">
       <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="javascript:void(0)">Previous</a></li>
+        <li class="page-item previous"><a class="page-link" href="javascript:void(0)">Previous</a></li>
         <li class="page-item active page-item-num "><a class="page-link" href="javascript:void(0)">1</a></li>
         <% 2.upto((activities_started_size.to_f / 4).ceil) do |x| %>
           <li class="page-item page-item-num "><a class="page-link" href="javascript:void(0)"><%= x %></a></li>
         <% end %>
-        <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
+        <li class="page-item next"><a class="page-link" href="javascript:void(0)">Next</a></li>
       </ul>
     </nav>
   </div>
