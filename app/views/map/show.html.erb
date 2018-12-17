@@ -66,17 +66,7 @@
                             marker.setMap(map)
                         }
                         marker.addListener('click', () => {
-                            $.ajax({
-                                url: '/users/profile/' + user.id,
-                                data: {
-                                    layout: false
-                                },
-                                method: 'get',
-                                success(data) {
-                                    $('#viewUserModal').modal('show')
-                                        .find('.modal-body').html(data)
-                                }
-                            })
+                            showUserInModal(user.id)
                         })
                         return marker
                     })

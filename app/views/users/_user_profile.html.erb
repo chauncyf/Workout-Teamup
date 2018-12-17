@@ -53,7 +53,9 @@
                 <div class="col-md-4 col-sm-6 col-xs-6 profile-header-section1 text-right pull-right">
                   <!--<a href="/show_starter_posters/1 %>" class="btn btn-primary btn-block">My Posters</a> -->
                   <%#= button_to "My Posters", action: 'show_starter_posters_path', controller: 'activities', id: user.id, method: :get %>
-                  <%= link_to "My Achievements", show_starter_posters_path(user.id), method: :get, class: "btn btn-primary" %>
+                  <% if user.id == current_user_id %>
+                    <%= link_to "My Achievements", show_starter_posters_path(user.id), method: :get, class: "btn btn-primary" %>
+                  <% end %>
                 </div>
               </div>
             </div>
