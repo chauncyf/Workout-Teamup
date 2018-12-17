@@ -321,6 +321,7 @@ $(function () {
 
     // modify poster event binding
     $(document).on('click', '.poster .modify', function () {
+        $('#posterModal').modal('hide')
         $.ajax({
             url: `activities/${$(this).data('id')}/edit`,
             method: 'get',
