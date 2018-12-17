@@ -60,11 +60,6 @@ class ActivitiesController < ApplicationController
                                    activity_id: @activity.id,
                                    identity: 1)
         activity_contents.each do |content|
-          puts "!!!!!!!!!!!!!!!!!!!!!!!!!"
-          puts content
-          puts content["sport_option"]
-          puts content["quantity"]
-
           ActivityContent.create(activity_id: @activity.id,
                                  sport_option: content["sport_option"],
                                  quantity: content["quantity"])
