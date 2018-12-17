@@ -89,6 +89,7 @@
                     success() {
                         notice.cancelRemove().update({
                             title: 'Message sent!',
+                            text: input,
                             icon: true,
                             type: 'success',
                             hide: true,
