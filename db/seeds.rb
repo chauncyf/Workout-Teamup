@@ -6,13 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-ActivityType.create(name: 'HIKING', type_index: 1, color: 'purple')
+ActivityType.create(name: 'CARDIO', type_index: 1, color: 'purple')
 ActivityType.create(name: 'JOGGING', type_index: 2, color: 'blue')
-ActivityType.create(name: 'ANAEROBIC', type_index: 3, color: 'green')
+ActivityType.create(name: 'LEG DAY!', type_index: 3, color: 'green')
 ActivityType.create(name: 'LIFTING', type_index: 4, color: 'brown')
 ActivityType.create(name: 'HIIT', type_index: 5, color: 'pink')
 ActivityType.create(name: 'YOGA', type_index: 6, color: 'teal')
-ActivityType.create(name: 'AEROBICS', type_index: 7, color: 'orange')
+ActivityType.create(name: 'HIKING', type_index: 7, color: 'orange')
 ActivityType.create(name: 'SWIMMING', type_index: 8, color: 'grey')
 
 User.create(user_name: 'chauncyf', email: 'fanc@brandeis.edu', password: '123456789', email_confirmed: true, identity: 1)
