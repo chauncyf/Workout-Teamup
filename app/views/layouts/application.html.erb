@@ -90,8 +90,8 @@
 
           let ishttps = 'https:' == document.location.protocol ? true : false;
 
-          if (ishttps) {
-              if (location.href.indexOf('localhost') < 0) {
+          if (!ishttps) {
+              if (location.href.indexOf('localhost') < 0 && location.href.indexOf('0.0.0.0') < 0) {
                   location.href = location.href.replace('http', 'https')
               }
 
