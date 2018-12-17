@@ -973,10 +973,11 @@ footer {
     padding-left: 20px;
     padding-right: 20px;
     width: 33vw;
+    min-width: 350px;
   }
 
   .user_stat_box {
-    min-width: 400px;
+    width: 350px;
   }
 }
 
