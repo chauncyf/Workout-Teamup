@@ -199,10 +199,23 @@ $(function () {
             })
         })
     })
+    window.showUserInModal = function (id) {
+        $.ajax({
+            url: '/users/profile/' + id,
+            data: {
+                layout: false
+            },
+            method: 'get',
+            success(data) {
+                $('#viewUserModal').modal('show')
+                    .find('.modal-body').html(data)
+            }
+        })
+    }
     $(document).on('click', 'img.avatar[data-chat]', function () {
         let $this = $(this)
         let id = $this.data('chat')
-        Turbolinks.visit('/users/profile/' + id)
+        showUserInModal(id)
     })
     $(document).on('click', 'a[data-chat]', function () {
         let $this = $(this)
@@ -218,6 +231,8 @@ $(function () {
         })
     }).on('click', '#send_message_modal .submit', function () {
         let $this = $(this)
+        if ($this.prop('disabled')) return
+        $this.prop('disabled', true)
         $.ajax({
             url: '/send_message',
             method: 'post',
@@ -307,7 +322,7 @@ $(function () {
         })
     })
 
-    $(document).on('click', '#newPosterModal .photo_preview[data-id]', function () {
+    $(document).on('click', '.photo_preview[data-id]', function () {
         $.ajax({
             url: '/photos/' + $(this).data('id'),
             method: 'get',

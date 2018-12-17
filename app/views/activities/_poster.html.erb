@@ -74,6 +74,7 @@
     <% end %>
     <br>
     <span>Ending time: <%= activity.activity_end_time.strftime("%b %d, %a %H:%M") %> </span>
+    <%= render 'users/user_avatar_list2', users: activity.users %>
   </div>
 
   <div class="card-footer bg-transparent px-3 pt-0 pb-2 material-footer-<%= ActivityType.find_by(id: activity.activity_type_id).color %>">
