@@ -11,7 +11,7 @@
 <div class="card shadow mb-3 poster" data-poster="<%= activity.id %>">
   <div class="card-header px-3 py-2 text-white material-head-<%= ActivityType.find_by(id: activity.activity_type_id).color %>">
     <div class="row justify-content-between">
-      <div class="col col-auto card-title m-0">
+      <div class="col col-auto card-title m-0 pr-1">
         <ul class="list-inline mb-1">
           <li class="list-inline-item align-middle dropdown card-starter-avatar" data-avatar-pop="<%= starter.id %>">
             <% if activity.starter_id == current_user_id %>
@@ -30,9 +30,9 @@
         </ul>
       </div>
 
-      <div class="col col-auto card-title card-title-button text-right m-0">
+      <div class="col col-auto card-title card-title-button text-right m-0 pl-1">
         <% if !logged_in? %>
-          <%= link_to "", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", 'data-dismiss': "modal", class: "fas fa-ellipsis-v text-white"} %>
+          <%= link_to "", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", 'data-dismiss': "modal", class: "fas fa-plus text-white"} %>
         <% else %>
           <% if activity.status != 3 %>
             <% if isJoined %>
