@@ -19,9 +19,15 @@ User.create(user_name: 'chauncyf', email: 'fanc@brandeis.edu', password: '123456
 User.create(user_name: 'irenezxr', email: 'xiangranzhao@brandeis.edu', password: '123456789', email_confirmed: true, identity: 1)
 User.create(user_name: 'gggllm', email: 'limianguo@gmail.com', password: '123456789', email_confirmed: true, identity: 1)
 
+User.create(user_name: Faker::Name.male_first_name, email: 'visitor1@brandeis.edu', password: '123456789', email_confirmed: true, identity: 2)
+User.create(user_name: Faker::Name.male_first_name, email: 'visitor2@brandeis.edu', password: '123456789', email_confirmed: true, identity: 2)
+User.create(user_name: Faker::Name.female_first_name, email: 'visitor3@brandeis.edu', password: '123456789', email_confirmed: true, identity: 2)
+User.create(user_name: Faker::Name.female_first_name, email: 'visitor4@brandeis.edu', password: '123456789', email_confirmed: true, identity: 2)
+User.create(user_name: Faker::Name.female_first_name, email: 'visitor5@brandeis.edu', password: '123456789', email_confirmed: true, identity: 2)
 
-# # To fix: timezone
-10.times do
+
+
+5.times do
   activity = Activity.create(activity_date: Faker::Time.forward(30),
                              activity_end_time: Faker::Time.forward(31),
                              place: Faker::Games::Overwatch.location,
@@ -32,9 +38,47 @@ User.create(user_name: 'gggllm', email: 'limianguo@gmail.com', password: '123456
   ActivityParticipant.create(user_id: 4,
                              activity_id: activity.id,
                              identity: 1)
+  end
+5.times do
+  activity = Activity.create(activity_date: Faker::Time.forward(30),
+                             activity_end_time: Faker::Time.forward(31),
+                             place: Faker::Games::Overwatch.location,
+                             content: Faker::MostInterestingManInTheWorld.quote,
+                             activity_type_id: [1, 2, 3, 4, 5, 6, 7, 8].sample,
+                             estimatedDuration: 30,
+                             starter_id: 5, status: 2)
+  ActivityParticipant.create(user_id: 5,
+                             activity_id: activity.id,
+                             identity: 1)
 end
 
-10.times do
+5.times do
+  activity = Activity.create(activity_date: Faker::Time.forward(30),
+                             activity_end_time: Faker::Time.forward(35),
+                             place: Faker::Hobbit.location,
+                             content: Faker::Hobbit.quote,
+                             activity_type_id: [1, 2, 3, 4, 5, 6, 7, 8].sample,
+                             estimatedDuration: 30,
+                             starter_id: 6, status: 2)
+  ActivityParticipant.create(user_id: 6,
+                             activity_id: activity.id,
+                             identity: 1)
+  end
+
+5.times do
+  activity = Activity.create(activity_date: Faker::Time.forward(30),
+                             activity_end_time: Faker::Time.forward(33),
+                             place: Faker::Games::Overwatch.location,
+                             content: Faker::Games::Overwatch.quote,
+                             activity_type_id: [1, 2, 3, 4, 5, 6, 7, 8].sample,
+                             estimatedDuration: 30,
+                             starter_id: 8, status: 2)
+  ActivityParticipant.create(user_id: 8,
+                             activity_id: activity.id,
+                             identity: 1)
+end
+
+5.times do
   activity = Activity.create(activity_date: Faker::Time.forward(30),
                              activity_end_time: Faker::Time.forward(35),
                              place: Faker::Hobbit.location,
@@ -46,7 +90,19 @@ end
                              activity_id: activity.id,
                              identity: 1)
 end
-10.times do
+5.times do
+  activity = Activity.create(activity_date: Faker::Time.forward(30),
+                             activity_end_time: Faker::Time.forward(32),
+                             place: Faker::Games::Overwatch.location,
+                             content: Faker::FamousLastWords.last_words,
+                             activity_type_id: [1, 2, 3, 4, 5, 6, 7, 8].sample,
+                             estimatedDuration: 30,
+                             starter_id: 7, status: 2)
+  ActivityParticipant.create(user_id: 7,
+                             activity_id: activity.id,
+                             identity: 1)
+  end
+5.times do
   activity = Activity.create(activity_date: Faker::Time.forward(30),
                              activity_end_time: Faker::Time.forward(32),
                              place: Faker::Games::Overwatch.location,
@@ -58,7 +114,7 @@ end
                              activity_id: activity.id,
                              identity: 1)
 end
-10.times do
+5.times do
   activity = Activity.create(activity_date: Faker::Time.forward(30),
                              activity_end_time: Faker::Time.forward(33),
                              place: Faker::Games::Overwatch.location,
@@ -83,6 +139,22 @@ end
                          quantity: "20 km")
 end
 
+
+ActivityParticipant.create(user_id: 4,
+                           activity_id: 5,
+                           identity: 1)
+ActivityParticipant.create(user_id: 5,
+                           activity_id: 8,
+                           identity: 1)
+ActivityParticipant.create(user_id: 6,
+                           activity_id: 7,
+                           identity: 1)
+ActivityParticipant.create(user_id: 7,
+                           activity_id: 3,
+                           identity: 1)
+ActivityParticipant.create(user_id: 8,
+                           activity_id: 2,
+                           identity: 1)
 
 # Tag.create(type_name: 'pullup', color: 'green')
 # Tag.create(type_name: 'push', color: 'orange')
@@ -111,25 +183,9 @@ Follow.create(followee_id: 2, follower_id: 4)
 Gym.create(name: "gosman", description: "this is gosman gym for brandeis univeristy open time : xxxxx")
 
 
-User.create(user_name: 'visitor1', email: 'visitor1@brandeis.edu', password: '123456789', email_confirmed: true, identity: 2)
-User.create(user_name: 'visitor2', email: 'visitor2@brandeis.edu', password: '123456789', email_confirmed: true, identity: 2)
-User.create(user_name: 'visitor3', email: 'visitor3@brandeis.edu', password: '123456789', email_confirmed: true, identity: 2)
-User.create(user_name: 'visitor4', email: 'visitor4@brandeis.edu', password: '123456789', email_confirmed: true, identity: 2)
-
 UserLocation.create(user_id: 4, latitude: 42.3714816, longitude: -71.258112)
 UserLocation.create(user_id: 5, latitude: 42.37847, longitude: -71.255162)
 UserLocation.create(user_id: 6, latitude: 42.37943, longitude: -71.258132)
 UserLocation.create(user_id: 7, latitude: 42.37545, longitude: -71.253142)
+UserLocation.create(user_id: 8, latitude: 42.37542, longitude: -71.253172)
 
-ActivityParticipant.create(user_id: 4,
-                           activity_id: 5,
-                           identity: 1)
-ActivityParticipant.create(user_id: 5,
-                           activity_id: 8,
-                           identity: 1)
-ActivityParticipant.create(user_id: 6,
-                           activity_id: 7,
-                           identity: 1)
-ActivityParticipant.create(user_id: 7,
-                           activity_id: 3,
-                           identity: 1)
