@@ -89,6 +89,7 @@
       <% end %>
 
       <div class="col text-right comment_box" data-id="<%= activity.id %>">
+        <a class="participant mr-1"><i class="fas fa-users mr-1" title="participant"></i><span><%= activity.activity_participants.size %></span></a>
         <% if activity.liked?(current_user_id) %>
           <a class="like mr-1"><i class="fa fa-heart mr-1" title="unlike"></i><span><%= activity.likes.size %></span></a>
         <% else %>
