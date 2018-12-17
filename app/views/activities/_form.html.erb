@@ -38,7 +38,7 @@
 
     <div class="form-group">
       <%= form.label "What is your plan?" %>
-      <a class="btn btn-primary rounded-circle add_contents"><i class="fa fa-plus"></i></a>
+      <a class="btn btn-primary text-white rounded-circle add_contents"><i class="fa fa-plus"></i></a>
       <%= form.hidden_field :activity_contents, class: "activity_contents" %>
     </div>
 
@@ -47,15 +47,13 @@
         <div class="form-row">
           <div class="col">
             <input placeholder="activity name" class="form-control activity_name activity_content_input"
-                   value="<%= content.sport_option %>"
-            >
+                   value="<%= content.sport_option %>">
           </div>
           <div class="col">
             <input placeholder="times or duration" class="form-control activity_quantity activity_content_input"
-                   value="<%= content.quantity %>"
-            >
+                   value="<%= content.quantity %>">
           </div>
-          <a class="btn btn-primary rounded-circle remove_contents"><i class="fa fa-minus"></i></a>
+          <a class="btn btn-primary text-white rounded-circle remove_contents"><i class="fa fa-minus"></i></a>
         </div>
       </div>
     <% end %>
@@ -71,9 +69,9 @@
 
     <div class="form-group">
       <%= form.label "Type?" %>
-      <!--    <div>-->
-      <%= collection_select(:activity, :activity_type_id, ActivityType.all, :id, :name, class: "form-control") %>
-      <!--    </div>-->
+      <div>
+        <%= collection_select(:activity, :activity_type_id, ActivityType.all, :id, {class: "form-control"}) %>
+      </div>
     </div>
 
 

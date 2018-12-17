@@ -343,7 +343,7 @@ $(function () {
                <div class="col"> 
                    <input placeholder="times or duration" class="form-control activity_quantity activity_content_input">
                </div>
-               <a class="btn btn-primary rounded-circle remove_contents"><i class="fa fa-minus"></i></a>
+               <a class="btn btn-primary text-white rounded-circle remove_contents"><i class="fa fa-minus"></i></a>
             </div>
         </div>
         `)
