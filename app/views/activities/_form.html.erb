@@ -69,9 +69,9 @@
 
     <div class="form-group">
       <%= form.label "Type?" %>
-      <div>
-        <%= collection_select(:activity, :activity_type_id, ActivityType.all, :id, {class: "form-control"}) %>
-      </div>
+      <!--    <div>-->
+      <%= form.select(:activity_type_id, ActivityType.all.collect {|x| [x.name, x.id]},{},{ class: "form-control"}) %>
+      <!--    </div>-->
     </div>
 
     <div class="col actions">  <!-- modal-footer -->
