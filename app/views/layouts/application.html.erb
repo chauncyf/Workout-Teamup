@@ -87,6 +87,15 @@
               };
               $(document).on('turbolinks:load', clearTurboLink)
           })
+
+          let ishttps = 'https:' == document.location.protocol ? true : false;
+
+          if (ishttps) {
+              if (location.href.indexOf('localhost') < 0) {
+                  location.href = location.href.replace('http', 'https')
+              }
+
+          }
       })()
   </script>
 <% end %>
