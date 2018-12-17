@@ -59,13 +59,13 @@
 <hr class="my-4">
 
 <div id="post_display_container">
-  <% @activities.each_slice(20) do |activities| %>
-    <div class="card-columns card-block">
-      <% activities.each do |activity| %>
-        <%= render partial: 'activities/poster', locals: {activity: activity} %>
-      <% end %>
-    </div>
-  <% end %>
+  <%# @activities.each_slice(20) do |activities| %>
+  <!--    <div class="card-columns card-block">-->
+  <%# activities.each do |activity| %>
+  <%#= render partial: 'activities/poster', locals: {activity: activity} %>
+  <%# end %>
+  <!--    </div>-->
+  <%# end %>
 </div>
 
 <script>
@@ -110,6 +110,8 @@
         })
 
         window.refreshPosts = function (resetSize) {
+            $('#post_display_container').append(`<img src="/loading.gif" class="home_loading"/>`)
+
             // if resetSize is true, it means we are going to
             // reset our size to 20, set alloaded flag to be false
             // reset last size to 0
@@ -172,6 +174,7 @@
             })
 
             let start_date_time = $('#start_date_time')
+            //start_date_time.find('input').val(moment().format('MM/DD/YYYY HH:mm'))
             start_date_time.datetimepicker({
                 icons: {
                     time: "far fa-clock",
