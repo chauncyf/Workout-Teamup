@@ -104,6 +104,6 @@
                 id: data.chat_id,
                 type: 3// confrim message received
             })
-        }, 3000)
+        }, 300)
     }
 })()
