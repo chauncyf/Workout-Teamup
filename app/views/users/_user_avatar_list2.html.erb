@@ -1,5 +1,8 @@
+<% starter = false if local_assigns[:starter].nil? %>
 <div class="user_avatar_list">
   <% users.each do |user| %>
-    <%= avatar_for user, data: {chat: user.id} %>
+    <% if starter != user %>
+      <%= avatar_for user, data: {chat: user.id} %>
+    <% end %>
   <% end %>
 </div>
