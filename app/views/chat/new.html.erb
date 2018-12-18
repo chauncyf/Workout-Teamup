@@ -1,12 +1,25 @@
-<div class="modal-header">
-  <h3 class="modal-title">Send message to <%= avatar_for @user %> <%= @user.user_name %></h3>
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<div class="modal-body">
-  <textarea placeholder="type your message here" class="form-control" rows="3"></textarea>
-</div>
-<div class="modal-footer">
-  <a class="btn btn-primary text-white submit" data-id="<%= @user.id %>">submit</a>
-</div>
+<% if logged_in? %>
+  <div class="modal-header">
+    <h3 class="modal-title">Send message to <%= avatar_for @user %> <%= @user.user_name %></h3>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <textarea placeholder="type your message here" class="form-control" rows="3"></textarea>
+  </div>
+  <div class="modal-footer">
+    <a class="btn btn-primary text-white submit" data-id="<%= @user.id %>">submit</a>
+  </div>
+<% else %>
+  <script>
+      $('#send_message_modal').modal('hide');
+      document.getElementById("login-button").click();
+
+      new PNotify({
+          title: '<i class="fas fa-exclamation-circle"></i> Please login',
+          type: 'error',
+          delay: 2000
+      });
+  </script>
+<% end %>
