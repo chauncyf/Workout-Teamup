@@ -629,6 +629,15 @@ footer {
   }
 }
 
+#send_message_modal {
+  .modal-title {
+    img {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+}
+
 .login-card {
   max-width: 32em;
   border: none !important;
