@@ -10,7 +10,7 @@
         <div class="col-md-3 col-sm-3 col-xs-12 user-profile-part pull-left">
           <div class="row ">
             <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
-              <%= avatar_for user, id: "upload_avatar_button", data: {toggle: "modal", target: "#upload_avatar_modal"} %>
+              <%= avatar_for user, id: (user.id == current_user.id ? "upload_avatar_button" : "") %>
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
               <% if user == current_user %>
