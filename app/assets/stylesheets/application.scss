@@ -164,6 +164,170 @@ a {
   color: #E0E0E0;
 }
 
+
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+@media (min-width: 0px) and (max-width: 575px) {
+  .card-columns {
+    column-count: 1 !important;
+    .card {
+      width: 96vw;
+      //min-height: 96vmin;
+    }
+  }
+
+  .navbar {
+    .navbar-brand {
+      margin-left: 2vw;
+    }
+    .navbar-toggler, #navbarSupportedContent {
+      margin-right: 2vw;
+    }
+  }
+  .header-row {
+    width: 96vw;
+  }
+  footer > small {
+    margin-left: 2vw;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .card-columns {
+    column-count: 2 !important;
+    width: 95vw;
+    .card {
+      width: 47.5vw;
+      //min-height: 47.5vw;
+    }
+  }
+
+  .navbar {
+    .navbar-brand {
+      margin-left: 2.5vw;
+    }
+    .navbar-toggler, #navbarSupportedContent {
+      margin-right: 2.5vw;
+    }
+  }
+  .header-row {
+    width: 95vw;
+  }
+  footer > small {
+    margin-left: 2.5vw;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 851px) {
+  .card-columns {
+    column-count: 3 !important;
+    width: 93vw;
+    .card {
+      width: 31vw;
+      //min-height: 31vw;
+    }
+  }
+
+  .navbar {
+    .navbar-brand {
+      margin-left: 3.5vw;
+    }
+    .navbar-toggler, #navbarSupportedContent {
+      margin-right: 3.5vw;
+    }
+  }
+  .header-row {
+    width: 93vw;
+  }
+  footer > small {
+    margin-left: 3.5vw;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 1151px) {
+  .card-columns {
+    column-count: 4 !important;
+    width: 92vw;
+    .card {
+      width: 23vw;
+      //min-height: 23vw;
+    }
+  }
+
+  .navbar {
+    .navbar-brand {
+      margin-left: 4vw;
+    }
+    .navbar-toggler, #navbarSupportedContent {
+      margin-right: 4vw;
+    }
+  }
+  .header-row {
+    width: 92vw;
+  }
+  footer > small {
+    margin-left: 4vw;
+  }
+}
+
+//Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1441px) {
+  .card-columns {
+    column-count: 5 !important;
+    width: 90vw;
+    .card {
+      width: 18vw;
+      //min-height: 18vw;
+    }
+  }
+
+  .navbar {
+    .navbar-brand {
+      margin-left: 5vw;
+    }
+    .navbar-toggler, #navbarSupportedContent {
+      margin-right: 5vw;
+    }
+  }
+  .header-row {
+    width: 90vw;
+  }
+  footer > small {
+    margin-left: 5vw;
+  }
+}
+
+// 4k - 2560px
+@media (min-width: 2011px) {
+  .card-columns {
+    column-count: 6 !important;
+    width: 87vw;
+    .card {
+      width: 14.5vw;
+      //min-height: 14.5vw;
+    }
+  }
+
+  .navbar {
+    .navbar-brand {
+      margin-left: 6.5vw;
+    }
+    .navbar-toggler, #navbarSupportedContent {
+      margin-right: 6.5vw;
+    }
+  }
+  .header-row {
+    width: 87vw;
+  }
+  footer > small {
+    margin-left: 6.5vw;
+  }
+}
+
+
 @mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -279,54 +443,22 @@ a {
       margin-left: 8px;
     }
   }
+}
 
-  @media (min-width: 0px) and (max-width: 575px) {
-    .navbar-brand {
-      margin-left: 2vw;
-    }
-    .navbar-toggler, #navbarSupportedContent {
-      margin-right: 2vw;
-    }
+.header-row {
+  .input-group > .input-group-prepend > .input-group-text {
+    border-top-left-radius: .5rem !important;
+    border-bottom-left-radius: .5rem !important;
   }
-  @media (min-width: 576px) {
-    .navbar-brand {
-      margin-left: 2.5vw;
-    }
-    .navbar-toggler, #navbarSupportedContent {
-      margin-right: 2.5vw;
-    }
+
+  .input-group > .input-group-append > .input-group-text {
+    border-top-right-radius: .5rem !important;
+    border-bottom-right-radius: .5rem !important;
   }
-  @media (min-width: 851px) {
-    .navbar-brand {
-      margin-left: 3.5vw;
-    }
-    .navbar-toggler, #navbarSupportedContent {
-      margin-right: 3.5vw;
-    }
-  }
-  @media (min-width: 1151px) {
-    .navbar-brand {
-      margin-left: 4vw;
-    }
-    .navbar-toggler, #navbarSupportedContent {
-      margin-right: 4vw;
-    }
-  }
-  @media (min-width: 1441px) {
-    .navbar-brand {
-      margin-left: 5vw;
-    }
-    .navbar-toggler, #navbarSupportedContent {
-      margin-right: 5vw;
-    }
-  }
-  @media (min-width: 2011px) {
-    .navbar-brand {
-      margin-left: 6.5vw;
-    }
-    .navbar-toggler, #navbarSupportedContent {
-      margin-right: 6.5vw;
-    }
+
+  .btn {
+    border-radius: 1.5rem !important;
+    background-color: $material-blue;
   }
 }
 
@@ -335,10 +467,6 @@ a {
 footer {
   border-top: 1px solid #eaeaea;
   color: #777;
-
-  small {
-    margin-left: 2.5%;
-  }
 
   a {
     color: #555;
@@ -665,99 +793,8 @@ footer {
 
 .card-columns {
   margin: auto;
-
-  // Extra small devices (portrait phones, less than 576px)
-  // No media query for `xs` since this is the default in Bootstrap
-  @media (min-width: 0px) and (max-width: 575px) {
-    column-count: 1 !important;
-    .card {
-      width: 96vw;
-      //min-height: 96vmin;
-    }
-
-  }
-
-  // Small devices (landscape phones, 576px and up)
-  @media (min-width: 576px) {
-    column-count: 2 !important;
-    width: 95vw;
-    .card {
-      width: 47.5vw;
-      //min-height: 47.5vw;
-    }
-  }
-
-  // Medium devices (tablets, 768px and up)
-  @media (min-width: 851px) {
-    column-count: 3 !important;
-    width: 93vw;
-    .card {
-      width: 31vw;
-      //min-height: 31vw;
-    }
-  }
-
-  // Large devices (desktops, 992px and up)
-  @media (min-width: 1151px) {
-    column-count: 4 !important;
-    width: 92vw;
-    .card {
-      width: 23vw;
-      //min-height: 23vw;
-    }
-  }
-
-  //Extra large devices (large desktops, 1200px and up)
-  @media (min-width: 1441px) {
-    column-count: 5 !important;
-    width: 90vw;
-    .card {
-      width: 18vw;
-      //min-height: 18vw;
-    }
-  }
-
-  // 4k - 2560px
-  @media (min-width: 2011px) {
-    column-count: 6 !important;
-    width: 87vw;
-    .card {
-      width: 14.5vw;
-      //min-height: 14.5vw;
-    }
-  }
 }
 
-.header-row {
-  width: 90vw;
-
-  //#header-col-button {
-  //  margin-right: 2.5%;
-  //}
-  //
-  //#header-col-search {
-  //  margin-left: 2.5%;
-  //}
-  //
-  //.form-control {
-  //  border-radius: 1.5rem !important;
-  //}
-
-  .input-group > .input-group-prepend > .input-group-text {
-    border-top-left-radius: .5rem !important;
-    border-bottom-left-radius: .5rem !important;
-  }
-
-  .input-group > .input-group-append > .input-group-text {
-    border-top-right-radius: .5rem !important;
-    border-bottom-right-radius: .5rem !important;
-  }
-
-  .btn {
-    border-radius: 1.5rem !important;
-    background-color: $material-blue;
-  }
-}
 
 /* avatar image */
 .rounded-circle {
