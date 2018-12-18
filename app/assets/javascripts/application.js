@@ -23,6 +23,10 @@
 //= require users
 
 $(function () {
+    function isLogin() {
+        return $('#login-button').length === 0
+    }
+
     $(document).on('turbolinks:before-cache', function () {
         // don't cache any pnotify elements, just let them pass
         PNotify.removeAll()
@@ -218,6 +222,9 @@ $(function () {
         showUserInModal(id)
     })
     $(document).on('click', 'a[data-chat]', function () {
+        if (!isLogin()) {
+            return
+        }
         let $this = $(this)
         let id = $this.data('chat')
         let modal = $('#send_message_modal')

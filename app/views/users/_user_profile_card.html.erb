@@ -29,7 +29,7 @@
         <% else %>
           <%= link_to "Follow", "/follow/#{user.id}", method: :post, remote: true, class: "btn-primary col-auto m-1 material-head-#{color}", id: "#{user.id}", follow: false %>
         <% end %>
-        <a data-chat="<%= user.id %>" data-dismiss="modal" class="btn-primary col-auto m-1 material-head-<%= color %>" href="javascript:void(0)">
+        <a data-chat="<%= user.id %>" class="btn-primary col-auto m-1 material-head-<%= color %>" href="javascript:void(0)">
           chat
         </a>
       <% end %>
