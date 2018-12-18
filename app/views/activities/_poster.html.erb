@@ -9,7 +9,7 @@
   poster_color = ActivityType.find_by(id: activity.activity_type_id).color
 %>
 
-<div class="card shadow mb-3 poster" data-poster="<%= show_comment ? '' : activity.id %>">
+<div class="card shadow mb-3 poster" data-poster="<%= show_comment ? "" : activity.id %>">
   <div class="card-header px-3 py-2 text-white material-head-<%= poster_color %>">
     <div class="row justify-content-between">
       <div class="col col-auto card-title m-0 pr-1">

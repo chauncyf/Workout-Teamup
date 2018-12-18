@@ -7,7 +7,6 @@
   </button>
 
   <div class="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
-    <!--    float-right-->
     <ul class="navbar-nav">
       <li class="nav-item">
         <%= link_to "Discover", root_path, class: "nav-link" %>
@@ -25,14 +24,6 @@
         <% else %>
           <%= link_to "Map", :map_path, class: "nav-link" %>
         <% end %>
-<!--      </li>-->
-<!--      <li class="nav-item">-->
-        <%# if !logged_in? %>
-          <%#= link_to "Chat", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", class: "nav-link"} %>
-        <%# else %>
-<!--          <a class="nav-link" href="#">Chat</a>-->
-        <%# end %>
-<!--      </li>-->
 
       <li class="divider-vertical"></li>
 
@@ -43,8 +34,6 @@
             <div class="dropdown-item mb-0">Hi, <%= current_user.user_name %></div>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href=<%= profile_path(current_user) %>>Profile</a>
-<!--            <a class="dropdown-item" href="#">My Poster</a>-->
-<!--            <a class="dropdown-item" href="#">Analysis</a>-->
             <div class="dropdown-divider"></div>
             <%= link_to "Logout", logout_path, method: :delete, class: "dropdown-item leave" %>
           </div>
@@ -67,9 +56,6 @@
         </li>
       <% end %>
 
-      <!--      <li class="nav-item">-->
-      <%#= request.location.city %>
-      <!--      </li>-->
     </ul>
   </div>
 </nav>
