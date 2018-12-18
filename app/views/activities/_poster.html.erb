@@ -111,7 +111,7 @@
     <% end %>
     <div class="card reviews">
       <div class="card-body px-3 pt-3">
-        <div class="card-title mb-2">Reviews</div>
+        <div class="card-title mb-3">Reviews</div>
         <ul class="list-group list-group-flush">
           <% activity.comments_list.each do |comment| %>
             <div class="list-group-item list-group-item-action flex-column align-items-start px-1">
@@ -125,15 +125,18 @@
             </div>
           <% end %>
         </ul>
-        <div class="input-group comment-input-group mt-3">
-          <textarea placeholder="Enter your comment here" class="form-control" aria-label="With textarea"></textarea>
-          <div class="input-group-append">
-            <% if !logged_in? %>
-              <%= link_to "Submit", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", 'data-dismiss': "modal", class: "btn btn-outline-secondary"} %>
-            <% else %>
+        <div class="input-group comment-input-group">
+          <% if logged_in? %>
+            <textarea placeholder="Enter your comment here" class="form-control" aria-label="With textarea"></textarea>
+            <div class="input-group-append">
               <button class="btn btn-outline-secondary comment_submit" data-id="<%= activity.id %>" type="button">Submit</button>
-            <% end %>
-          </div>
+            </div>
+          <% else %>
+            <%= link_to "Login to Comment", login_path, {remote: true, 'data-toggle': "modal", 'data-target': "#login", 'data-dismiss': "modal", class: "btn btn-block btn-outline-secondary"} %>
+            <script>
+                localStorage.setItem("activity_id_log", `<%= activity.id %>`);
+            </script>
+          <% end %>
         </div>
       </div>
     </div>

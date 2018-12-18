@@ -6,12 +6,9 @@
 //        scale: 3,
         useCORS: true,
         letterRendering: true,
-        onrendered: getPdf})
+        onrendered: getPdf
+    })
 
-    new PNotify({
-        title: '<i class="fas fa-check-circle"></i> Poster Saved',
-        type: 'success'
-    });
 })()
 
 function getPdf(canvas) {
@@ -32,18 +29,22 @@ function getPdf(canvas) {
 //    doc.internal.scaleFactor = 1.8;
     doc.setFontSize(30)
     doc.text(20, 30, 'Scan QR Code To Join Activity!')
-    doc.addImage(poster_image, 'PNG', 20, 50)
-    doc.addImage(qrcode_image, 'PNG', 130, 50, 50, 50)
 
-    doc.save(`poster_<%= activity_id %>.pdf`)
-//    downloadURI(poster_image, `poster_<%= activity_id %>.jpg`)
-}
+    try {
+        doc.addImage(poster_image, 'PNG', 20, 50)
+        doc.addImage(qrcode_image, 'PNG', 130, 50, 40, 40)
+        doc.save(`poster_<%= activity_id %>.pdf`)
 
-function downloadURI(uri, name) {
-    var link = document.createElement("a");
-    link.download = name;
-    link.href = uri;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+        new PNotify({
+            title: '<i class="fas fa-check-circle"></i> Poster Saved',
+            type: 'success'
+        });
+    }
+    catch (e) {
+        new PNotify({
+            title: '<i class="fas fa-check-circle"></i> Unknown Error',
+            text: 'Please refresh and try again',
+            type: 'error'
+        });
+    }
 }
