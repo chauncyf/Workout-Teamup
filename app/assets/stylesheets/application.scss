@@ -51,6 +51,11 @@ a {
   background-color: $material-blue !important;
   border: none !important;
 }
+
+.switch input:checked + label::before {
+  background-color: $material-blue
+}
+
 .dropdown-menu {
   .leave {
     color: #D32F2F;
@@ -201,12 +206,17 @@ a {
 //}
 
 .profile-card {
-  border: none !important;
   border-radius: .85rem !important;
 
   .avatar {
     width: 2.5rem !important;
     height: 2.5rem !important;
+  }
+
+  .card-header {
+    border-top-right-radius: 0.85rem !important;
+    border-top-left-radius: 0.85rem !important;
+    border-bottom: none;
   }
 
   .card-body {
@@ -414,7 +424,8 @@ footer {
 
   .modal-content {
     //border: none;
-    border-radius: .5rem;
+    border-radius: .85rem !important;
+    margin: auto;
   }
 
   #poster-modal-content, .poster-modal-body {
@@ -988,12 +999,6 @@ footer {
 
 .ui-pnotify-action-bar button {
   cursor: pointer;
-}
-
-.modal-title {
-  .avatar {
-    width: 25px;
-  }
 }
 
 .poster_type {

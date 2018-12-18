@@ -28,11 +28,11 @@ function getPdf(canvas) {
 
 //    doc.internal.scaleFactor = 1.8;
     doc.setFontSize(30)
-    doc.text(20, 30, 'Scan QR Code To Join Activity!')
+    doc.text(30, 30, 'Scan QR Code To Join Activity!')
 
     try {
-        doc.addImage(poster_image, 'PNG', 20, 50)
-        doc.addImage(qrcode_image, 'PNG', 130, 50, 40, 40)
+        doc.addImage(poster_image, 'PNG', 30, 50)
+        doc.addImage(qrcode_image, 'PNG', 135, 50, 40, 40)
         doc.save(`poster_<%= activity_id %>.pdf`)
 
         new PNotify({

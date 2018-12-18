@@ -9,7 +9,7 @@
   poster_color = ActivityType.find_by(id: activity.activity_type_id).color
 %>
 
-<div class="card shadow mb-3 poster" data-poster="<%= activity.id %>">
+<div class="card shadow mb-3 poster" data-poster="<%= show_comment ? '' : activity.id %>">
   <div class="card-header px-3 py-2 text-white material-head-<%= poster_color %>">
     <div class="row justify-content-between">
       <div class="col col-auto card-title m-0 pr-1">
@@ -43,10 +43,10 @@
                   <%= link_to "QR Code", "/get_qrcode/#{activity.id}", remote: true, method: :post, class: "dropdown-item" %>
                   <%= link_to "Save Poster", "/get_canvas/#{activity.id}", remote: true, method: :post, class: "dropdown-item" %>
                   <a class="dropdown-item" data-upload-picture="<%= activity.id %>">Upload Picture</a>
+                  <div class="dropdown-divider"></div>
                   <% if starter == current_user %>
                     <a class="dropdown-item modify" data-id="<%= activity.id %>">Modify</a>
                   <% end %>
-                  <div class="dropdown-divider"></div>
                   <%= link_to "Leave Activity", "/leave_activity/#{activity.id}", remote: true, method: :post, class: "dropdown-item leave" %>
                 </div>
               </div>
@@ -76,22 +76,20 @@
     <% end %>
     <br>
     <span>Ending time: <%= activity.activity_end_time.strftime("%b %d, %a %H:%M") %> </span>
-    <%#= render 'users/user_avatar_list2', users: activity.users, starter: activity.starter %>
   </div>
 
   <div class="card-footer bg-transparent px-3 pt-0 pb-2 material-footer-<%= poster_color %>">
     <div class="row align-items-center">
       <% if isJoined %>
-        <div class="col-auto rate-star" data-raty="true"
+        <div class="col-auto rate-star pr-1" data-raty="true"
              <%= join.rating != 0 ? "data-readonly='true'" : "" %>
              data-id="<%= join.id %>"
              data-score="<%= join.rating %>">
         </div>
       <% end %>
 
-      <div class="col text-right comment_box" data-id="<%= activity.id %>">
-
-        <%= link_to (content_tag(:i, "", class:"fas fa-users mr-1") + content_tag(:span, "#{activity.activity_participants.size}", class: "mr-1")).html_safe, "/joined_users/#{activity.id}", remote: true, method: :post, class: "material-footer-#{poster_color}", title: "participant" %>
+      <div class="col text-right comment_box pl-1" data-id="<%= activity.id %>">
+        <%= link_to (content_tag(:i, "", class: "fas fa-users mr-1") + content_tag(:span, "#{activity.activity_participants.size}", class: "mr-1")).html_safe, "/joined_users/#{activity.id}", remote: true, method: :post, class: "material-footer-#{poster_color}", title: "participant" %>
         <% if activity.liked?(current_user_id) %>
           <a class="like mr-1"><i class="fa fa-heart mr-1" title="unlike"></i><span><%= activity.likes.size %></span></a>
         <% else %>
