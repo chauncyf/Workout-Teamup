@@ -160,6 +160,12 @@ class ActivitiesController < ApplicationController
     render 'canvas.js.erb', locals: {activity_id: params[:id], qrcode: qrcode}
   end
 
+  def joined_users
+    @joined_users = User.joins(:activity_participants).where("activity_participants.activity_id=#{params[:activity_id]}")
+    render 'activities/joined_users.js.erb', layout: false
+  end
+
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

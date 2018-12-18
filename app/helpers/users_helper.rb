@@ -5,7 +5,7 @@ module UsersHelper
   end
 
   def avatar_url user, size = '100x100'
-    if user.is_a? String
+    if user.is_a? Integer
       user = User.find(user)
     end
     if user.avatar.attached?

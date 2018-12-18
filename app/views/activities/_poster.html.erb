@@ -6,10 +6,11 @@
   end
   show_comment = false if local_assigns[:show_comment].nil?
   starter = activity.starter
+  poster_color = ActivityType.find_by(id: activity.activity_type_id).color
 %>
 
 <div class="card shadow mb-3 poster" data-poster="<%= activity.id %>">
-  <div class="card-header px-3 py-2 text-white material-head-<%= ActivityType.find_by(id: activity.activity_type_id).color %>">
+  <div class="card-header px-3 py-2 text-white material-head-<%= poster_color %>">
     <div class="row justify-content-between">
       <div class="col col-auto card-title m-0 pr-1">
         <ul class="list-inline mb-1">
@@ -67,7 +68,7 @@
     </div>
   </div>
 
-  <div class="card-body p-3 material-body-<%= ActivityType.find_by(id: activity.activity_type_id).color %> ">
+  <div class="card-body p-3 material-body-<%= poster_color %> ">
     <%= activity.content %>
     <br>
     <% activity.activity_contents.each_with_index do |content, index| %>
@@ -75,10 +76,10 @@
     <% end %>
     <br>
     <span>Ending time: <%= activity.activity_end_time.strftime("%b %d, %a %H:%M") %> </span>
-    <%= render 'users/user_avatar_list2', users: activity.users, starter: activity.starter %>
+    <%#= render 'users/user_avatar_list2', users: activity.users, starter: activity.starter %>
   </div>
 
-  <div class="card-footer bg-transparent px-3 pt-0 pb-2 material-footer-<%= ActivityType.find_by(id: activity.activity_type_id).color %>">
+  <div class="card-footer bg-transparent px-3 pt-0 pb-2 material-footer-<%= poster_color %>">
     <div class="row align-items-center">
       <% if isJoined %>
         <div class="col-auto rate-star" data-raty="true"
@@ -89,7 +90,8 @@
       <% end %>
 
       <div class="col text-right comment_box" data-id="<%= activity.id %>">
-        <a class="participant mr-1"><i class="fas fa-users mr-1" title="participant"></i><span><%= activity.activity_participants.size %></span></a>
+
+        <%= link_to (content_tag(:i, "", class:"fas fa-users mr-1") + content_tag(:span, "#{activity.activity_participants.size}", class: "mr-1")).html_safe, "/joined_users/#{activity.id}", remote: true, method: :post, class: "material-footer-#{poster_color}", title: "participant" %>
         <% if activity.liked?(current_user_id) %>
           <a class="like mr-1"><i class="fa fa-heart mr-1" title="unlike"></i><span><%= activity.likes.size %></span></a>
         <% else %>

@@ -1,0 +1,3 @@
+$('#participants').modal().find('.modal-body').html(`
+  <%= render partial: 'users/user_avatar_list', locals: {users: @joined_users} %>
+`)

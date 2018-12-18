@@ -205,8 +205,8 @@ a {
   border-radius: .85rem !important;
 
   .avatar {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
   }
 
   .card-body {
@@ -595,6 +595,10 @@ footer {
       .comment_box {
         a {
           cursor: pointer;
+        }
+        a:hover {
+          text-decoration: none;
+          color: unset;
         }
       }
     }
